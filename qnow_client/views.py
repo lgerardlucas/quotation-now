@@ -117,17 +117,18 @@ def quotation_client_list(request, client_id=0):
 
 # Marca qual cotação foi aprovada pelo cliente e envia um email para os interessados
 def quotation_client_approved(request,quotationprice_id=0):
-    # Reprova todos os orçamentos primieiro. Isto garante a aprovação correta quando o client resolver trocar de provider
-    QuotationPrice.objects.filter(quotation_number=quotationprice_id).update(approved=False)  
+    if request.POST.get('price_id'):
+        # Reprova todos os orçamentos primieiro. Isto garante a aprovação correta quando o client resolver trocar de provider
+        QuotationPrice.objects.filter(quotation_number=quotationprice_id).update(approved=False)  
 
-    # Aprova o valor orçado pelo provider 
-    quotationprice_update_row = QuotationPrice.objects.filter(pk=int(request.POST.get('price_id'))).update(approved=True)  
-    
-    # Retorna id para o stage = 4 aprovado
-    quotationstage = QuotationStage.objects.get(status=4)
+        # Aprova o valor orçado pelo provider 
+        quotationprice_update_row = QuotationPrice.objects.filter(pk=request.POST.get('price_id')).update(approved=True)  
+        
+        # Retorna id para o stage = 4 aprovado
+        quotationstage = QuotationStage.objects.get(status=4)
 
-    # Alterando o stage da cotação para 4 = aprovado 
-    Quotation.objects.filter(pk=quotationprice_id).update(stage_id=quotationstage.id)
+        # Alterando o stage da cotação para 4 = aprovado 
+        Quotation.objects.filter(pk=quotationprice_id).update(stage_id=quotationstage.id)
 
     # Incluir melhores testes aqui
     return redirect("qnow_client:quotation_client_list", request.user.id)

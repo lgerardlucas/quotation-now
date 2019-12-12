@@ -172,7 +172,7 @@
 									</div>
 
 									<div id="{{ field.slug }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-										<div class="modal-body" style="padding: 0px;">
+										<div class="modal-body" style="padding-left: 0.1em;">
 
 											<!-- Explicando a situção em que esta a cotação -->
 											{% if 'Orçado'|lower not in field.stage|lower and 'Aprovado'|lower not in field.stage|lower %}
@@ -192,7 +192,7 @@
 
 												</strong>
 													<br>
-													<label>Leia com atenção</label>
+													<label style="font-weight: bold;">Leia com atenção</label>
 													{% if 'Aprovado'|lower not in field.stage|lower %}
 
 														<label style="text-align: justify; padding-left: 0.65em;">
@@ -207,18 +207,21 @@
 														</label>
 													{% else %}
 														<label style="text-align: justify; padding-left: 0.65em;">
-															- Você optou pelo fornecedor listado abaixo, para que o mesmo dê inicio aos próximos passos, que são:
+															<label style="font-weight: bold; line-height: 2px;">- Você optou pelo fornecedor listado abaixo,</label>
+															 para que o mesmo dê inicio aos próximos passos, que são:
 															<br>
-															1 - Entrar em contato com você para agendar sua visita<br>
-															2 - Juntos analisar o projeto e fechar o valor final<br>
-															3 - Assinar o contrato, produzir e entregar<br>
+														    &nbsp;&nbsp;1 - Entrar em contato com você pra agendar sua visita<br>
+															&nbsp;&nbsp;2 - Juntos analisar o projeto e fechar o valor final<br>
+															&nbsp;&nbsp;3 - Assinar o contrato, produzir e entregar
+															<br>
 
+															<label style="font-weight: bold; line-height: 2px;">- A apartir de uma aprovação por sua parte, 
+															a <strong>Q-NOW</strong> sai de cena!</label> Acreditamos ter feito a parte 
+															inicial mais complicada quando se deseja móveis planejados, 
+															que é achar os melhores fornecedores, preços e condições de pagamento.
 															<br>
-
-															- A apartir de uma aprovação por sua parte, a Q-NOW sai de cena. Acreditamos ter feito a parte 
-															inicial mais complicada quando se deseja móveis planejados, que é achar os melhores fornecedores, preços e condições de pagamento.
-															<br>
-															- Ao final de todo o processo, agradecemos se puder nos enviar uma foto e deixar seu comentário aqui mesmo. Isto ajudará a sabermos 
+															- Ao final de todo o processo, agradecemos se puder nos enviar uma foto e deixar seu comentário aqui mesmo.
+															 Isto ajudará a sabermos 
 															se o fornecedor aprovado cumpriu com sua obrigação e o recomenda e se você cliente, gostou do produto recebido.
 														</label>
 													{% endif %}	
@@ -230,12 +233,12 @@
 													{% csrf_token %}
 													<div>
 														<table class="table" style="margin-bottom: 0px;">
-															<caption>Lista de orçamentos para cotação Nº {{ field.id }}</caption>
+															<caption style="font-weight: bold;">Lista de orçamentos para cotação Nº {{ field.id }}</caption>
 															<thead>
 																<tr style="border:none;">
 																	<th style="border:none;">Fornecedor</th>
-																	<th style="border:none;">Orçamento</th>
-																	<th style="border:none;"></th>
+																	<th style="border:none; text-align: right;">Orçamento</th>
+																	<th style="border:none; text-align: center;">Aprovar</th>
 																</tr>
 															</thead>
 
@@ -243,19 +246,16 @@
 																<!-- TemplateTAG carregada com os dados de orçamento -->
 																{% for price in quotation_price %}
 																	<tr>
-																		<td style="border:none; padding: 0px; font-weight: bold;">&nbsp; {{ price.quotation_provider }}</td>
-																		<td style="border:none; padding: 0px; font-weight: bold;">R$ {{ price.quotation_value }}</td>
-																		<td style="border:none;  padding: 0px;">
+																		<td style="border:none; font-weight: bold; ">&nbsp; {{ price.quotation_provider }}</td>
+																		<td style="border:none;	font-weight: bold; text-align: right;">R$ {{ price.quotation_value }}</td>
+																		<td style="border:none; text-align: center;">
 																			{% if price.approved %}
 																				<input style="vertical-align: middle;" type="radio" name="price_id" value="{{ price.id }}" checked>
 																			{% else %}	
-																				<!-- <input style="vertical-align: middle;" type="radio" name="price_id" value="{{ price.id }}"> -->
-	<input style="height: 0.8em; padding-top: 4px;" name="price_id" value="Aprovar" class="btn btn-default uk-button" type="submit">
-
+																				
+																			<input style="vertical-align: middle;" type="radio" name="price_id" value="{{ price.id }}"> 
 																			{% endif %}	
 																		</td>
-																		
-
 																	</tr>
 																	
 																	<!-- Dados do fornecedor -->
@@ -278,13 +278,14 @@
 																					<label style="font-weight: bold; line-height: 0.4em;">Forma de Pagamento</label><br>
 																					{{ price.form_payment }}
 																				</div>
+																				<br>
 																				<!-- Detalhes -->
 																				<div style="display: inline-block;">
 																					<label style="font-weight: bold; line-height: 0.4em;">Detalhes</label><br>
 																						{{ price.comments}}
 																				</div>
 																			</div>
-																			<hr style="border: 1px solid #FFB400;  padding-bottom: 0px;">
+																			<hr>
 																		</td>
 																	</tr>
 																{% endfor %}
@@ -295,7 +296,7 @@
 											
 													<!-- Pergunta do marceneiro -->
 													{% if 'Aprovado'|lower in field.stage|lower %}
-													<div class="form-group">
+													<div class="form-group" style="padding-left: 0.3em;">
 														<label for="message-text" class="col-form-label" style="font-weight: bold;">
 															Após receber seu produto, agradecemos se deixar um comentário aqui:
 														</label>
@@ -303,7 +304,7 @@
 													</div>
 													{% endif %}	
 													<!-- botões de ações -->
-													<div class="modal-footer" style="border-top:0px;">
+													<div class="modal-footer" style="border-top:0px; padding-top: 0px;">
 														{% if 'Aprovado'|lower in field.stage|lower %}
 															<input name="button9" value="Enviar meu comentário" class="btn btn-default uk-button" type="submit">
 														{% else %}
@@ -346,8 +347,13 @@
 											<!-- Botão para receber os orçaentos dos provider e os aprovar -->
 											{% if 'Orçado'|lower in field.stage|lower or 'Aprovado'|lower in field.stage|lower %}
 												<a class="uk-button" data-toggle="collapse" data-target="#{{ field.slug }}" aria-expanded="false"
-													aria-controls="collapseTwo aria-controls" style="padding: 3px 3px; width: 10em;">
-													Valores aqui!
+													aria-controls="collapseTwo aria-controls" style="padding: 3px 3px; width: 12em;">
+													{% if 'Orçado'|lower in field.stage|lower %}
+														Lista de Orçamentos 
+													{% else %}
+														Dados da Aprovação
+													{% endif %}
+
 												</a>
 											</a>
 											{% endif %}
