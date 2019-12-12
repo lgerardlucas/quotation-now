@@ -1,8 +1,8 @@
-![python](https://cloud.githubusercontent.com/assets/51578/13712821/b68a42ce-e793-11e5-96b0-d8eb978137ba.png)
+# ![python](https://cloud.githubusercontent.com/assets/51578/13712821/b68a42ce-e793-11e5-96b0-d8eb978137ba.png)
 
 # Heroku Buildpack: Python
 
-[![Quotation-NOW](https://quotation-now.herokuapp.com/)](https://quotation-now.herokuapp.com/)
+[![Quotation-NOW](https://res.cloudinary.com/quotation-now/image/upload/v1576156720/Quotation-NOW/logo-qnow1_van634.png)](https://quotation-now.herokuapp.com/)
 
 
 See it in Action
