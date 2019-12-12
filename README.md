@@ -1,6 +1,5 @@
+[![Quotation-NOW](https://res.cloudinary.com/quotation-now/image/upload/v1576156892/Quotation-NOW/qnow_favico_linear_lonbyu.png)](https://quotation-now.herokuapp.com/)
 # Quotation-NOW
-
-[![Quotation-NOW](https://res.cloudinary.com/quotation-now/image/upload/v1576156720/Quotation-NOW/logo-qnow1_van634.png)](https://quotation-now.herokuapp.com/)
 
 
 See it in Action
