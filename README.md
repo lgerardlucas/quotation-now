@@ -16,11 +16,15 @@ Ambiente de Programação: [Linux](https://br-linux.org/)
 
 Linguagem de programação: [PYTHON](https://www.python.org/).
 
+Framework: [Django](https://www.djangoproject.com/)
+
 Ambiente virtualizado em: [VIRTUALENV](https://virtualenv.pypa.io/en/latest/).
 
-PostgreSQL-CLOUD: [ElephantSQL(AWS)](https://www.elephantsql.com/about_us.html).
+Banco de Dados PostgreSQL: [ElephantSQL(AWS)](https://www.elephantsql.com/about_us.html).
 
 Plataforma de Imagens e Vídeos: [Cloudnay](https://cloudinary.com/)
+
+Hospedagem: [Heroku](https://www.heroku.com)
 
 Programadores
 -------------
