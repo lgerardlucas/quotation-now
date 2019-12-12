@@ -1,0 +1,251 @@
+{% extends "default.html" %}
+{% load static %}
+{% block content %}
+<!-- Slider -->
+
+<section id="ukSlider" class="uk-slider-section">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12 padding-0">
+				<div class="uk-slidenav-position" data-uk-slideshow="{animation: 'swipe', autoplay:true}">
+					<ul class="uk-slideshow uk-overlay-active">
+						<li aria-hidden="false" class="uk-active"
+							style="animation-duration: 500ms; width: 100%; height: auto;">
+							<img width="1920" height="700" alt=""
+								src="{% static '/images/elements/slider_provider1.jpg' %}">
+							<div class="uk-overlay-panel uk-overlay-fade">
+								<div
+									class="uk-container uk-container-center uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle">
+									<div class="uk-width-4-10 uk-text-right">
+										<div class="wow fadeInLeft slider-text slider-text-2" data-wow-delay="0.7s">
+											<h1 class="raleway80 uk-text-white">Plataforma de Cotações</h1>
+										</div>
+										<div class="wow fadeInLeft slider-text slider-text-2" data-wow-delay="1.2s">
+											<h2 class="raleway80 uk-slider-text-white">MÓVEIS PLANEJADOS</h2>
+										</div>
+										<br class="uk-hidden-small">
+										<div class="wow rollIn slider-text  slider-text-2" data-wow-delay="1.7s">
+											{% if user.is_authenticated %}
+											<a href="{% url 'qnow_client:quotation_client' %}"
+												class="uk-button uk-child-width-expand raleway16"
+												style="font-size: 16px">{{ user|capfirst }}<br>Vamor iniciar sua
+												cotação?<br>Clique aqui</a>
+											{% else %}
+
+											<a href="{% url 'qnow_user:login_client_start' %}"
+												class="uk-button uk-child-width-expand raleway16"
+												style="font-size: 16px">Inicie sua cotação aqui!</a>
+											{% endif %}
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li aria-hidden="true" class="" style="animation-duration: 500ms; width: 100%; height: auto;">
+							<img width="1920" height="700" alt=""
+								src="{% static '/images/elements/slider_provider2.jpg' %}">
+							<div class="uk-overlay-panel uk-overlay-fade">
+								<div
+									class="uk-container uk-container-center uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle uk-text-center">
+									<div class="uk-width-1-1 uk-text-center">
+										<div class="wow fadeInLeftBig slider-text" data-wow-delay="3.7s">
+											<h1 class="raleway80 uk-text-white">Plataforma de Cotações</h1>
+										</div>
+										<br class="uk-hidden-small">
+										<div class="wow fadeInLeftBig slider-text" data-wow-delay="4.7s">
+											<h2 class="raleway80 uk-text-white">MÓVEIS PLANEJADOS</h2>
+										</div>
+										<br class="uk-hidden-small">
+										<div class="wow fadeInUpBig slider-text" data-wow-delay="5.7s">
+											{% if user.is_authenticated %}
+											<a href="{% url 'qnow_client:quotation_client' %}"
+												class="uk-button uk-child-width-expand raleway16"
+												style="font-size: 16px">{{ user|capfirst }}<br>Vamor iniciar sua
+												cotação?<br>Clique aqui</a>
+											{% else %}
+											<a href="{% url 'qnow_user:login_client_start' %}"
+												class="uk-button uk-child-width-expand raleway16"
+												style="font-size: 16px">Inicie sua cotação aqui!</a>
+											{% endif %}
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+
+						<li aria-hidden="true" class="" style="animation-duration: 500ms; width: 100%; height: auto;">
+							<img width="1920" height="700" alt=""
+								src="{% static '/images/elements/slider_provider3.jpg' %}">
+							<div class="uk-overlay-panel uk-overlay-fade">
+								<div
+									class="uk-container uk-container-center uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle">
+									<div class="uk-width-4-10 uk-text-right">
+										<div class="wow fadeInDown slider-text slider-text-2" data-wow-delay="11.7s">
+											<h1 class="raleway80 uk-text-white">&nbsp;&nbsp;Plataforma de Cotações</h1>
+										</div>
+										<div class="wow fadeInUp slider-text slider-text-2" data-wow-delay="12.2s">
+											<h2 class="raleway80 uk-slider-text-white">&nbsp;&nbsp;MÓVEIS PLANEJADOS
+											</h2>
+										</div>
+
+										<br class="uk-hidden-small">
+										<div class="wow fadeInUpBig slider-text" data-wow-delay="13.7s">
+											{% if user.is_authenticated %}
+											<a href="{% url 'qnow_client:quotation_client' %}"
+												class="uk-button uk-child-width-expand raleway16"
+												style="font-size: 16px">{{ user|capfirst }}<br>Vamor iniciar sua
+												cotação?<br>Clique aqui</a>
+											{% else %}
+											<a href="{% url 'qnow_user:login_client_start' %}"
+												class="uk-button uk-child-width-expand raleway16"
+												style="font-size: 16px">Inicie sua cotação aqui!</a>
+											{% endif %}
+										</div>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<a data-uk-slideshow-item="previous" class="uk-slidenav  uk-slidenav-previous uk-hidden-touch"
+						href="#"></a>
+					<a data-uk-slideshow-item="next" class="uk-slidenav  uk-slidenav-next uk-hidden-touch" href="#"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Slider -->
+
+<!-- Main Services -->
+<section class="top-a">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<div class="module title1">
+					<h3 class="module-title">Missão, Visão e Valores</h3>
+					<div class="module-content">
+						<div class="sprocket-strips">
+							<ul data-strips-items="" class="sprocket-strips-container cols-3">
+								<li>
+									<div style="background-image: url( {% static '/images/elements/service1.jpg' %})"
+										class="sprocket-strips-item">
+										<div class="sprocket-strips-content">
+											<h4 class="sprocket-strips-title">
+												<a href="#">Missão</a>
+											</h4>
+											<span class="sprocket-strips-text">
+												Proporcionar uma ferramenta que gere boas negociações entre cliente e
+												fornecedor,
+												num ambiente seguro e imparcial.
+											</span>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div style="background-image: url({% static '/images/elements/service2.jpg' %})"
+										class="sprocket-strips-item">
+										<div class="sprocket-strips-content">
+											<h4 class="sprocket-strips-title">
+												<a href="#">Visão</a>
+											</h4>
+											<span class="sprocket-strips-text">
+												Buscar ser importante no mercado de móveis, oferecendo a ambas as
+												partes, um mecanismo sempre atualizado e inovador.
+											</span>
+										</div>
+									</div>
+								</li>
+								<li>
+									<div style="background-image: url({% static '/images/elements/service3.jpg' %})"
+										class="sprocket-strips-item">
+										<div class="sprocket-strips-content">
+											<h4 class="sprocket-strips-title">
+												<a href="#">Valores</a>
+											</h4>
+											<span class="sprocket-strips-text">
+												Gerar rentabilidade a fornecedores e preço justo a clientes, na
+												utilização
+												de processos diretos combinando preço e qualidade.
+											</span>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Main Services -->
+
+<!-- Construction Process -->
+<section class="top-b">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<div class="module title1">
+					<h3 class="module-title">Processo de Cotação</h3>
+					<div class="module-content">
+						<div class="uk-grid uk-grid-divider-2">
+							<div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:300}"
+								class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
+								<div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
+									<span class="hi-icon pe-7s-exapnd2"></span>
+									<h4>Iniciando Cotação</h4>
+									<p>Acesse o sistema e envie os dados necessários para iniciar a cotação..</p>
+								</div>
+							</div>
+							<div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:500}"
+								class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
+								<div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
+									<span class="hi-icon pe-7s-vector"></span>
+									<h4>Projeto/Fotos</h4>
+									<p>Anexe seu projeto ou fotos com as medidas do ambiente. Entraremos em contato se
+										precisar.</p>
+								</div>
+							</div>
+							<div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:700}"
+								class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
+								<div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
+									<span class="hi-icon pe-7s-note2"></span>
+									<h4>Verificando</h4>
+									<p>Após o envio dos dados, os mesmos são disponibilizado a todas as
+										marcenarias da plataforma.</p>
+								</div>
+							</div>
+							<div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:900}"
+								class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
+								<div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
+									<span class="hi-icon pe-7s-calculator"></span>
+									<h4>Gerando Valor</h4>
+									<p>Neste ponto, todas as marcenarias que optaram por entrar no processo de cotação
+										de seu projeto, gera seus valores.</p>
+								</div>
+							</div>
+							<div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:1100}"
+								class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
+								<div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
+									<span class="hi-icon pe-7s-home"></span>
+									<h4>Produção e Entrega</h4>
+									<p>Pronto, orçamento escolhido por você e marcenaria pronta para produzir e
+										entregar.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+
+{% block menu %}
+{% endblock %}
+
+<iframe
+	src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3392.243029243499!2d-52.37031008440045!3d-31.763856820323944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9511ca873c5f93af%3A0x64614c6503e28e57!2sR.%20Jos%C3%A9%20Lins%20do%20R%C3%AAgo%2C%20489%20-%20Fragata%2C%20Pelotas%20-%20RS%2C%2096050-500!5e0!3m2!1spt-PT!2sbr!4v1567434256351!5m2!1spt-PT!2sbr"
+	width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>

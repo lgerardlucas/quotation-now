@@ -1,0 +1,275 @@
+{% extends "default.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- Page Title -->
+<section class="page-title">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 title">
+				{% if origin  == "client" %}
+				<h2>Cadastro do Cliente</h2>
+				{% else %}
+				<h2>Cadastro da Marcenaria</h2>
+				{% endif %}
+				<ol class="breadcrumb">
+					<li>Você esta aqui: &nbsp;</li>
+					<li><a class="pathway" href="{% url 'qnow_site:site' %}">Home</a></li>
+					<li><a class="pathway" href="#">Acesso à Plataforma</a></li>
+					{% if origin  == "client" %}
+					<li class="active">Cadastro do Cliente</li>
+					{% else %}
+					<li class="active">Cadastro da Marcenaria</li>
+					{% endif %}
+
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Get A Quote -->
+<section class="main-body">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<article itemtype="#" itemscope="" class="item item-page">
+					<meta content="en-GB" itemprop="inLanguage">
+					<div itemprop="articleBody">
+						<div class="uk-grid">
+							<div class="uk-width-medium-1-2">
+								<h3>Porque se cadastrar na Q-NOW?</h3>
+
+								{% if origin  == "client" %}
+								<h4><strong>01.</strong> Mais Marcenarias</h4>
+								<p> Ao fazer seu cadastro na Q-NOW, você adere a uma plataforma que reunirá diversas
+									empresas do segmento
+									de móveis planejados. E todos estão a sua espera!</p>
+								<hr>
+								<h4><strong>02.</strong> Mais Cotações</h4>
+								<p> A partir de sua conta de cadastro, vocês poderá gerar pedidos de cotações e os
+									receber aqui mesmo,
+									dentro desta plataforma, contendo informações como: preço, prazo de entrega e formas
+									de pagamento.
+									Dados importantes para uma ótima escolha da empresa à contratar.</p>
+								<hr>
+								<h4><strong>03.</strong> Informações</h4>
+								<p> Com os dados cadastrais, podemos lhe informar via e-mail ou pelo próprio acesso à
+									área do cliente, dá
+									chegada de novas cotações para seu móvel planejado. Esta plataforma, lhe retornar
+									dados importantes
+									para a decisão de qual empresa contratar. </p>
+								<hr>
+								<h4><strong>03.</strong> Qual o Critério?</h4>
+								<p> Nem sempre o valor cotado é o mais importante! Optar também por escolher uma empresa
+									que dê a você
+									um prazo de entrega mais acessível ou formas de pagamentos mais suaves, é sim, um
+									critério a ser considerado.</p>
+								<hr>
+								{% else %}
+								<h4><strong>01.</strong> Mais Clientes</h4>
+								<p> Ao fazer seu cadastro na Q-NOW, você adere a uma plataforma que reunirá muito mais
+									clientes que
+									desejam móveis planejados de empresas especializadas. Estando sua marcenaria
+									cadastrada em nossa plataforma,
+									clientes e mais clientes, saberão onde procurar por empresas que fazem a diferença
+									em sua produção.</p>
+								<hr>
+								<h4><strong>02.</strong> Mais Cotações</h4>
+								<p> A partir de sua conta de cadastro, vocês terá um ambiente único e imparcial, onde
+									poderá receber
+									cotações diversas e cotá-las, levando em conta a regra de negócio de sua empresa.
+									Cotações justas,
+									prazos de entrega não abusivos e formas de pagamento especiais, são atrativos que
+									fazem que sua empresa
+									seja reconhecida por todos! É isto o que importa pra nós da Q-NOW.
+								</p>
+								<hr>
+								<h4><strong>03.</strong> Suas Cotações</h4>
+								<p> Com os dados cadastrais, podemos lhe informar via e-mail ou pelo próprio acesso à
+									área do marceneiro, dá
+									chegada de novas cotações ou de cotações vencedoras. As marcenarias envolvidas em
+									determinadas cotações,
+									mesmo não sendo vencedoras, receberão da Q-NOW, sempre uma posição sobre a dita
+									cotação. </p>
+								<hr>
+								<h4><strong>03.</strong> Custo-Benefício</h4>
+								<p> Nem sempre o cliente esta a espera do preço mais baixo, mas ele também quer prazo de
+									entrega e formas de pagamento
+									que darão ao mesmo, o poder da escolha pela melhor cotação.</p>
+								<hr>
+								{% endif %}
+							</div>
+							<div class="uk-width-medium-1-2">
+								<div class="gbs3">
+									<form action="#" enctype="multipart/form-data" method="post" name="quote"
+										id="chronoform-quote" class="chronoform">
+										{% csrf_token %}
+										{{ form.mon_field_erros }}
+
+										<!-- Nome -->
+										<div class="form-group" id="form-row-text1">
+											<label for="text1" class="control-label required_label">
+												{{ form.username.label_tag }}
+												<i class="fa fa-asterisk"
+													style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+											</label>
+											<div class="gcore-display-table">
+												{{ form.username }}
+												{{ form.username.errors }}
+											</div>
+										</div>
+
+										<!-- E-mail -->
+										<div class="form-group" id="form-row-text1">
+											<label for="text1" class="control-label required_label">
+												{{ form.email.label_tag }}
+												<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+											</label>
+											<div class="gcore-display-table">
+												{{ form.email }}
+												{{ form.email.errors }}
+											</div>
+										</div>
+
+										<!-- Telefone -->
+										<div class="form-group" id="form-row-text1">
+											<label for="text1" class="control-label required_label">
+												{{ form.phone.label_tag }}
+												<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+											</label>
+											<div class="gcore-display-table">
+												{{ form.phone }}
+												{{ form.phone.errors }}
+											</div>
+										</div>
+
+										<!-- Cep -->
+										<div class="form-group" id="form-row-text1">
+											<label for="text1" class="control-label required_label">
+												{{ form.cep.label_tag }}
+												<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+											</label>
+											<div class="gcore-display-table">
+												{{ form.cep }}
+												{{ form.cep.errors }}
+											</div>
+										</div>
+
+										<!-- Rua -->
+										<div class="form-group" id="form-row-text1" style="display: none;">
+											<label for="text1" class="control-label required_label">
+												{{ form.street.label_tag }}
+												<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+											</label>
+											<div class="gcore-display-table">
+												{{ form.street }}
+												{{ form.street.errors }}
+											</div>
+										</div>
+
+										<!-- Bairro -->
+										<div class="form-group" id="form-row-text1" style="display: none;">
+											<label for="text1" class="control-label required_label">
+												{{ form.district.label_tag }}
+												<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+											</label>
+											<div class="gcore-display-table">
+												{{ form.district }}
+												{{ form.district.errors }}
+											</div>
+										</div>
+
+										<!-- Cidade -->
+										<div class="form-group" id="form-row-text1" style="display: none;">
+											<label for="text1" class="control-label required_label">
+												{{ form.city.label_tag }}
+												<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+											</label>
+											<div class="gcore-display-table">
+												{{ form.city }}
+												{{ form.city.errors }}
+											</div>
+										</div>
+
+										<!-- Estado -->
+										<div class="form-group" id="form-row-text1" style="display: none;">
+											<label for="text1" class="control-label required_label">
+												{{ form.state.label_tag }}
+												<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+											</label>
+											<div class="gcore-display-table">
+												{{ form.state }}
+												{{ form.state.errors }}
+											</div>
+										</div>
+
+										<!-- Senha1 -->
+										<div class="form-group" id="form-row-text1">
+											<label for="text1" class="control-label required_label">
+												{{ form.password1.label_tag }}
+												<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+											</label>
+											<div class="gcore-display-table">
+												{{ form.password1 }}
+												{{ form.password1.errors }}
+											</div>
+										</div>
+
+										<!-- Senha2 -->
+										<div class="form-group" id="form-row-text1">
+											<label for="text1" class="control-label required_label">
+												{{ form.password2.label_tag }}
+												<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+											</label>
+											<div class="gcore-display-table">
+												{{ form.password2 }}
+												{{ form.password2.errors }}
+											</div>
+										</div>
+
+
+										<div class="form-group" id="form-row-button9">
+											<div class="gcore-display-table" id="fin-button9">
+												<input name="button9" id="button9" value="Cadastrar"
+													class="btn btn-default" type="submit">
+											</div>
+										</div>
+
+										<div class="form-group" id="form-row-text1">
+											<label for="text1" class="control-label required_label">
+												Se já possuir login e senha, retorne a área de
+												login clicando
+												{% if origin  == "client" %}
+												<a href="{% url 'qnow_user:login_client_start' %}">
+													{% else %}
+													<a href="{% url 'qnow_user:login_provider_start' %}">
+														{% endif %}
+														<strong>aqui!</strong></a><br>
+											</label>
+										</div>
+
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Get A Quote -->
+
+{% endblock %}
+<!-- /Contact Us -->
+
+<!-- Bottom B -->
+<!-- Footer Top -->
+<!-- Footer -->
+{% block footer %}
+{% endblock %}
+<!-- /Bottom B -->
+<!-- /Footer Top -->
+<!-- /Footer -->

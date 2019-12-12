@@ -1,0 +1,65 @@
+[
+    {
+        "model": "qnow_client.mobilietype",
+        "pk": 1,
+        "fields": {
+            "description": "Janela"
+        }
+    },
+    {
+        "model": "qnow_client.mobilietype",
+        "pk": 2,
+        "fields": {
+            "description": "Mesa"
+        }
+    },
+    {
+        "model": "qnow_client.mobilietype",
+        "pk": 3,
+        "fields": {
+            "description": "Painel"
+        }
+    },
+    {
+        "model": "qnow_client.mobilietype",
+        "pk": 4,
+        "fields": {
+            "description": "Banheiro"
+        }
+    },
+    {
+        "model": "qnow_client.mobilietype",
+        "pk": 5,
+        "fields": {
+            "description": "Porta"
+        }
+    },
+    {
+        "model": "qnow_client.mobilietype",
+        "pk": 6,
+        "fields": {
+            "description": "Roupeiro"
+        }
+    },
+    {
+        "model": "qnow_client.mobilietype",
+        "pk": 7,
+        "fields": {
+            "description": "Cozinha"
+        }
+    },
+    {
+        "model": "qnow_client.mobilietype",
+        "pk": 8,
+        "fields": {
+            "description": "_Outro"
+        }
+    },
+    {
+        "model": "qnow_client.mobilietype",
+        "pk": 9,
+        "fields": {
+            "description": "Churrasqueira"
+        }
+    }
+]

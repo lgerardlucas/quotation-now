@@ -1,0 +1,112 @@
+{% extends "default.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Page Title -->
+<section class="page-title">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 title">
+				<h2>Entre em contato</h2>
+				<ol class="breadcrumb">
+					<li>Você esta aqui: &nbsp;</li>
+					<li><a class="pathway" href="{% url 'qnow_site:site' %}">Home</a></li>
+					<li class="active">Contato</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+		<!--Messagem diversas-->
+{% if messages %}
+		<div class="container">
+			<div class="module title5" style="text-align: center">
+				<ul>
+					{% for message in messages %}
+						{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+						<h3>{{ message }}</h3>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+
+{% endif %}
+
+<section class="main-body">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9 col-md-9">
+				<h3>Contato</h3>
+				<form class="form-horizontal" method="POST">
+					{% csrf_token %}
+					{{ form.mon_field_errors }}
+						<legend>Envie seu e-mail. Todos os campos com (*) são de preenchimento obrigatório.</legend>
+						<fieldset>
+							{% for field in form %}
+									<div class="form-group">
+										<label for="inputName" class="control-label label-left col-xs-3">{{ field.label }}</label>
+										<div class="col-xs-9">
+											<div class="gcore-display-table">
+												{{ field }}
+												{{ field.errors }}
+											</div>
+										</div>
+									</div>
+							{% endfor %}
+							<div class="form-group">
+									<label class="control-label label-left col-xs-3"></label>
+									<div class="col-xs-9">
+<!-- 										
+										<button class="btn btn-primary validate" type="submit" aria-invalid="false">Enviar
+											E-mail
+										</button>
+ -->
+ 										<input name="button9" id="button9" value="Envia E-mail" class="btn btn-default uk-button uk-button-default demo"
+										type="submit">
+									</div>
+								</div>
+		
+						</fieldset>
+				</form>
+			</div>
+			
+			<div class="col-sm-3 col-md-3" id="left">
+				<div class="module title6">
+					<div class="module-content">
+						<h4><strong>Tem dúvidas de como fazer suas cotações?</strong></h4>
+						<hr>
+						<i class="pe-7s-pin pe-3x uk-text-primary"></i>
+						<h4>Pelotas - RS - Brasil</h4>
+						<hr>
+						<i class="pe-7s-phone pe-3x uk-text-primary"></i>
+						<h4>(53) 981.162599</h4>
+						<hr>
+						<i class="pe-7s-mail pe-3x uk-text-primary"></i>
+						<h4>contato@qnow.com </h4>
+						<hr>
+						<br>
+						<br>
+						<br>
+						<br>
+			
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+<!-- /Contact Us -->
+
+<!-- Bottom B -->
+<!-- Footer Top -->
+<!-- Footer -->
+{% block footer %}
+{% endblock %}
+<!-- /Bottom B -->
+<!-- /Footer Top -->
+<!-- /Footer -->

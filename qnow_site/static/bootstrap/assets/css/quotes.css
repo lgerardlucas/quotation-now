@@ -1,0 +1,292 @@
+/* Sprocket Quotes - Colors */
+
+.sprocket-quotes-pagination li {
+    background: #000;
+    color: #fff;
+}
+
+.sprocket-quotes-arrows .arrow {
+    background: transparent;
+    color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Sprocket Quotes - Core */
+
+.sprocket-quotes {
+    position: relative;
+}
+
+.sprocket-quotes:after {
+    display: table;
+    content: "";
+    *zoom: 1;
+    clear: both;
+}
+
+.sprocket-quotes-container {
+    list-style: none !important;
+    overflow: hidden;
+    padding: 0;
+    margin: 0 -1%;
+}
+
+.sprocket-quotes-container:before,
+.sprocket-quotes-container:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+
+.sprocket-quotes-container>li {
+    display: inline-block !important;
+    vertical-align: top;
+    margin: 0 -2px 0 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sprocket-quotes .cols-1>li {
+    width: 100%;
+}
+
+.sprocket-quotes .cols-2>li {
+    width: 50%;
+}
+
+.sprocket-quotes .cols-3>li {
+    width: 33.33%;
+}
+
+.sprocket-quotes .cols-4>li {
+    width: 25%;
+}
+
+@media (max-width: 767px) {
+    .sprocket-quotes .cols-1>li,
+    .sprocket-quotes .cols-2>li,
+    .sprocket-quotes .cols-3>li,
+    .sprocket-quotes .cols-4>li {
+        width: 100%;
+        float: none;
+    }
+}
+
+
+/* Sprocket Quotes - Items */
+
+.sprocket-quotes-item {
+    text-align: center;
+    position: relative;
+    padding: 0px 30px;
+    margin: 0;
+    background: transparent;
+}
+
+.quotes-no-arrow:before,
+.quotes-no-arrow:after {
+    display: none;
+}
+
+.sprocket-quotes-item {
+    background-image: url("../../../images/quotes.png");
+    background-repeat: no-repeat;
+    background-position: top center !important;
+}
+
+
+/* Sprocket Quotes - Content */
+
+.sprocket-quotes-title {
+    margin-top: 0;
+}
+
+.sprocket-quotes-text {
+    line-height: 2.5em;
+    margin-top: 10px;
+    display: block
+}
+
+.sprocket-quotes-image {
+    max-width: 30%;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+.sprocket-quotes-info:before,
+.sprocket-quotes-info:after {
+    content: '';
+    display: table;
+}
+
+.sprocket-quotes-info:after {
+    clear: both;
+}
+
+.sprocket-quotes-author {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.sprocket-quotes-subtext {
+    font-style: italic;
+    display: block;
+    margin-top: -10px;
+}
+
+
+/* Sprocket Quotes - Navigation */
+
+.sprocket-quotes-nav {
+    display: table;
+    padding-top: 15px;
+    margin: 0 auto;
+}
+
+.sprocket-quotes-pagination {
+    display: inline;
+    vertical-align: middle;
+}
+
+.sprocket-quotes-pagination ul {
+    padding: 0 !important;
+    text-align: center;
+}
+
+.sprocket-quotes-pagination li {
+    display: inline-block !important;
+    padding: 4px !important;
+    opacity: 0.3;
+    border-radius: 0px;
+    cursor: pointer;
+    border: none !important;
+}
+
+.sprocket-quotes-pagination li.active {
+    opacity: 1;
+}
+
+.sprocket-quotes-pagination li span {
+    display: none;
+    font-size: 0.85em;
+    line-height: 1em;
+}
+
+.sprocket-quotes-pagination-hidden {
+    display: none;
+}
+
+.sprocket-quotes-arrows .arrow {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 0px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    opacity: 0.5;
+    cursor: pointer;
+    float: right;
+    margin-left: 5px;
+    text-align: center;
+    font-size: 2em;
+    position: relative;
+}
+
+.sprocket-quotes-arrows .arrow:hover {
+    opacity: 1;
+}
+
+.sprocket-quotes-arrows .arrow:before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+.sprocket-quotes-arrows .prev:before {
+    left: 50%;
+    margin-left: -3px;
+    border-right: 5px solid;
+}
+
+.sprocket-quotes-arrows .next:before {
+    right: 50%;
+    margin-right: -3px;
+    border-left: 5px solid;
+}
+
+
+/* Spinner */
+
+.sprocket-quotes-overlay {
+    display: none;
+    position: absolute;
+    margin-top: -66px;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    z-index: 5;
+}
+
+.sprocket-quotes-overlay .css-loader-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset, 1px 1px 1px rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.sprocket-quotes.loading .sprocket-quotes-overlay {
+    display: inline !important;
+}
+
+.sprocket-quotes-overlay .css-loader {
+    display: block;
+    margin: 0 auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 8px solid rgba(255, 255, 255, 0.2);
+    border-right: 8px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 8px solid rgba(255, 255, 255, 0.2);
+    border-left: 8px solid #ffffff;
+    -webkit-animation: loader 1.1s infinite linear;
+    animation: loader 1.1s infinite linear;
+}
+
+.sprocket-quotes-overlay .css-loader {
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+}
+
+@-webkit-keyframes loader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

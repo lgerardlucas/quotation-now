@@ -1,0 +1,196 @@
+{% extends "default.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Page Title -->
+<section class="page-title">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 title">
+				<h2>Blog</h2>
+				<ol class="breadcrumb">
+					<li>Você esta aqui: &nbsp;</li>
+					<li><a class="pathway" href="{% url 'qnow_site:site' %}">Home</a></li>
+					<li class="active">Blog</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Page Title -->
+
+<!-- Blog -->
+<section class="main-body">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9 col-md-9 left">
+				<div itemtype="http://schema.org/Blog" itemscope="" class="blog">
+					<div class="row clearfix">
+
+						<div class="col-sm-6">
+							<article itemtype="http://schema.org/BlogPosting" itemscope="" itemprop="blogPost" class="item ">
+								<div class="entry-header has-post-format">
+									<span class="post-format"><i class="fa fa-thumb-tack"></i></span>
+									<dl class="article-info">
+										<dt class="article-info-term"></dt>
+										<dd class="category-name">
+											<i class="fa fa-folder-open-o"></i>
+											<a title="" data-toggle="tooltip" itemprop="genre" href="{% url 'qnow_site:blog' %}"
+												data-original-title="Article Category">Blog</a>
+										</dd>
+										<dd class="published">
+											<i class="fa fa-calendar-o"></i>
+											<time title="" data-toggle="tooltip" itemprop="datePublished" datetime="2015-11-10T08:14:20+00:00"
+												data-original-title="Published Date">
+												15 Julho 2019
+											</time>
+										</dd>
+										<dd class="post_rating">
+											Avaliação:
+											<div class="voting-symbol">
+												<span data-number="5" class="star active"></span><span data-number="4"
+													class="star active"></span><span data-number="3" class="star active"></span><span
+													data-number="2" class="star active"></span><span data-number="1" class="star active"></span>
+											</div>
+										</dd>
+									</dl>
+									<h2 itemprop="name">
+										<a itemprop="url" href="#">Simplicidade e Beleza!</a>
+									</h2>
+								</div>
+								<p><img src="{% static '/images/blog/blog5.jpg' %}" alt="Simplecidade e Beleza!" width="90%"></p>
+								<p>Mesmo em ambientes pequenos ou fora da residencia, a simplicidade em forma de móveis, 
+									embeleza qualquer todos os lugares que chega. Hoje podemos ver um ambiente de trabalho, 
+									funcional e ao mesmo tempo leve, sem deixar o espaço carregado ou escuro. 
+									</p>
+								<p class="readmore">
+									{% if user.is_authenticated %}
+									<a href="{% url 'qnow_user:login_client_start' %}" class="uk-button raleway16">Inicie sua cotação
+										aqui!</a>
+									{% else %}
+									<br>
+									<a class="uk-button raleway16" href="{% url 'qnow_user:login_client_start' %}">Acesso à Plataforma
+									</a>
+									{% endif %}
+								</p>
+								<hr>
+							</article>
+							<!-- end item -->
+						</div><!-- end col-sm-* -->
+
+					<div class="col-sm-6">
+							<article itemtype="http://schema.org/BlogPosting" itemscope="" itemprop="blogPost" class="item ">
+								<div class="entry-header has-post-format">
+									<span class="post-format"><i class="fa fa-thumb-tack"></i></span>
+									<dl class="article-info">
+										<dt class="article-info-term"></dt>
+										<dd class="category-name">
+											<i class="fa fa-folder-open-o"></i>
+											<a title="" data-toggle="tooltip" itemprop="genre" href="{% url 'qnow_site:blog' %}"
+												data-original-title="Article Category">Blog</a>
+										</dd>
+										<dd class="published">
+											<i class="fa fa-calendar-o"></i>
+											<time title="" data-toggle="tooltip" itemprop="datePublished" datetime="2015-11-10T08:14:20+00:00"
+												data-original-title="Published Date">
+												20 Julho 2019
+											</time>
+										</dd>
+										<dd class="post_rating">
+											Avaliação:
+											<div class="voting-symbol">
+												<span data-number="5" class="star active"></span><span data-number="4"
+													class="star active"></span><span data-number="3" class="star active"></span><span
+													data-number="2" class="star active"></span><span data-number="1" class="star active"></span>
+											</div>
+										</dd>
+									</dl>
+									<h2 itemprop="name">
+										<a itemprop="url" href="#">Simplicidade e Beleza!</a>
+									</h2>
+								</div>
+								<p><img src="{% static '/images/blog/blog4.jpg' %}" alt="Simplecidade e Beleza!" width="80%"></p>
+								<p>Ambientes são somente ambientes, mas deixa ser, quando vimos o conjunto da obra completo. Estou 
+									falando desta bela cozinha, onde estilo e beleza fecham com chave de ouro qualquer ambiente familiar.
+									</p>
+								<p class="readmore">
+									{% if user.is_authenticated %}
+									<a href="{% url 'qnow_user:login_client_start' %}" class="uk-button raleway16">Inicie sua cotação
+										aqui!</a>
+									{% else %}
+									<br>
+									<a class="uk-button raleway16" href="{% url 'qnow_user:login_client_start' %}">Acesso à Plataforma
+									</a>
+									{% endif %}
+								</p>
+								<hr>
+							</article>
+							<!-- end item -->
+						</div><!-- end col-sm-* -->
+					</div><!-- end row -->
+
+<!-- 					<div class="pagination-wrapper">
+						<p class="counter"> Page 1 of 2 </p>
+						<ul class="pagination">
+							<li class="active"><a>1</a></li>
+							<li><a title="2" href="blog2.html" class="">2</a></li>
+							<li><a title="»" href="blog2.html" class="next">»</a></li>
+							<li><a title="End" href="blog2.html" class="">End</a></li>
+						</ul>
+					</div>
+ -->				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Blog -->
+
+<!-- Get A Quote -->
+<section class="parallax-section-2">
+	<div class="row">
+		<div class="col-sm-12 col-md-12" id="parallax2">
+			<div class="module ">
+				<div class="module-content">
+					<div class="uk-text-contrast uk-flex uk-flex-center" data-uk-parallax="{bg: -300}"
+						style="min-height: 160px; background-color: rgb(41, 44, 47); background-repeat: no-repeat; background-size: cover; background-position: 50% -42.435px;">
+						<div class="container1170" style="padding:20px 15px;">
+							<div class="uk-grid">
+								<div class="uk-width-medium-3-4">
+									<br>
+									<h3 embed-responsive-item style="margin-top pull-left:15px;">
+										Q-NOW é uma plataforma que une cliente as melhores marcenarias.<br>
+										Acesse nossa plataforma.
+									</h3>
+								</div>
+								<div class="uk-width-medium-1-4 uk-text-right inverted">
+									<h3 embed-responsive-item style="margin-top pull-left:5px;">
+										{% if user.is_authenticated %}
+										<a href="{% url 'qnow_user:login_client_start' %}" class="uk-button raleway16">Inicie sua cotação
+											aqui!</a>
+										{% else %}
+										<br>
+										<a class="uk-button raleway16" href="{% url 'qnow_user:login_client_start' %}">Acesso à Plataforma
+											</a>
+										{% endif %}
+									</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Get A Quote -->
+
+<!-- Bottom B -->
+{% endblock %}
+<!-- Bottom B -->
+<!-- Footer Top -->
+<!-- Footer -->
+{% block footer %}
+{% endblock %}
+<!-- /Bottom B -->
+<!-- /Footer Top -->
+<!-- /Footer -->

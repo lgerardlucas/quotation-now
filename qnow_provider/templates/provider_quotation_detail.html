@@ -1,0 +1,269 @@
+{% extends "default.html" %}
+{% load static %}
+{% load tags %}
+{% block content %}
+<section class="page-title">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 title">
+				<h2>Cotações - {{ user.username }}</h2>
+				<ol class="breadcrumb">
+					<li>Você esta aqui: &nbsp;</li>
+					<li><a class="pathway" href="{% url 'qnow_site:site' %}">Home</a></li>
+					<li><a class="pathway" href="{% url 'qnow_provider:quotation_provider' %}">Lista de Cotações</a></li>
+					<li class="active">Detalhes da Cotação</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section>
+	{% if messages %}
+		<div style="text-align: center; background-color: #ffb400; width: 100%; height: 4.2em; padding-top: 10px; color:white; font-size: 1.2em; line-height: 2px;;">
+			<ul>
+				{% for message in messages %}
+				<li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
+					{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+					<h3>{{ message }}</h3>
+					</li>
+					{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+
+
+	{% if quotation.count == 0 %}
+	<div class="header_provider">
+		<div style="text-align: center">
+			<strong style="font-size: 24px;">Nenhuma cotação!<br>Informaremos por e-mail</strong>
+		</div>
+	</div>
+	{% else %}
+
+	<div class="mestre">
+		{% for field in quotation %}
+
+		<div style="display: inline-block; width: 100%; text-align: center; background-color:#292c2f; height: 2.8em;">
+			<h2><strong style="font-size: 24px;">Cotação Nº: {{ field.id }}</strong></h2>
+		</div>
+
+		<!-- Móvel e Nº da cotação -->
+		<div style="display: inline-block; text-align: left; width: 29em; padding: 0px 15px 0px;">
+			<div class="entry-header" style="margin-bottom: 0px;">
+				<div class="module title3;">
+					<dd style="font-size: 1.4em;">
+						<strong style="font-size: 1.6em;">Dados da Cotação</strong><br>
+						<!-- Nº da cotação -->
+						<strong style="color: #292c2f;">Nº: {{ field.id }}</strong><br>
+
+						<!-- Móvel -->
+						<strong style="color: #292c2f;">Móvel:
+							{% if field.mobile_type|lower == '_Outro'|lower %}
+							{{ field.mobile_description|truncatechars:15 }}
+							{% else %}
+							{{ field.mobile_type|truncatechars:15 }}
+							{% endif %}
+						</strong>
+						<br>
+						<strong style="color: #292c2f;">Situação: {{ field.stage|truncatechars:10 }}</strong>
+						<br>
+						<strong style="color: #292c2f;">Data:
+							{{ field.date_create|date:'SHORT_DATE_FORMAT' }}
+						</strong>
+						<br>
+						<div style="text-align: center; line-height: 1.1em; border: 1px dashed #292c2f; border-radius: 10px; padding-top: 5px; width: 100%; background-color:#292c2f;">
+								<strong style="color:white; font-size: 1.0em">
+									{% get_status field user.id field.stage.status field.get_number_launch field.get_dif_date_now as state_quotation %}
+									{{ state_quotation }}
+								</strong>
+
+							<p class="readmore">
+								{% if user.is_authenticated %}
+									{% if field.stage.status == 2 %}
+										{% if 'R$' in state_quotation %}
+											<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
+										{% else %}
+											<a class="uk-button" href="{% url 'qnow_provider:quotation_provider_price' field.id  %}">Inclua seu orçamento aqui.</a>
+										{% endif %}
+									{% endif %}
+								{% endif %}
+							</p>
+							</strong>
+						</div>
+					</dd>
+
+					<dd style="font-size: 1.4em;">
+						<strong style="font-size: 1.6em;">Dados do Cliente</strong><br>
+						<strong style="color: #292c2f;">
+							Cliente: {{ field.client|truncatechars:50 }}<br>
+							Imóvel: {{ field.house_type|truncatechars:30 }}<br>
+							Cidade: {{ field.client.city|truncatechars:35 }}
+						</strong>
+
+					</dd>
+
+					<!-- Voltar a lista de cotações -->
+					<div style="text-align: center; padding-top: 10px;">
+						<p class="readmore">
+							{% if user.is_authenticated %}
+								<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
+								{% if field.stage.status != 4 and field.stage.status != 5 and field.stage.status != 6  %}
+									<!-- Enviar uma pergunta ao cliente-->
+									<input  name="button9" value="Dúvidas?" class="uk-button raleway16" 
+										type="button" data-toggle="modal" data-target="#emailModal_Provider">
+								{% endif %}		
+							{% else %}
+								<a href="{% url 'qnow_user:login_client_start' %}" class="uk-button" style="padding: 3px 3px;">Logar no sistema!</a>
+							{% endif %}
+
+							
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		
+
+		<!-- Imagem do ambiente -->
+		<div style="display: inline-block; text-align: center; padding: 5px;">
+			<div style="display: inline-block; text-align: center; padding: 5px; ">
+				{% if field.image_environment|lower == 'None'|lower %}
+				<a title="Sem foto do ambiente<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>"
+					data-uk-lightbox="{group:'group1'}" href="{% static '/images/no-image.png' %}">
+					<img class="uk-border-rounded" alt="Quotation-Now<br>Sem foto do ambiente"
+						style="height: 25em; width: 26em;" src="{% static '/images/no-image.png' %}">
+					<strong style="color:#292c2f;">Ambiente</strong>
+				</a>
+				{% elif field.image_environment|lower != 'None'|lower %}
+				<a title="Foto do seu ambiente<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>"
+					data-uk-lightbox="{group:'group1'}" href="{{ field.image_environment.url }}">
+					<img class="uk-border-rounded" alt="Quotation-Now<br>Foto do ambiente"
+						style="height: 25em; width: 26em;" src="{{ field.image_environment.url }}">
+					<strong style="color:#292c2f;">Ambiente</strong>
+				</a>
+				{% endif %}
+			</div>
+			<!-- Imagem do projeto -->
+			<div style="display: inline-block; text-align: center; padding: 5px; ">
+
+				{% if field.image_project|lower == 'None'|lower %}
+				<a title="Sem foto do projeto<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>"
+					data-uk-lightbox="{group:'group1'}" href="{% static '/images/no-image.png' %}">
+					<img class="uk-border-rounded" alt="Quotation-Now<br>Sem foto do projeto"
+						style="height: 25em; width: 26em;" src="{% static '/images/no-image.png' %}">
+					<strong style="color:#292c2f;">Projeto</strong>
+				</a>
+				{% elif field.image_project|lower != 'None'|lower %}
+				<a title="Foto do seu projeto<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>"
+					data-uk-lightbox="{group:'group1'}" href="{{ field.image_project.url }}">
+					<img class="uk-border-rounded" alt="Quotation-Now<br>Foto do projeto"
+						style="height: 25em; width: 26em;" src="{{ field.image_project.url }}">
+					<strong style="color:#292c2f;">Projeto</strong>
+				</a>
+				{% endif %}
+			</div>
+		</div>
+
+		<div style="display: inline-block; text-align: left; padding: 5px; font-size: 1.2em;  ">
+			<div class="module title3">
+				<h3 class="module-title">Detalhes</h3>
+				<div class="module-content">
+							<!--Detalhes-->
+							{{ field.particulars }}
+				</div>
+			</div>
+			<br>
+		</div>
+
+		<!-- Tela para envio de pergunta ao cliente -->
+		<div class="modal fade" id="emailModal_Provider" tabindex="-1" role="dialog" aria-labelledby="emailModal_ProviderLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="emailModal_ProviderLabel">Dados da Cotação</h3>
+						Cotação Nº: {{ field.id }}<br>
+						Móvel: 
+						{% if field.mobile_type|lower == '_Outro'|lower %}
+							{{ field.mobile_description|truncatechars:15 }}
+						{% else %}
+							{{ field.mobile_type|truncatechars:15 }}
+						{% endif %} -
+						<strong>{{ field.stage|truncatechars:10 }}</strong>
+						<br>
+						Cliente: {{ field.client }}
+						<br>
+				</div>
+
+				<!-- Formulário de envio de email -->
+				<div class="modal-body">
+					<form enctype="multipart/form-data" method="POST" action="{% url 'qnow_provider:quotation_provider_email_inquire' field.id %}">
+						{% csrf_token %}
+						<!-- Email do cliente -->
+						<div class="form-group" hidden>
+							<label for="recipient-name" class="col-form-label">E-mail do cliente:</label>
+							<input type="text" class="form-control" name="email_client" id="recipient-name" value="{{ field.client.email }}" readonly=true> 
+						</div>
+
+						<!-- Pergunta do marceneiro -->	
+						<div class="form-group">
+							<label for="message-text" class="col-form-label">Digite aqui suas dúvidas em relação ao projeto.</label>
+							<textarea class="form-control" id="message-text" name="inquire_provider" style="height: 15em;"></textarea>
+						</div>
+
+						<!-- botões de ações -->	
+						<div class="modal-footer">
+							<input name="button9" value="Fecha" class="btn btn-default uk-button" type="button" data-dismiss="modal">
+							<input name="button9" value="Enviar E-mail" class="btn btn-default uk-button" type="submit">
+
+						</div>
+					</form>
+				</div>
+
+				</div>
+			</div>
+			</div>
+
+
+		{% endfor %}
+	</div>
+
+	{% endif %}
+
+</section>
+
+<section class="parallax-section-2">
+	<div class="row">
+		<div class="col-sm-12 col-md-12" id="parallax2">
+			<div class="module ">
+				<div class="module-content">
+					<div class="uk-text-contrast uk-flex uk-flex-center" data-uk-parallax="{bg: -300}"
+						style="min-height: 120px; background-color: rgb(41, 44, 47); background-repeat: no-repeat; background-size: cover; background-position: 50% -42.435px;">
+						<div class="container1170" style="padding:15px 15px;">
+							<div class="uk-grid">
+								<div class="uk-width-medium-3-4">
+									<h3 embed-responsive-item style="margin-top pull-left:15px;">
+										<h2>{{ user }}</h2>
+										Pesqusia aqui todas as cotações disponíveis para serem cotadas pela sua
+										MARCENARIAS.
+									</h3>
+								</div>
+								<div class="uk-width-medium-1-4 uk-text-right inverted">
+									{% if user.is_authenticated %}
+									<a class="uk-button raleway16"
+										href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

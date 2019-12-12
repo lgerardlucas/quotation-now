@@ -1,0 +1,109 @@
+{% extends "default.html" %}
+{% load static %}
+{% block content %}
+
+<!-- Page Title -->
+<section class="page-title">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 title">
+				<h2>Cotação Agora - {{ user.username }}</h2>
+				<ol class="breadcrumb">
+					<li>Você esta aqui: &nbsp;</li>
+					<li><a class="pathway" href="{% url 'qnow_site:site' %}">Home</a></li>
+					<li><a class="pathway" href="#">Acesso à Plataforma</a></li>
+					<li><a class="pathway" href="#">Clientes</a></li>
+					<li class="active">Cotação Agora</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="main-body">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<article itemtype="http://schema.org/Article" itemscope="" class="item item-page">
+					<meta content="en-GB" itemprop="inLanguage">
+					<div itemprop="articleBody">
+						<div class="uk-grid">
+
+ 							<div class="uk-width-medium-1-2">
+								<label for="text1"><i style="color:#ff0000; vertical-align:top;"></i>
+									Seja Bem vindo! {{ user|capfirst }}<br><br>
+									Entenda como você facilmente pode fazer um pedido de cotação usando nossa plataforma.
+								</label>
+
+								<p class="dropcap">1<strong>Informações Residenciais</strong><br>
+									Entender em que tipo de ambiente vocês mora, como por exemplo: casa ou apartamento, 
+									nos dá a possobilidade de dimensionar melhor a produção do seu móvel.</p>
+								<hr>
+								<p class="dropcap">2<strong>Informações do Móvel Planejado</strong><br>
+									Nos indique que móvel deseja cotar, e se não estiver na lista, escolha a 
+									opção "Outro". Digite no próximo campo, o nome deste móvel.</p>
+								<hr>
+								<p class="dropcap">3<strong>Caracteristica do Móvel Desejado</strong><br>
+									Nos campos seguinte, digite os dados importantes, e 
+									inclua: medidas, foto do local e se possuir uma foto do projeto ou planta.
+									Se não souber? Entraremos em contato pra conversarmos.</p>
+								<hr>
+								<p class="dropcap">4<strong>Envio da Cotação</strong><br>
+									Por fim, clique no botão cadastrar para enviar sua cotação. 
+									Logo que ela chegue em nosso sistema, iremos analisá-la, detalhá-la e liberar 
+									para que as marcenarias cadastradas em nossa plataforma faça sua cotação</p>
+								<hr>
+							</div>
+						<div class="uk-width-medium-1-2">
+								<div class="gbs3">
+									<form action="#" enctype="multipart/form-data" method="POST" name="quote" id="chronoform-quote" class="chronoform">
+								        {% csrf_token %}
+								   		{{ form.mon_field_erros }}
+										{% for field in form %}
+										
+  										<div class="form-group" id="form-row-text1">
+
+
+											<label for="text1" class="control-label required_label">
+												{{ field.label_tag }}
+
+												{% if 'ambiente'|upper not in field.label|upper and 'projeto'|upper not in field.label|upper %}	
+											    	<i class="fa" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+												{% endif %}
+
+
+ 											</label>
+											<div class="gcore-display-table">
+												{{ field }}
+												{{ field.errors }}
+											</div>
+										</div>
+											
+										{% endfor %}
+
+										 <div class="form-group" id="form-row-button9">
+											<div class="gcore-display-table" id="fin-button9">
+												<input name="button9" id="button9" value={{ acao }} class="btn btn-default uk-button uk-button-default demo" type="submit">
+											</div>
+											
+											<div>
+												<label id=message_quotation_email for="text1" class="control-label required_label">
+												</label>
+											</div>
+
+										</div>
+										
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

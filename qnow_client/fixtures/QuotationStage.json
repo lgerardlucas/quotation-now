@@ -1,0 +1,65 @@
+[
+    {
+        "model": "qnow_client.quotationstage",
+        "pk": 25,
+        "fields": {
+            "status": 0,
+            "description": "Pendente",
+            "explication": "Na fase \"Pendente\", o cliente enviou os dados e os mesmos ainda n\u00e3o foram para an\u00e1lise. Esta \u00e9 a etapa, que verifica as informa\u00e7\u00f5es e as libera para cota\u00e7\u00e3o junto aos fornecedores."
+        }
+    },
+    {
+        "model": "qnow_client.quotationstage",
+        "pk": 26,
+        "fields": {
+            "status": 1,
+            "description": "Em An\u00e1lise",
+            "explication": "Na fase \"Em An\u00e1lise\", ser\u00e3o feitas an\u00e1lises dos dados passados pelo cliente, e se tudo estiver certo, ser\u00e1 liberado para cota\u00e7\u00e3o. Havendo d\u00favidas entraremos em contato."
+        }
+    },
+    {
+        "model": "qnow_client.quotationstage",
+        "pk": 27,
+        "fields": {
+            "status": 2,
+            "description": "Liberado",
+            "explication": "Na fase \"Liberado\",  os dados j\u00e1 foram analisados e ficam liberados para que recebam valores, prazos de entrega e formas de pagamento."
+        }
+    },
+    {
+        "model": "qnow_client.quotationstage",
+        "pk": 28,
+        "fields": {
+            "status": 3,
+            "description": "Or\u00e7ado",
+            "explication": "Na fase \"Or\u00e7ado\", informamos que existe cota\u00e7\u00f5es respondida por parte de um ou mais fornecedores."
+        }
+    },
+    {
+        "model": "qnow_client.quotationstage",
+        "pk": 29,
+        "fields": {
+            "status": 4,
+            "description": "Aprovado",
+            "explication": "Na fase \"Aprovado\", o cliente diz sim a um or\u00e7amento, e o mesmo fica a espera do primeiro contato pelo fornecedor."
+        }
+    },
+    {
+        "model": "qnow_client.quotationstage",
+        "pk": 30,
+        "fields": {
+            "status": 5,
+            "description": "Cancelado",
+            "explication": "Na fase \"Cancelado\", indica que o cliente cancelou a cota\u00e7\u00e3o desistindo da compra junto a qualquer fornecedor."
+        }
+    },
+    {
+        "model": "qnow_client.quotationstage",
+        "pk": 31,
+        "fields": {
+            "status": 6,
+            "description": "Desativado",
+            "explication": "Na fase \"Desativado\", \u00e9 onde foi feito o cancelamento por parte da  plataforma, onde finaliza a qualquer momento cota\u00e7\u00f5es de clientes em qualquer situa\u00e7\u00e3o."
+        }
+    }
+]

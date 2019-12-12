@@ -1,0 +1,59 @@
+{% extends "default.html" %}
+{% load static %}
+{% block content %}
+<!-- Page Title -->
+<section class="page-title">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 title">
+        <h2>Págna não encontrada</h2>
+        <ol class="breadcrumb">
+          <li>Você esta aqui: &nbsp;</li>
+          <li><a class="pathway" href="{% url 'qnow_site:site' %}">Home</a></li>
+          <li class="active">Página não encontrada</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Page Title -->
+
+<!-- Top A -->
+<section class="top-a">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <div class="module title3">
+          <div class="module-content">
+            <div class="uk-grid uk-margin-bottom">
+              <div class="uk-width-medium-2-1" style="text-align:center">
+                <h2 class="module">Problema<br>nesta<br>página!</h2>
+                <h3 class="module">Escolha algumas das opções abaixo.</h2>
+                <div class="uk-width-medium-2-1">
+                    {% if user.is_authenticated %}
+                      {% if user.role == 'client' %}
+                          <a itemprop="url" href="{% url 'qnow_client:quotation_client' %}"
+                          class="btn btn-primary">Inicie sua cotação aqui!</a>
+                      {% else %}
+                          <a itemprop="url" href="{% url 'qnow_provider:quotation_provider' %}"
+                            class="btn btn-primary">cotação(M)</a>
+                      {% endif %}<br> ou <br>
+                        <a itemprop="url" href="{% url 'qnow_user:logout' %}"
+                        class="btn btn-primary">Sair da plataforma</a>
+                    {% else %}
+                      <a itemprop="url" href="{% url 'qnow_user:login_client_start' %}"
+                         class="btn btn-primary">Iniciar cotação agora!
+                      </a>
+                    {% endif %}
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,314 @@
+/* Layout - Sprocket Strips - Core */
+
+.sprocket-strips {
+    position: relative;
+}
+
+.sprocket-strips:after {
+    display: table;
+    content: "";
+    *zoom: 1;
+    clear: both;
+}
+
+.sprocket-strips-container {
+    list-style: none !important;
+    overflow: hidden;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sprocket-strips-container:before,
+.sprocket-strips-container:after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+
+
+/* Layout - Sprocket Strips - Items */
+
+.sprocket-strips-item {
+    background-size: cover;
+    border-radius: 4px;
+}
+
+.sprocket-strips-content {
+    z-index: 2;
+    padding: 30px;
+    margin: 50px;
+    color: #a2a2a2;
+    background: rgba(255, 255, 255, 0.9);
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.sprocket-strips-title {
+    margin-top: 0;
+}
+
+.sprocket-strips-text {
+    display: block;
+}
+
+.sprocket-strips-container>li {
+    float: left;
+    margin: 0;
+    margin-right: 1%;
+    margin-left: 1%;
+    margin-bottom: 20px;
+}
+
+.sprocket-strips .cols-1>li {
+    width: 98%;
+}
+
+.sprocket-strips .cols-2>li {
+    width: 48%;
+}
+
+.sprocket-strips .cols-3>li {
+    width: 31.33%;
+}
+
+.sprocket-strips .cols-4>li {
+    width: 23%;
+}
+
+.sprocket-strips .cols-5>li {
+    width: 18%;
+}
+
+.sprocket-strips .cols-6>li {
+    width: 14.6667%;
+}
+
+.sprocket-strips .cols-7>li {
+    width: 12.2555%;
+}
+
+.sprocket-strips .cols-8>li {
+    width: 10.5%;
+}
+
+.sprocket-strips .cols-9>li {
+    width: 9.11%;
+}
+
+.sprocket-strips .cols-10>li {
+    width: 8%;
+}
+
+.sprocket-strips .cols-11>li {
+    width: 7.09%;
+}
+
+.sprocket-strips .cols-12>li {
+    width: 6.33%;
+}
+
+.sprocket-strips-content {
+    -webkit-transition: all 0.4s ease 0s !important;
+    transition: all 0.4s ease 0s !important;
+}
+
+@media (max-width: 767px) {
+    .sprocket-strips .cols-1>li,
+    .sprocket-strips .cols-2>li,
+    .sprocket-strips .cols-3>li,
+    .sprocket-strips .cols-4>li,
+    .sprocket-strips .cols-5>li,
+    .sprocket-strips .cols-6>li,
+    .sprocket-strips .cols-7>li,
+    .sprocket-strips .cols-8>li,
+    .sprocket-strips .cols-9>li,
+    .sprocket-strips .cols-10>li,
+    .sprocket-strips .cols-11>li,
+    .sprocket-strips .cols-12>li {
+        width: 98%;
+        float: none;
+    }
+}
+
+
+/* Layout - Sprocket Strips - Navigation */
+
+.sprocket-strips-nav {
+    display: table;
+    width: 100%;
+    padding: 5px;
+}
+
+.sprocket-strips-pagination {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.sprocket-strips-pagination ul {
+    float: left;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.sprocket-strips-pagination li {
+    display: inline-block !important;
+    padding: 4px !important;
+    opacity: 0.3;
+    border-radius: 1em;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+}
+
+.sprocket-strips-pagination li.active {
+    opacity: 1;
+}
+
+.sprocket-strips-pagination li span {
+    display: none;
+    font-size: 0.85em;
+    line-height: 1em;
+}
+
+.sprocket-strips-pagination-hidden {
+    display: none;
+}
+
+.sprocket-strips-arrows {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.sprocket-strips-arrow ul {
+    float: right;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.sprocket-strips-arrows .arrow {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 0px;
+    opacity: 0.5;
+    cursor: pointer;
+    float: right;
+    margin-left: 5px;
+    text-align: center;
+    font-size: 2em;
+    position: relative;
+    background: transparent;
+    color: rgba(0, 0, 0, 0.1);
+}
+
+.sprocket-strips-arrows .arrow:hover {
+    opacity: 1;
+}
+
+.sprocket-strips-arrows .arrow:before {
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -5px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+.sprocket-strips-arrows .prev:before {
+    left: 50%;
+    margin-left: -3px;
+    border-right: 5px solid;
+}
+
+.sprocket-strips-arrows .next:before {
+    right: 50%;
+    margin-right: -3px;
+    border-left: 5px solid;
+}
+
+
+/* Layout - Sprocket Strips - Colors */
+
+.sprocket-strips-pagination li {
+    background: #000;
+    color: #fff;
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+
+/* Spinner */
+
+.sprocket-strips-overlay {
+    display: none;
+    position: absolute;
+    margin-top: -66px;
+    top: 50%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    z-index: 5;
+}
+
+.sprocket-strips-overlay .css-loader-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4) inset, 1px 1px 1px rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.sprocket-strips.loading .sprocket-strips-overlay {
+    display: block;
+}
+
+.sprocket-strips-overlay .css-loader {
+    display: block;
+    margin: 0 auto;
+    font-size: 10px;
+    position: relative;
+    text-indent: -9999em;
+    border-top: 8px solid rgba(255, 255, 255, 0.2);
+    border-right: 8px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 8px solid rgba(255, 255, 255, 0.2);
+    border-left: 8px solid #ffffff;
+    -webkit-animation: loader 1.1s infinite linear;
+    animation: loader 1.1s infinite linear;
+}
+
+.sprocket-strips-overlay .css-loader {
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+}
+
+@-webkit-keyframes loader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.roksprocket-ellipsis {
+    display: none;
+}

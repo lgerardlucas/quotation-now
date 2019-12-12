@@ -1,0 +1,192 @@
+{% extends "default.html" %}
+{% load cloudinary %}
+{% load static %}
+{% block content %}
+<section class="page-title">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 title">
+				<h2>Minhas Cotações - {{ user.username }}</h2>
+				<ol class="breadcrumb">
+					<li>Você esta aqui: &nbsp;</li>
+					<li><a class="pathway" href="{% url 'qnow_site:site' %}">Home</a></li>
+					<li class="active">Minhas Cotações</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Cotações do usuário -->
+<section>
+	{% for field in quotation %}
+		<div class="container col-sm-6 col-md-6">
+			<div class="row">
+				<article itemtype="#" itemscope="" class="item item-page-6">
+					<meta content="en-GB" itemprop="inLanguage">
+					<div itemprop="articleBody">
+						<div class="module title1">
+							<h2 class="module-title">{{ field.stage }}</h2>
+						</div>
+
+
+							<!-- Móvel -->
+						<strong>
+							<h2 class="pe-7s-exapnd2" font="size:10px;"> 
+								{% if field.mobile_type|lower == '_Outro'|lower %}
+									{{ field.mobile_description }}
+								{% else %}
+									{{ field.mobile_type }} 
+								{% endif %}
+								<small>Cotação Nº:{{ field.id }}</small>
+							</h2>
+						</strong>
+
+						<!-- Imagem do ambiente e projeto-->
+						<div data-uk-grid-margin="" class="uk-grid uk-grid-width-medium-1-2 uk-grid-collapse">
+							<!-- Imagens do ambiente -->
+							<div style="padding: 5px;">
+								{% if field.image_environment|lower == 'None'|lower %}
+									<a title="Sem foto do ambiente<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>" data-uk-lightbox="{group:'group1'}" href="{% static '/images/no-image.png' %}">
+										<img alt="Quotation-Now<br>Sem foto do ambiente" src="{% static '/images/no-image.png' %}" height="200px;" width="400px;" class="uk-border-rounded">
+										<small>Foto do Ambiente</small>
+									</a>
+								{% elif field.image_environment|lower != 'None'|lower %}
+									<a title="Foto do seu ambiente<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>" data-uk-lightbox="{group:'group1'}" href="{{ field.image_environment.url }}">
+										<img alt="Quotation-Now<br>Foto do ambiente" src="{{ field.image_environment.url }}" height="200px" width="400px" class="uk-border-rounded">
+										<small>Foto do Ambiente</small>
+									</a>
+								{% endif %}
+							</div>
+
+							<!-- Imagens do projeto -->
+							<div style="padding: 5px;">
+								{% if field.image_project|lower == 'None'|lower %}
+									<a title="Sem foto do projeto<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>"  data-uk-lightbox="{group:'group1'}" href="{% static '/images/no-image.png' %}">
+										<img alt="Quotation-Now<br>Sem foto do projeto" src="{% static '/images/no-image.png' %}" height="200px;" width="400px;" class="uk-border-rounded">
+										<small>Foto do Projeto</small>
+									</a>
+								{% elif field.image_project|lower != 'None'|lower %}
+									<a title="Foto do seu projeto<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>" data-uk-lightbox="{group:'group1'}" href="{{ field.image_project.url }}">
+										<img alt="Quotation-Now<br>Foto do projeto" src="{{ field.image_project.url }}" height="200px;" width="400px;" class="uk-border-rounded">
+										<small>Foto do Projeto</small>
+									</a>
+								{% endif %}
+							</div>
+						</div>
+
+						<!-- Corpo do card, com as Caracteristicas, situação e edição do projeto,
+														tudo respeintando a situação da cotação-->
+						<div class="card-body" style="padding: 5px;">
+							<!--Tipo do imóvel-->
+							<label class="readmore">Imóvel:</label>
+							<label class="card-text">{{ field.house_type }}</label>
+							<br>
+							
+						
+							<!--Situação -->
+							<div class="card">
+								<div class="card-header" id="headingTwo">
+									<label class="card-title readmore">
+										Situação:
+									</label>
+							
+									<label role="button" class="collapsed uk-icon-arrow-circle-down" type="button" data-toggle="collapse"
+										data-target="#{{ field.slug }}" aria-expanded="false" aria-controls="collapseTwo aria-controls">
+											{{ field.stage }}
+
+									</label>
+								</div>
+
+								<div id="{{ field.slug }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+									<div class="card-body">
+										{{ field.stage.explication }}
+									</div>
+								</div>
+							</div>
+
+
+							<!--Caracteristicas do móvel-->
+							<div class="card">
+								<div class="card-header" id="headingTwo">
+									<label class="card-title readmore">
+										Caracteristicas:
+									</label>
+						
+									<label role="button" class="collapsed uk-icon-arrow-circle-down" type="button" data-toggle="collapse" data-target="#{{ field.id }}"
+										aria-expanded="false" aria-controls="collapseTwo aria-controls">
+										Veja aqui...
+									</label>
+								</div>
+								<div id="{{ field.id }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+									<div class="card-body">
+										{{ field.particulars }}
+									</div>
+								</div>
+							</div>
+						
+							<!-- Botão para editar a cotação -->
+							<div class="card-footer text-left">
+								<p class="readmore">
+									{% if user.is_authenticated %}
+										<!--Botão de edição quando stage for "0 Pendente"-->
+										{% if 'Pendente'|lower in field.stage|lower %}
+											<h3 class="readmore" style="text-align: center">{{ message }}</h3>
+											<a itemprop="url" href="{% url 'qnow_client:quotation_client_delete' quotation_id=field.id action='delete'  %}"
+												class="btn btn-danger">Sim, remover agora!</a>
+										{% endif %}
+										<!--Botão para nova cotação-->
+										{% if 'client'|lower in user.role|lower %}
+											<a itemprop="url" href="{% url 'qnow_client:quotation_client_list' field.client_id  %}" class="btn btn-primary">
+												Minhas Cotações(C)</a>
+										{% endif %}
+									{% endif %}
+								</p>
+							</div>
+
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	{% endfor %}
+</section>
+
+
+
+<section class="parallax-section-2">
+	<div class="row">
+		<div class="col-sm-12 col-md-12" id="parallax2">
+			<div class="module ">
+				<div class="module-content">
+					<div class="uk-text-contrast uk-flex uk-flex-center" data-uk-parallax="{bg: -300}"
+						style="min-height: 160px; background-color: rgb(41, 44, 47); background-repeat: no-repeat; background-size: cover; background-position: 50% -42.435px;">
+						<div class="container1170" style="padding:20px 15px;">
+							<div class="uk-grid">
+								<div class="uk-width-medium-3-4">
+									<h3 embed-responsive-item style="margin-top pull-left:15px;">
+										<h2>{{ user }}</h2>
+										Inicie agora mesmo uma nova cotação e receba das melhores
+										MARCENARIAS, os melhores preços do mercado.</h3>
+								</div>
+								<div class="uk-width-medium-1-4 uk-text-right inverted">
+									<h3 embed-responsive-item style="margin-top pull-left:5px;">
+										{% if user.is_authenticated %}
+											<a class="uk-button uk-child-width-expand raleway16" style="font-size: 0.75em;" href="{% url 'qnow_client:quotation_client' %}">Iniciar uma nova cotação</a>
+										{% else %}
+											<a href="{% url 'qnow_user:login_client_start' %}" class="uk-button uk-child-width-expand raleway16" style="font-size: 0.75em;">Inicie sua cotação aqui!</a>
+											
+										{% endif %}
+									</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
+{% block footer %}
+{% endblock %}

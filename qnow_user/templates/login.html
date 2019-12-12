@@ -1,0 +1,170 @@
+{% extends "default.html" %}
+{% load static %}
+{% block content %}
+
+
+<!-- Page Title -->
+<section class="page-title">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 title">
+				 {% if origin  == "client" %}
+		  			<h2>Acesso do Cliente</h2>
+				 {% else %}	  
+				    <h2>Acesso da Marcenaria</h2>
+				 {% endif %}	
+				<ol class="breadcrumb">
+					<li>Você esta aqui: &nbsp;</li>
+					<li><a class="pathway" href="{% url 'qnow_site:site' %}">Home</a></li>
+					<li>Acesso à Plataforma</li>
+ 					 {% if origin  == "client" %}
+					   <li class="active">Acesso do Cliente</li>
+        			 {% else %}
+					   <li class="active">Acesso da Marcenaria</li>
+        			 {% endif %}
+
+ 				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+	{% if messages %}
+	<div
+		style="text-align: center; background-color: #ffb400; width: 100%; height: ; padding-top: 10px; color:white; font-size: 1.2em; line-height: 2px;;">
+		<ul>
+			{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
+				{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+				<h3>{{ message }}</h3>
+				</li>
+				{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+
+
+<!-- Get A Quote -->
+<section class="main-body">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<article itemtype="#" itemscope="" class="item item-page">
+					<meta content="en-GB" itemprop="inLanguage">
+					<div itemprop="articleBody">
+						<div class="uk-grid">
+							<div class="uk-width-medium-1-2">
+								<div class="gbs3">
+
+                     			  {% if origin  == "client" %}
+  									<form enctype="multipart/form-data" method="POST" name="quote" id="chronoform-quote" class="chronoform">
+									<h4>Seja bem vindo!<br><br> Se você <strong>cliente</strong> já esta cadastrado(a), informe seu login e senha e tenha acesso a área de cotação imediatamente.</h4>
+								  {% else %} 	  
+   									<form enctype="multipart/form-data" method="POST" name="quote" id="chronoform-quote" class="chronoform">
+									<h4>Seja bem vindo!<br><br> Se a sua <strong>marcenaria</strong> já esta cadastrada, informe seu login e senha e tenha acesso a área que lista os pedidos de cotações imediatamente.</h4>
+								  {% endif %}	   
+								        {% csrf_token %}
+								   		{{ form.mon_field_erros }}										
+										{% for field in form %}
+											<div class="form-group" id="form-row-text1">
+												<label for="text1" class="control-label required_label">
+												{{ field.label_tag }}
+													<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+												</label>
+												<div class="gcore-display-table">
+													{{ field }}
+													{{ field.errors }}
+												</div>
+											</div>
+										{% endfor %}
+										 <div class="form-group" id="form-row-button9">
+											<div class="gcore-display-table" id="fin-button9">
+												<input name="button9" id="button9" value="Entrar" class="btn btn-default"
+													type="submit">
+											</div>
+										</div>
+ 									 <div class="form-group" id="form-row-text1">
+										<label for="text1" class="control-label required_label">
+											Não é cadastrado?
+											{% if origin  == "client" %}
+												<a href="{% url 'qnow_user:register_client' %}">
+											{% else %}	
+												<a href="{% url 'qnow_user:register_provider' %}">
+											{% endif %}	
+												<strong>Cadastre-se</strong></a><br>
+												Esqueceu a senha? <a href="#"><strong>Nova senha</strong></a><br>
+											</label>											
+									 </div>	
+
+									</form>
+								</div>
+							</div>
+							<div class="uk-width-medium-1-2">
+								{% if origin  == "client" %}
+									<h3>O cliente que acessa a Q-NOW terá:</h3>
+									<h4><strong>01.</strong> Marcenarias</h4>
+									<p>	Ao acessar a plataforma Q-NOW, você terá uma lista de marcenarias a sua espera. Faça a sua cotação	
+										e espere o retorna dos valores e condições que cada uma delas irão informar, tanto aqui como via 
+										e-mail.</p>
+									<hr>
+									<h4><strong>02.</strong> Cotações</h4>
+									<p>	Muito mais cotações a sua disposição do que pelo método antigo. Esqueça aquele velho processo,
+									    onde você ligaria para uma ou duas marcenarias e aceitaria o valor informado e pronto.</p>
+									<hr>
+									<h4><strong>03.</strong> Informações</h4>
+									<p>	Pela plataforma Q-NOW, você terá poder de escolha, e não somente levando em conta o valor, e sim, 
+									 	prazo de entrega e formas de pagamento. Nem sempre o valor é prioridade, com isto, as empresas terão que 
+										ser justas também nos demais critérios, visando sua consquista.</p>
+									<hr>
+									<h4><strong>04.</strong>  Objetivo</h4>
+									<p>	A Q-NOW quer unir vocẽ cliente as melhores marcenarias! Por isto, uma plataforma, que facilite
+										o processo de cotação com facilidade e imparcialidade é o nosso principal objetivo.</p>
+								{% else %}					   
+									<h3>A marcenaria que acessar a Q-NOW terá:</h3>
+									<h4><strong>01.</strong> Clientes</h4>
+									<p>	Ao acessar a plataforma Q-NOW, a marcenaria terá muito mais opções de clientes e projetos.
+									    Também, estará dentro de um ambiente que prega competitividade, imparcialidade e crescimento, pois
+										oferece, um meio de captação de vendas que agrega valores não somente as grandes marcenarias mas
+										pequenas e médias também. 
+										</p>
+									<hr>
+									<h4><strong>02.</strong> Cotações</h4>
+									<p>	A partir do seu acesso, uma lista de cotações estarão sempre a sua espera. Cotá-las da melhor forma, 
+										faz da sua empresa uma referência. E gerar as melhores informações, dá ao cliente a segurança em contratar 
+										a mesma.
+									    </p>
+									<hr>
+									<h4><strong>03.</strong> Responsabilidade</h4>
+									<p>	A responsabiliade, tanto nas informações geradas em cima das cotaçẽs do cliente escolhido pela marcenaria, 
+										como também, o segmento dado após o cliente ter aderido a dita cotação, como: a produação, entrega e pós vendas
+										é totalmente da marcenaria. Com isto, ser o mais claro e o mais justo, eleva sua empresa a um patamar competitivo 
+										e responsável pra nós da Q-NOW!</p>
+									<hr>
+									<h4><strong>04.</strong>  Objetivo</h4>
+									<p>	A Q-NOW quer trazer para as empresas do ramo de móveis planejados, um ambiente imparcial, competitivo e justo.
+										Queremos uma plataforma que alavanque sua empresa e ao mesmo tempo, à inclua em pé de igualdade, num mercado 
+										de tanta concorrência.</p>
+
+								{% endif %}
+							</div>
+
+						</div>
+					</div>
+				</article>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- /Get A Quote -->
+
+{% endblock %}
+<!-- /Contact Us -->
+
+<!-- Bottom B -->
+<!-- Footer Top -->
+<!-- Footer -->
+{% block footer %}
+{% endblock %}
+<!-- /Bottom B -->
+<!-- /Footer Top -->
+<!-- /Footer -->

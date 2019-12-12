@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Meta -->
+    <meta name="description" content="Hammer construction & renovation responsive html template, can be used for any type of business or corporate site">
+	<meta name="keywords" content="hammer, construction, renovation, design, planning, boostrap, responsive, html5, css3, jquery, theme, uikit, multicolor, parallax" />
+    <meta name="author" content="dhsign">
+	<meta name="robots" content="index, follow" />
+	<meta name="revisit-after" content="3 days" />
+	
+    <title>Hammer - UI Kit Elements</title>
+	
+	<!-- Styles -->			
+    <!-- Uikit CSS -->
+    <link href="{% static '/bootstrap/assets/css/uikit.min.css' %}" rel="stylesheet">	
+    <link href="{% static '/bootstrap/assets/css/slidenav.almost-flat.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/css/slideshow.almost-flat.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/css/sticky.almost-flat.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/css/tooltip.almost-flat.css' %}" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static '/bootstrap/css/bootstrap.css' %}" rel="stylesheet">	
+    <!-- Animate CSS -->
+	<link href="{% static '/bootstrap/assets/css/animate.css' %}" rel="stylesheet" />	
+    <!-- Sprocket Strips CSS -->
+	<link href="{% static '/bootstrap/assets/css/product.css' %}" rel="stylesheet" />
+	<link href="{% static '/bootstrap/assets/css/strips.css' %}" rel="stylesheet" />
+	<link href="{% static '/bootstrap/assets/css/quotes.css' %}" rel="stylesheet" />
+    <!-- Font Awesome -->	
+    <link href="{% static '/bootstrap/assets/css/font-awesome.min.css' %}" rel="stylesheet">	
+    <!-- Pe-icon-7-stroke Fonts -->	
+    <link href="{% static '/bootstrap/assets/css/helper.css' %}" rel="stylesheet">	
+    <link href="{% static '/bootstrap/assets/css/pe-icon-7-stroke.css' %}" rel="stylesheet">	
+    <!-- Template CSS -->
+    <link href="{% static '/bootstrap/assets/css/template.css' %}" rel="stylesheet">	
+    <link href="{% static '/bootstrap/assets/color/color1.css' %}" rel="stylesheet" type="text/css" title="color1">		
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->	
+	
+  </head>
+
+  <body>
+    <!-- Wrap all page content -->
+    <div class="body-innerwrapper" id="page-top">
+	  <!-- Top Bar -->	
+      <section class="hidden-xs top-bar" id="top-bar">
+	    <div class="container">
+          <div class="row">
+		    <div class="col-sm-6 col-md-6" id="top2">
+			  <ul class="contact-info">
+			    <li>
+				  <i class="uk-icon-phone"></i> 0700 123 7654
+				</li>
+				<li>
+				  <i class="uk-icon-envelope"></i> <a href="mailto:contact@email.com">contact@email.com</a>
+				</li>
+			  </ul>
+			</div>
+		    <div class="col-sm-6 col-md-6 top1">
+			  <ul class="social-icons">
+			    <li>
+				  <a href="https://www.facebook.com/" target="_blank"><i class="uk-icon-facebook"></i></a>
+				</li>
+				<li>
+				  <a href="https://twitter.com/" target="_blank"><i class="uk-icon-twitter"></i></a>
+				</li>
+				<li>
+				  <a href="https://plus.google.com/" target="_blank"><i class="uk-icon-google-plus"></i></a>
+				</li>
+				<li>
+				  <a href="https://www.pinterest.com/" target="_blank"><i class="uk-icon-pinterest"></i></a>
+				</li>
+				<li>
+				  <a href="https://www.youtube.com/" target="_blank"><i class="uk-icon-youtube"></i></a>
+				</li>
+			  </ul>
+			</div>
+		  </div>
+        </div>
+	  </section>
+	  <!-- /Top Bar -->
+
+	  <!-- Sticky Menu -->	  
+      <div id="header-sticky-wrapper" class="sticky-wrapper" style="height: 86px;">
+	    <header data-uk-sticky id="header" class="header">
+		  <div class="container">
+		    <div class="row" style="position: relative;">
+			  <div class="col-xs-8 col-sm-2 col-md-2" id="logo">
+				<a href="index-2.html" class="logo">
+				  <h1>
+				    <img alt="Hammer" src="{% static '/images/presets/preset1/logo.png' %}" class="default-logo">
+                    <img width="190" height="35" alt="Hammer" src="{% static '/images/presets/preset1/logo2x.html' %}" class="retina-logo">					
+				  </h1>
+				</a>
+			  </div>
+			  <div class="col-xs-4 col-sm-10 col-md-10" id="menu">
+			    <div><a href="#" id="offcanvas-toggler"><i class="uk-icon-bars"></i></a></div>
+                <div>
+				  <ul class="megamenu-parent menu-zoom hidden-xs">
+				  	<li class="menu-item has-child">
+					  <a href="index-2.html">Homeddd</a>
+					  <div class="dropdown dropdown-main menu-right width300">
+					    <div class="dropdown-inner">
+						  <ul class="dropdown-items">
+						    <li class="menu-item"><a href="index-2.html">Homesss</a></li>
+							<li class="menu-item"><a href="one-page.html">One Page</a></li>
+						  </ul>
+						</div>
+					  </div>
+					</li>
+                    <li class="menu-item"><a href="about-us.html">About Us</a></li>
+                    <li class="menu-item"><a href="services.html">Services</a></li>
+                    <li class="menu-item"><a href="projects.html">Projects</a></li>
+                    <li class="menu-item"><a href="blog.html">Blog</a></li>
+                    <li class="menu-item"><a href="contact-us.html">Contact Us</a></li>
+                    <li class="menu-item has-child menu-justify current-item active">
+                      <a href="#">More</a>
+					  <div class="dropdown dropdown-main dropdown-mega menu-full container900">
+					    <div class="dropdown-inner">
+						  <div class="row">
+                            <div class="col-sm-4 width300">
+							  <ul class="mega-group">
+							    <li class="menu-item has-child">
+                                  <a class="group-title" href="#">Pages</a>
+								  <ul class="mega-group-child dropdown-items">
+                                    <li class="menu-item"><a href="faq.html">FAQ</a></li>
+                                    <li class="menu-item"><a href="our-team.html">Our Team</a></li>
+                                    <li class="menu-item"><a href="portfolio.html">Portfolio</a></li>
+                                    <li class="menu-item"><a href="gallery.html">Gallery</a></li>
+                                  </ul>
+                                </li>
+							  </ul>
+							</div>
+                            <div class="col-sm-4 width300">
+							  <ul class="mega-group">
+							    <li class="menu-item has-child">
+                                  <a class="group-title" href="#">Actions</a>
+								  <ul class="mega-group-child dropdown-items">
+                                    <li class="menu-item"><a href="get-a-quote.html">Get A Quote</a></li>
+                                    <li class="menu-item"><a href="pricing-tables.html">Pricing Tables</a></li>								  
+                                    <li class="menu-item"><a href="call-to-actions.html">Call To Action</a></li>
+                                    <li class="menu-item"><a href="404-error-page.html">404 Error Page</a></li>
+                                  </ul>
+                                </li>
+						      </ul>
+							</div>
+                            <div class="col-sm-4 width300">
+							  <ul class="mega-group">
+							    <li class="menu-item has-child current-item active">
+                                  <a class="group-title" href="#">Features</a>
+								  <ul class="mega-group-child dropdown-items">
+                                    <li class="menu-item"><a href="typography.html">Typography</a></li>
+                                    <li class="menu-item"><a href="buttons.html">Buttons</a></li>
+                                    <li class="menu-item active"><a href="uikit-elements.html">UI Kit Elements</a></li>
+                                    <li class="menu-item"><a href="comingsoon.html">Offline Page</a></li>
+                                  </ul>
+                                </li>
+						      </ul>
+							</div>							
+                          </div>
+						</div>
+					  </div>
+                    </li>
+                    <li class="menu-item has-child pulse">
+                      <a href="get-a-quote.html"><i class="fa fa-info-circle"></i></a>
+					  <div class="dropdown dropdown-main menu-left" style="width: 240px;">
+					    <div class="dropdown-inner">
+                          <ul class="dropdown-items">
+						    <li class="menu-item color-link">
+						      <a href="get-a-quote.html">Free Estimates!</a>
+							</li>
+						  </ul>
+                          <div class="module ">
+						    <div class="module-content">
+	                          <p style="margin-top: -50px !important; margin-bottom: 0px;">
+							    <a href="get-a-quote.html"><img alt="Get A Quote" src="{% static '/images/elements/quote.jpg' %}"></a>
+							  </p>
+                            </div>
+						  </div>
+                        </div>
+					  </div>
+                    </li>
+				  </ul>
+				</div>				
+			  </div>
+			</div>
+		  </div>
+		</header>
+	  </div>
+	  <!-- /Sticky Menu -->	
+
+
+      <!-- Page Title -->
+      <section class="page-title">
+		<div class="container">	  
+	      <div class="row">
+		    <div class="col-sm-12 col-md-12 title">
+			  <h2>UI Kit Elements</h2>
+              <ol class="breadcrumb">
+                <li>You are here: &nbsp;</li>
+				<li><a class="pathway" href="index-2.html">Home</a></li>
+                <li><a class="pathway" href="#">More</a></li>
+                <li><a class="pathway" href="#">Features</a></li>
+				<li class="active">UI Kit Elements</li>				  
+		      </ol>
+			</div>
+		  </div>
+		</div>
+	  </section>
+	  <!-- /Page Title -->
+	  
+	  <!-- UI Kit Elements -->
+      <section class="main-body">
+	    <div class="container">
+		  <div class="row">
+		    <div class="col-sm-12 col-md-12">
+              <article itemtype="http://schema.org/Article" itemscope="" class="item item-page">
+	            <meta content="en-GB" itemprop="inLanguage">
+			    <div itemprop="articleBody">
+		          <p>Buttons - Default Size:</p>
+                  <a href="#" class="uk-button">Default Button</a>
+                  <a href="#" class="uk-button uk-button-primary">Primary Button</a>
+                  <a href="#" class="uk-button uk-button-success">Success Button</a>
+                  <a href="#" class="uk-button uk-button-danger">Danger Button</a>
+                  <p></p>
+                  <p>Buttons - Mini Size:</p>
+                  <a href="#" class="uk-button uk-button-mini">Default Button</a>
+                  <a href="#" class="uk-button uk-button-primary uk-button-mini">Primary Button</a>
+                  <a href="#" class="uk-button uk-button-success uk-button-mini">Success Button</a>
+                  <a href="#" class="uk-button uk-button-danger uk-button-mini">Danger Button</a>
+                  <p></p>
+                  <p>Buttons Large size:</p>
+                  <a href="#" class="uk-button uk-button-large">Default Button</a>
+                  <a href="#" class="uk-button uk-button-primary uk-button-large">Primary Button</a>
+                  <a href="#" class="uk-button uk-button-success uk-button-large">Success Button</a>
+                  <a href="#" class="uk-button uk-button-danger uk-button-large">Danger Button</a>
+                  <p></p>
+                  <p>Buttons Groups wtih default size buttons:</p>
+                  <div class="uk-margin">
+                    <div class="uk-button-group">
+			    	  <a href="#" class="uk-button">Link</a> 
+				      <button class="uk-button">Button</button> 
+				      <button class="uk-button">Button</button>
+				    </div>
+                  </div>
+                  <div class="uk-margin">
+                    <div class="uk-button-group">
+			    	  <a href="#" class="uk-button uk-button-primary">Link</a> 
+			      	  <button class="uk-button uk-button-primary">Button</button> 
+			    	  <button class="uk-button uk-button-primary">Button</button>
+				    </div>
+                  </div>
+                  <div class="uk-margin">
+                    <div class="uk-button-group">
+				      <a href="#" class="uk-button uk-button-success">Link</a> 
+				      <button class="uk-button uk-button-success">Button</button> 
+				      <button class="uk-button uk-button-success">Button</button>
+				    </div>
+                  </div>
+                  <div class="uk-margin">
+                    <div class="uk-button-group">
+				      <a href="#" class="uk-button uk-button-danger">Link</a> 
+				      <button class="uk-button uk-button-danger">Button</button> 
+				      <button class="uk-button uk-button-danger">Button</button>
+				    </div>
+                  </div>
+                  <p>Full width button:</p>
+                  <p><button type="button" class="uk-button uk-button-large uk-width-1-1">Button</button></p>
+                  <p>Full width primary button:</p>
+                  <p><button type="button" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Button</button></p>
+                  <p>Badges:</p>
+                  <p>
+				    <span class="uk-badge uk-badge-primary">Primary</span> 
+				    <span class="uk-badge uk-badge-success">Success</span> 
+				    <span class="uk-badge uk-badge-warning">Warning</span> 
+				    <span class="uk-badge uk-badge-danger">Danger</span> 
+				    <span class="uk-badge uk-badge-percent">Percent</span> 
+				    <span class="uk-badge uk-badge-notification uk-badge-primary">1</span> 
+				    <span class="uk-badge uk-badge-notification uk-badge-success">2</span> 
+				    <span class="uk-badge uk-badge-notification uk-badge-warning">3</span> 
+				    <span class="uk-badge uk-badge-notification uk-badge-danger">4</span> 
+				    <span class="uk-badge uk-badge-notification uk-badge-percent">5</span>
+				  </p>
+                  <p>Alert Messages:</p>
+                  <div data-uk-alert="" class="uk-alert uk-alert-success">
+				    <a class="uk-alert-close uk-close"></a>
+                    <p>To indicate success or a positive message add the <code>.uk-alert-success</code> class.</p>
+                  </div>
+                  <div data-uk-alert="" class="uk-alert uk-alert-warning">
+				    <a class="uk-alert-close uk-close"></a>
+                    <p>To indicate a message containing a warning add the <code>.uk-alert-warning</code> class.</p>
+                  </div>
+                  <div data-uk-alert="" class="uk-alert uk-alert-danger">
+				    <a class="uk-alert-close uk-close"></a>
+                    <p>To indicate an important message add the <code>.uk-alert-danger</code> class.</p>
+                  </div>
+                  <div data-uk-alert="" class="uk-alert uk-alert-large uk-alert-danger">
+				    <a class="uk-alert-close uk-close"></a>
+                    <h3>Title Large Alert</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                  <p>Progress Bars:</p>
+                  <div class="uk-progress">
+                    <div style="width: 90%;" class="uk-progress-bar">&nbsp;</div>
+                  </div>
+                  <div class="uk-progress uk-progress-small">
+                    <div style="width: 55%;" class="uk-progress-bar">&nbsp;</div>
+                  </div>
+                  <div class="uk-progress uk-progress-mini">
+                    <div style="width: 43%;" class="uk-progress-bar">&nbsp;</div>
+                  </div>
+                  <div class="uk-progress uk-progress-mini uk-progress-warning">
+                    <div style="width: 75%;" class="uk-progress-bar">&nbsp;</div>
+                  </div>
+                  <div class="uk-progress uk-progress-mini uk-progress-danger">
+                    <div style="width: 65%;" class="uk-progress-bar">&nbsp;</div>
+                  </div>
+                  <div class="uk-progress uk-progress-mini uk-progress-success">
+                    <div style="width: 55%;" class="uk-progress-bar">&nbsp;</div>
+                  </div>
+                  <p>Modal Dialogs:</p>
+                  <p>
+				    <button data-uk-modal="{target:'#modal'}" class="uk-button">Click Me</button> 
+                    <a data-uk-modal="{center:true}" href="#modal2">Click Me</a>
+                  </p>
+                  <div class="uk-modal" id="modal">
+                    <div class="uk-modal-dialog">
+				      <a class="uk-modal-close uk-close"></a>
+                      <h1>Headline</h1>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+				  </div>
+                  <div class="uk-modal" id="modal2">
+                    <div class="uk-modal-dialog uk-modal-dialog-large">
+				      <a class="uk-modal-close uk-close"></a>
+                      <h1>Headline</h1>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+                  </div>
+                  <p>Off-canvas Sidebars:</p>
+                  <p>
+				    <button data-uk-offcanvas="{target:'#offcanvas-1'}" class="uk-button">Click Me</button> 
+				    <a data-uk-offcanvas="" href="#offcanvas-1">Click Me</a>
+				  </p>
+                  <div class="uk-offcanvas" id="offcanvas-1">
+                    <div class="uk-offcanvas-bar">
+                      <div class="uk-panel">
+					    Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					  </div>
+                      <div class="uk-panel">
+					    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					  </div>
+                    </div>
+                  </div>
+                  <p>Tooltips:</p>
+                  <p>
+				    <button title="Hello!" data-uk-tooltip="" class="uk-button">Hover me</button> 
+				    <button title="Hello!" data-uk-tooltip="{pos:'bottom'}" class="uk-button">Hover me</button> 
+				    <button title="Hello!" data-uk-tooltip="{pos:'bottom-left'}" class="uk-button">Hover me</button> 
+				    <button title="Hello!" data-uk-tooltip="{pos:'bottom-right'}" class="uk-button">Hover me</button> 
+				    <button title="Hello!" data-uk-tooltip="{pos:'top'}" class="uk-button">Hover me</button> 
+				    <button title="Hello!" data-uk-tooltip="{pos:'top-left'}" class="uk-button">Hover me</button> 
+				    <button title="Hello!" data-uk-tooltip="{pos:'top-right'}" class="uk-button">Hover me</button> 
+				    <button title="Hello!" data-uk-tooltip="{pos:'left'}" class="uk-button">Hover me</button> 
+				    <button data-uk-tooltip="{pos:'right'}" class="uk-button">Hover me</button> 
+				    <span title="Hello!" data-uk-tooltip="">Hover me</span>
+				  </p>
+                  <br>
+                  <p>Scrollspy animations - Triggers events and animations while scrolling your page.</p>
+                  <div class="uk-grid">
+                    <div class="uk-width-medium-1-4">
+                      <div data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}" class="uk-panel uk-panel-box uk-scrollspy-init-inview">
+                        <h3>Fade</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="uk-grid">
+                    <div class="uk-width-medium-1-4 uk-push-1-4">
+                      <div data-uk-scrollspy="{cls:'uk-animation-scale-up', repeat: true}" class="uk-panel uk-panel-box uk-scrollspy-init-inview">
+                        <h3>Scale up</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="uk-grid">
+                    <div class="uk-width-medium-1-4 uk-push-2-4">
+                      <div data-uk-scrollspy="{cls:'uk-animation-scale-down', repeat: true}" class="uk-panel uk-panel-box uk-scrollspy-init-inview">
+                        <h3>Scale down</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="uk-grid">
+                    <div class="uk-width-medium-1-4 uk-push-3-4">
+                      <div data-uk-scrollspy="{cls:'uk-animation-slide-top', repeat: true}" class="uk-panel uk-panel-box uk-scrollspy-init-inview">
+                        <h3>Slide top</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="uk-grid">
+                    <div class="uk-width-medium-1-4 uk-push-2-4">
+                      <div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', repeat: true}" class="uk-panel uk-panel-box uk-scrollspy-init-inview">
+                        <h3>Slide bottom</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="uk-grid">
+                    <div class="uk-width-medium-1-4 uk-push-1-4">
+                      <div data-uk-scrollspy="{cls:'uk-animation-slide-right', repeat: true}" class="uk-panel uk-panel-box uk-scrollspy-init-inview">
+                        <h3>Slide right</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="uk-grid">
+                    <div class="uk-width-medium-1-4">
+                      <div data-uk-scrollspy="{cls:'uk-animation-slide-left', repeat: true}" class="uk-panel uk-panel-box uk-scrollspy-init-inview">
+                        <h3>Slide left</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="uk-grid">
+                    <div class="uk-width-medium-1-4">
+                      <div data-uk-scrollspy="{cls:'uk-animation-fade', repeat: true}" class="uk-panel uk-panel-box uk-scrollspy-init-inview">
+                        <h3 class="uk-panel-title">Delay</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                      </div>
+                    </div>
+                    <div class="uk-width-medium-1-4">
+                      <div data-uk-scrollspy="{cls:'uk-animation-fade', delay:300, repeat: true}" class="uk-panel uk-panel-box uk-scrollspy-init-inview">
+                        <h3 class="uk-panel-title">Delay</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                      </div>
+                    </div>
+                    <div class="uk-width-medium-1-4">
+                      <div data-uk-scrollspy="{cls:'uk-animation-fade', delay:600, repeat: true}" class="uk-panel uk-panel-box uk-scrollspy-init-inview">
+                        <h3 class="uk-panel-title">Delay</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                      </div>
+                    </div>
+                    <div class="uk-width-medium-1-4">
+                      <div data-uk-scrollspy="{cls:'uk-animation-fade', delay:900, repeat: true}" class="uk-panel uk-panel-box uk-scrollspy-init-inview">
+                        <h3 class="uk-panel-title">Delay</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <p><a class="uk-button uk-button-primary uk-width-1-1" target="_blank" href="http://getuikit.com/docs/core.html">Explore All UI KIT Examples</a></p>
+			    </div>							
+              </article>
+            </div>
+		  </div>
+	    </div>
+	  </section>
+	  <!-- /UI Kit Elements -->	  
+
+	  <!-- Get A Quote -->
+      <section class="parallax-section-2">
+	    <div class="row">
+		  <div class="col-sm-12 col-md-12" id="parallax2">
+		    <div class="module ">
+			  <div class="module-content">
+	            <div class="uk-text-contrast uk-flex uk-flex-center" data-uk-parallax="{bg: -300}" style="min-height: 160px; background-color: rgb(41, 44, 47); background-repeat: no-repeat; background-size: cover; background-position: 50% -42.435px;">
+                  <div class="container1170" style="padding:60px 15px;">
+                    <div class="uk-grid">
+                      <div class="uk-width-medium-3-4">
+                        <h3 style="margin-top:15px;">Do you want the best in the business to work for you?</h3>
+                      </div>
+                      <div class="uk-width-medium-1-4 uk-text-right inverted">
+                        <h3 style="margin-top:5px;"><a class="uk-button" href="get-a-quote.html">Get A Quote Now</a></h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+			</div>
+		  </div>
+		</div>
+	  </section>	  
+	  <!-- /Get A Quote -->	  
+	  
+	  <!-- Bottom B -->
+      <section class="bottom-b">
+	    <div class="container">
+		  <div class="row">
+		    <div class="col-sm-3 col-md-3">
+		      <div class="module title3">
+			    <h3 class="module-title">About us</h3>
+				<div class="module-content">
+	              <p><strong>Hammer Constructions LTD</strong> is a Dusseldorf based construction &amp; renovation company with more than <strong>35 years experience</strong> in the field.</p>
+                  <p>
+				    <a href="#" class="uk-icon-button uk-icon-facebook"></a>
+                    <a href="#" class="uk-icon-button uk-icon-twitter"></a>
+                    <a href="#" class="uk-icon-button uk-icon-youtube"></a>
+                    <a href="#" class="uk-icon-button uk-icon-linkedin"></a>
+                  </p>
+                </div>
+			  </div>
+			</div>
+			<div class="col-sm-6 col-md-6">
+			  <div class="module title3">
+			    <h3 class="module-title">Coupons &amp; Promotions</h3>
+				<div class="module-content">
+	              <dl class="uk-description-list-line">
+                    <dt>
+					  <a href="#"><strong>Roofing Coupons</strong></a> 
+					  <span title="Only 5 left!" data-uk-tooltip="" class="uk-badge uk-badge-percent uk-float-right">5</span>
+					</dt>
+                    <dd>Some types of roofing, for example thatch, require a steep pitch in order to be waterproof and durable.</dd>
+                    <dt>
+					  <a href="#"><strong>Air Conditioning</strong></a> 
+					  <span title="Only 9 left!" data-uk-tooltip="" class="uk-badge uk-badge-percent uk-float-right">9</span>
+					</dt>
+                    <dd>Air conditioning is the process of altering the properties of air to more comfortable conditions.</dd>
+                    <dt>
+					  <a href="#"><strong>Electrical &amp; Lightning</strong></a> 
+					  <span title="Hurry! Only 2 left!" data-uk-tooltip="" class="uk-badge uk-badge-percent uk-float-right">2</span>
+					</dt>
+                    <dd>Find the best lightning construction &amp; maintenance services in Dusseldorf.</dd>
+                  </dl>
+                </div>
+			  </div>
+			</div>
+			<div class="col-sm-3 col-md-3">
+			  <div class="module title3">
+			    <h3 class="module-title">Contacts</h3>
+				<div class="module-content">
+	              <p><i class="uk-icon-envelope"></i>&nbsp;&nbsp;Email us at: office (@) yoursite.com</p>
+                  <p><i class="uk-icon-phone"></i>&nbsp;&nbsp;<strong style="font-size: 20px;">+555.123.123</strong></p>
+                  <p><i class="uk-icon-print"></i>&nbsp;&nbsp;<strong style="font-size: 20px;">+555.123.4568</strong></p>
+                  <p><i class="uk-icon-building-o"></i>&nbsp;&nbsp; 2nd Ave and Jermaine</p>
+                </div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </section>		  
+	  <!-- /Bottom B -->
+	  
+	  <!-- Footer Top -->
+      <section class="footer-top">
+	  </section>	  
+	  <!-- /Footer Top -->	  
+
+	  <!-- Footer -->
+      <footer class="footer">
+	    <div class="container">
+		  <div class="row">
+		    <div class="col-sm-6 col-md-6" id="footer1">
+			  <span class="copyright"> &copy; 2016 Your Company. All Rights Reserved.</span>
+			</div>
+		    <div class="col-sm-6 col-md-6 footer2" id="footer2">
+			  <div class="module ">
+			    <div class="module-content">
+	              <a href="#" class="uk-icon-button uk-icon-chevron-up" data-uk-smooth-scroll=""></a>
+				</div>
+              </div>
+			</div>
+		  </div>
+		</div>
+	  </footer>	  
+	  <!-- Footer -->
+	  
+	  <!-- Off Canvas Menu -->
+      <div class="offcanvas-menu">
+        <a class="close-offcanvas" href="#"><i class="uk-icon-remove"></i></a>
+        <div class="offcanvas-inner">
+          <div class="module">
+            <h3 class="module-title">Menu</h3>
+			<div class="module-content">
+			  <ul class="nav menu">
+                <li class="current active deeper parent">
+				  <a href="index-2.html">Home</a>
+				  <ul style="display: none;" class="nav-child unstyled small">
+				    <li><a href="index-2.html">Home</a></li>
+					<li><a href="one-page.html">One Page</a></li>
+				  </ul>
+				  <span class="toggle-icon fa fa-angle-down"></span>				  
+				</li>				
+                <li><a href="about-us.html">About Us</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="projects.html">Projects</a></li>
+				<li><a href="blog.html">Blog</a></li>
+				<li><a href="contact-us.html">Contact Us</a></li>
+				<li class="deeper parent">
+				  <a href="#">More</a>
+			      <ul style="display: none;" class="nav-child unstyled small">
+					<li class="deeper parent">
+					  <a href="#">Pages</a>
+				      <ul style="display: none;" class="nav-child unstyled small">
+						<li><a href="faq.html">FAQ</a></li>
+						<li><a href="our-team.html">Our Team</a></li>
+						<li><a href="portfolio-2.html">Portfolio</a></li>
+						<li><a href="gallery.html">Gallery</a></li>
+					  </ul>
+					  <span class="toggle-icon fa fa-angle-down"></span>
+					</li>
+					<li class="deeper parent">
+					  <a href="#">Actions</a>
+				      <ul style="display: none;" class="nav-child unstyled small">
+						<li><a href="get-a-quote.html">Get A Quote</a></li>
+						<li><a href="pricing-tables.html">Pricing Tables</a></li>					  
+						<li><a href="call-to-actions.html">Call To Action</a></li>
+						<li><a href="404-error-page.html">404 Error Page</a></li>
+				      </ul>
+					  <span class="toggle-icon fa fa-angle-down"></span>
+					</li>					
+					<li class="deeper parent">
+					  <a href="#">Features</a>
+				      <ul style="display: none;" class="nav-child unstyled small">
+						<li><a href="typography.html">Typography</a></li>
+						<li><a href="buttons.html">Buttons</a></li>
+						<li><a href="uikit-elements.html">UI Kit Elements</a></li>
+						<li><a href="comingsoon.html">Offline Page</a></li>
+				      </ul>
+					  <span class="toggle-icon fa fa-angle-down"></span>
+					</li>
+			      </ul>
+			      <span class="toggle-icon fa fa-angle-down"></span>
+				</li>
+				<li class="deeper parent">
+				  <a href="get-a-quote.html">Get A Quote</a>
+				  <ul style="display: none;" class="nav-child unstyled small">
+					<li><a href="get-a-quote.html">Free Estimates!</a></li>
+				  </ul>
+				  <span class="toggle-icon fa fa-angle-down"></span>
+				</li>
+			  </ul>
+            </div>
+		  </div>
+        </div>
+      </div>	  
+	  <!-- /Off Canvas Menu -->
+    </div>
+
+
+    <!-- Scripts placed at the end of the document so the pages load faster -->
+	
+    <!-- Jquery scripts -->
+    <script src="{% static '/bootstrap/assets/js/jquery.min.js' %}"></script>
+	
+    <!-- Uikit scripts -->
+	<script src="{% static '/bootstrap/assets/js/uikit.min.js' %}"></script>	
+	<script src="{% static '/bootstrap/assets/js/slideshow.min.js' %}"></script> 
+	<script src="{% static '/bootstrap/assets/js/slideshow-fx.min.html' %}"></script> 
+	<script src="{% static '/bootstrap/assets/js/slideset.min.js' %}"></script> 	
+	<script src="{% static '/bootstrap/assets/js/sticky.min.js' %}"></script>
+	<script src="{% static '/bootstrap/assets/js/tooltip.min.js' %}"></script>	
+	<script src="{% static '/bootstrap/assets/js/parallax.min.js' %}"></script>
+	<script src="{% static '/bootstrap/assets/js/lightbox.min.js' %}"></script>
+	<script src="{% static '/bootstrap/assets/js/grid.min.js' %}"></script>
+	
+	<!-- WOW scripts -->
+	<script src="{% static '/bootstrap/assets/js/wow.min.js' %}"></script>
+    <script> new WOW().init(); </script>
+
+    <!-- Оffcanvas Мenu scripts -->
+	<script src="{% static '/bootstrap/assets/js/offcanvas-menu.js' %}"></script> 	
+	
+    <!-- Template scripts -->
+	<script src="{% static '/bootstrap/assets/js/template.js' %}"></script> 	
+	
+	<!-- Bootstrap core JavaScript -->
+    <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static '/bootstrap/assets/js/ie10-viewport-bug-workaround.js' %}"></script>
+
+  </body>
+</html>

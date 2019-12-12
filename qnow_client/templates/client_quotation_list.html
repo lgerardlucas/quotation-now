@@ -1,0 +1,403 @@
+{% extends "default.html" %}
+{% load cloudinary %}
+{% load static %}
+{% load tags %}
+{% block content %}
+<section class="page-title">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 title">
+				<h2>Minhas Cotações - {{ user.username }}</h2>
+				<ol class="breadcrumb">
+					<li>Você esta aqui: &nbsp;</li>
+					<li><a class="pathway" href="{% url 'qnow_site:site' %}">Home</a></li>
+					<li class="active">Minhas Cotações</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Cotações do usuário -->
+{% if message != '' %}
+	<section class="main-body">
+		<div class="container">
+			<div class="module title5" style="text-align: center">
+				<h3 class="module-title5">{{ message }}</h3>
+			</div>
+		</div>	
+	</section>
+{% else %}	
+		<!--Messagem diversas-->
+		<section style="padding-top: 10px;">
+			{% if messages %}
+			<div class="container">
+					<div class="module title5" style="text-align: center">
+						<ul>
+							{% for message in messages %}
+							<li{% if message.tags %} class="{{ message.tags }}" {% endif %}>
+								{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+								<h3>{{ message }}</h3>
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+			</div>
+			{% endif %}
+		</section>
+
+		{% for field in quotation %}
+			<div class="container col-sm-6 col-md-6">
+				<div class="row">
+					<article itemtype="#" itemscope="" class="item item-page-6">
+						<meta content="en-GB" itemprop="inLanguage">
+						<div itemprop="articleBody">
+							<div class="module title1">
+								<h2 class="module-title">{{ field.stage }}</h2>
+  							</div>
+							  <!-- Móvel -->
+							<strong>
+								<h2 class="pe-7s-exapnd2" font="size:10px;"> 
+									{% if field.mobile_type|lower == '_Outro'|lower %}
+										{{ field.mobile_description }}
+									{% else %}
+										{{ field.mobile_type }} 
+									{% endif %}
+									<small>Cotação Nº:{{ field.id }}</small>
+								</h2>
+							</strong>
+
+							<!-- Imagem do ambiente e projeto-->
+							<div data-uk-grid-margin="" class="uk-grid uk-grid-width-medium-1-2 uk-grid-collapse">
+								<!-- Imagens do ambiente -->
+								<div style="padding: 5px;">
+									{% if field.image_environment|lower == 'None'|lower %}
+										<a title="Sem foto do ambiente<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>" data-uk-lightbox="{group:'group1'}" href="{% static '/images/no-image.png' %}">
+											<img alt="Quotation-Now<br>Sem foto do ambiente" src="{% static '/images/no-image.png' %}" height="200px;" width="400px;" class="uk-border-rounded">
+											<small>Foto do Ambiente</small>
+										</a>
+									{% elif field.image_environment|lower != 'None'|lower %}
+										<a title="Foto do seu ambiente<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>" data-uk-lightbox="{group:'group1'}" href="{{ field.image_environment.url }}">
+											<img alt="Quotation-Now<br>Foto do ambiente" src="{{ field.image_environment.url }}" height="200px" width="400px" class="uk-border-rounded">
+											<small>Foto do Ambiente</small>
+										</a>
+									{% endif %}
+								</div>
+
+								<!-- Imagens do projeto -->
+								<div style="padding: 5px;">
+									{% if field.image_project|lower == 'None'|lower %}
+										<a title="Sem foto do projeto<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>"  data-uk-lightbox="{group:'group1'}" href="{% static '/images/no-image.png' %}">
+											<img alt="Quotation-Now<br>Sem foto do projeto" src="{% static '/images/no-image.png' %}" height="200px;" width="400px;" class="uk-border-rounded">
+											<small>Foto do Projeto</small>
+										</a>
+									{% elif field.image_project|lower != 'None'|lower %}
+										<a title="Foto do seu projeto<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>" data-uk-lightbox="{group:'group1'}" href="{{ field.image_project.url }}">
+											<img alt="Quotation-Now<br>Foto do projeto" src="{{ field.image_project.url }}" height="200px;" width="400px;" class="uk-border-rounded">
+											<small>Foto do Projeto</small>
+										</a>
+									{% endif %}
+								</div>
+							</div>
+
+							<!-- Corpo do card, com as Caracteristicas, situação e edição do projeto,
+															tudo respeintando a situação da cotação-->
+							<div class="card-body" style="padding: 5px;">
+								<!--Tipo do imóvel-->
+								<label class="readmore">Imóvel:</label>
+								<label class="card-text">{{ field.house_type }}</label>
+								<br>
+								
+							
+								<!--Caracteristicas do móvel-->
+								<div class="card">
+									<div class="card-header" id="headingTwo">
+										<label class="card-title readmore">
+											Caracteristicas:
+										</label>
+							
+										<label role="button" class="collapsed uk-icon-arrow-circle-down" type="button" data-toggle="collapse" data-target="#{{ field.id }}"
+											aria-expanded="false" aria-controls="collapseTwo aria-controls">
+											Veja aqui...
+										</label>
+									</div>
+									<div id="{{ field.id }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+										<div class="card-body">
+											{{ field.particulars }}
+										</div>
+									</div>
+								</div>
+
+								<!-- TampleteTAG que carrega os orçamentos de providers de um determinado cliente-->
+								{% if 'Orçado'|lower in field.stage|lower or 'Aprovado'|lower in field.stage|lower %}
+									{% get_price_client_provider field.id field.stage.status as quotation_price %}
+								{% endif %}	
+
+								<!--Situação -->
+								<div class="card">
+									<div class="card-header" id="headingTwo">
+										<label class="card-title readmore">
+											Situação:
+										</label>
+										<!-- Situação em que se apresenta a cotação -->	
+										<label role="button" class="collapsed uk-icon-arrow-circle-down" type="button" data-toggle="collapse"
+											data-target="#{{ field.slug }}" aria-expanded="false" aria-controls="collapseTwo aria-controls">
+												{{ field.stage }} 
+
+												<!-- Mostra o valor já orçado e o nº total de cotações -->
+												{% if 'Orçado'|lower in field.stage|lower or 'Aprovado'|lower in field.stage|lower %}
+													<strong style="font-size: 1.4em;"> R$ 
+														{% for price in quotation_price %}
+															{% if forloop.first %}
+																	{{ price.quotation_value }} 
+															{% endif %}
+														{% endfor %}
+														+ 
+													</strong> 
+													<label class="client_price_number">
+														{% if 'Aprovado'|lower not in field.stage|lower %}
+															{{ quotation_price.count }}
+														{% else %}
+															A	
+														{% endif %}
+
+													</label>
+												{% endif %}	
+
+												{% if 'Liberado'|lower in field.stage|lower  %}
+													<strong style="font-size: 1.4em;"> Aguardando... </strong>
+												{% endif %}	
+
+										</label>
+									</div>
+
+									<div id="{{ field.slug }}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+										<div class="modal-body" style="padding: 0px;">
+
+											<!-- Explicando a situção em que esta a cotação -->
+											{% if 'Orçado'|lower not in field.stage|lower and 'Aprovado'|lower not in field.stage|lower %}
+												<div class="card-body">
+													{{ field.stage.explication }}
+												</div>
+											{% endif %}	
+
+											<!-- Montar o form somente se for orçado e aprovado -->
+											{% if 'Orçado'|lower in field.stage|lower or 'Aprovado'|lower in field.stage|lower %}
+												<strong>
+													{% if 'Aprovado'|lower not in field.stage|lower %}
+														Parabéns, sua cotação Nº {{ field.id }} foi atendida.
+													{% else %}
+														Parabéns, sua cotação Nº {{ field.id }} esta aprovada!
+													{% endif %}	
+
+												</strong>
+													<br>
+													<label>Leia com atenção</label>
+													{% if 'Aprovado'|lower not in field.stage|lower %}
+
+														<label style="text-align: justify; padding-left: 0.65em;">
+														- Se algum valor ofertado aqui, estiver dentro do esperado, 
+														você pode aprovar ou aguardar mais alguns dias, a fim de que, outras marcenarias deem seus lances.
+														
+														<br>
+
+														- Quando você aprova um valor, indica estar aprovando um fornecedor, para que o mesmo, possa entrar em
+														contato e finalizar os detalhes. Neste contato, serão tiradas dúvidas de ambas as partes, e com isto, 
+														fechado o custo final de sua cotação.
+														</label>
+													{% else %}
+														<label style="text-align: justify; padding-left: 0.65em;">
+															- Você optou pelo fornecedor listado abaixo, para que o mesmo dê inicio aos próximos passos, que são:
+															<br>
+															1 - Entrar em contato com você para agendar sua visita<br>
+															2 - Juntos analisar o projeto e fechar o valor final<br>
+															3 - Assinar o contrato, produzir e entregar<br>
+
+															<br>
+
+															- A apartir de uma aprovação por sua parte, a Q-NOW sai de cena. Acreditamos ter feito a parte 
+															inicial mais complicada quando se deseja móveis planejados, que é achar os melhores fornecedores, preços e condições de pagamento.
+															<br>
+															- Ao final de todo o processo, agradecemos se puder nos enviar uma foto e deixar seu comentário aqui mesmo. Isto ajudará a sabermos 
+															se o fornecedor aprovado cumpriu com sua obrigação e o recomenda e se você cliente, gostou do produto recebido.
+														</label>
+													{% endif %}	
+
+												</label>		
+
+												<!-- Form que lista os orçamentos e dá ação de escolha -->
+												<form enctype="multipart/form-data" method="POST" action="{% url 'qnow_client:quotation_client_approved' field.id %}">
+													{% csrf_token %}
+													<div>
+														<table class="table" style="margin-bottom: 0px;">
+															<caption>Lista de orçamentos para cotação Nº {{ field.id }}</caption>
+															<thead>
+																<tr style="border:none;">
+																	<th style="border:none;">Fornecedor</th>
+																	<th style="border:none;">Orçamento</th>
+																	<th style="border:none;"></th>
+																</tr>
+															</thead>
+
+															<tbody>
+																<!-- TemplateTAG carregada com os dados de orçamento -->
+																{% for price in quotation_price %}
+																	<tr>
+																		<td style="border:none; padding: 0px; font-weight: bold;">&nbsp; {{ price.quotation_provider }}</td>
+																		<td style="border:none; padding: 0px; font-weight: bold;">R$ {{ price.quotation_value }}</td>
+																		<td style="border:none;  padding: 0px;">
+																			{% if price.approved %}
+																				<input style="vertical-align: middle;" type="radio" name="price_id" value="{{ price.id }}" checked>
+																			{% else %}	
+																				<!-- <input style="vertical-align: middle;" type="radio" name="price_id" value="{{ price.id }}"> -->
+	<input style="height: 0.8em; padding-top: 4px;" name="price_id" value="Aprovar" class="btn btn-default uk-button" type="submit">
+
+																			{% endif %}	
+																		</td>
+																		
+
+																	</tr>
+																	
+																	<!-- Dados do fornecedor -->
+																	<tr>
+																		<td colspan="3" style="border:none; width: 100%;">
+																			<div style="width: 100%;">
+																				<!-- Data de validade -->
+																				<div style="display: inline-block; width: 25%;">
+																					<label style="font-weight: bold; line-height: 0.4em;">Validade</label><br>
+																					{{ price.date_validate|date:"d/m/Y" }}
+																				</div>
+																				<!-- Prazo de entrega -->
+																				<div style="display: inline-block;">
+																					<label style="font-weight: bold; line-height: 0.4em;">Entrega</label><br>
+																					{{ price.delivery_time }}
+																				</div>
+																				<br>
+																				<!-- Forma de pagamento -->
+																				<div style="display: inline-block;">
+																					<label style="font-weight: bold; line-height: 0.4em;">Forma de Pagamento</label><br>
+																					{{ price.form_payment }}
+																				</div>
+																				<!-- Detalhes -->
+																				<div style="display: inline-block;">
+																					<label style="font-weight: bold; line-height: 0.4em;">Detalhes</label><br>
+																						{{ price.comments}}
+																				</div>
+																			</div>
+																			<hr style="border: 1px solid #FFB400;  padding-bottom: 0px;">
+																		</td>
+																	</tr>
+																{% endfor %}
+															</tbody>
+														</table>
+
+													</div>
+											
+													<!-- Pergunta do marceneiro -->
+													{% if 'Aprovado'|lower in field.stage|lower %}
+													<div class="form-group">
+														<label for="message-text" class="col-form-label" style="font-weight: bold;">
+															Após receber seu produto, agradecemos se deixar um comentário aqui:
+														</label>
+														<textarea class="form-control" id="message-text" name="inquire_provider" style="height: 15em;"></textarea>
+													</div>
+													{% endif %}	
+													<!-- botões de ações -->
+													<div class="modal-footer" style="border-top:0px;">
+														{% if 'Aprovado'|lower in field.stage|lower %}
+															<input name="button9" value="Enviar meu comentário" class="btn btn-default uk-button" type="submit">
+														{% else %}
+															<input name="button9" value="Enviar orçamento aprovado por mim" class="btn btn-default uk-button" type="submit">
+														{% endif %}
+													</div>
+												</form>
+											{% endif %}
+										</div>
+									</div>
+
+								</div>
+
+						
+								<!-- Botão para editar a cotação -->
+								<div class="card-footer text-left">
+									<p class="readmore">
+										{% if user.is_authenticated %}
+											<!--Botão de edição quando stage for "0 Pendente"-->
+											{% if 'Pendente'|lower in field.stage|lower %}
+												<!-- Alteração da cotação pelo cliente -->
+												<a href="{% url 'qnow_client:quotation_client_edit' field.id  %}" class="uk-button"	style="padding: 3px 3px; width: 5em;">
+													Alterar
+												</a>
+	
+												<!-- Remoção da cotação pelo cliente -->
+												<a href="{% url 'qnow_client:quotation_client_delete' quotation_id=field.id action='search'  %}" class="uk-button" style="padding: 3px 3px; width: 5em;">
+													Remover
+												</a>											
+											{% endif %}
+
+											<!--Botão para nova cotação-->
+											{% if 'client'|lower in user.role|lower %}
+												<a href="{% url 'qnow_client:quotation_client' %}" class="uk-button" style="padding: 3px 3px; width: 10em;">
+													Nova Cotação(C)
+												</a>
+
+											{% endif %}
+
+											<!-- Botão para receber os orçaentos dos provider e os aprovar -->
+											{% if 'Orçado'|lower in field.stage|lower or 'Aprovado'|lower in field.stage|lower %}
+												<a class="uk-button" data-toggle="collapse" data-target="#{{ field.slug }}" aria-expanded="false"
+													aria-controls="collapseTwo aria-controls" style="padding: 3px 3px; width: 10em;">
+													Valores aqui!
+												</a>
+											</a>
+											{% endif %}
+
+										{% endif %}
+									</p>
+								</div>
+								
+							</div>
+						</div>
+					</article>
+				</div>
+			</div>
+		{% endfor %}
+	</section>
+{% endif %}
+
+
+<section class="parallax-section-2">
+	<div class="row">
+		<div class="col-sm-12 col-md-12" id="parallax2">
+			<div class="module ">
+				<div class="module-content">
+					<div class="uk-text-contrast uk-flex uk-flex-center" data-uk-parallax="{bg: -300}"
+						style="min-height: 160px; background-color: rgb(41, 44, 47); background-repeat: no-repeat; background-size: cover; background-position: 50% -42.435px;">
+						<div class="container1170" style="padding:20px 15px;">
+							<div class="uk-grid">
+								<div class="uk-width-medium-3-4">
+									<h3 embed-responsive-item style="margin-top pull-left:15px;">
+										<h2>{{ user }}</h2>
+										Inicie agora mesmo uma nova cotação e receba das melhores
+										MARCENARIAS, os melhores preços do mercado.</h3>
+								</div>
+								<div class="uk-width-medium-1-4 uk-text-right inverted">
+									<h3 embed-responsive-item style="margin-top pull-left:5px;">
+										{% if user.is_authenticated %}
+											<a class="uk-button uk-child-width-expand raleway16" style="font-size: 0.75em;" href="{% url 'qnow_client:quotation_client' %}">Iniciar uma nova cotação</a>
+										{% else %}
+											<a href="{% url 'qnow_user:login_client_start' %}" class="uk-button uk-child-width-expand raleway16" style="font-size: 0.75em;">Inicie sua cotação aqui!</a>
+										{% endif %}
+									</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
+{% block footer %}
+{% endblock %}

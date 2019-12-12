@@ -1,0 +1,11 @@
+#Exemplo do comando usado para gerar um dump em json da tabela
+
+#1: dumpdata (dump)
+#2: qnow_client (app)
+#3: quotationstage (model = tabela)
+#4: qnow_client/fixtures/QuotationStage.json (caminho)
+
+python manage.py dumpdata qnow_client.quotationstage  > qnow_client/fixtures/QuotationStage.json
+
+#Exemplo do comando para ler e inserir os dados
+python manage.py loaddata qnow_client/fixtures/QuotationStage.json
