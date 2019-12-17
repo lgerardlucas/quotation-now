@@ -129,6 +129,10 @@ def quotation_client_approved(request,quotationprice_id=0):
 
         # Alterando o stage da cotação para 4 = aprovado 
         Quotation.objects.filter(pk=quotationprice_id).update(stage_id=quotationstage.id)
+    else:
+        # 
+        messages.add_message(request, messages.INFO, 'Atenção! Para aprovar uma cotação, é preciso marcá-la!')
+        messages.add_message(request, messages.INFO, 'Volte a cotação Nº: '+str(quotationprice_id)+' e marque-a!')
 
     # Incluir melhores testes aqui
     return redirect("qnow_client:quotation_client_list", request.user.id)

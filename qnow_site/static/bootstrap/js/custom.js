@@ -4,6 +4,7 @@ window.onload = function() {
     const state = document.getElementById('id_state');
     const street = document.getElementById('id_street');
     const district = document.getElementById('id_district');
+    const approved = document.getElementById('info_approved');
 
     $('#id_cep').mask('00000-000');
     $('#id_phone').mask('(00) 00000-0000');
@@ -17,6 +18,15 @@ window.onload = function() {
         const submit = $(event.target).find('input[type="submit"]');
         submit.attr('disabled', 'disabled').val('Processando e enviando um email, aguarde...');
     });
+
+    
+    if (approved){
+        approved.onkeyup = function(event) {
+            window.alert('teste');
+            const text = 'teste';
+        }
+    }
+
 
     if (cep) {
         cep.onkeyup = function(event) {

@@ -346,17 +346,17 @@
 												</a>
 
 											{% endif %}
-
+acertar aqui o evento onclick para mudar o nome
 											<!-- Botão para receber os orçaentos dos provider e os aprovar -->
 											{% if 'Orçado'|lower in field.stage|lower or 'Aprovado'|lower in field.stage|lower %}
-												<a class="uk-button" data-toggle="collapse" data-target="#{{ field.slug }}" aria-expanded="false"
-													aria-controls="collapseTwo aria-controls" style="padding: 3px 3px; width: 12em;">
+												<a onclick="teste();" class="uk-button" data-toggle="collapse" data-target="#{{ field.slug }}" aria-expanded="false"
+													aria-controls="collapseTwo aria-controls" style="padding: 3px 3px; width: 12em;" id="info_approved">
+													
 													{% if 'Orçado'|lower in field.stage|lower %}
 														Lista de Orçamentos 
 													{% else %}
 														Dados da Aprovação
 													{% endif %}
-
 												</a>
 											</a>
 											{% endif %}

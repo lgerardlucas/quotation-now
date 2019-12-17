@@ -29,3 +29,10 @@ Hospedagem: [Heroku](https://www.heroku.com)
 Programadores
 -------------
 * Marcos André Gerard Alves [E-MAIL](lgerardlucas@gmail.com) - [LINKEDIN](https://www.linkedin.com/in/marcos-andre-gerard-alves-b071211b/)
+
+
+Comandos
+--------
+Criando o ambiente virtual:  $ python3 -m virtualenv myvenv
+Instalando os módulos:       $ (myvenv) pip install -r requirements.txt; 
+Se precisar, atualize o pip: $ (myvenv) pip install --upgrade pip --user
