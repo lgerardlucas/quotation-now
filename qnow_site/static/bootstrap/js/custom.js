@@ -21,10 +21,11 @@ window.onload = function() {
 
     
     if (approved){
-        approved.onkeyup = function(event) {
-            window.alert('teste');
-            const text = 'teste';
-        }
+        approved.addEventListener('click', function (event) {
+            const target = event.currentTarget;
+            const value = target.innerText;
+            target.innerText = value.includes('Fechar') ? value.replace('Fechar ', '') : `Fechar ${value}`;
+        });
     }
 
 

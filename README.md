@@ -33,6 +33,6 @@ Programadores
 
 Comandos
 --------
-Criando o ambiente virtual:  $ python3 -m virtualenv myvenv
+Criando o ambiente virtual:  $ python3 -m virtualenv myvenv ou $ virtualenv -p /usr/bin/python3 myvenv
 Instalando os módulos:       $ (myvenv) pip install -r requirements.txt; 
 Se precisar, atualize o pip: $ (myvenv) pip install --upgrade pip --user
