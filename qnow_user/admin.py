@@ -14,6 +14,9 @@ class UserAdmin(admin.ModelAdmin):
     # Campo ou campos específico para usar como link de acesso aos dados
     list_display_links = ('username',)
 
+    # Paginação para o listplay
+    list_per_page = 5
+    
     # Campos que aparecerão ao entra nos detalhes do model
     fields = ('username','email','is_active','role','phone','cep','street','district','city','state','password')
 

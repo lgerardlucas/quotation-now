@@ -1,17 +1,10 @@
 import re
 from django.db import models
-#from django.contrib.localflavor.br.forms import BRStateSelect
 from django.core import validators
 from django.contrib.auth.models import (AbstractBaseUser, PermissionsMixin,
     UserManager)
 
 class User(AbstractBaseUser, PermissionsMixin):
-
-    #username = models.CharField('Usuário', max_length=100,unique=True)
-        #, unique=True, 
-        #validators=[validators.RegexValidator(re.compile('^[\w.@+-]+$'),
-        #    'O nome de usuário só pode conter letras, digitos ou os '
-        #    'seguintes caracteres: @/./+/-/_', 'invalid')])
 
     email = models.EmailField('E-mail', unique=True)
     username = models.CharField('Nome e Sobrenome', unique=True, max_length=100, blank=False)
@@ -40,6 +33,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_full_username(self):
         return str(self)
+
 
     class Meta:
         app_label = 'qnow_user'
