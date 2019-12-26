@@ -21,9 +21,13 @@ def get_price_client_provider(quotation_id,stage_number):
 def get_price(instance,user_id):
     '''
     Função que retora o lance dado por um provider a uma dita cotação
+    Também análisa se a cotação esta aprovada, para somente trazer o valor a frente do provider correto
     '''
     try:
-        qvalue = QuotationPrice.objects.get(quotation_number_id=instance.id,quotation_provider_id=user_id)
+        if instance.stage.status == 4:
+            qvalue = QuotationPrice.objects.get(quotation_number_id=instance.id,quotation_provider_id=user_id,approved=True)
+        else:    
+            qvalue = QuotationPrice.objects.get(quotation_number_id=instance.id,quotation_provider_id=user_id)
     except QuotationPrice.DoesNotExist:
         return 0
     return qvalue.quotation_value
@@ -94,6 +98,9 @@ def get_status(instance,user_id,status,number_launch, dif_day):
         value_quotation = get_price(instance,user_id)
 
         if int(value_quotation) > 0:
-            return "Aprovado R$ "+str(value_quotation)
+            return mark_safe('<label class="provider_list_number" style="background-color: #FFB400; border: 1px solid #FFB400;">%s</label>' % ('A')+"Aprovado! Você R$ "+str(value_quotation)+"!")                            
         else:    
-            return "Aprovado mas sem valor!"
+            if instance.stage.status == 4:
+                return mark_safe('<label class="provider_list_number" style="background-color: red; border: 1px solid red;">%s</label>' % ('x')+" Aprovado! Outro fornecedor")                
+            else:    
+                return "Aprovado mas sem valor!"

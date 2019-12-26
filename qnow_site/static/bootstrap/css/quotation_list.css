@@ -200,7 +200,7 @@ CSS - Lista de cotações do PROVIDER
   align-items: center; 
   -webkit-justify-content: center; 
   justify-content: center; 
-  background-color:#292c2f
+  background-color:#292c2f;
 }
 
 .provider_list_number {
