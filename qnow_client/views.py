@@ -116,6 +116,7 @@ def quotation_client_list(request, client_id=0):
         return render(request, template_name, context)
 
 # Marca qual cotação foi aprovada pelo cliente e envia um email para os interessados
+@login_required
 def quotation_client_approved(request,quotationprice_id=0):
     if request.POST.get('price_id'):
         # Reprova todos os orçamentos primieiro. Isto garante a aprovação correta quando o client resolver trocar de provider
@@ -123,12 +124,22 @@ def quotation_client_approved(request,quotationprice_id=0):
 
         # Aprova o valor orçado pelo provider 
         quotationprice_update_row = QuotationPrice.objects.filter(pk=request.POST.get('price_id')).update(approved=True)  
-        
+resolver o envio de email para o provider ao aprovar pelo cliente uma cotação        
         # Retorna id para o stage = 4 aprovado
         quotationstage = QuotationStage.objects.get(status=4)
 
         # Alterando o stage da cotação para 4 = aprovado 
         Quotation.objects.filter(pk=quotationprice_id).update(stage_id=quotationstage.id)
+
+        # Após aprovar, enviar um email ao cliente e a marcenaria e uma mensagem na tela
+        messages.add_message(request, messages.INFO, 'Cotação Nº: '+str(quotationprice_id)+' aprovada com sucesso!')
+
+        t2 = threading.Thread(target=quotation_client_email, args=(Quotation,'aprovada',settings.SEND_EMAIL_SIS))
+        t2.start()
+
+        if settings.SEND_EMAIL_SIS == True:
+            messages.add_message(request, messages.INFO, 'Verifique sua conta de e-mail.')
+
     else:
         # 
         messages.add_message(request, messages.INFO, 'Atenção! Para aprovar uma cotação, é preciso marcá-la!')
@@ -188,7 +199,9 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
         subject = 'Quotation-NOW - Cotação Nº: '+str(request.id)+' - '+str(request.client)
         if acao == 'removida':
             message = 'Sua cotação foi '+acao+' com sucesso!.'
-        else:            
+        elif acao == 'aprovada':            
+            message = 'Parabéns, sua cotação foi '+acao+' com sucesso!\nAguarde o contato do fornecedor escolhido.'
+        else:
             message = 'Parabéns, sua cotação foi '+acao+' com sucesso!\nA partir de agora analisaremos e tendo alguma dúvida, entraremos em contato com você.'
             
         from_email = settings.EMAIL_HOST_USER

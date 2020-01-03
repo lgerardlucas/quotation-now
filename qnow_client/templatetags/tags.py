@@ -61,17 +61,14 @@ def get_status(instance,user_id,status,number_launch, dif_day):
 
             if int(value_quotation) > 0:
                 if number_launch > 1:
-                    return  mark_safe("Seu orçamento R$ "+str(value_quotation)+" + "+'<label class="provider_list_number">%s</label>' % (str(number_launch-1)))
+                    return  mark_safe("Seu orçamento R$ "+str(value_quotation)+" + "+'<label class="provider_list_number">%s</label>' % (str(number_launch)))
                 else:    
                     return "Seu orçamento R$ "+str(value_quotation)
             else:
-                if number_launch > 1:
-                    if (number_launch-1) == 1:
-                        return mark_safe('<label class="provider_list_number" style="background-color: red; border: 1px solid red;">%s</label>' % (str(number_launch-1))+" já orçou, falta você agora!")
-                    else:    
-                        return mark_safe('<label class="provider_list_number" style="background-color: red; border: 1px solid red;">%s</label>' % (str(number_launch-1))+" já orçaram, falta você agora!")
-                else:
+                if (number_launch) == 1:
                     return mark_safe('<label class="provider_list_number" style="background-color: red; border: 1px solid red;">%s</label>' % (str(number_launch))+" já orçou, falta você agora!")
+                else:    
+                    return mark_safe('<label class="provider_list_number" style="background-color: red; border: 1px solid red;">%s</label>' % (str(number_launch))+" já orçaram, falta você agora!")
 
     # Testando cotação orçada=3 
     elif status == 3:         
@@ -80,17 +77,14 @@ def get_status(instance,user_id,status,number_launch, dif_day):
 
         if int(value_quotation) > 0:
             if number_launch > 1:
-                return  mark_safe("Seu orçamento R$ "+str(value_quotation)+" + "+'<label class="provider_list_number">%s</label>' % (str(number_launch-1)))
+                return  mark_safe("Seu orçamento R$ "+str(value_quotation)+" + "+'<label class="provider_list_number">%s</label>' % (str(number_launch)))
             else:    
                 return "Seu orçamento R$ "+str(value_quotation)
         else:
-            if number_launch > 1:
-                if (number_launch-1) == 1:
-                    return mark_safe('<label class="provider_list_number" style="background-color: red; border: 1px solid red;">%s</label>' % (str(number_launch-1))+" já orçou, falta você agora!")
-                else:    
-                    return mark_safe('<label class="provider_list_number" style="background-color: red; border: 1px solid red;">%s</label>' % (str(number_launch-1))+" já orçaram, falta você agora!")
-            else:
+            if (number_launch) == 1:
                 return mark_safe('<label class="provider_list_number" style="background-color: red; border: 1px solid red;">%s</label>' % (str(number_launch))+" já orçou, falta você agora!")
+            else:    
+                return mark_safe('<label class="provider_list_number" style="background-color: red; border: 1px solid red;">%s</label>' % (str(number_launch))+" já orçaram, falta você agora!")
 
     # Testando cotação aprovada=4
     elif status == 4:         
@@ -98,7 +92,7 @@ def get_status(instance,user_id,status,number_launch, dif_day):
         value_quotation = get_price(instance,user_id)
 
         if int(value_quotation) > 0:
-            return mark_safe('<label class="provider_list_number" style="background-color: #FFB400; border: 1px solid #FFB400;">%s</label>' % ('A')+"Aprovado! Você R$ "+str(value_quotation)+"!")                            
+            return mark_safe('<label class="provider_list_number" style="background-color: #FFB400; border: 1px solid #FFB400;">%s</label>' % ('A')+"Aprovado! Você R$ "+str(value_quotation))                            
         else:    
             if instance.stage.status == 4:
                 return mark_safe('<label class="provider_list_number" style="background-color: red; border: 1px solid red;">%s</label>' % ('x')+" Aprovado! Outro fornecedor")                
