@@ -7,6 +7,10 @@ from datetime import datetime,date
 from django.contrib.auth import get_user_model
 from django.core.validators import FileExtensionValidator
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+
+
 User = get_user_model()
 
 app_name = 'qnow_client'
@@ -127,6 +131,7 @@ class Quotation(models.Model):
             return 'Não'
     get_removed.short_description = 'Removida'
 
+
     # Sub-campo: Indica a diferença entre a data de criação x data atual
     def get_dif_date_now(self):
         date1 = datetime.now().toordinal()
@@ -141,3 +146,14 @@ class Quotation(models.Model):
 
     def __str__(self):
         return str(self.client)
+
+# Signals = Quando pelo admin a cotação for liberada para receber valor, enviar email a todos os providers
+@receiver(post_save, sender=Quotation)
+def post_solicitacoes_save(sender, instance, **kwargs):
+    print('==========================')
+    print(instance.stage.id)
+    if instance.stage.id == 27:
+        print('Sim')
+    else:
+        print(kwargs.get('stage_id'))
+

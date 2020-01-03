@@ -124,7 +124,7 @@ def quotation_client_approved(request,quotationprice_id=0):
 
         # Aprova o valor orçado pelo provider 
         quotationprice_update_row = QuotationPrice.objects.filter(pk=request.POST.get('price_id')).update(approved=True)  
-resolver o envio de email para o provider ao aprovar pelo cliente uma cotação        
+
         # Retorna id para o stage = 4 aprovado
         quotationstage = QuotationStage.objects.get(status=4)
 
@@ -134,8 +134,12 @@ resolver o envio de email para o provider ao aprovar pelo cliente uma cotação
         # Após aprovar, enviar um email ao cliente e a marcenaria e uma mensagem na tela
         messages.add_message(request, messages.INFO, 'Cotação Nº: '+str(quotationprice_id)+' aprovada com sucesso!')
 
-        t2 = threading.Thread(target=quotation_client_email, args=(Quotation,'aprovada',settings.SEND_EMAIL_SIS))
-        t2.start()
+        # Dados para o envio do email
+
+        quotation_email =  Quotation.objects.get(pk=quotationprice_id)
+
+        t4 = threading.Thread(target=quotation_client_email, args=(quotation_email,'aprovada',settings.SEND_EMAIL_SIS))
+        t4.start()
 
         if settings.SEND_EMAIL_SIS == True:
             messages.add_message(request, messages.INFO, 'Verifique sua conta de e-mail.')
@@ -197,18 +201,42 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
         template_name = "../templates/client_email.html"
         
         subject = 'Quotation-NOW - Cotação Nº: '+str(request.id)+' - '+str(request.client)
+
         if acao == 'removida':
             message = 'Sua cotação foi '+acao+' com sucesso!.'
         elif acao == 'aprovada':            
-            message = 'Parabéns, sua cotação foi '+acao+' com sucesso!\nAguarde o contato do fornecedor escolhido.'
+            provider = QuotationPrice.objects.get(quotation_number=request.id,approved=True)  
+            message = 'Parabéns, a '+str(provider.quotation_provider)+' foi a empresa aprovada por você!\nA partir de agora, este fornecedor entrará em contato, finalizando os demais detalhes e dando segmento a produção de seu planejado.'
         else:
             message = 'Parabéns, sua cotação foi '+acao+' com sucesso!\nA partir de agora analisaremos e tendo alguma dúvida, entraremos em contato com você.'
-            
+
+        # Retorna o email do provider aprovado e adiciona os e-mails: da plataforma e do cliente
+        emails = []
+        emails.append(settings.EMAIL_HOST_USER)     # E-mail da plataforma
+        emails.append(request.client.email)         # E-mail do cliente
+
+        # Se for uma ação de aprovação de cotação, enviar um e-mail ao provoder
+        qvalue      = 0.00        
+        qprovider   = ''
+        qemail      = ''
+        qphone      = ''
+        if acao == 'aprovada':                      # E-mail do provider
+            emails.append(provider.quotation_provider.email) 
+            qvalue = provider.quotation_value
+            qprovider = str(provider.quotation_provider)
+            qemail = provider.quotation_provider.email
+            qphone = provider.quotation_provider.phone
+
+        # E-mail de envio da plataforma
         from_email = settings.EMAIL_HOST_USER
 
         context = {
             "request": request,
             "message":message,
+            "value_quotation":qvalue,
+            "provider_quotation":qprovider,
+            "email_provider":qemail,
+            "phone_provider":qphone,
             }
         content = render_to_string(template_name, context)
 
@@ -219,8 +247,7 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
                     subject,
                     content,
                     from_email, 
-                    [request.client.email],
-                    ['lgerardlucas@gmail.com']
+                    emails
                 )
                 email.content_subtype = "html"
                 email.send(fail_silently=False)

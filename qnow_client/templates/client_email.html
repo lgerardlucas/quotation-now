@@ -150,7 +150,40 @@
                           <br>
 
                           <b>Cotação Nº:</b> {{ request.id }}<br>
-                          <b>Cliente:</b> {{ request.client }}
+                          <b>Cliente:</b> {{ request.client }}<br>
+
+
+                          {% if value_quotation != 0.00 %}
+                            <b>E-mail:</b> {{ request.client.email }}<br>
+                            <b>Fone:</b> {{ request.client.phone }}<br>
+
+                            <br>
+
+                            <b>Fornecedor:</b> {{ provider_quotation }}<br>
+                            <b>Valor:</b> {{ value_quotation }}<br>
+                            <b>E-mail:</b> {{ email_provider }}<br>
+                            <b>Fone:</b> {{ phone_provider }}<br>
+
+                          <dl class="uk-description-list-line">
+                            <dt>
+                              <strong>Importante</strong>
+                            </dt>
+                            <dd style="text-align: left">
+                              Q-NOW a partir deste ponto, se retira!<br>
+                              Acreditamos que nesta etapa, o nosso trabalha foi concluído com exito, ou seja,
+                              unimos você a vários fornecedores e você escolheu um.
+                            </dd>
+                            <br>    
+                            <dt>
+                              <strong>Agradecimento</strong>
+                            </dt>
+                            <dd style="text-align: left">
+                              Q-NOW agradece a sua partição em nossa plataforma e fica a espera de seu retorno, onde desejamos
+                              saber o final desta história. Nos envie um e-mail e nos mostre como ficou seu projeto planejado. 
+                            </dd>
+                          </dl>
+
+                          {% endif  %}
 
                         </p>
                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-block btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; box-sizing: border-box;">
