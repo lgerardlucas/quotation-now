@@ -12,6 +12,7 @@ import threading
 from .models import Quotation, QuotationStage
 from qnow_provider.models import QuotationPrice
 from .forms import QuotationForm
+from qnow_user.models import User
 
 # Função lambda que retorna um count de Quotation chamada pela def quotation_client
 count_quotation = lambda client : Quotation.objects.filter(client_id=client).count()
@@ -201,19 +202,39 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
         template_name = "../templates/client_email.html"
         
         subject = 'Quotation-NOW - Cotação Nº: '+str(request.id)+' - '+str(request.client)
-
+        
+        emails_providers = []
+        emails_providers.append('')
+        
         if acao == 'removida':
             message = 'Sua cotação foi '+acao+' com sucesso!.'
         elif acao == 'aprovada':            
             provider = QuotationPrice.objects.get(quotation_number=request.id,approved=True)  
-            message = 'Parabéns, a '+str(provider.quotation_provider)+' foi a empresa aprovada por você!\nA partir de agora, este fornecedor entrará em contato, finalizando os demais detalhes e dando segmento a produção de seu planejado.'
+            message = 'Parabéns, a '+str(provider.quotation_provider)+' foi a empresa aprovada por você! A partir de agora, este fornecedor entrará em contato, finalizando os demais detalhes e dando segmento a produção de seu planejado.'
+        elif acao == 'liberada':            
+            message = 'Parabéns, sua cotação foi '+acao+' com sucesso! A partir de agora, é aguardar os lances de cada fornecedor e depois, é escolher e aprovar um deles. Em seguida da aprovação, o fornecedor entrará em contato você e juntos finalizarão o processo todo.'
+        elif acao == 'à espera':
+            # Lista os emails dos providers para envio em lote
+            providers = User.objects.filter(role='provider')
+            if providers:            
+                for provider in providers:
+                    emails_providers.append(provider.email)
+            else:
+                emails_providers.append(settings.EMAIL_HOST_USER)
+
+            message = 'Atenção, uma nova cotação chegou a nossa plataforma e esta '+acao+' de seu lance. '
         else:
             message = 'Parabéns, sua cotação foi '+acao+' com sucesso!\nA partir de agora analisaremos e tendo alguma dúvida, entraremos em contato com você.'
+
 
         # Retorna o email do provider aprovado e adiciona os e-mails: da plataforma e do cliente
         emails = []
         emails.append(settings.EMAIL_HOST_USER)     # E-mail da plataforma
-        emails.append(request.client.email)         # E-mail do cliente
+
+        # Somente pegar o e-mail do cliente, quando o envio não for exclusivos aos providers
+        if acao != 'à espera':
+            emails.append(request.client.email)     # E-mail do cliente
+
 
         # Se for uma ação de aprovação de cotação, enviar um e-mail ao provoder
         qvalue      = 0.00        
@@ -247,7 +268,8 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
                     subject,
                     content,
                     from_email, 
-                    emails
+                    emails,
+                    emails_providers
                 )
                 email.content_subtype = "html"
                 email.send(fail_silently=False)

@@ -9,7 +9,7 @@ from django.core.validators import FileExtensionValidator
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+import threading
 
 User = get_user_model()
 
@@ -147,13 +147,17 @@ class Quotation(models.Model):
     def __str__(self):
         return str(self.client)
 
-# Signals = Quando pelo admin a cotação for liberada para receber valor, enviar email a todos os providers
+# Signals = Quando pelo admin a cotação for liberada para receber valor, 
+# enviar email a todos os providers e ao cliente, comunicando dos fatos
 @receiver(post_save, sender=Quotation)
 def post_solicitacoes_save(sender, instance, **kwargs):
-    print('==========================')
-    print(instance.stage.id)
     if instance.stage.id == 27:
-        print('Sim')
-    else:
-        print(kwargs.get('stage_id'))
+        from .views import quotation_client_email
+        # E-mail enviado ao client
+        t1 = threading.Thread(target=quotation_client_email, args=(instance,'liberada',settings.SEND_EMAIL_SIS))
+        t1.start()
+
+        # E-mail enviado aos provider 
+        t1 = threading.Thread(target=quotation_client_email, args=(instance,'à espera',settings.SEND_EMAIL_SIS))
+        t1.start()
 
