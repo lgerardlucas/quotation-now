@@ -26,6 +26,8 @@ Plataforma de Imagens e Vídeos: [Cloudnay](https://cloudinary.com/)
 
 Hospedagem: [Heroku](https://www.heroku.com)
 
+Logo do Site: [logomaster](https://logomaster.ai/pt/app/edit)
+
 Programadores
 -------------
 * Marcos André Gerard Alves [E-MAIL](lgerardlucas@gmail.com) - [LINKEDIN](https://www.linkedin.com/in/marcos-andre-gerard-alves-b071211b/)
