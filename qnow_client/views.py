@@ -201,7 +201,7 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
     if send_email_sis == True:
         template_name = "../templates/client_email.html"
         
-        subject = 'Quotation-NOW - Cotação Nº: '+str(request.id)+' - '+str(request.client)
+        subject = 'MGA-Cotações - Cotação Nº: '+str(request.id)+' - '+str(request.client)
         
         emails_providers = []
         emails_providers.append(settings.EMAIL_HOST_USER)

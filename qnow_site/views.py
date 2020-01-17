@@ -80,7 +80,7 @@ def contact(request):
 # Envia um email referente ao contato do site
 def contact_email(request):
     template_name = "../templates/contact_email.html"
-    subject = 'Quotation-NOW'
+    subject = 'MGA-Cotações'
             
     from_email = settings.EMAIL_HOST_USER
     context = {

@@ -122,12 +122,12 @@
 								<div style="padding: 5px;">
 									{% if field.image_environment|lower == 'None'|lower %}
 										<a title="Sem foto do ambiente<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>" data-uk-lightbox="{group:'group1'}" href="{% static '/images/no-image.png' %}">
-											<img alt="Quotation-Now<br>Sem foto do ambiente" src="{% static '/images/no-image.png' %}" height="200px;" width="400px;" class="uk-border-rounded">
+											<img alt="MGA-Cotações<br>Sem foto do ambiente" src="{% static '/images/no-image.png' %}" height="200px;" width="400px;" class="uk-border-rounded">
 											<small>Foto do Ambiente</small>
 										</a>
 									{% elif field.image_environment|lower != 'None'|lower %}
 										<a title="Foto do seu ambiente<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>" data-uk-lightbox="{group:'group1'}" href="{{ field.image_environment.url }}">
-											<img alt="Quotation-Now<br>Foto do ambiente" src="{{ field.image_environment.url }}" height="200px" width="400px" class="uk-border-rounded">
+											<img alt="MGA-Cotações<br>Foto do ambiente" src="{{ field.image_environment.url }}" height="200px" width="400px" class="uk-border-rounded">
 											<small>Foto do Ambiente</small>
 										</a>
 									{% endif %}
@@ -137,12 +137,12 @@
 								<div style="padding: 5px;">
 									{% if field.image_project|lower == 'None'|lower %}
 										<a title="Sem foto do projeto<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>"  data-uk-lightbox="{group:'group1'}" href="{% static '/images/no-image.png' %}">
-											<img alt="Quotation-Now<br>Sem foto do projeto" src="{% static '/images/no-image.png' %}" height="200px;" width="400px;" class="uk-border-rounded">
+											<img alt="MGA-Cotações<br>Sem foto do projeto" src="{% static '/images/no-image.png' %}" height="200px;" width="400px;" class="uk-border-rounded">
 											<small>Foto do Projeto</small>
 										</a>
 									{% elif field.image_project|lower != 'None'|lower %}
 										<a title="Foto do seu projeto<br>Situação: {{ field.stage }} - Cotação Nº: {{ field.id }}<br><br><br>" data-uk-lightbox="{group:'group1'}" href="{{ field.image_project.url }}">
-											<img alt="Quotation-Now<br>Foto do projeto" src="{{ field.image_project.url }}" height="200px;" width="400px;" class="uk-border-rounded">
+											<img alt="MGA-Cotações<br>Foto do projeto" src="{{ field.image_project.url }}" height="200px;" width="400px;" class="uk-border-rounded">
 											<small>Foto do Projeto</small>
 										</a>
 									{% endif %}

@@ -221,12 +221,12 @@ def quotation_provider_price_post(request,quotation_id=0):
         return redirect("qnow_provider:quotation_provider_detail",quotation_id)
 
 
-#Envia um e-mail ao cliente e para Q-NOW como valor orçado pelo provider 
+#Envia um e-mail ao cliente e para MGA-Cotações como valor orçado pelo provider 
 def quotation_provider_email(request,value=0.00,provider_name='',acao='ERROR',send_email_sis='False',date_validate='',deliver_time='',form_payment='',commets=''):
     if send_email_sis == True:
         template_name = "../templates/provider_email.html"
         
-        subject = 'Quotation-NOW - Cotação Nº: '+str(request.id)+' - '+str(request.client)
+        subject = 'MGA-Cotações - Cotação Nº: '+str(request.id)+' - '+str(request.client)
         message = 'Parabéns, sua cotação foi '+acao+' com sucesso!'
             
         from_email = settings.EMAIL_HOST_USER
@@ -241,7 +241,7 @@ def quotation_provider_email(request,value=0.00,provider_name='',acao='ERROR',se
             "form_payment":     form_payment,
             "commets":          commets,
             "message_alert":'Este e-mail alerta você, de que uma marcenaria lançou um valor para sua cotação. Se o valor estiver dentro do esperado, poderá acessar a plataforma e aprová-lo ou esperar mais uns dias, a fim de que, outras marcenarias deem seus lances.',
-            "message_aprovacao":'   Ao aprovar uma cotação, o cliente esta aprovando a marcenaria, para que a mesma, possa entrar em contato, finalizar os detalhes e tirar dúvidas, e com isto, realmente fechar o custo final de sua cotação. A Q-NOW, une cliente e marcenaria para que juntos produzam sonhos!'
+            "message_aprovacao":'   Ao aprovar uma cotação, o cliente esta aprovando a marcenaria, para que a mesma, possa entrar em contato, finalizar os detalhes e tirar dúvidas, e com isto, realmente fechar o custo final de sua cotação. A MGA-Cotações, une cliente e marcenaria para que juntos produzam sonhos!'
             }
         content = render_to_string(template_name, context)
         if subject and message and from_email:
@@ -267,7 +267,7 @@ def quotation_provider_email_inquire(request,quotation_id=0):
     template_name = "../templates/provider_email_inquire.html"
 
     quotation = Quotation.objects.get(pk=quotation_id,removed=False)
-    subject = 'Quotation-NOW - Cotação Nº: '+str(quotation_id)+' - '+str(quotation.client)
+    subject = 'MGA-Cotações - Cotação Nº: '+str(quotation_id)+' - '+str(quotation.client)
     message = 'Atenção, sua cotação contém uma dúvida.'
         
     from_email = settings.EMAIL_HOST_USER

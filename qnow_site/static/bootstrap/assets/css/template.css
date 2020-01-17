@@ -1942,6 +1942,13 @@ article.item {
         padding: 8px 12px;
         font-size: 10px
     }
+
+    img {
+        display: block;
+        max-width: 70%;
+        height: auto
+    }
+
 }
 
 @media (min-width:768px) {
@@ -1954,6 +1961,13 @@ article.item {
         padding: 10px 16px;
         font-size: 12px
     }
+
+    img {
+        display: block;
+        max-width: 250%;
+        height: auto
+    }
+    
 }
 
 @media (min-width:992px) {
@@ -1966,6 +1980,13 @@ article.item {
         padding: 10px 18px;
         font-size: 14px
     }
+
+    img {
+        display: block;
+        max-width: 86%;
+        height: auto
+    }
+
 }
 
 @media (min-width:1200px) {
@@ -1978,6 +1999,13 @@ article.item {
         padding: 10px 20px;
         font-size: 16px
     }
+
+    img {
+        display: block;
+        max-width: 150%;
+        height: auto
+    }
+
 }
 
 @keyframes spMenuFadeIn {
@@ -2042,12 +2070,12 @@ legend {
     padding-bottom: 10px
 }
 
-img {
+/* img {
     display: block;
-    max-width: 100%;
+    max-width: 86%;
     height: auto
 }
-
+ */
 h1,
 .h1,
 h2,

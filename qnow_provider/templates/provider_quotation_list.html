@@ -135,14 +135,14 @@
 				{% if quotation.image_environment|lower == 'None'|lower %}
 				<a title="Sem foto do ambiente<br>Situação: {{ quotation.stage }} - Cotação Nº: {{ quotation.id }}<br><br><br>"
 					data-uk-lightbox="{group:'group1'}" href="{% static '/images/no-image.png' %}">
-					<img class="uk-border-rounded img_provider" alt="Quotation-Now<br>Sem foto do ambiente"
+					<img class="uk-border-rounded img_provider" alt="MGA-Cotações<br>Sem foto do ambiente"
 						src="{% static '/images/no-image.png' %}">
 					<strong style="color:#292c2f;">Ambiente</strong>
 				</a>
 				{% elif quotation.image_environment|lower != 'None'|lower %}
 				<a title="Foto do seu ambiente<br>Situação: {{ quotation.stage }} - Cotação Nº: {{ quotation.id }}<br><br><br>"
 					data-uk-lightbox="{group:'group1'}" href="{{ quotation.image_environment.url }}">
-					<img class="uk-border-rounded img_provider" alt="Quotation-Now<br>Foto do ambiente"
+					<img class="uk-border-rounded img_provider" alt="MGA-Cotações<br>Foto do ambiente"
 						src="{{ quotation.image_environment.url }}">
 					<strong style="color:#292c2f;">Ambiente</strong>
 				</a>
@@ -154,14 +154,14 @@
 				{% if quotation.image_project|lower == 'None'|lower %}
 				<a title="Sem foto do projeto<br>Situação: {{ quotation.stage }} - Cotação Nº: {{ quotation.id }}<br><br><br>"
 					data-uk-lightbox="{group:'group1'}" href="{% static '/images/no-image.png' %}">
-					<img class="uk-border-rounded img_provider" alt="Quotation-Now<br>Sem foto do projeto"
+					<img class="uk-border-rounded img_provider" alt="MGA-Cotações<br>Sem foto do projeto"
 						src="{% static '/images/no-image.png' %}">
 					<strong style="color:#292c2f;">Projeto</strong>
 				</a>
 				{% elif quotation.image_project|lower != 'None'|lower %}
 				<a title="Foto do seu projeto<br>Situação: {{ quotation.stage }} - Cotação Nº: {{ quotation.id }}<br><br><br>"
 					data-uk-lightbox="{group:'group1'}" href="{{ quotation.image_project.url }}">
-					<img class="uk-border-rounded img_provider" alt="Quotation-Now<br>Foto do projeto"
+					<img class="uk-border-rounded img_provider" alt="MGA-Cotações<br>Foto do projeto"
 						src="{{ quotation.image_project.url }}">
 					<strong style="color:#292c2f;">Projeto</strong>
 				</a>

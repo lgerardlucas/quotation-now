@@ -19,6 +19,10 @@ if settings.DEBUG:
     ] + urlpatterns
 
 
-admin.site.site_header = 'Quotation-NOW'    
-admin.site.index_title = 'Q-NOW(Administrador)'    
-admin.site.site_title = 'Q-NOW'    
+#admin.site.site_header = 'Quotation-NOW'    
+#admin.site.index_title = 'Q-NOW(Administrador)'    
+#admin.site.site_title = 'Q-NOW'    
+
+admin.site.site_header = 'MGA-Cotações'    
+admin.site.index_title = 'MGA(Administrador)'    
+admin.site.site_title = 'MGA'    
