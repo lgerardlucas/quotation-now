@@ -212,7 +212,7 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
             provider = QuotationPrice.objects.get(quotation_number=request.id,approved=True)  
             message = 'Parabéns, a '+str(provider.quotation_provider)+' foi a empresa aprovada por você! A partir de agora, este fornecedor entrará em contato, finalizando os demais detalhes e dando segmento a produção de seu planejado.'
         elif acao == 'liberada':            
-            message = 'Parabéns, sua cotação foi '+acao+' com sucesso! A partir de agora, é aguardar os lances de cada fornecedor e depois: escolher e aprovar um deles. Em seguida da aprovação, o fornecedor entrará em contato com você e juntos finalizarão o processo todo.'
+            message = 'Parabéns, sua cotação foi '+acao+' com sucesso! A partir de agora é aguardar os lances de cada fornecedor e depois escolher e aprovar um deles. Em seguida da aprovação o fornecedor entrará em contato com você e juntos finalizarão o processo todo.'
         elif acao == 'à espera':
             # Lista os emails dos providers para envio em lote
             providers = User.objects.filter(role='provider')
