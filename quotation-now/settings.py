@@ -9,7 +9,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = config('SECRET_KEY',default='m7!b(n)4$&jia=#@71=u24o4)xy79qaz$*2%+n#fk*dwdf0&j^')
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-ALLOWED_HOSTS = ['mgacotacoes.com.br','127.0.0.1','localhost']
+ALLOWED_HOSTS = ['*']
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 

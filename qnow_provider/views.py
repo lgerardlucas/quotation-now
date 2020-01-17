@@ -240,8 +240,8 @@ def quotation_provider_email(request,value=0.00,provider_name='',acao='ERROR',se
             "deliver_time":     deliver_time,
             "form_payment":     form_payment,
             "commets":          commets,
-            "message_alert":'Este e-mail alerta você, de que uma marcenaria lançou um valor para sua cotação. Se o valor estiver dentro do esperado, poderá acessar a plataforma e aprová-lo ou esperar mais uns dias, a fim de que, outras marcenarias deem seus lances.',
-            "message_aprovacao":'   Ao aprovar uma cotação, o cliente esta aprovando a marcenaria, para que a mesma, possa entrar em contato, finalizar os detalhes e tirar dúvidas, e com isto, realmente fechar o custo final de sua cotação. A MGA-Cotações, une cliente e marcenaria para que juntos produzam sonhos!'
+            "message_alert":'Este e-mail alerta você de que uma marcenaria lançou um valor para sua cotação. Se o valor estiver dentro do esperado poderá acessar a plataforma e aprová-lo ou esperar mais uns dias, a fim de que outras marcenarias deem seus lances.',
+            "message_aprovacao":'   Ao aprovar uma cotação o cliente esta aprovando a marcenaria para que a mesma possa entrar em contato e finalizar os detalhes, e tirar dúvidas e com isto fechar o custo final de sua cotação. A MGA-Cotações une cliente e marcenaria para que juntos produzam sonhos!'
             }
         content = render_to_string(template_name, context)
         if subject and message and from_email:
