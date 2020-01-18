@@ -163,8 +163,8 @@ ADMINS = [('Marcos','lgerardlucas@gmail.com',)]
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'lgerardlucas@gmail.com' 
-EMAIL_HOST_PASSWORD = '!@#LbAm1971'
+EMAIL_HOST_USER = 'mgacotacoes@gmail.com' 
+EMAIL_HOST_PASSWORD = '!@#lbam1971'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 SEND_EMAIL_SIS = config('SEND_EMAIL_SIS', default=True, cast=bool)

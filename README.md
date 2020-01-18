@@ -1,4 +1,4 @@
-[![MGA-Cotações](https://res.cloudinary.com/quotation-now/image/upload/v1576156892/Quotation-NOW/qnow_favico_linear_lonbyu.png)](https://quotation-now.herokuapp.com/)
+[![MGA-Cotações](https://res.cloudinary.com/quotation-now/image/upload/v1576156892/Quotation-NOW/qnow_favico_linear_lonbyu.png)](https://www.mgacotacoes.com.br)
 # MGA-Cotações
 
 
