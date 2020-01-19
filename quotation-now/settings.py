@@ -142,8 +142,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+
 # STATIC_ROOT = Define o diretório onde serão armazenados os arquivos estáticos coletados
 STATIC_ROOT = 'staticfiles'
+
 # STATIC_URL = Define o prefixo de URL para referência aos arquivos estáticos. exemplo: { static '/static/img.jpg}
 STATIC_URL = '/static/'
 
