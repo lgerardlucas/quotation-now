@@ -9,3 +9,4 @@ html5_hammer-html
 venv/*
 .idea/*
 __pycache__/
+staticfiles
