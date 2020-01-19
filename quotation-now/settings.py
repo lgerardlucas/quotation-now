@@ -135,17 +135,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
 # Arquivos usados na renderização, exemplo: HTML
 # STATICFILES_DIRS = Define os diretórios que serão vasculhados pelo FileSystemFinder.
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-
 # STATIC_ROOT = Define o diretório onde serão armazenados os arquivos estáticos coletados
 STATIC_ROOT = 'staticfiles'
-
 # STATIC_URL = Define o prefixo de URL para referência aos arquivos estáticos. exemplo: { static '/static/img.jpg}
 STATIC_URL = '/static/'
 
