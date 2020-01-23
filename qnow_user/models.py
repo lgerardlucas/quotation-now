@@ -3,6 +3,7 @@ from django.db import models
 from django.core import validators
 from django.contrib.auth.models import (AbstractBaseUser, PermissionsMixin,
     UserManager)
+from datetime import datetime    
 
 class User(AbstractBaseUser, PermissionsMixin):
 
@@ -18,6 +19,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     district = models.CharField('Bairro', max_length=50, blank=False, default='Indefinido')
     city = models.CharField('Cidade', max_length=50, blank=False, default='Indefinido')
     state = models.CharField('Estado', max_length=50, blank=False, default='Indefinido')
+
+    # Quando definido True, o usuário poderá interagir com o sistema todo(cotações e lances)
+    approved = models.BooleanField('Mov/Autorizada', blank=True, default=False)
+
+    contract_accepted = models.BooleanField('Li e concordo(S/N)', blank=True, default=False)
+    contract_date_accepted = models.DateTimeField('Li e concordei em:',default=datetime.now)
 
     objects = UserManager()
 

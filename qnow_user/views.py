@@ -44,6 +44,12 @@ def register(request, origin, *args, **kwargs):
             user.role = origin
             user.email = user.email.lower()
             user.username = capitalize_text(user.username)
+            # Por padrão, o provider estará inativo quando no primeiro cadastro
+            if origin != 'client':
+               user.approved = False
+            else:
+               user.approved = True
+
             user.save()
             user = authenticate(
                 email=user.email, password=form.cleaned_data['password1'],backend='django.contrib.auth.backends.ModelBackend'
@@ -98,4 +104,3 @@ def user_email(request,acao='ERROR',send_email_sis='False'):
             except BadHeaderError:
                 return HttpResponse('Problema no envio do e-mail. Tente mais tarde!')
   
-
