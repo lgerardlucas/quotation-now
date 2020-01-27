@@ -86,7 +86,7 @@ def user_email(request,acao='ERROR',send_email_sis='False'):
 
         context = {
             "request": request,
-            "message":message,
+            "message":message
             }
         content = render_to_string(template_name, context)
 
