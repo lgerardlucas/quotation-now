@@ -143,13 +143,50 @@
                           style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 15px;">
 
                           <h3>MGA-Cotações</h3><br>
-                          <b>Cliente</b><br> {{ request.username }} <br><br>
+                          <b>
+
+                            {% if request.role == 'client' %}
+                                Cliente
+                            {% else %}
+                                Marcenaria
+                            {% endif %} 
+
+                          </b><br> 
+
+                          {{ request.username }} <br><br>
                           <b>E-mail</b><br>  {{ request.email }}<br><br>
                           <b>Cep</b><br>     {{ request.cep }}<br>
                             <br>
                             <br>
                           <b>Mensagem </b><br>
                           {{ message }}
+
+
+                          <h3 class="module-title">Contrato</h3>
+                          <div class="module-content">
+                               <p style="text-align: justify"><strong>Entendi e concordei, </strong>
+                                {% if request.role == 'client' %}
+                                    que a plataforma MGA Cotações tem por finalidade única e 
+                                    restrita a função de unir você cliente as diversas empresas de móveis planejados, 
+                                    a fim de agilizar e atingir um maior número de fornecedores para o seu processo de cotação. 
+                                    Esta plataforma NÃO tem a responsabilidade de: produzir, entregar, montar, corrigir 
+                                    falhas de projeto ou mesmo, atuar no processo de pagamento do produto adquirido de uma 
+                                    das empresas aqui cadastradas.
+                                {% else %}
+                                    que a Plataforma MGA Cotações tem por finalidade trazer a sua marcenaria 
+                                    inúmeras cotações de diversos clientes à espera de um orçamento que contemple: produção, entrega, 
+                                    montagem e formas possíveis de pagamentos. Também fica ciente, que é de total responsabilidade da 
+                                    marcenaria aprovada pelo cliente, todos os processos acima citados e possíveis correções, ajustes ou 
+                                    danos no produto ou no ambiente a que foi montado o mesmo. A MGA Cotações, NÃO tem responsabilidade 
+                                    referente a possíveis atrasos de pagamentos do cliente perante a marcenaria ou qualquer outra ação 
+                                    direta junto ao cliente ou a marcenaria a não ser pela proposta a que oferece esta plataforma. 
+                                    A plataforma MGA Cotações, possui apenas um único plano a oferecer as marcenarias como método de cobrança
+                                    pelo uso desta ferramenta, 5% sobre a cotação apravada pelo cliente.												
+                                {% endif %}
+
+                                </p>
+                         </div>
+
 
                         </p>
                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary"

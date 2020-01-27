@@ -80,7 +80,7 @@ def register(request, origin, *args, **kwargs):
 def user_email(request,acao='ERROR',send_email_sis='False'):
     if send_email_sis == True:
         template_name = "../templates/user_email.html"
-        subject = 'MGA-Cotações - Cliente: '+str(request.username)+' '+acao+' com sucesso!'
+        subject = 'MGA-Cotações: '+str(request.username)+' '+acao+' com sucesso!'
         message = 'Parabéns, seu cadastro foi registrado com sucesso!'
         from_email = settings.EMAIL_HOST_USER
 

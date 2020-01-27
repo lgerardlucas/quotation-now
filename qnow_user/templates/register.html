@@ -234,12 +234,52 @@
 <!-- 											<label for="text1" class="control-label required_label">
 												{{ form.contract_accepted.label_tag }}
 												<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
-											</label>
- -->									<div class="gcore-display-table">
+											</label> 
+											
+ -->									
+ 											<div class="gcore-display-table" style="text-align: justify; font-style: italic; font-weight: bold;">
 												{{ form.contract_accepted }}
-												<a href="#" data-toggle="modal" data-target="#myModal">
-													<u><strong>Eu li e concordo com os termos e condições de uso desta plataforma.</strong></u>
-												</a>
+												<!-- <a href="#" data-toggle="modal" data-target="#myModal"> -->
+<!-- 											<u><strong>Eu li e concordo com os termos e condições de uso desta plataforma.</strong></u>
+ -->
+
+ 												{% if origin  == "client" %}
+													ENTENDO E CONCORDO, que a plataforma MGA Cotações tem por finalidade única e 
+													restrita a função de unir você cliente as diversas empresas de móveis planejados, 
+
+													<label role="button" class="collapsed uk-icon-arrow-circle-down" type="button" data-toggle="collapse" data-target="#contratoClient"
+														aria-expanded="false" aria-controls="collapseTwo aria-controls">
+														<strong>Leia mais aqui...</strong>
+													</label>
+		
+													<div id="contratoClient" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+														a fim de agilizar e atingir um maior número de fornecedores para o seu processo de cotação. 
+														Esta plataforma NÃO tem a responsabilidade de: produzir, entregar, montar, corrigir 
+														falhas de projeto ou mesmo, atuar no processo de pagamento do produto adquirido de uma 
+														das empresas aqui cadastradas.
+													</div>
+					
+												{% else %}
+													ENTENDO E CONCORDO, que a Plataforma MGA Cotações tem por finalidade trazer a sua marcenaria 
+													inúmeras cotações de diversos clientes à espera de um orçamento que contemple: produção, entrega, 
+													montagem e formas possíveis de pagamentos. 
+													<label role="button" class="collapsed uk-icon-arrow-circle-down" type="button" data-toggle="collapse" data-target="#contratoProvider"
+														aria-expanded="false" aria-controls="collapseTwo aria-controls">
+														<strong>Leia mais aqui...</strong>
+													</label>
+													
+													<div id="contratoProvider" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+														Também fica ciente, que é de total responsabilidade da 
+														marcenaria aprovada pelo cliente, todos os processos acima citados e possíveis correções, ajustes ou 
+														danos no produto ou no ambiente a que foi montado o mesmo. A MGA Cotações, NÃO tem responsabilidade 
+														referente a possíveis atrasos de pagamentos do cliente perante a marcenaria ou qualquer outra ação 
+														direta junto ao cliente ou a marcenaria a não ser pela proposta a que oferece esta plataforma. 
+														A plataforma MGA Cotações, possui apenas um único plano a oferecer as marcenarias como método de cobrança
+														pelo uso desta ferramenta, 5% sobre a cotação apravada pelo cliente.												
+													</div>
+												{% endif %}	
+													
+												<!-- </a> -->
 												{{ form.contract_accepted.errors }}
 											</div>
 										</div>
@@ -271,7 +311,7 @@
 												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 												</div>
 											</div>
-											
+
 											</div>
 										</div>
 										
