@@ -5,6 +5,7 @@ window.onload = function() {
     const street = document.getElementById('id_street');
     const district = document.getElementById('id_district');
     const approved = document.getElementById('info_approved');
+    const contractAcceptance = document.getElementById('id_contract_accepted');
 
     $('#id_cep').mask('00000-000');
     $('#id_phone').mask('(00) 00000-0000');
@@ -56,6 +57,18 @@ window.onload = function() {
                 });
         }
     }
-  
 
+    if (contractAcceptance) {
+        const submitButton = document.querySelector('input[type=submit]');
+
+        contractAcceptance.addEventListener('change', function (event) {
+            const { checked } = event.target;
+
+            if (checked) {
+                submitButton.removeAttribute('disabled');
+            } else {
+                submitButton.setAttribute('disabled', true);
+            }
+        });
+    }
 }
