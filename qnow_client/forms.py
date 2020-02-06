@@ -38,7 +38,7 @@ class QuotationForm(forms.ModelForm):
             'house_set':'Nome do condomínio ou residencial',
             'mobile_type': 'Para qual móvel deseja cotações?',
             'mobile_description':'Para "_Outro", coloque o nome aqui.(Ex: Aparador)',
-            'particulars': 'Nos conte como deseja seu móvel',
+            'particulars': 'Nos conte como deseja seu móvel\nrwarw',
             'image_environment':'Imagem do ambiente - Uma foto do ambiente, nos ajudará a entender melhor caso precisemos projetá-lo(Projeto simples e sem custo).',
             'image_project':'Imagem do projeto - Projeto, desenho ou qualquer imagem, caso tenha, de como gostaria que fosse seu móvel.'
         }

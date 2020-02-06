@@ -61,5 +61,12 @@
         "fields": {
             "description": "Churrasqueira"
         }
+    },
+    {
+        "model": "qnow_client.mobilietype",
+        "pk": 10,
+        "fields": {
+            "description": "_Projeto por e-mail"
+        }
     }
 ]
