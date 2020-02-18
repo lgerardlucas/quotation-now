@@ -4,6 +4,7 @@ from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 register = template.Library()
 
+
 @register.simple_tag(name='get_price_client_provider')
 def get_price_client_provider(quotation_id,stage_number):
     '''

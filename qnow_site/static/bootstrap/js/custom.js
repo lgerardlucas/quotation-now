@@ -111,8 +111,18 @@ window.onload = function() {
             }
             /*ID = 10_Envio do projeto por e-mail */
             else if (x == 10) {
-                mobileDescription.value = 'Enviarei um e-mail após salvar esta cotação!';
-                particulars.value = 'Para o tipo de opção "_Projeto por e-mail" logo depois de salvar esta cotação, é necessário enviar um email para mgacotações@gmail.com para que possa ser enviado a todos os marceneiros seu projeto e você receber orçamentos.';
+                mobileDescription.value = 'Envie um e-mail com seu projeto';
+                particulars.value = 'Para o tipo de opção "_Projeto por e-mail" salve esta cotação e envie um email para mgacotações@gmail.com com seu projeto.';
+            }    
+            /*ID = 11_Reforma de um móvel */
+            else if (x == 11) {
+                mobileDescription.value = 'Indique aqui o móvel a ser reformado';
+                particulars.value = 'Informações:\n'+
+                                    '1) Tipo de produção, marcenaria ou Loja?\n'+
+                                    '2) Qual a urgência?\n'+
+                                    '3) Importante: Inclua fotos do móvel!\n'+
+                                    '\n'+
+                                    'Observações sobre o tipo de reforma:';
             }    
             else { 
                 mobileDescription.value = '';

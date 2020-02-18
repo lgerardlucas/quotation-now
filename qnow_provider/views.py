@@ -183,7 +183,8 @@ def quotation_provider_price_post(request,quotation_id=0):
                 t1 = threading.Thread(target=quotation_provider_email, args=(
                     quotation,                      # Dados dos cliente
                     post.quotation_value,           # Valor orçado pelo provider
-                    request.user.username,          # Usuário logado(provider)
+                    #request.user.username,          # Usuário logado(provider)
+                    request.user.id,                # Usuário logado(provider)
                     'orçada',                       # Situação para troca no banco
                     settings.SEND_EMAIL_SIS,        # Regra para envio de email
                     str(post.date_validate),        # Data de validade do valor orçado

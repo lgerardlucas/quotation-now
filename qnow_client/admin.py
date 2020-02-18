@@ -11,6 +11,14 @@ import unidecode
 # list_display
 # list_filter
 # search_fields
+class MobileTypeAdmin(admin.ModelAdmin):
+    # Campos que aparecerão ao entrar na model
+    list_display = ('id','description',)
+    search_fields = ('id','description')
+    readonly_fields = ('id',)
+    list_display_links = ('description',)
+
+
 class QuotationStageAdmin(admin.ModelAdmin):
     # Campos que aparecerão ao entrar na model
     search_fields = ('status','description')
@@ -140,6 +148,6 @@ class QuotationAdmin(admin.ModelAdmin):
 
 
 # Register your models here.
-admin.site.register(MobilieType)
+admin.site.register(MobilieType,MobileTypeAdmin)
 admin.site.register(QuotationStage,QuotationStageAdmin)
 admin.site.register(Quotation,QuotationAdmin)

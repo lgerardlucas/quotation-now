@@ -133,6 +133,7 @@
 									{% get_price_client_provider field.id field.stage.status as quotation_price %}
 								{% endif %}	
 
+									
 								<!--Situação -->
 								<div class="card">
 									<div class="card-header" id="headingTwo">
@@ -196,15 +197,20 @@
 													{% if 'Aprovado'|lower not in field.stage|lower %}
 
 														<label style="text-align: justify; padding-left: 0.65em;">
-														- Se algum valor ofertado aqui, estiver dentro do esperado, 
+														- Se algum valor ofertado aqui estiver dentro do esperado, 
 														você pode aprovar ou aguardar mais alguns dias, a fim de que, outras marcenarias deem seus lances.
 														
 														<br>
 
-														- Quando você aprova um valor, indica estar aprovando um fornecedor, para que o mesmo, possa entrar em
+														- Quando você aprova um valor indica estar aprovando um fornecedor, para que o mesmo, possa entrar em
 														contato e finalizar os detalhes. Neste contato, serão tiradas dúvidas de ambas as partes, e com isto, 
 														fechado o custo final de sua cotação.
-														</label>
+
+														<br>
+														- IMPORTANTE: O nome da marcenaria será informado no ato da aprovação. Este processo garante 
+														igualdade e imparcialidade no processo de orçamento feito por cada marcenaria.
+
+													</label>
 													{% else %}
 														<label style="text-align: justify; padding-left: 0.65em;">
 															<label style="font-weight: bold;">- Você optou pelo fornecedor listado abaixo,</label>
@@ -249,14 +255,17 @@
 																<!-- TemplateTAG carregada com os dados de orçamento -->
 																{% for price in quotation_price %}
 																	<tr>
-																		<td style="border:none; font-weight: bold; ">&nbsp; {{ price.quotation_provider }}</td>
+																		{% if price.approved %}
+																		   <td style="border:none; font-weight: bold; ">&nbsp; {{ price.quotation_provider }} </td>
+																		{% else %}
+																			<td style="border:none; font-weight: bold; ">&nbsp; Marcenaria({{ price.quotation_provider_id }}) </td>
+																		{% endif %}
 																		<td style="border:none;	font-weight: bold; text-align: right;">R$ {{ price.quotation_value }}</td>
 																		<td style="border:none; text-align: center;">
 																			{% if price.approved %}
 																				<input style="vertical-align: middle;" type="radio" name="price_id" value="{{ price.id }}" checked>
 																			{% else %}	
-																				
-																			<input style="vertical-align: middle;" type="radio" name="price_id" value="{{ price.id }}"> 
+																			     <input style="vertical-align: middle;" type="radio" name="price_id" value="{{ price.id }}"> 
 																			{% endif %}	
 																		</td>
 																	</tr>
@@ -347,7 +356,7 @@
 
 											{% endif %}
 
-											<!-- Botão para receber os orçaentos dos provider e os aprovar -->
+											<!-- Botão para receber os orçamentos dos provider e os aprovar -->
 											{% if 'Orçado'|lower in field.stage|lower or 'Aprovado'|lower in field.stage|lower %}
 												<a class="uk-button" data-toggle="collapse" data-target="#{{ field.slug }}" aria-expanded="false"
 													aria-controls="collapseTwo aria-controls" style="padding: 3px 3px; width: 15em;" id="info_approved">
