@@ -111,7 +111,12 @@
 										<!-- Nome -->
 										<div class="form-group" id="form-row-text1">
 											<label for="text1" class="control-label required_label">
-												{{ form.username.label_tag }}
+<!-- 												{{ form.username.label_tag }} -->
+												{% if origin  == "client" %}
+													Nome e Sobrenome:
+												{% else %}
+												   Nome da Marcenaria
+												{% endif %}
 												<i class="fa fa-asterisk"
 													style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
 											</label>
