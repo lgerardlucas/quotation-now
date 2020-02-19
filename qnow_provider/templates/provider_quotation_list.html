@@ -79,6 +79,25 @@
 				</select>
 			</div>
 
+			<!-- SELECT de estados-->
+			<div style="display: inline-block; width: 35%; height: 100%;">
+				<select name="state_list" style="padding-left: 3px;">
+					{% for state in quotationsstates %}
+						{% if quotationstate_select|lower == state.state|lower %}
+							<option value="{{ state.state }}" selected>{{ state.state }}</option>
+						{% else %}
+							<option value="{{ state.state }}">{{ state.state }}</option>
+						{% endif %}
+					{% endfor %}
+
+					{% if quotationstate_select == '' %}
+						<option value="" selected>Estado</option>
+					{% else %}
+						<option value="">Estado</option>
+					{% endif %}
+				</select>
+			</div>
+
 			<!-- BOTÕES de pesquisa e listagem -->
 			<div style="display: inline-block; width: 100%; text-align: center; padding-top: 5px;">
 				<div style="display: inline-block; width: 50%;">

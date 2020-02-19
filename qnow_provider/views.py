@@ -40,6 +40,10 @@ def quotation_provider(request):
 
     # GET - Cidade ser pesquisado as cotações
     queryset_city = request.GET.get('city_list')
+
+    # GET - Estado ser pesquisado as cotações
+    queryset_state = request.GET.get('state_list')
+
     # Sub-campos: Retorna o valor de cada cotação referente ao provider 
     def get_price_provider(self):
         if self.quotation_provider == User.id:
@@ -50,7 +54,7 @@ def quotation_provider(request):
 
     # GET - Por diversos campos
     queryset = request.GET.get('q')
-    if queryset or queryset_stage or queryset_city:
+    if queryset or queryset_stage or queryset_city or queryset_state:
         # -1 = Todos ou X para individual
         if queryset_stage == '-1':
             stage_list_start = 2
@@ -62,6 +66,9 @@ def quotation_provider(request):
         if not queryset_city:
             queryset_city = ''
 
+        if not queryset_state:
+            queryset_state = ''
+
         # Pesquisa via Like + Or
         quotations = Quotation.objects.filter(
             Q(id__icontains=queryset)|
@@ -71,15 +78,19 @@ def quotation_provider(request):
             Q(house_set__icontains=queryset)|  
             Q(mobile_type__description__icontains=queryset)|
             Q(mobile_description__icontains=queryset)).filter(
-            Q(client__city__icontains=queryset_city)
+            Q(client__city__icontains=queryset_city)|
+            Q(client__state__icontains=queryset_state)
             ).filter(stage_id__status__range=[stage_list_start,stage_list_stop],removed=False).order_by('client__city','id')
-
+acertar a pesquisa por estado
     else:
         # GET - Status da cotação a ser pesquisado
         queryset_stage = '-1'
         
         # GET - Cidade ser pesquisado as cotações
         queryset_city = ''
+
+        # GET - Estados ser pesquisado as cotações
+        queryset_state = ''
 
         # Pesquisa as cotações com status = 2 a 6 
         quotations = Quotation.objects.filter(stage_id__status__range=[2,6],removed=False).order_by('client__city','id')
@@ -89,6 +100,9 @@ def quotation_provider(request):
 
     # Lista das cidades liberados para uso na tag SELECT
     quotationscitys = User.objects.filter().order_by('city').distinct('city')
+
+    # Lista dos estados liberados para uso na tag SELECT
+    quotationsstates = User.objects.filter().order_by('state').distinct('state')
 
     # Lambda que retorna a quantidade de dados para ser listados
     if quotations.count() > 0:
@@ -103,9 +117,11 @@ def quotation_provider(request):
                     "provider_email": request.user.email,
                     "quotationstage_select":str(queryset_stage),
                     "quotationcity_select":queryset_city,
+                    "quotationstate_select":queryset_state,
                     "quotations": quotations,
                     "quotationsstages": quotationsstages,
-                    "quotationscitys": quotationscitys
+                    "quotationscitys": quotationscitys,
+                    "quotationsstates": quotationsstates
                 }
         return render(request, template_name, context)
 
