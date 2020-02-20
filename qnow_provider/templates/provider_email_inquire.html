@@ -159,7 +159,7 @@
 
                           <strong>Informações da Cotação</strong><br>
                           <b>Cotação Nº:</b>  {{ request.id }}<br>
-                          <b>Cliente:</b>     {{ request.client }}<br>
+                          <b>Cliente:</b>     {{ request.client|truncatechars:10 }}<br>
                           <b>Móvel: </b>      {% if request.mobile_type|lower == '_outro' %}
                                                 {{ request.mobile_description }}
                                               {% else %}

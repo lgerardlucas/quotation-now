@@ -96,7 +96,7 @@
 					<dd style="font-size: 1.4em;">
 						<strong style="font-size: 1.6em;">Dados do Cliente</strong><br>
 						<strong style="color: #292c2f;">
-							Cliente: {{ field.client|truncatechars:50 }}<br>
+							Cliente: {{ field.client|truncatechars:10 }}<br>
 							Imóvel: {{ field.house_type|truncatechars:30 }}<br>
 							Cidade: {{ field.client.city|truncatechars:35 }}
 						</strong>
@@ -192,7 +192,7 @@
 						{% endif %} -
 						<strong>{{ field.stage|truncatechars:10 }}</strong>
 						<br>
-						Cliente: {{ field.client }}
+						Cliente: {{ field.client|truncatechars:10 }}
 						<br>
 				</div>
 

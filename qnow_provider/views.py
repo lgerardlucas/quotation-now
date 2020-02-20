@@ -78,10 +78,9 @@ def quotation_provider(request):
             Q(house_set__icontains=queryset)|  
             Q(mobile_type__description__icontains=queryset)|
             Q(mobile_description__icontains=queryset)).filter(
-            Q(client__city__icontains=queryset_city)|
+            Q(client__city__icontains=queryset_city)).filter(
             Q(client__state__icontains=queryset_state)
             ).filter(stage_id__status__range=[stage_list_start,stage_list_stop],removed=False).order_by('client__city','id')
-acertar a pesquisa por estado
     else:
         # GET - Status da cotação a ser pesquisado
         queryset_stage = '-1'

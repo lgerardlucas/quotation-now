@@ -37,78 +37,83 @@
 	<div
 		style="display: inline-block;  color: black; margin-left: 0px;  text-align: left; padding-left: 15px; padding-bottom: 10px; padding-top: 10px; background-color:#292c2f; width: 100%;">
 		<form method="GET">
-			<!-- INPUT de pesquisa para dos genéricos-->
-			<div style="display: inline-block; width: 30%; height: 100%;">
-				<input style="padding-left: 6px;" type="search" class="form-control"
-					placeholder="Informe Nº, móvel, cliente..." name="q" value="{{ request.GET.q }}">
+
+			<div style="display: inline-block; width: 100%; text-align: center; padding-top: 5px;">
+				<!-- INPUT de pesquisa para dos genéricos-->
+				<div style="display: inline-block; width: 45%; height: 100%;">
+					<input style="padding-left: 6px;" type="search" class="form-control"
+						placeholder="Informe Nº, móvel, cliente..." name="q" value="{{ request.GET.q }}">
+				</div>	
+
+				<!-- SELECT de situações-->
+				<div style="display: inline-block; width: 45%; height: 100%;">
+					<select name="stage_list" style="padding-left: 3px;">
+						{% for stage in quotationsstages %}
+							{% if quotationstage_select|lower == stage.status|lower %}  
+								<option value="{{ stage.status }}" selected>{{ stage.description }}</option>
+							{% else %}
+								<option value="{{ stage.status }}">{{ stage.description }}</option>
+							{% endif %}
+						{% endfor %}
+						{% if quotationstage_select == '-1' %}
+							<option value="-1" selected>Situação</option>
+						{% else %}
+							<option value="-1">Situação</option>
+						{% endif %}
+					</select>
+				</div>
+			</div>
+
+
+			<div style="display: inline-block; width: 100%; text-align: center; padding-top: 5px;">
+				<!-- SELECT de cidades-->
+				<div style="display: inline-block; width: 45%; height: 100%;">
+					<select name="city_list" style="padding-left: 3px;" id="id_city_list">
+						{% for city in quotationscitys %}
+							{% if quotationcity_select|lower == city.city|lower %}
+								<option value="{{ city.city }}" selected>{{ city.city }}</option>
+							{% else %}
+								<option value="{{ city.city }}">{{ city.city }}</option>
+							{% endif %}
+						{% endfor %}
+						{% if quotationcity_select == '' %}
+							<option value="" selected>Cidade</option>
+						{% else %}
+							<option value="">Cidade</option>
+						{% endif %}
+					</select>
+				</div>
+
+				<!-- SELECT de estados-->
+				<div style="display: inline-block; width: 45%; height: 100%;">
+					<select name="state_list" style="padding-left: 3px;" id="id_state_list">
+						{% for state in quotationsstates %}
+							{% if quotationstate_select|lower == state.state|lower %}
+								<option value="{{ state.state }}" selected>{{ state.state }}</option>
+							{% else %}
+								<option value="{{ state.state }}">{{ state.state }}</option>
+							{% endif %}
+						{% endfor %}
+
+						{% if quotationstate_select == '' %}
+							<option value="" selected>Estado</option>
+						{% else %}
+							<option value="">Estado</option>
+						{% endif %}
+					</select>
+				</div>
 			</div>	
-
-			<!-- SELECT de situações-->
-			<div style="display: inline-block; width: 30%; height: 100%;">
-				<select name="stage_list" style="padding-left: 3px;">
-					{% for stage in quotationsstages %}
-						{% if quotationstage_select|lower == stage.status|lower %}  
-							<option value="{{ stage.status }}" selected>{{ stage.description }}</option>
-						{% else %}
-							<option value="{{ stage.status }}">{{ stage.description }}</option>
-						{% endif %}
-					{% endfor %}
-					{% if quotationstage_select == '-1' %}
-						<option value="-1" selected>Situação</option>
-					{% else %}
-						<option value="-1">Situação</option>
-					{% endif %}
-				</select>
-			</div>
-
-			<!-- SELECT de cidades-->
-			<div style="display: inline-block; width: 35%; height: 100%;">
-				<select name="city_list" style="padding-left: 3px;">
-					{% for city in quotationscitys %}
-						{% if quotationcity_select|lower == city.city|lower %}
-							<option value="{{ city.city }}" selected>{{ city.city }}</option>
-						{% else %}
-							<option value="{{ city.city }}">{{ city.city }}</option>
-						{% endif %}
-					{% endfor %}
-					{% if quotationcity_select == '' %}
-						<option value="" selected>Cidade</option>
-					{% else %}
-						<option value="">Cidade</option>
-					{% endif %}
-				</select>
-			</div>
-
-			<!-- SELECT de estados-->
-			<div style="display: inline-block; width: 35%; height: 100%;">
-				<select name="state_list" style="padding-left: 3px;">
-					{% for state in quotationsstates %}
-						{% if quotationstate_select|lower == state.state|lower %}
-							<option value="{{ state.state }}" selected>{{ state.state }}</option>
-						{% else %}
-							<option value="{{ state.state }}">{{ state.state }}</option>
-						{% endif %}
-					{% endfor %}
-
-					{% if quotationstate_select == '' %}
-						<option value="" selected>Estado</option>
-					{% else %}
-						<option value="">Estado</option>
-					{% endif %}
-				</select>
-			</div>
-
 			<!-- BOTÕES de pesquisa e listagem -->
 			<div style="display: inline-block; width: 100%; text-align: center; padding-top: 5px;">
-				<div style="display: inline-block; width: 50%;">
+				<div style="display: inline-block; width: 40%;">
 					<button class="form-control uk-button" style="height: 100%;">
-						Pesquisa
+						Pesquisar
 					</button>
 				</div>
 				<div style="display: inline-block; width: 40%;">
 					<a class="form-control uk-button" style="padding-left: 8px; height: 100%;"
 						href="{% url 'qnow_provider:quotation_provider' %}">
-						Mostrar Todas
+						Limpar Filtros
 					</a>
 
 				</div>
@@ -191,7 +196,7 @@
 			<div style="display: inline-block; text-align: left; padding: 5px; font-size: 1.2em; max-width: 100%;">
 				<!--Tipo do imóvel-->
 				<strong style="color: #292c2f;">{{ quotation.date_create|date:'SHORT_DATE_FORMAT' }}</strong><br>
-				<strong style="color: #292c2f;">{{ quotation.client|truncatechars:15 }}</strong><br>
+				<strong style="color: #292c2f;">{{ quotation.client|truncatechars:10 }}</strong><br>
 				<strong style="color: #292c2f;">{{ quotation.house_type|truncatechars:15 }}</strong><br>
 				<strong style="color: #292c2f; font-size: 24px;">{{ quotation.client.city|truncatechars:10 }}</strong><br>
 			</div>

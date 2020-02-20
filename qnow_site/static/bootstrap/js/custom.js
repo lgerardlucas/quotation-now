@@ -9,6 +9,9 @@ window.onload = function() {
     const mobileType = document.getElementById('id_mobile_type');
     const mobileDescription = document.getElementById('id_mobile_description');
     const particulars = document.getElementById('id_particulars');
+
+    const cityList = document.getElementById('id_city_list');
+    const stateList = document.getElementById('id_state_list');
     
 
     $('#id_cep').mask('00000-000');
@@ -33,8 +36,10 @@ window.onload = function() {
         });
     }
 
+
+    /*Comando para quando trocar o valor do campo mobileType preencher outros campos com caracteristicas proprias */
     if (mobileType) {
-        mobileType.addEventListener('change', function (event) {
+        mobileType.addEventListener('change', function () {
             var x = mobileType.value;
             /*ID = 1_Para o tipo de móvel Janela */
             if (x == 1) {
@@ -172,4 +177,38 @@ window.onload = function() {
         });
     }
 
+    /*
+    A motivação aqui, é não deixar o seletor ESTADO com o valor diferente do 
+    default quando escolhida alguma cidade para pesquisar. 
+    Devido a escolha de uma cidade X fora do seu estado.
+    Se o seletor Cidade <> Cidade('Valor default') passar o seletor Estado para o default 
+
+    A mesma ideia eu fiz para o Estado, mudando o valor da cidade quando o seletor estiver diferente do default.
+    */
+    if (cityList) {
+        cityList.addEventListener('change', function () {
+            if (cityList.value != 'Cidade') {
+               stateList.getElementsByTagName('option')[stateList.length-1].selected = 'selected';
+            }
+        });
+    }    
+
+    if (stateList) {
+        stateList.addEventListener('change', function () {
+            if (stateList.value != 'Estado') {
+               cityList.getElementsByTagName('option')[stateList.length-1].selected = 'selected';
+            }
+        });
+    }    
+
+
 }
+
+/* select = document.getElementById("select");
+select.onchange = function(){
+    alert(this.value); //returns the selected value
+    alert(this.innerHTML); //returns the entire select with all the options
+    var options = this.getElementsByTagName("option");
+    var optionHTML = options[this.selectedIndex].innerHTML;  
+    alert(optionHTML); //this is what I want, but it works now
+}; */
