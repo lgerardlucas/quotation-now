@@ -149,7 +149,8 @@
                         <br>
 
                         <b>Cotação Nº:</b> {{ request.id }}<br>
-                        <b>Cliente:</b> {{ request.client }}<br>
+                        <b>Cliente:</b> {{ request.client|truncatechars:10 }}<br>
+                        <b>Cidade:</b> {{ request.client.city }} - {{ request.client.state }}<br>
 
 
                         {% if value_quotation != 0.00 %}
@@ -199,7 +200,7 @@
                                   <tr>
                                     <td
                                       style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color:#ffb400; border-radius: 5px; text-align: center;">
-                                      <a href="https://www.mgacotacoes.com.br" target="_blank"
+                                      <a href="http://www.mgacotacoes.com.br/provider/quotation_provider_price/{{ request.id }}" target="_blank"
                                         style="display: inline-block; color: #ffffff; background-color:#ffb400; border: solid 1px #ffb400; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; border-color:#ffb400;">
 
                                         MGA-Cotações

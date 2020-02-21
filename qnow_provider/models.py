@@ -23,7 +23,7 @@ class QuotationPrice(models.Model):
     date_create         = models.DateField('Data da Cotação',default=date.today)
 
     # Data de validade do preço
-    date_validate       = models.DateField('Validade da Cotação',blank=True,null=True)
+    date_validate       = models.DateField('Validade da Cotação',blank=False,null=False)
 
     # Valor da cotação
     quotation_value     = models.DecimalField('Valor da Cotação',max_digits=8, decimal_places=2)
