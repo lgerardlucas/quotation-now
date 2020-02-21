@@ -21,7 +21,7 @@ class UserAdmin(admin.ModelAdmin):
     fields = ('username','email','is_active','role','phone','cep','street','district','city','state','password')
 
     # Campos que unidos são usados no processo de filtragem por seleção
-    list_filter = ('city','district','state')   
+    list_filter = ('city','district','state','role')   
 
     # Campos que unidos são usados no processo de filtragem por digitação
     search_fields = ('username','city','email')
