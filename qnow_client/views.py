@@ -206,14 +206,15 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
         emails_providers = []
         emails_providers.append(settings.EMAIL_HOST_USER)
         
-        if acao == 'removida':
+        
+        if acao == 'removida':          # E-mail enviado ao client
             message = 'Sua cotação foi '+acao+' com sucesso!.'
-        elif acao == 'aprovada':            
+        elif acao == 'aprovada':        # E-mail enviado ao client    
             provider = QuotationPrice.objects.get(quotation_number=request.id,approved=True)  
             message = 'Parabéns, a '+str(provider.quotation_provider)+' foi a empresa aprovada por você! A partir de agora, este fornecedor entrará em contato, finalizando os demais detalhes e dando segmento a produção de seu planejado.'
-        elif acao == 'liberada':            
+        elif acao == 'liberada':        # E-mail enviado ao client    
             message = 'Parabéns, sua cotação foi '+acao+' com sucesso! A partir de agora é aguardar os lances de cada fornecedor e depois escolher e aprovar um deles. Em seguida da aprovação o fornecedor entrará em contato com você e juntos finalizarão o processo todo.'
-        elif acao == 'à espera':
+        elif acao == 'à espera':        # E-mail enviado aos providers
             # Lista os emails dos providers para envio em lote 
             # Serão enviados somentes e-mail para os providers do mesmo estado do client
             providers = User.objects.filter(role='provider',state=request.client.state)
@@ -221,7 +222,7 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
                 for provider in providers:
                     emails_providers.append(provider.email)
             message = 'Atenção, uma nova cotação chegou a nossa plataforma e esta '+acao+' de seu lance. '
-        else:
+        else:                           # E-mail enviado ao client
             message = 'Parabéns, sua cotação foi '+acao+' com sucesso!\nA partir de agora analisaremos e tendo alguma dúvida, entraremos em contato com você.'
 
 
@@ -257,6 +258,7 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
             "provider_quotation":qprovider,
             "email_provider":qemail,
             "phone_provider":qphone,
+            "acao_alert":acao
             }
         content = render_to_string(template_name, context)
 

@@ -125,7 +125,7 @@ def quotation_provider(request):
         return render(request, template_name, context)
 
 # Mostra os detalhes e caracteristicas de uma cotação específica
-@login_required
+@login_required            #(login_url="/accounts/login_provider/")
 def quotation_provider_detail(request,quotation_id=0):
     template_name = "../templates/provider_quotation_detail.html"
 
