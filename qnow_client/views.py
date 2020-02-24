@@ -89,8 +89,9 @@ def quotation_client(request):
 
 
 # Lista as cotações do cliente logado
-@login_required
+@login_required #(redirect_field_name='qnow_user:login_provider_start')
 def quotation_client_list(request, client_id=0):
+    print('============================')
     template_name = "../templates/client_quotation_list.html"
 
     # Verifica se o usuário logado é o mesmo requisitado
@@ -201,11 +202,10 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
     if send_email_sis == True:
         template_name = "../templates/client_email.html"
         
-        subject = 'MGA-Cotações - Cotação Nº: '+str(request.id)+' - '+str(request.client)
+        subject = 'MGA-Cotações - Cotação Nº: '+str(request.id)+' - '+str(request.client)[:10]+'...'
         
         emails_providers = []
         emails_providers.append(settings.EMAIL_HOST_USER)
-        
         
         if acao == 'removida':          # E-mail enviado ao client
             message = 'Sua cotação foi '+acao+' com sucesso!.'
@@ -214,6 +214,7 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
             message = 'Parabéns, a '+str(provider.quotation_provider)+' foi a empresa aprovada por você! A partir de agora, este fornecedor entrará em contato, finalizando os demais detalhes e dando segmento a produção de seu planejado.'
         elif acao == 'liberada':        # E-mail enviado ao client    
             message = 'Parabéns, sua cotação foi '+acao+' com sucesso! A partir de agora é aguardar os lances de cada fornecedor e depois escolher e aprovar um deles. Em seguida da aprovação o fornecedor entrará em contato com você e juntos finalizarão o processo todo.'
+           
         elif acao == 'à espera':        # E-mail enviado aos providers
             # Lista os emails dos providers para envio em lote 
             # Serão enviados somentes e-mail para os providers do mesmo estado do client
@@ -224,6 +225,25 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
             message = 'Atenção, uma nova cotação chegou a nossa plataforma e esta '+acao+' de seu lance. '
         else:                           # E-mail enviado ao client
             message = 'Parabéns, sua cotação foi '+acao+' com sucesso!\nA partir de agora analisaremos e tendo alguma dúvida, entraremos em contato com você.'
+
+        # A ação diferente de "à espera", indica analisar e preparar um link para o acesso a nível de client
+        if acao != 'à espera':
+            # Caminho para 0 modo de produção    
+            # Link atribuido ao botão enviado no corpo do email com acesso a lista do cliente
+            if settings.DEBUG == True:
+                adress_link = "http://127.0.0.1:8000/client/quotation_client_list/"+str(request.client.id)
+            else:
+                adress_link = "http://www.mgacotacoes.com.br/client/quotation_client_list/"+str(request.client.id)
+
+        # Sendo a ação igual "à espera", indica analisar e preparar um link para o acesso a nível de provider
+        else: 
+            # Caminho para 0 modo de produção    
+            # Link atribuido ao botão enviado no corpo do email com acesso a cotação a ser orçada enviada a marcenaria
+            if settings.DEBUG == True:
+                adress_link = "http://127.0.0.1:8000/provider/quotation_provider_price/"+str(request.id)
+            else:
+                adress_link = "http://www.mgacotacoes.com.br/provider/quotation_provider_price/"+str(request.id)
+
 
 
         # Retorna o email do provider aprovado e adiciona os e-mails: da plataforma e do cliente
@@ -253,12 +273,12 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
 
         context = {
             "request": request,
-            "message":message,
-            "value_quotation":qvalue,
-            "provider_quotation":qprovider,
-            "email_provider":qemail,
-            "phone_provider":qphone,
-            "acao_alert":acao
+            "message": message,
+            "value_quotation": qvalue,
+            "provider_quotation": qprovider,
+            "email_provider": qemail,
+            "phone_provider": qphone,
+            "adress_link": adress_link
             }
         content = render_to_string(template_name, context)
 

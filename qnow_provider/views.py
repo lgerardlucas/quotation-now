@@ -244,6 +244,14 @@ def quotation_provider_email(request,value=0.00,provider_name='',acao='ERROR',se
         
         subject = 'MGA-Cotações - Cotação Nº: '+str(request.id)+' - '+str(request.client)
         message = 'Parabéns, sua cotação foi '+acao+' com sucesso!'
+
+        # Caminho para 0 modo de produção    
+        # Link atribuido ao botão enviado no corpo do email com acesso a lista do cliente
+        if settings.DEBUG == True:
+            adress_link = "http://127.0.0.1:8000/client/quotation_client_list/"+str(request.client.id)
+        else:
+            adress_link = "http://www.mgacotacoes.com.br/client/quotation_client_list/"+str(request.client.id)
+
             
         from_email = settings.EMAIL_HOST_USER
 
@@ -256,6 +264,7 @@ def quotation_provider_email(request,value=0.00,provider_name='',acao='ERROR',se
             "deliver_time":     deliver_time,
             "form_payment":     form_payment,
             "commets":          commets,
+            "adress_link":      adress_link,
             "message_alert":'Este e-mail alerta você de que uma marcenaria lançou um valor para sua cotação. Se o valor estiver dentro do esperado poderá acessar a plataforma e aprová-lo ou esperar mais uns dias, a fim de que outras marcenarias deem seus lances.',
             "message_aprovacao":'   Ao aprovar uma cotação o cliente esta aprovando a marcenaria para que a mesma possa entrar em contato e finalizar os detalhes, e tirar dúvidas e com isto fechar o custo final de sua cotação. A MGA-Cotações une cliente e marcenaria para que juntos produzam sonhos!'
             }

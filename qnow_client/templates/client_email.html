@@ -200,17 +200,9 @@
                                   <tr>
                                     <td
                                       style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color:#ffb400; border-radius: 5px; text-align: center;">
-                                      <!--Quando acao_alert = 'liberada' email direcionado para o client, caso contrário provider -->
-                                      {% if acao_alert == 'liberada' %}
-                                        <a href="http://www.mgacotacoes.com.br/client/quotation_client_list/{{ request.client.id }}" target="_blank"
+                                        <a href="{{ adress_link }}" target="_blank"
                                           style="display: inline-block; color: #ffffff; background-color:#ffb400; border: solid 1px #ffb400; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; border-color:#ffb400;">
-                                      {% else %}
-                                        <a href="http://www.mgacotacoes.com.br/provider/quotation_provider_detail/{{ request.id }}" target="_blank" 
-                                          style="display: inline-block; color: #ffffff; background-color:#ffb400; border: solid 1px #ffb400; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; border-color:#ffb400;">
-                                      {% endif %}    
-
-                                        MGA-Cotações 
-
+                                        Acesse a cotação Nº {{ request.id }} aqui!!! 
                                       </a> </td>
                                   </tr>
                                 </tbody>
