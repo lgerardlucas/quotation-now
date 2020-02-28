@@ -127,8 +127,12 @@
 						{{ quotationprice.form_payment.errors }}
 					</div>
 					<!-- Comentários do provider -->
-					<div style="display: block; text-align: left; width: 100%; padding-top: 10px; line-height: 0.5em;">
-						{{ quotationprice.comments.label_tag }}
+					<div style="display: block; text-align: left; width: 100%; padding-top: 10px; line-height: 1.3em;">
+						<!-- {{ quotationprice.comments.label_tag }} -->
+						Informe aqui detalhes como:<br>
+						a) O que compõe o valor orçado<br>
+						b) Detalhe sobre o pagamento e o prazo de entrega</br>
+						c) Detalhes sobre sua empresa
 						
 							{% if 'R$' in state_quotation %}
 								<fieldset disabled="disabled">

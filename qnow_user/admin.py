@@ -8,7 +8,7 @@ from qnow_user.models import User
 
 class UserAdmin(admin.ModelAdmin):
     # Campos que aparecerão ao entrar na model
-    list_display = ('id','username','email','role','phone','cep','street','district','city','district','state','approved','contract_accepted','contract_date_accepted')
+    list_display = ('id','username','email','role','phone','cep','street','district','city','state','approved','contract_accepted','contract_date_accepted')
     #list_display = ('id','name','email','role','phone','street','city')
 
     # Campo ou campos específico para usar como link de acesso aos dados

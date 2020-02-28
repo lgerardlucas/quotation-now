@@ -39,8 +39,8 @@ class QuotationForm(forms.ModelForm):
             'mobile_type': 'Para qual móvel deseja cotações?',
             'mobile_description':'Para "_Outro", coloque o nome aqui.(Ex: Aparador)',
             'particulars': 'Nos conte como deseja seu móvel, tamanho do ambiente, função e demais detalhes importantes',
-            'image_environment':'Imagem do ambiente - Uma foto do ambiente, nos ajudará a entender melhor caso precisemos projetá-lo(Projeto simples e sem custo).',
-            'image_project':'Imagem do projeto - Projeto, desenho ou qualquer imagem, caso tenha, de como gostaria que fosse seu móvel.'
+            'image_environment':'1º Imagem - Insira aqui uma imagem do ambiente ou do projeto/desenho.',
+            'image_project':'2º Imagem - Insira aqui uma imagem do ambiente ou do projeto/desenho.'
         }
 
         widgets = {

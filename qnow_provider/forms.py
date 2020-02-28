@@ -61,13 +61,7 @@ class QuotationPriceForm(forms.ModelForm):
             'comments': forms.Textarea(
                 attrs={'cols': 40,'style':'width: 100%; height: 100%; resize: none; !important;','title':'',
                     'placeholder': 
-                        'a) Informações sobre sua empresa'
-                        +'\n\n'+
-                        'b) Detalhes sobre o pagamento e o prazo de entrega, '
-                        +'\n\n'+
-                        'c) Esclarecimentos sobre o que compõe o valor orçado por você.'
-                        +'\n\n'+
-                        'Obs: Se possuir ainda dúvidas sobre a cotação deste cliente, utilize o botão "Perguntar"\n(***Ainda não implementado***)'
+                        'Obs: Se possuir ainda dúvidas sobre a cotação deste cliente, utilize o botão "Perguntar"'
                     }
                 )
         } 

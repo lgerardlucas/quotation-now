@@ -136,7 +136,11 @@ class Quotation(models.Model):
     def get_dif_date_now(self):
         date1 = datetime.now().toordinal()
         date2 = self.date_create.toordinal()
-        return date1 - date2
+        dif_day = date1 - date2
+        if dif_day > 1:
+            return str(dif_day)+' dias'
+        else:
+            return str(dif_day)+' dia'
     get_dif_date_now.short_description = 'Período'  
 
     class Meta:

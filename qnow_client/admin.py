@@ -37,13 +37,13 @@ class QuotationAdmin(admin.ModelAdmin):
 
 
     # Paginação para o listplay
-    list_per_page = 5
+    list_per_page = 30
     
 
     # Campos que aparecerão ao entrar na model
-    list_display = ('id_quotation','get_number_launch','client_client','date_create','date_update','house_type','stage',
-        'mobile_type_description','get_removed','email_client','cep_client',
-        'street_client','district_client','city_client','state_client','get_photo','get_dif_date_now')
+    list_display = ('id_quotation','get_number_launch','get_dif_date_now','stage','client_client','date_create','date_update','house_type',
+        'mobile_type_description','get_removed','phone_client','email_client','cep_client',
+        'street_client','district_client','city_client','state_client','get_photo')
 
     # Campos que podem ser alterados na list_display diretamente
     list_editable  = ('stage',)
@@ -99,6 +99,10 @@ class QuotationAdmin(admin.ModelAdmin):
     def state_client(self, Quotation):
         return Quotation.client.state
     state_client.short_description = 'Estado'
+
+    def phone_client(self, Quotation):
+        return Quotation.client.phone
+    phone_client.short_description = 'Telefone'
 
     # Sub-campos para outros fins    
     def removed(self,Quotation):
