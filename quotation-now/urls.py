@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 import re
+from django.contrib.auth import urls,views
+
 
 urlpatterns = [
     path('', include('qnow_site.urls',namespace='site')),
@@ -9,7 +11,8 @@ urlpatterns = [
     path('accounts/', include('qnow_user.urls',namespace='accounts')),
     path('client/', include('qnow_client.urls',namespace='client')),
     path('provider/', include('qnow_provider.urls',namespace='provider')),
-]
+    path('', include('django.contrib.auth.urls')),
+    ]
 
 if settings.DEBUG:
     import debug_toolbar

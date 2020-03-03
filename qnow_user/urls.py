@@ -30,4 +30,5 @@ urlpatterns = [
 
     path('register_client/', views.register, kwargs={'origin': 'client' }, name='register_client'),
     path('register_provider/', views.register, kwargs={'origin': 'provider' }, name='register_provider'),
+
 ]
