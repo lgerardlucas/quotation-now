@@ -41,7 +41,7 @@ class QuotationAdmin(admin.ModelAdmin):
     
 
     # Campos que aparecerão ao entrar na model
-    list_display = ('id_quotation','get_number_launch','get_dif_date_now','stage','client_client','date_create','date_update','house_type',
+    list_display = ('id_quotation','client_client','get_number_launch','get_dif_date_now','stage','date_create','date_update','house_type',
         'mobile_type_description','get_removed','phone_client','email_client','cep_client',
         'street_client','district_client','city_client','state_client','get_photo')
 
@@ -49,7 +49,7 @@ class QuotationAdmin(admin.ModelAdmin):
     list_editable  = ('stage',)
 
     # Campo ou campos específico para usar como link de acesso aos dados
-    list_display_links = ('client_client',)
+    list_display_links = ('id_quotation','client_client',)
 
     # 1º Tipo 1 de pesquisa para tabelas relacionadas - Apresenta no modo lista e detalhado
     #raw_id_fields = ("stage","client")
