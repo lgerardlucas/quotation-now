@@ -43,5 +43,5 @@ class QuotationPrice(models.Model):
     class Meta():
         verbose_name = 'Preço'
         verbose_name_plural = 'Preços'
-        ordering = ["date_create"]
+        ordering = ["quotation_number"]
         unique_together = (('quotation_number','quotation_provider'),)
