@@ -74,7 +74,7 @@ class QuotationAdmin(admin.ModelAdmin):
 
     def client_client(self, Quotation):
         return Quotation.client
-    client_client.short_description = 'Cliente da cotação'        
+    client_client.short_description = 'Cliente'        
 
     def email_client(self, Quotation):
         return Quotation.client.email
@@ -136,7 +136,7 @@ class QuotationAdmin(admin.ModelAdmin):
 
 
     # Campos que unidos são usados no processo de filtragem por digitação
-    search_fields = ('id','client__username','mobile_type__description','client__email','client__street')
+    search_fields = ('id','client__username','mobile_type__description','client__email','client__street','stage__description','date_create','date_update','client__city')
 
     # Se true, aparece um campo para salvar e duplicar
     save_as = False

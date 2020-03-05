@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime,date
+from datetime import datetime,date,timedelta
 from qnow_user.models import User
 from django.core import validators
 
@@ -23,7 +23,7 @@ class QuotationPrice(models.Model):
     date_create         = models.DateField('Data da Cotação',default=date.today)
 
     # Data de validade do preço
-    date_validate       = models.DateField('Validade da Cotação',blank=False,null=False)
+    date_validate       = models.DateField('Validade da Cotação',blank=False,null=False,default=datetime.now()+timedelta(days=10))
 
     # Valor da cotação
     quotation_value     = models.DecimalField('Valor da Cotação',max_digits=8, decimal_places=2)
@@ -39,6 +39,13 @@ class QuotationPrice(models.Model):
 
     # Informações a mais para o cliente
     comments            = models.TextField('Comentário da Marcenaria',blank=True)
+
+     # Sub-campo: Indica a diferença entre a data de criação x data atual
+    def get_dif_date_validate(self):
+        date1 = datetime.now().toordinal()
+        date2 = self.date_validate.toordinal()
+        return date1 - date2
+    get_dif_date_validate.short_description = 'Validade(Dias)'  
 
     class Meta():
         verbose_name = 'Preço'

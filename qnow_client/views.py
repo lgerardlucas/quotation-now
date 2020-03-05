@@ -91,7 +91,6 @@ def quotation_client(request):
 # Lista as cotações do cliente logado
 @login_required #(redirect_field_name='qnow_user:login_provider_start')
 def quotation_client_list(request, client_id=0):
-    print('============================')
     template_name = "../templates/client_quotation_list.html"
 
     # Verifica se o usuário logado é o mesmo requisitado

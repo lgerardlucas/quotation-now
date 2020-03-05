@@ -277,7 +277,19 @@
 																				<!-- Data de validade -->
 																				<div style="display: inline-block; width: 25%;">
 																					<label style="font-weight: bold; line-height: 0.4em;">Validade</label><br>
-																					{{ price.date_validate|date:"d/m/Y" }}
+																					{{ price.date_validate|date:"d/m/Y" }} 
+																				</div>
+																				<!-- validae em dias -->
+																				<div style="display: inline-block; width: 25%;">
+																					{% if price.get_dif_date_validate <= 0 %}
+																					<label style="font-weight: bold; line-height: 0.4em; color:#FFB400;">
+																						Restam {{ price.get_dif_date_validate }} dia(s) 
+																					</label>
+																				    {% else %}
+																					 <label style="font-weight: bold; line-height: 0.4em; color:red;">
+																					      Vencido a {{ price.get_dif_date_validate }} dia(s) 
+																					</label>
+																					{% endif %}   
 																				</div>
 																				<!-- Prazo de entrega -->
 																				<div style="display: inline-block;">

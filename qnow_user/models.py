@@ -3,19 +3,20 @@ from django.db import models
 from django.core import validators
 from django.contrib.auth.models import (AbstractBaseUser, PermissionsMixin,
     UserManager)
-from datetime import datetime    
+from datetime import datetime
+
 
 class User(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField('E-mail', unique=True)
-    username = models.CharField('Nome e Sobrenome', unique=True, max_length=100, blank=False)
+    username = models.CharField('Nome', unique=True, max_length=100, blank=False)
     is_active = models.BooleanField('Está ativo?', blank=True, default=True)
     is_staff = models.BooleanField('É da equipe?', blank=True, default=False)
     date_joined = models.DateTimeField('Data de Cadastro', auto_now_add=True)
     role = models.CharField('Classificação', max_length=10, blank=True, default='Indefinido')
     phone = models.CharField('Telefone', max_length=50, blank=False)
     cep = models.CharField('Cep', max_length=9, blank=False)
-    street = models.CharField('Rua', max_length=200, blank=False, default='Indefinido')
+    street = models.CharField('Endereço', max_length=200, blank=False, default='Indefinido')
     district = models.CharField('Bairro', max_length=50, blank=False, default='Indefinido')
     city = models.CharField('Cidade', max_length=50, blank=False, default='Indefinido')
     state = models.CharField('Estado', max_length=50, blank=False, default='Indefinido')
@@ -40,8 +41,59 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def get_full_username(self):
         return str(self)
+    
+    '''
+    # Sub-campo: que retorna a qtde de cotações em diversos stages - PENDENTE
+    def get_number_launch_client_pendente(self):
+        from qnow_client.models import Quotation,QuotationStage
+        qnumber = Quotation.objects.filter(client=self.id,client__role='client',stage_id=QuotationStage.objects.get(status=0).id)
+        if qnumber:
+            return qnumber.count()
+        else:    
+            return '--'
+    get_number_launch_client_pendente.short_description = "P"     
+    
+    # Sub-campo: que retorna a qtde de cotações em diversos stages - EM ANALISE
+    def get_number_launch_client_analise(self):
+        from qnow_client.models import Quotation,QuotationStage
+        qnumber = Quotation.objects.filter(client=self.id,client__role='client',stage_id=QuotationStage.objects.get(status=1).id)
+        if qnumber:
+            return qnumber.count()
+        else:    
+            return '--'
+    get_number_launch_client_analise.short_description = "E"     
+    '''
 
+    # Sub-campo: que retorna a qtde de cotações em diversos stages - LIBERADO
+    def get_number_launch_client_liberado(self):
+        from qnow_client.models import Quotation,QuotationStage
+        qnumber = Quotation.objects.filter(client=self.id,client__role='client',stage_id=QuotationStage.objects.get(status=2).id)
+        if qnumber:
+            return qnumber.count()
+        else:    
+            return '--'
+    get_number_launch_client_liberado.short_description = "L"     
 
+    # Sub-campo: que retorna a qtde de cotações em diversos stages - ORÇADO
+    def get_number_launch_client_orcado(self):
+        from qnow_client.models import Quotation,QuotationStage
+        qnumber = Quotation.objects.filter(client=self.id,client__role='client',stage_id=QuotationStage.objects.get(status=3).id)
+        if qnumber:
+            return qnumber.count()
+        else:    
+            return '--'
+    get_number_launch_client_orcado.short_description = "O"     
+
+    # Sub-campo: que retorna a qtde de cotações em diversos stages - APROVADO
+    def get_number_launch_client_aprovado(self):
+        from qnow_client.models import Quotation,QuotationStage
+        qnumber = Quotation.objects.filter(client=self.id,client__role='client',stage_id=QuotationStage.objects.get(status=4).id)
+        if qnumber:
+            return qnumber.count()
+        else:    
+            return '--'
+    get_number_launch_client_aprovado.short_description = "A"     
+    
     class Meta:
         app_label = 'qnow_user'
         db_table = 'qnow_user_user'
