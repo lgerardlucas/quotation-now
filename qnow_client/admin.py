@@ -37,7 +37,7 @@ class QuotationAdmin(admin.ModelAdmin):
 
 
     # Paginação para o listplay
-    list_per_page = 30
+    list_per_page = 20
     
 
     # Campos que aparecerão ao entrar na model
@@ -150,8 +150,6 @@ class QuotationAdmin(admin.ModelAdmin):
     # Força a informa o total de registros na tabela se false, mostra o texto "Mostrar Tudo"
     show_full_result_count = True
 
-
-# Register your models here.
 admin.site.register(MobilieType,MobileTypeAdmin)
 admin.site.register(QuotationStage,QuotationStageAdmin)
 admin.site.register(Quotation,QuotationAdmin)
