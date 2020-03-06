@@ -20,7 +20,7 @@ class QuotationPrice(models.Model):
     quotation_provider  = models.ForeignKey("qnow_user.User", on_delete=models.CASCADE, null=True,related_name="quotation_provider",verbose_name='Marcenaria') 
 
     # Data do lançamento do preço
-    date_create         = models.DateField('Data da Cotação',default=date.today)
+    date_create         = models.DateField('Data da Orçamento',default=date.today)
 
     # Data de validade do preço
     date_validate       = models.DateField('Validade da Cotação',blank=False,null=False,default=datetime.now()+timedelta(days=10))
@@ -46,6 +46,15 @@ class QuotationPrice(models.Model):
         date2 = self.date_validate.toordinal()
         return date1 - date2
     get_dif_date_validate.short_description = 'Validade(Dias)'  
+
+     # Sub-campo: Indica o valor quando aprovado a receber do provider
+    def get_value_percent_site(self):
+        if self.approved:
+            qvalue_approved = self.quotation_value * 5 / 100
+            return "% 12.2f" % qvalue_approved
+        else:
+            return "--"    
+    get_value_percent_site.short_description = 'Monetização'  
 
     class Meta():
         verbose_name = 'Preço'

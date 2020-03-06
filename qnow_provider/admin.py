@@ -5,7 +5,7 @@ from qnow_client.models import Quotation
 # Register your models here.
 class QuotationPriceAdmin(admin.ModelAdmin):
     # Campos que aparecerão ao entrar na model
-    list_display = ('id','number_quotation','quotation_client','quotation_provider','value_quotation','approved','date_create','date_validate','get_dif_date_validate','delivery_time','form_payment')
+    list_display = ('id','number_quotation','quotation_client','quotation_provider','value_quotation','get_value_percent_site','approved','date_create','date_validate','get_dif_date_validate','delivery_time','form_payment')
 
     # 2º Tipo 2 de pesquisa para tabelas relacionadas - Apresenta no modo lista e detalhado
     autocomplete_fields = ("quotation_number",)
@@ -31,7 +31,7 @@ class QuotationPriceAdmin(admin.ModelAdmin):
     value_quotation.short_description = 'Valor Orçado'        
 
     # Campos que unidos são usados no processo de filtragem por digitação
-    search_fields = ('date_create','date_validate','quotation_value','approved','delivery_time','form_payment')
+    search_fields = ('quotation_number__id','date_create','date_validate','quotation_value','approved','delivery_time','form_payment')
 
     # Se true, aparece um campo para salvar e duplicar
     save_as = False
