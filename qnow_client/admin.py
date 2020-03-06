@@ -37,7 +37,7 @@ class QuotationAdmin(admin.ModelAdmin):
 
 
     # Paginação para o listplay
-    list_per_page = 20
+    list_per_page = 50
     
 
     # Campos que aparecerão ao entrar na model
