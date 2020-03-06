@@ -151,8 +151,8 @@ def quotation_provider_detail(request,quotation_id=0):
 @login_required
 def quotation_provider_price(request,quotation_id=0):
     template_name = "../templates/provider_quotation_price.html"
-
-    # GET - Retorna dados cotação com um todo
+                                                                                                                                
+    # GET - Retorna dados cotação como um todo
     quotation = Quotation.objects.filter(pk=quotation_id,removed=False)
     form = QuotationPriceForm(request.POST or None, initial={'quotation_number':quotation_id,'quotation_provider':request.user,'date_create':convert_date_to_br(quotation[0].date_create)})
 
@@ -169,7 +169,6 @@ def quotation_provider_price(request,quotation_id=0):
                 "quotationprice":form
             }
     return render(request, template_name, context)
-
 
 # Grava o valor orçado pelo provider logado 
 @login_required

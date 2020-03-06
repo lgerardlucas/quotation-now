@@ -30,8 +30,16 @@ class QuotationPriceAdmin(admin.ModelAdmin):
         return QuotationPrice.quotation_value
     value_quotation.short_description = 'Valor Orçado'        
 
-
     # Campos que unidos são usados no processo de filtragem por digitação
     search_fields = ('date_create','date_validate','quotation_value','approved','delivery_time','form_payment')
 
+    # Se true, aparece um campo para salvar e duplicar
+    save_as = False
+
+    # Duplica os botões de salvar, apagar e editar em cima 
+    save_on_top = True
+
+    # Força a informa o total de registros na tabela se false, mostra o texto "Mostrar Tudo"
+    show_full_result_count = True
+    
 admin.site.register(QuotationPrice,QuotationPriceAdmin) 
