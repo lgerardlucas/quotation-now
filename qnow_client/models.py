@@ -3,7 +3,7 @@ from cloudinary.models import CloudinaryField
 from qnow_user.models import User
 from qnow_provider.models import QuotationPrice
 from django.conf import settings
-from datetime import datetime,date
+from datetime import datetime,date,timedelta
 from django.contrib.auth import get_user_model
 from django.core.validators import FileExtensionValidator
 
@@ -67,10 +67,15 @@ class Quotation(models.Model):
         on_delete=models.CASCADE, default=User, related_name='quotation')   
     
     # Data de criação da cotação
-    date_create = models.DateField(default=date.today)
+    date_create = models.DateField('Emissão',default=date.today)
+
+
+    # Data de validade da cotação
+    date_validate = models.DateField('Validade(Data)',blank=False,null=False,default=datetime.now()+timedelta(days=30))
+
 
     # Data da última atualização da cotação
-    date_update = models.DateField(auto_now=True)
+    date_update = models.DateField('Atualização',auto_now=True)
         
     # Tipo da residencia do cliente
     HOUSETYPECHOICES = (
@@ -84,30 +89,30 @@ class Quotation(models.Model):
         choices=HOUSETYPECHOICES,blank=False,default='Casa')
         
     # Estágio em que se apresenta a cotação
-    stage = models.ForeignKey(QuotationStage,null=True,on_delete=True,related_name='QuotationStage')
+    stage = models.ForeignKey(QuotationStage,null=True,on_delete=True,related_name='QuotationStage', verbose_name='Estágio')
 
     # Define o tipo do local do imóvel                
     house_set = models.CharField(max_length=100,null=True,blank=True)
 
     # Definição do móvel
-    mobile_type = models.ForeignKey(MobilieType,on_delete=True,related_name='MobileType')
+    mobile_type = models.ForeignKey(MobilieType,on_delete=True,related_name='MobileType',verbose_name='Móvel')
 
     # Definição manual do móvel quando não esta na lista acima
-    mobile_description = models.CharField(max_length=100,blank=True)
+    mobile_description = models.CharField('Móvel Complementar',max_length=100,blank=True)
 
     # Descrição detalhada do móvel
-    particulars  = models.TextField(blank=False)
+    particulars  = models.TextField('Detalhes', blank=False)
 
     # Imagem do ambiente do móvel 
-    image_environment = CloudinaryField(null=True, blank=True)
+    image_environment = CloudinaryField('Imagem-1',null=True, blank=True)
 
     # Imagem do projeto
-    image_project = CloudinaryField(null=True, blank=True)
+    image_project = CloudinaryField('Imagem-2',null=True, blank=True)
         
     slug = models.SlugField(max_length=150,unique=True)
 
     # Determina se a cotação foi removida
-    removed = models.BooleanField(default=False)
+    removed = models.BooleanField('Removida',default=False)
 
     # Sub-campo: Indica o número de lances para uma dita cotação
     def get_number_launch(self):
@@ -132,12 +137,16 @@ class Quotation(models.Model):
     get_removed.short_description = 'Removida'
 
 
-    # Sub-campo: Indica a diferença entre a data de criação x data atual
+    # Sub-campo: Indica a diferença entre a data de validade x data atual
     def get_dif_date_now(self):
         date1 = datetime.now().toordinal()
-        date2 = self.date_create.toordinal()
-        return date1 - date2
-    get_dif_date_now.short_description = 'Período'  
+        date2 = self.date_validate.toordinal()
+        if date1 - date2 <= 0:
+            return 'Restam: '+str(date1 - date2)+' dia(s)'
+        else:
+            return 'Vencido a: '+str(date1 - date2)+' dia(s)'
+
+    get_dif_date_now.short_description = 'Validade(Dias)'  
 
     class Meta:
         verbose_name = 'Cotação'

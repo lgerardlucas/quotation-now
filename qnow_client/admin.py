@@ -41,8 +41,8 @@ class QuotationAdmin(admin.ModelAdmin):
     
 
     # Campos que aparecerão ao entrar na model
-    list_display = ('id_quotation','client_client','get_number_launch','get_dif_date_now','stage','date_create','date_update','house_type',
-        'mobile_type_description','get_removed','phone_client','email_client','cep_client',
+    list_display = ('id_quotation','client_client','get_number_launch','stage','date_create','date_update','date_validate','get_dif_date_now',
+        'house_type','mobile_type_description','get_removed','phone_client','email_client','cep_client',
         'street_client','district_client','city_client','state_client','get_photo')
 
     # Campos que podem ser alterados na list_display diretamente
@@ -115,7 +115,7 @@ class QuotationAdmin(admin.ModelAdmin):
     # Campos que aparecerão ao entrar nos detalhes do model
     # Modo agrupado - Denomina um grupo de informações separada por um título
     fieldsets = (
-        ('Dados do Cliente',{'fields': (('id','client','date_create') )}),
+        ('Dados do Cliente',{'fields': (('id','client','date_create','date_validate') )}),
         ('Dados da Cotação',{'fields': (('house_type','mobile_type'),'mobile_description','stage' )}),
         ('Fotos da Cotação',{'fields': ('image_environment','image_project')}),
         ('Detalhamento',    {'fields': ('particulars','removed')}),
