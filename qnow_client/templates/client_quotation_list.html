@@ -106,6 +106,18 @@
 								<!--Tipo do imóvel-->
 								<label class="readmore">Imóvel:</label>
 								<label class="card-text">{{ field.house_type }}</label>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								{% if 'Aprovado'|lower not in field.stage|lower %}
+									{% if 'Restam' in field.get_dif_date_now  %}
+										<label style="font-weight: bold; line-height: 0.4em; color:#FFB400; font-size: 1.4em;">
+											{{ field.get_dif_date_now }}
+										</label>
+									{% else %}
+										<label style="font-weight: bold; line-height: 0.4em; color:red; font-size: 1.4em;">
+											{{ field.get_dif_date_now }}
+										</label>
+									{% endif %}   
+								{% endif %}   
 								<br>
 								
 							
@@ -298,6 +310,17 @@
 																					{{ price.delivery_time }}
 																				</div>
 																				<br>
+
+																				<!-- Prazo vencido alerta -->
+																				{% if price.get_dif_date_validate > 0 %}
+																				<div style="display: inline-block;">
+																					<label style="font-weight: bold; line-height: 0.9em; color:red;">
+																						Este orçamento consta VENCIDO! Mesmo assim, você poderá aprová-lo. Quando a marcenaria entrar em contato lhe informará se o valor ainda esta válido. Você descide se aceita ou não o recalculo. 
+																					</label>	
+																				</div>
+																				<br>
+																				{% endif %}
+
 																				<!-- Forma de pagamento -->
 																				<div style="display: inline-block;">
 																					<label style="font-weight: bold; line-height: 0.4em;">Forma de Pagamento</label><br>

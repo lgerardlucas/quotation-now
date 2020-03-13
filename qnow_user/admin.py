@@ -16,7 +16,7 @@ class UserAdmin(admin.ModelAdmin):
     list_display_links = ('username',)
 
     # Paginação para o listplay
-    list_per_page = 5
+    list_per_page = 30
     
     # Campos que aparecerão ao entra nos detalhes do model
     fields = ('username','email','is_active','role','phone','cep','street','district','city','state','password')

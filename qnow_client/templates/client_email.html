@@ -143,12 +143,19 @@
 
                         <h3>MGA-Cotações</h3>
 
-                        <b>{{ message }}</b>
+                        <b>{{ message }}</b><br><br>
+                        <strong>IMPORTANTE:</strong><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Todas as cotações possui uma data de 
+                        validade para receber orçamentos. Depois desta data a sua cotação fica somente 
+                        disponível pra você aprovar uma marcenaria.
+                        <br>
+
 
                         <br>
                         <br>
 
-                        <b>Cotação Nº:</b> {{ request.id }}<br>
+                        <b>Cotação Nº:</b> {{ request.id }}  <br>
+                        <b>Validade:</b> {{ request.date_validate|date:"d/m/yy" }} <br>
                         <b>Cliente:</b> {{ request.client|truncatechars:10 }}<br>
                         <b>Cidade:</b> {{ request.client.city }} - {{ request.client.state }}<br>
 

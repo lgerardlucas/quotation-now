@@ -223,7 +223,7 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
                     emails_providers.append(provider.email)
             message = 'Atenção, uma nova cotação chegou a nossa plataforma e esta '+acao+' de seu lance. '
         else:                           # E-mail enviado ao client
-            message = 'Parabéns, sua cotação foi '+acao+' com sucesso!\nA partir de agora analisaremos e tendo alguma dúvida, entraremos em contato com você.'
+            message = 'Parabéns, sua cotação foi '+acao+' com sucesso! A partir de agora analisaremos e tendo alguma dúvida, entraremos em contato com você.'
 
         # A ação diferente de "à espera", indica analisar e preparar um link para o acesso a nível de client
         if acao != 'à espera':

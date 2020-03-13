@@ -141,11 +141,7 @@ class Quotation(models.Model):
     def get_dif_date_now(self):
         date1 = datetime.now().toordinal()
         date2 = self.date_validate.toordinal()
-        if date1 - date2 <= 0:
-            return 'Restam: '+str(date1 - date2)+' dia(s)'
-        else:
-            return 'Vencido a: '+str(date1 - date2)+' dia(s)'
-
+        return date1 - date2
     get_dif_date_now.short_description = 'Validade(Dias)'  
 
     class Meta:
