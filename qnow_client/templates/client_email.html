@@ -144,17 +144,17 @@
                         <h3>MGA-Cotações</h3>
 
                         <b>{{ message }}</b><br><br>
-                        <strong>IMPORTANTE:</strong><br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Todas as cotações possui uma data de 
-                        validade para receber orçamentos. Depois desta data a sua cotação fica somente 
-                        disponível pra você aprovar uma marcenaria.
-                        <br>
+                        {% if 'Aprovado' not in request.stage %}
+                          <strong>IMPORTANTE:</strong><br>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Todas as cotações possui uma data de 
+                          validade para receber orçamentos. Depois desta data a sua cotação fica somente 
+                          disponível pra você aprovar uma marcenaria.
+                          <br>
+                          <br>
+                          <br>
+                        {% endif %}  
 
-
-                        <br>
-                        <br>
-
-                        <b>Cotação Nº:</b> {{ request.id }}  <br>
+                        <b>Cotação Nº:</b> {{ request.id }}  <br> 
                         <b>Validade:</b> {{ request.date_validate|date:"d/m/yy" }} <br>
                         <b>Cliente:</b> {{ request.client|truncatechars:10 }}<br>
                         <b>Cidade:</b> {{ request.client.city }} - {{ request.client.state }}<br>
@@ -177,7 +177,7 @@
                           </dt>
                           <dd style="text-align: left">
                             A MGA a partir deste ponto se retira!<br>
-                            Acreditamos que nesta etapa o nosso trabalha foi concluído com exito, ou seja,
+                            Acreditamos que nesta etapa o nosso trabalha foi concluído com êxito, ou seja,
                             unimos você a vários fornecedores e você escolheu um.
                           </dd>
                           <br>
@@ -238,7 +238,9 @@
                         <br>
 
                         <b>Caracteristicas: </b>
+                        <pre style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 5px; text-align: left;">
                         {{ request.particulars }}
+                        </pre>
                       </p>
 
                       <br>

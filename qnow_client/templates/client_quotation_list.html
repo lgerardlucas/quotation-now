@@ -101,16 +101,16 @@
 							</div>
 
 							<!-- Corpo do card, com as Caracteristicas, situação e edição do projeto,
-															tudo respeintando a situação da cotação-->
+								tudo respeintando a situação da cotação-->
 							<div class="card-body" style="padding: 5px;">
 								<!--Tipo do imóvel-->
 								<label class="readmore">Imóvel:</label>
 								<label class="card-text">{{ field.house_type }}</label>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								{% if 'Aprovado'|lower not in field.stage|lower %}
-									{% if 'Restam' in field.get_dif_date_now  %}
+                                {% if 'Aprovado'|lower not in field.stage|lower %}
+									{% if field.get_dif_date_now  <= 0 %}
 										<label style="font-weight: bold; line-height: 0.4em; color:#FFB400; font-size: 1.4em;">
-											{{ field.get_dif_date_now }}
+											Restam: {{ field.get_dif_date_now }} dia(s)
 										</label>
 									{% else %}
 										<label style="font-weight: bold; line-height: 0.4em; color:red; font-size: 1.4em;">
@@ -228,18 +228,17 @@
 															<label style="font-weight: bold;">- Você optou pelo fornecedor listado abaixo,</label>
 															 para que o mesmo dê inicio aos próximos passos, que são:
 															<br>
-															    &nbsp;&nbsp;1 - Entrar em contato com você pra agendar sua visita<br>
+															    &nbsp;&nbsp;1 - Entrar em contato com você<br>
 																&nbsp;&nbsp;2 - Juntos analisar o projeto e fechar o valor final<br>
 																&nbsp;&nbsp;3 - Assinar o contrato, produzir e entregar
 															<br>
 
 															<label style="font-weight: bold;">- 
 																A apartir de uma aprovação por sua parte, a </label>
-																<strong>MGA-Cotações</strong> 
-																sai de cena! .Acreditamos ter feito a parte inicial mais complicada 
+																<strong>MGA Cotações</strong> sai de cena! 
+																Acreditamos que fizemos a parte inicial mais complicada deste processo  
 																quando se deseja móveis planejados, que é achar os melhores fornecedores, 
 																preços e condições de pagamento.
-															
 															<br>
 															- Ao final de todo o processo, agradecemos se puder nos enviar uma foto e deixar seu comentário aqui mesmo.
 															 Isto ajudará a sabermos 
@@ -291,19 +290,22 @@
 																					<label style="font-weight: bold; line-height: 0.4em;">Validade</label><br>
 																					{{ price.date_validate|date:"d/m/Y" }} 
 																				</div>
-																				<!-- validae em dias -->
+
+																				<!-- validade em dias -->
 																				<div style="display: inline-block; width: 25%;">
-																					{% if price.get_dif_date_validate <= 0 %}
-																					<label style="font-weight: bold; line-height: 0.4em; color:#FFB400;">
-																						Restam 
-																					</label><br>
-																				    {% else %}
-																					 <label style="font-weight: bold; line-height: 0.4em; color:red;">
-																					      Vencido a  
-																					</label><br>
-																					{% endif %}   
-																					{{ price.get_dif_date_validate }} dia(s)
+																					{% if 'Aprovado'|lower not in field.stage|lower %}
+																						{% if price.get_dif_date_validate <= 0 %}
+																						<label style="font-weight: bold; line-height: 0.4em; color:#FFB400;">
+																							Restam <br> {{ price.get_dif_date_validate }} dia(s)
+																						</label><br>
+																						{% else %}
+																						<label style="font-weight: bold; line-height: 1.4em; color:red;">
+																							Vencido a <br> {{ price.get_dif_date_validate }} dia(s)
+																						</label><br>
+																						{% endif %}   
+																					{% endif %}
 																				</div>
+
 																				<!-- Prazo de entrega -->
 																				<div style="display: inline-block;">
 																					<label style="font-weight: bold; line-height: 0.4em;">Entrega</label><br>
@@ -312,13 +314,15 @@
 																				<br>
 
 																				<!-- Prazo vencido alerta -->
-																				{% if price.get_dif_date_validate > 0 %}
-																				<div style="display: inline-block;">
-																					<label style="font-weight: bold; line-height: 0.9em; color:red;">
-																						Este orçamento consta VENCIDO! Mesmo assim, você poderá aprová-lo. Quando a marcenaria entrar em contato lhe informará se o valor ainda esta válido. Você descide se aceita ou não o recalculo. 
-																					</label>	
-																				</div>
-																				<br>
+																				{% if 'Aprovado'|lower not in field.stage|lower %}
+																					{% if price.get_dif_date_validate > 0 %}
+																					<div style="display: inline-block;">
+																						<label style="font-weight: bold; line-height: 0.9em; color:red;">
+																							Este orçamento consta VENCIDO! Mesmo assim, você poderá aprová-lo. Quando a marcenaria entrar em contato lhe informará se o valor ainda esta válido. Você descide se aceita ou não o recalculo. 
+																						</label>	
+																					</div>
+																					<br>
+																					{% endif %}
 																				{% endif %}
 
 																				<!-- Forma de pagamento -->

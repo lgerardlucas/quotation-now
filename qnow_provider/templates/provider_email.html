@@ -160,7 +160,10 @@
                         <b>Valor:</b> {{ value }}<br>
                         <b>Prazo de Entrega:</b> {{ deliver_time }}<br>
                         <b>Forma de Pagamento:</b> {{ form_payment }}<br>
-                        <b>Informações:</b> {{ commets }}<br>
+                        <b>Informações:</b> 
+                          <pre style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 5px; text-align: left;">
+                            {{ commets }}
+                          </pre> <br>
 
                         <br>
                         <strong>IMPORTANTE:</strong><br>
@@ -184,8 +187,11 @@
                         {{ request.mobile_type}}
                         {% endif %}<br>
                         <b>Situação:</b> {{ request.stage }}<br>
-                        <b>Caracteristicas:</b> {{ request.particulars }}<br>
-
+                        <b>Caracteristicas:</b> 
+                          <pre style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 5px; text-align: left;">
+                              {{ request.particulars }}
+                          </pre>
+                        <br>
                       </p>
 
                       <table border="0" cellpadding="0" cellspacing="0" class="btn btn-block btn-primary"
