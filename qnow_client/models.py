@@ -71,7 +71,7 @@ class Quotation(models.Model):
 
 
     # Data de validade da cotação
-    date_validate = models.DateField('Validade(Data)',blank=False,null=False,default=datetime.now()+timedelta(days=30))
+    date_validate = models.DateField('Validade(Data)',blank=False,null=False,default=datetime.now()+timedelta(days=15))
 
 
     # Data da última atualização da cotação
