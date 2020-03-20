@@ -246,3 +246,40 @@ CSS - Lista de cotações do PROVIDER
   background-color: #FFB400;
   color: white;
 }
+
+/*
+----------------------------------------------------------
+*/
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 100%;
+  padding: 10px 10px;
+
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/* Style the counter cards */
+.card_provider {
+  box-shadow: 0 4px 8px 0 #FFB400;
+  padding: 16px;
+  text-align: center;
+  background-color: #292C2F;
+  font-size: 1em;
+  text-align: left;
+  line-height: 0.68em;
+  color: beige;
+
+}
