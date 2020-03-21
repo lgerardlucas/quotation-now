@@ -260,8 +260,8 @@ CSS - Lista de cotações do PROVIDER
 }
 
 /* Remove extra left and right margins, due to padding */
-.row {margin: 0 -5px;}
-
+/* .row {margin: 0 -5px;} */
+ */
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -273,11 +273,11 @@ CSS - Lista de cotações do PROVIDER
 
 /* Style the counter cards */
 .card_provider {
-  box-shadow: 0 4px 8px 0 #FFB400;
-  padding: 16px;
+  box-shadow: 0 4px 8px 0 #292c2f;
+  padding: 8px;
   text-align: center;
-  background-color: #292C2F;
-  font-size: 1em;
+  background-color: #292c2f;
+  font-size: 0.8em;
   text-align: left;
   line-height: 0.68em;
   color: beige;

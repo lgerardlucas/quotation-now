@@ -197,7 +197,7 @@
 
 						<div id="{{ field.slug }}" class="collapse" aria-labelledby="headingTwo"
 							data-parent="#accordionExample">
-							<div class="modal-body" style="padding-left: 0.1em;">
+							<div class="modal-body">
 
 								<!-- Explicando a situção em que esta a cotação -->
 								{% if 'Orçado'|lower not in field.stage|lower and 'Aprovado'|lower not in field.stage|lower %}
@@ -292,35 +292,32 @@
 													</div>
 													<div
 														style="line-height: 1.4em; width: 100% padding: 5px 5px 5px 0px;">
-														<div style="display: inline-block; width: 30%">
-															Orçamento<br>
-															<label style="color: #ffb400; font-weight: bold;">R$
-																{{ price.quotation_value }}</label>
+														<div style="display: inline-block; width: 25%">
+															<label style="font-weight: bold;">Orçamento</label><br>
+															<label style="font-weight: normal;">R$ {{ price.quotation_value }}</label>
 														</div>
 
 														<!-- Valida em forma de data -->
-														<div
-															style="display: inline-block; width: 20%; text-align: left;">
-															Validade<br>
-															<label style="color: #ffb400; font-weight: bold;">
-																{{ price.date_validate|date:"d/m/Y" }}
-															</label>
+														<div style="display: inline-block; width: 20%; text-align: left;">
+															<label style="font-weight: bold;">Validade</label><br>
+															<label style="font-weight: normal;">{{ price.date_validate|date:"d/m/Y" }}</label>
 														</div>
 
 														<!-- Validade em forma de dias -->
-														<div
-															style="display: inline-block; width: 20%; text-align: left;">
+														<div style="display: inline-block; width: 20%; text-align: left;">
+															<label style="font-weight: bold;">
 															{% if price.get_dif_date_validate <= 0 %}
-															Restam
+															   Restam
 															{% else %}
-															Vencido a
+															   Vencido a
 															{% endif %}
-															<label style="color: #ffb400; font-weight: bold;">
+														   </label><br>
+															
+														   <label style="color: #ffb400; font-weight: normal;">
 																{% if 'Aprovado'|lower not in field.stage|lower %}
-																<label
-																	style="font-weight: bold; line-height: 1.2em; color:#FFB400;">
 																	{{ price.get_dif_date_validate }} dia(s)
-																</label><br>
+																{% else %}
+																	--
 																{% endif %}
 															</label>
 														</div>
@@ -349,34 +346,41 @@
 
 													<!-- Prazo vencido alerta -->
 													{% if 'Aprovado'|lower not in field.stage|lower %}
-														{% if price.get_dif_date_validate > 0 %}
-														<div style="display: inline-block; width: 100%;">
-															<label
-																style="font-weight: bold; line-height: 0.9em; color:red;">
-																Este orçamento consta VENCIDO! Mesmo assim, você poderá
-																aprová-lo. Quando a marcenaria entrar em contato lhe
-																informará se o valor ainda esta válido. Você descide se
-																aceita ou não o recalculo.
-															</label>
-														</div>
-														{% endif %}
+													{% if price.get_dif_date_validate > 0 %}
+													<div style="display: inline-block; width: 100%;">
+														<label
+															style="font-weight: bold; line-height: 0.9em; color:red;">
+															Este orçamento consta VENCIDO! Mesmo assim, você poderá
+															aprová-lo. Quando a marcenaria entrar em contato lhe
+															informará se o valor ainda esta válido. Você descide se
+															aceita ou não o recalculo.
+														</label>
+													</div>
+													{% endif %}
 													{% endif %}
 
 													<!-- Forma de pagamento -->
 													<div style="display: inline-block;  width: 100%;">
-														Forma de Pagamento	
+														<label style="font-weight: bold; line-height: 1.4em;">
+															Forma de Pagamento
+														</label><br>
 														<label
-															style="font-weight: bold; line-height: 1.2em; color:#FFB400;">
+															style="font-weight: bold; line-height: 0.9em; color:#FFB400;">
 															{{ price.form_payment }}
 														</label>
 													</div>
 
 													<!-- Detalhes -->
 													<div style="display: inline-block;  width: 100%;">
-														<label style="bold; line-height: 1.4em;">Detalhes</label><br>
-														{{ price.comments}}
+														<label style="font-weight: bold; line-height: 1.4em;">
+															Detalhes
+														</label><br>
+														<div
+															style="font-weight: bold; line-height: 0.9em; color:#FFB400; word-wrap: break-word;">
+															{{ price.comments }}
+														</div>
 													</div>
-	
+
 
 
 												</div>
