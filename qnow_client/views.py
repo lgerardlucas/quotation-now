@@ -334,3 +334,38 @@ def quotation_client_delete(request, quotation_id=0, action='filter'):
             messages.add_message(request, messages.INFO, 'Verifique sua conta de e-mail.')
         return redirect("qnow_client:quotation_client_list", quotation.client_id)
 
+
+#Envia o comentário e demais dados após o cliente receber o produto
+def quotation_client_comment(request,quotation_id=0):
+    template_name = "../templates/client_quotation_list.html"
+
+    quotation = Quotation.objects.get(pk=quotation_id,removed=False)
+    subject = 'MGA-Cotações - Cotação Nº: '+str(quotation_id)+' - '+str(quotation.client)
+    message = 'Atenção, sua cotação contém uma dúvida.'
+        
+    from_email = settings.EMAIL_HOST_USER
+    context = {
+        "request":          quotation,                          # Quotação do cliente
+        "message":          message,                            # Messagem de alerta
+        "provider_name":    request.user.username,              # Nome do provider logado
+        "inquire":          request.POST.get('inquire_provider')# Dúvida do provider
+        }
+    content = render_to_string(template_name, context)
+    if subject and message and from_email:
+        try:
+            email = EmailMessage(
+                subject,
+                content,
+                from_email, 
+                [request.POST.get('email_client')],
+                [from_email]
+            )
+            email.content_subtype = "html"
+            email.send(fail_silently=False)
+        except BadHeaderError:
+            return HttpResponse('Problema no envio do e-mail. Tente mais tarde!')
+        return redirect("qnow_provider:quotation_provider")
+    else:
+        return redirect("qnow_provider:quotation_provider")
+
+

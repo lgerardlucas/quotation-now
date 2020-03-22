@@ -14,6 +14,8 @@ urlpatterns = [
   path('quotation_client_delete/<int:quotation_id>/<str:action>', views.quotation_client_delete ,name='quotation_client_delete'),
   path('quotation_client_email/', views.quotation_client_email ,name='quotation_client_email'),
   path('quotation_client_approved/<int:quotationprice_id>', views.quotation_client_approved ,name='quotation_client_approved'),
+  path('quotation_client_comment/<int:quotation_id>', views.quotation_client_comment ,name='quotation_client_comment'),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

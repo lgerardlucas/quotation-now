@@ -272,59 +272,65 @@
 									action="{% url 'qnow_client:quotation_client_approved' field.id %}">
 									{% csrf_token %}
 									<div style="text-align: center; font-weight: bold; font-size: 1.4em;">
-										<caption style="font-weight: bold;">Lista de orçamentos para cotação Nº
-											{{ field.id }}</caption>
+										<label style="font-weight: bold; ">Lista de orçamentos para cotação<br>Nº {{ field.id }}</label>
 										<!-- TemplateTAG carregada com os dados de orçamento -->
 										{% for price in quotation_price %}
 										<div class="row">
 											<div class="column">
 												<div class="card_provider">
-													<div style="width: 100%; padding: 5px 5px 5px 5px;">
+													<div
+														style="width: 100%; line-height: 1em; padding: 0px; Important!">
+														{% if price.approved %}
+														<label style="font-weight: bold;">
+															Marcenaria Aprovada<br></label><br>
 														<label style="font-weight: normal;">
-															{% if price.approved %}
-															<td style="border:none; font-weight: bold;">
-																{{ price.quotation_provider }} </td>
-															{% else %}
-															<td style="border:none; font-weight: bold;">
-																Marcenaria({{ price.quotation_provider_id }}) </td>
-															{% endif %}
+															{{ price.quotation_provider }}
 														</label>
+														{% else %}
+														<label style="font-weight: bold;">
+															Nome da Marcenaria</label><br>
+														<label style="font-weight: normal;">
+															Marcenaria({{ price.quotation_provider_id }})
+														</label>
+														{% endif %}
 													</div>
 													<div
 														style="line-height: 1.4em; width: 100% padding: 5px 5px 5px 0px;">
-														<div style="display: inline-block; width: 25%">
+														<div style="display: inline-block; width: 30%">
 															<label style="font-weight: bold;">Orçamento</label><br>
-															<label style="font-weight: normal;">R$ {{ price.quotation_value }}</label>
+															<label style="font-weight: normal;">R$
+																{{ price.quotation_value }}</label>
 														</div>
 
 														<!-- Valida em forma de data -->
-														<div style="display: inline-block; width: 20%; text-align: left;">
+														<div
+															style="display: inline-block; width: 20%; text-align: center;">
 															<label style="font-weight: bold;">Validade</label><br>
-															<label style="font-weight: normal;">{{ price.date_validate|date:"d/m/Y" }}</label>
+															<label
+																style="font-weight: normal;">{{ price.date_validate|date:"d/m/Y" }}</label>
 														</div>
 
 														<!-- Validade em forma de dias -->
-														<div style="display: inline-block; width: 20%; text-align: left;">
+														<div
+															style="display: inline-block; width: 20%; text-align: right;">
 															<label style="font-weight: bold;">
-															{% if price.get_dif_date_validate <= 0 %}
-															   Restam
-															{% else %}
-															   Vencido a
-															{% endif %}
-														   </label><br>
-															
-														   <label style="color: #ffb400; font-weight: normal;">
-																{% if 'Aprovado'|lower not in field.stage|lower %}
-																	{{ price.get_dif_date_validate }} dia(s)
+																{% if price.get_dif_date_validate <= 0 %}
+																Restam
 																{% else %}
-																	--
+																Vencido
+																{% endif %}
+															</label><br>
+
+															<label style="font-weight: normal;">
+																{% if 'Aprovado'|lower not in field.stage|lower %}
+																{{ price.get_dif_date_validate }} dia(s)
+																{% else %}
+																0 dia(s)
 																{% endif %}
 															</label>
 														</div>
-
-
 														<div
-															style="display: inline-block; width: 25%; text-align: center;">
+															style="display: inline-block; width: 25%; text-align: center; line-height: 1.7em;">
 															Aprovar<br>
 															{% if price.approved %}
 															<input style="vertical-align: middle;" type="radio"
@@ -340,23 +346,28 @@
 													<div style="display: inline-block; width: 100%">
 														<label
 															style="font-weight: bold; line-height: 1.4em;">Entrega</label><br>
-														<label style="color: #FFB400;"> {{ price.delivery_time }}
-														</label>
+														<label
+															style="font-weight: normal;">{{ price.delivery_time }}</label>
 													</div>
 
 													<!-- Prazo vencido alerta -->
 													{% if 'Aprovado'|lower not in field.stage|lower %}
-													{% if price.get_dif_date_validate > 0 %}
-													<div style="display: inline-block; width: 100%;">
-														<label
-															style="font-weight: bold; line-height: 0.9em; color:red;">
-															Este orçamento consta VENCIDO! Mesmo assim, você poderá
-															aprová-lo. Quando a marcenaria entrar em contato lhe
-															informará se o valor ainda esta válido. Você descide se
-															aceita ou não o recalculo.
-														</label>
-													</div>
-													{% endif %}
+														{% if price.get_dif_date_validate > 0 %}
+														<div style="padding: 10px 10px 10px 10px;">
+															<div
+																style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
+																<label
+																	style="font-weight: bold; line-height: 0.9em; color:#FFB400; padding: 4px 4px 4px 2px;">
+																	Este orçamento consta<br>VENCIDO!<br>Mesmo assim, você
+																	poderá
+																	aprová-lo. Quando a marcenaria entrar em contato lhe
+																	informará se o valor ainda esta válido. Você descide se
+																	aceita ou não o recalculo.
+
+																</label>
+															</div>
+														</div>
+														{% endif %}
 													{% endif %}
 
 													<!-- Forma de pagamento -->
@@ -364,8 +375,7 @@
 														<label style="font-weight: bold; line-height: 1.4em;">
 															Forma de Pagamento
 														</label><br>
-														<label
-															style="font-weight: bold; line-height: 0.9em; color:#FFB400;">
+														<label style="font-weight: normal; line-height: 0.9em;">
 															{{ price.form_payment }}
 														</label>
 													</div>
@@ -376,35 +386,41 @@
 															Detalhes
 														</label><br>
 														<div
-															style="font-weight: bold; line-height: 0.9em; color:#FFB400; word-wrap: break-word;">
+															style="font-weight: normal; line-height: 0.9em; word-wrap: break-word;">
 															{{ price.comments }}
 														</div>
 													</div>
 
-
-
+													{% if 'Aprovado'|lower in field.stage|lower %}
+														<div style="width: 100%;">
+															<form enctype="multipart/form-data" method="POST"
+																action="{% url 'qnow_client:quotation_client_comment' field.id %}">
+																{% csrf_token %}
+																<div style="padding: 10px 10px 10px 10px;">
+																	<div
+																		style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
+																		<label for="message-text" class="col-form-label" style="font-weight: bold; font-size: 1.2em; line-height: 1em; color:#FFB400; padding: 4px 4px 4px 2px; width: 100%;">
+																				Quando receber seu produto da marcenaria<br>
+																				<label style="font-weight: bold; font-size: 1.2em; line-height: 2em;"> {{ price.quotation_provider }}</label><br>
+																				Deixe aqui seu comentário por favor:
+																		</label>
+																		<textarea style="height: 15em; width: 100%;"  id="message-text" name="inquire_provider">
+																		</textarea>	<br>
+																		<input name="button9" value="Enviar meu comentário"	class="btn btn-default uk-button" type="submit">
+																	</div>
+																</div>
+															</form>
+														</div>
+													{% endif %}
 												</div>
 											</div>
 										</div>
 										{% endfor %}
 									</div>
 
-									<!-- Pergunta do marceneiro -->
-									{% if 'Aprovado'|lower in field.stage|lower %}
-									<div class="form-group" style="padding-left: 0.3em;">
-										<label for="message-text" class="col-form-label" style="font-weight: bold;">
-											Após receber seu produto, agradecemos se deixar um comentário aqui:
-										</label>
-										<textarea class="form-control" id="message-text" name="inquire_provider"
-											style="height: 15em;"></textarea>
-									</div>
-									{% endif %}
 									<!-- botões de ações -->
 									<div class="modal-footer" style="border-top:0px; padding-top: 0px;">
-										{% if 'Aprovado'|lower in field.stage|lower %}
-										<input name="button9" value="Enviar meu comentário"
-											class="btn btn-default uk-button" type="submit">
-										{% else %}
+										{% if 'Aprovado'|lower not in field.stage|lower %}
 										<input name="button9" value="Enviar orçamento aprovado por mim"
 											class="btn btn-default uk-button" type="submit">
 										{% endif %}
