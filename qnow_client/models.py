@@ -114,6 +114,10 @@ class Quotation(models.Model):
     # Determina se a cotação foi removida
     removed = models.BooleanField('Removida',default=False)
 
+    # Comentário do cliente feito depois da entrega
+    comment  = models.TextField('Detalhes', blank=True)
+
+
     # Sub-campo: Indica o número de lances para uma dita cotação
     def get_number_launch(self):
         qvalue = QuotationPrice.objects.filter(quotation_number_id=self.id)
