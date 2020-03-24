@@ -5,6 +5,7 @@ from django.template import Context, RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from datetime import datetime,date,timedelta
 from django.core.mail import EmailMessage, BadHeaderError, EmailMultiAlternatives
 from django.conf import settings
 import uuid
@@ -124,7 +125,7 @@ def quotation_client_approved(request,quotationprice_id=0):
         QuotationPrice.objects.filter(quotation_number=quotationprice_id).update(approved=False)  
 
         # Aprova o valor orçado pelo provider 
-        quotationprice_update_row = QuotationPrice.objects.filter(pk=request.POST.get('price_id')).update(approved=True)  
+        quotationprice_update_row = QuotationPrice.objects.filter(pk=request.POST.get('price_id')).update(approved=True,commission_paid_date=datetime.now()+timedelta(days=7))  
 
         # Retorna id para o stage = 4 aprovado
         quotationstage = QuotationStage.objects.get(status=4)
@@ -338,7 +339,7 @@ def quotation_client_delete(request, quotation_id=0, action='filter'):
 #Envia o comentário e demais dados após o cliente receber o produto
 def quotation_client_comment(request,quotation_id=0):
     template_name = "../templates/client_email_comment.html"
-    
+    print('===============================================')
     if request.POST.get('comment_client_quotation'):
         # Get da gotação para incluir no campos "Comment" os comentários do cliente sobre a cotação e a entrega 
         quotation = Quotation.objects.get(pk=quotation_id,removed=False).update(comment=request.POST.get('comment_client_quotation'))
@@ -349,6 +350,7 @@ def quotation_client_comment(request,quotation_id=0):
 
         print('-----------------------------terminar isto aqui')
         print(quotation.provider__email)
+        pass
 
         from_email = settings.EMAIL_HOST_USER
         context = {

@@ -40,7 +40,14 @@ class QuotationPrice(models.Model):
     # Informações a mais para o cliente
     comments            = models.TextField('Comentário da Marcenaria',blank=True)
 
-     # Sub-campo: Indica a diferença entre a data de criação x data atual
+    # Cotação paga
+    commission_paid     = models.BooleanField('Comissão(Paga?)',default=False)
+
+    # Data do pagamento da comissão
+    commission_paid_date = models.DateField('Comissão(Data)',blank=True, null=True, default=date.today)
+
+
+    # Sub-campo: Indica a diferença entre a data de criação x data atual
     def get_dif_date_validate(self):
         date1 = datetime.now().toordinal()
         date2 = self.date_validate.toordinal()

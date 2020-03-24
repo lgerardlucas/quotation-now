@@ -272,12 +272,13 @@
 									action="{% url 'qnow_client:quotation_client_approved' field.id %}">
 									{% csrf_token %}
 									<div style="text-align: center; font-weight: bold; font-size: 1.4em;">
-										<label style="font-weight: bold; ">Lista de orçamentos para cotação<br>Nº {{ field.id }}</label>
+										<label style="font-weight: bold; ">Lista de orçamentos para cotação<br>Nº
+											{{ field.id }}</label>
 										<!-- TemplateTAG carregada com os dados de orçamento -->
 										{% for price in quotation_price %}
 										<div class="row">
 											<div class="column">
-												<div class="card_provider">
+												<div class="card_provider" style="border-radius:0px 20px 0px 10px;">
 													<div
 														style="width: 100%; line-height: 1em; padding: 0px; Important!">
 														{% if price.approved %}
@@ -352,22 +353,22 @@
 
 													<!-- Prazo vencido alerta -->
 													{% if 'Aprovado'|lower not in field.stage|lower %}
-														{% if price.get_dif_date_validate > 0 %}
-														<div style="padding: 10px 10px 10px 10px;">
-															<div
-																style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
-																<label
-																	style="font-weight: bold; line-height: 0.9em; color:#FFB400; padding: 4px 4px 4px 2px;">
-																	Este orçamento consta<br>VENCIDO!<br>Mesmo assim, você
-																	poderá
-																	aprová-lo. Quando a marcenaria entrar em contato lhe
-																	informará se o valor ainda esta válido. Você descide se
-																	aceita ou não o recalculo.
+													{% if price.get_dif_date_validate > 0 %}
+													<div style="padding: 10px 10px 10px 10px;">
+														<div
+															style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
+															<label
+																style="font-weight: bold; line-height: 0.9em; color:#FFB400; padding: 4px 4px 4px 2px;">
+																Este orçamento consta<br>VENCIDO!<br>Mesmo assim, você
+																poderá
+																aprová-lo. Quando a marcenaria entrar em contato lhe
+																informará se o valor ainda esta válido. Você descide se
+																aceita ou não o recalculo.
 
-																</label>
-															</div>
+															</label>
 														</div>
-														{% endif %}
+													</div>
+													{% endif %}
 													{% endif %}
 
 													<!-- Forma de pagamento -->
@@ -390,28 +391,6 @@
 															{{ price.comments }}
 														</div>
 													</div>
-
-													{% if 'Aprovado'|lower in field.stage|lower %}
-														<div style="width: 100%;">
-															<form enctype="multipart/form-data" method="POST"
-																action="{% url 'qnow_client:quotation_client_comment' field.id %}">
-																{% csrf_token %}
-																<div style="padding: 10px 10px 10px 10px;">
-																	<div
-																		style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
-																		<label for="message-text" class="col-form-label" style="font-weight: bold; font-size: 1.2em; line-height: 1em; color:#FFB400; padding: 4px 4px 4px 2px; width: 100%;">
-																				Quando receber seu produto da marcenaria<br>
-																				<label style="font-weight: bold; font-size: 1.2em; line-height: 2em;"> {{ price.quotation_provider }}</label><br>
-																				Deixe aqui seu comentário por favor:
-																		</label>
-																		<textarea style="height: 15em; width: 100%;"  id="message-text" name="comment_client_quotation">
-																		</textarea>	<br>
-																		<input name="button9" value="Enviar meu comentário"	class="btn btn-default uk-button" type="submit">
-																	</div>
-																</div>
-															</form>
-														</div>
-													{% endif %}
 												</div>
 											</div>
 										</div>
@@ -427,9 +406,49 @@
 									</div>
 								</form>
 								{% endif %}
+
+
+								{% if 'Aprovado'|lower in field.stage|lower %}
+								<div class="row">
+									<div class="column">
+										<div class="card_provider" style="border-radius:0px 10px 0px 20px;">
+											<div style="width: 100%; line-height: 1em; padding: 0px; Important! ">
+												<div style="width: 100%;">
+													<form enctype="multipart/form-data" method="POST"
+														action="{% url 'qnow_client:quotation_client_comment' field.id %}">
+														{% csrf_token %}
+														<div style="padding: 10px 10px 10px 10px;">
+															<div
+																style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
+																<label for="message-text" class="col-form-label"
+																	style="font-weight: bold; font-size: 1.2em; line-height: 1em; color:#FFB400; padding: 4px 4px 4px 2px; width: 100%;">
+																	Nos conte depois que receber seu produto, como foi sua experiência com este fornecedor.<br>
+																	Deixe aqui seu comentário:
+
+
+
+dfasfdasdfdasfadsfdasfads terminar isto aqui e 
+depois colocar uma tranca igual a qdo se tenta orcar
+uma cotacao parovada para nao deixar o marceneiro devedor 
+orcar algo sem pagar a plataforma																	
+																</label>
+																<textarea style="height: 15em; width: 100%;" id="message-text" name="comment_client_quotation"  
+																	placeholder="Nos conte como foi o tratamento dado a você pelo fornecedor, se o móvel produzido foi entregue no tempo, na qualidade e montado corretamente. Comente aqui por favor, queremos aprender com seu comentário.">
+																</textarea> <br>
+																<input name="button9"
+																	value="Enviar meu comentário agora"
+																	class="btn btn-default uk-button" type="submit">
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								{% endif %}
 							</div>
 						</div>
-
 					</div>
 
 
