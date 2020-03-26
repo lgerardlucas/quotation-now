@@ -5,7 +5,7 @@ from qnow_client.models import Quotation
 # Register your models here.
 class QuotationPriceAdmin(admin.ModelAdmin):
     # Campos que aparecerão ao entrar na model
-    list_display = ('id','number_quotation','quotation_client','quotation_provider','value_quotation','get_value_percent_site','approved','commission_paid','commission_paid_date','date_create','date_validate','get_dif_date_validate','delivery_time','form_payment')
+    list_display = ('id','number_quotation','quotation_client','quotation_provider','value_quotation','approved','approved_date','get_value_percent_site','commission_paid','commission_paid_date','get_dif_date_commission_paid','date_create','date_validate','get_dif_date_validate','delivery_time','form_payment')
 
     # 2º Tipo 2 de pesquisa para tabelas relacionadas - Apresenta no modo lista e detalhado
     autocomplete_fields = ("quotation_number",)
@@ -14,7 +14,7 @@ class QuotationPriceAdmin(admin.ModelAdmin):
     list_per_page = 30
 
     # Campos que unidos são usados no processo de filtragem por seleção
-    list_filter = ('quotation_number_id','quotation_provider','approved')
+    list_filter = ('approved','quotation_number_id','quotation_provider')
 
     # Sub-campos - Usado somente no list_display
     #Retorna o nome do cliente da cotação por meio do relacionamento na models QuotationPrice
@@ -41,5 +41,6 @@ class QuotationPriceAdmin(admin.ModelAdmin):
 
     # Força a informa o total de registros na tabela se false, mostra o texto "Mostrar Tudo"
     show_full_result_count = True
-    
+
+   
 admin.site.register(QuotationPrice,QuotationPriceAdmin) 

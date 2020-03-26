@@ -63,7 +63,7 @@
 						{% else %}
 						{{ field.mobile_type }}
 						{% endif %}
-						<small>Cotação Nº:{{ field.id }}</small>
+						<small>Cotação Nº: <small style="font-size: 1.6em; font-weight: bold;">{{ field.id }}</small></small>
 					</h2>
 				</strong>
 
@@ -209,12 +209,13 @@
 								<!-- Montar o form somente se for orçado e aprovado -->
 								{% if 'Orçado'|lower in field.stage|lower or 'Aprovado'|lower in field.stage|lower %}
 								<strong>
+									<label style="font-size: 1.4em; font-weight: bold;">
 									{% if 'Aprovado'|lower not in field.stage|lower %}
 									Parabéns, sua cotação Nº {{ field.id }} foi atendida.
 									{% else %}
 									Parabéns, sua cotação Nº {{ field.id }} esta aprovada!
 									{% endif %}
-
+									</label>
 								</strong>
 								<br>
 								<label style="font-weight: bold;">Leia com atenção</label>
@@ -251,7 +252,7 @@
 									<br>
 
 									<label style="font-weight: bold;">-
-										A apartir de uma aprovação por sua parte, a </label>
+										A apartir de uma aprovação feita por sua parte, a </label>
 									<strong>MGA Cotações</strong> sai de cena!
 									Acreditamos que fizemos a parte inicial mais complicada deste processo
 									quando se deseja móveis planejados, que é achar os melhores fornecedores,
@@ -306,29 +307,32 @@
 														<!-- Valida em forma de data -->
 														<div
 															style="display: inline-block; width: 20%; text-align: center;">
+															{% if not price.approved %}
 															<label style="font-weight: bold;">Validade</label><br>
-															<label
-																style="font-weight: normal;">{{ price.date_validate|date:"d/m/Y" }}</label>
+															<label style="font-weight: normal;">{{ price.date_validate|date:"d/m/Y" }}</label>
+															{% endif %}
 														</div>
 
 														<!-- Validade em forma de dias -->
 														<div
 															style="display: inline-block; width: 20%; text-align: right;">
-															<label style="font-weight: bold;">
-																{% if price.get_dif_date_validate <= 0 %}
-																Restam
-																{% else %}
-																Vencido
-																{% endif %}
-															</label><br>
+															{% if not price.approved %}
+																<label style="font-weight: bold;">
+																	{% if price.get_dif_date_validate <= 0 %}
+																	Restam
+																	{% else %}
+																	Vencido
+																	{% endif %}
+																</label><br>
 
-															<label style="font-weight: normal;">
-																{% if 'Aprovado'|lower not in field.stage|lower %}
-																{{ price.get_dif_date_validate }} dia(s)
-																{% else %}
-																0 dia(s)
-																{% endif %}
-															</label>
+																<label style="font-weight: normal;">
+																	{% if 'Aprovado'|lower not in field.stage|lower %}
+																	{{ price.get_dif_date_validate }} dia(s)
+																	{% else %}
+																	0 dia(s)
+																	{% endif %}
+																</label>
+															{% endif %}	
 														</div>
 														<div
 															style="display: inline-block; width: 25%; text-align: center; line-height: 1.7em;">
@@ -421,16 +425,9 @@
 															<div
 																style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
 																<label for="message-text" class="col-form-label"
-																	style="font-weight: bold; font-size: 1.2em; line-height: 1em; color:#FFB400; padding: 4px 4px 4px 2px; width: 100%;">
+																	style="font-weight: bold; font-size: 1.3em; line-height: 1em; color:#FFB400; padding: 4px 4px 4px 2px; width: 100%;">
 																	Nos conte depois que receber seu produto, como foi sua experiência com este fornecedor.<br>
-																	Deixe aqui seu comentário:
-
-
-
-dfasfdasdfdasfadsfdasfads terminar isto aqui e 
-depois colocar uma tranca igual a qdo se tenta orcar
-uma cotacao parovada para nao deixar o marceneiro devedor 
-orcar algo sem pagar a plataforma																	
+																	Deixe aqui seu comentário:																	
 																</label>
 																<textarea style="height: 15em; width: 100%;" id="message-text" name="comment_client_quotation"  
 																	placeholder="Nos conte como foi o tratamento dado a você pelo fornecedor, se o móvel produzido foi entregue no tempo, na qualidade e montado corretamente. Comente aqui por favor, queremos aprender com seu comentário.">

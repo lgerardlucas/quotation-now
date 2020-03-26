@@ -20,7 +20,7 @@ class QuotationPrice(models.Model):
     quotation_provider  = models.ForeignKey("qnow_user.User", on_delete=models.CASCADE, null=True,related_name="quotation_provider",verbose_name='Marcenaria') 
 
     # Data do lançamento do preço
-    date_create         = models.DateField('Data da Orçamento',default=date.today)
+    date_create         = models.DateField('Data do Orçamento',default=date.today)
 
     # Data de validade do preço
     date_validate       = models.DateField('Validade da Cotação',blank=False,null=False,default=datetime.now()+timedelta(days=10))
@@ -35,17 +35,19 @@ class QuotationPrice(models.Model):
     form_payment        = models.CharField('Forma de Pagamento',max_length=50,null=False,blank=False,default='')
 
     # Quotation aprovada pelo client
-    approved            = models.BooleanField('Aprovado?',default=False)
+    approved            = models.BooleanField('Aprovado(S/N)',default=False)
+
+    # Data da aprovação
+    approved_date      = models.DateField('Aprovação(Data)',blank=True, null=True)
 
     # Informações a mais para o cliente
     comments            = models.TextField('Comentário da Marcenaria',blank=True)
 
     # Cotação paga
-    commission_paid     = models.BooleanField('Comissão(Paga?)',default=False)
+    commission_paid     = models.BooleanField('Comissão(Paga S/N)',default=False)
 
     # Data do pagamento da comissão
-    commission_paid_date = models.DateField('Comissão(Data)',blank=True, null=True, default=date.today)
-
+    commission_paid_date = models.DateField('Comissão(Previsão p/Pagto)',blank=True, null=True)
 
     # Sub-campo: Indica a diferença entre a data de criação x data atual
     def get_dif_date_validate(self):
@@ -53,6 +55,27 @@ class QuotationPrice(models.Model):
         date2 = self.date_validate.toordinal()
         return date1 - date2
     get_dif_date_validate.short_description = 'Validade(Dias)'  
+
+    # Sub-campo: Indica a diferença entre a data
+    def get_dif_date_commission_paid(self):
+        if self.approved:
+            date1 = datetime.now().toordinal()
+            date2 = self.commission_paid_date.toordinal()
+            # Se a comissão não paga  
+            if self.commission_paid == False:
+                if date1 - date2 < 0:
+                    alert = 'A pagar: ' + str(date1 - date2)+' dia(s)'
+                elif date1 - date2 > 0:
+                    alert = 'Vencido: ' + str(date1 - date2)+' dia(s)'
+                elif date1 - date2 == 0:
+                    alert = 'A pagar hoje'
+            else:
+                alert = 'Pago'
+            return alert
+        else:
+            return '--'    
+    get_dif_date_commission_paid.short_description = 'Comissão(Situação)'  
+
 
      # Sub-campo: Indica o valor quando aprovado a receber do provider
     def get_value_percent_site(self):

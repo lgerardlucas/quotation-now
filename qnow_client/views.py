@@ -125,7 +125,7 @@ def quotation_client_approved(request,quotationprice_id=0):
         QuotationPrice.objects.filter(quotation_number=quotationprice_id).update(approved=False)  
 
         # Aprova o valor orçado pelo provider 
-        quotationprice_update_row = QuotationPrice.objects.filter(pk=request.POST.get('price_id')).update(approved=True,commission_paid_date=datetime.now()+timedelta(days=7))  
+        quotationprice_update_row = QuotationPrice.objects.filter(pk=request.POST.get('price_id')).update(approved=True,commission_paid_date=datetime.now()+timedelta(days=7),approved_date=datetime.now())  
 
         # Retorna id para o stage = 4 aprovado
         quotationstage = QuotationStage.objects.get(status=4)
@@ -153,8 +153,6 @@ def quotation_client_approved(request,quotationprice_id=0):
 
     # Incluir melhores testes aqui
     return redirect("qnow_client:quotation_client_list", request.user.id)
-
-
 
 @login_required
 def quotation_client_edit(request, quotation_id=0):
