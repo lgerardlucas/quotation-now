@@ -145,8 +145,6 @@
 
                         <br>
                         <br>
-
-                        <b>Cliente:</b>&nbsp;&nbsp;{{request.client}}<br>
                         <strong>Comentário</strong>&nbsp;{{ comment }}
 
                         <br>
@@ -158,14 +156,20 @@
                         <br>
 
                         <strong>Informações da Cotação</strong><br>
+                        <b>Cliente:</b> {{ request.client }}<br>
                         <b>Cotação Nº:</b> {{ request.id }}<br>
-                        <b>Cliente:</b> {{ request.client|truncatechars:10 }}<br>
+                        <b>Cliente:</b> {{ request.client }}<br>
                         <b>Móvel: </b> {% if request.mobile_type|lower == '_outro' %}
                         {{ request.mobile_description }}
                         {% else %}
                         {{ request.mobile_type}}
                         {% endif %}<br>
                         <b>Situação:</b> {{ request.stage }}<br>
+                        <br>
+                        <b>Orçamento:</b> R$: {{ request_provider.quotation_value }}<br>
+                        <b>Forma de Pagamento:</b> {{ request_provider.form_payment }}<br>
+                        <b>Prazo de Entrega:</b> {{ request_provider.delivery_time }}<br>
+                        <br>
                         <b>Caracteristicas:</b> {{ request.particulars }}<br>
 
                       </p>
@@ -182,12 +186,11 @@
                                   <tr>
                                     <td
                                       style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color:#ffb400; border-radius: 5px; text-align: center;">
-                                      <a href="https://www.mgacotacoes.com.br" target="_blank"
+                                      <a href="{{ adress_link }}" target="_blank"
                                         style="display: inline-block; color: #ffffff; background-color:#ffb400; border: solid 1px #ffb400; border-radius: 5px; box-sizing: border-box; cursor: pointer; text-decoration: none; font-size: 14px; font-weight: bold; margin: 0; padding: 12px 25px; border-color:#ffb400;">
-
-                                        MGA-Cotações
-
-                                      </a> </td>
+                                        Acesse a cotação Nº {{ request.id }} aqui!!!
+                                      </a> 
+                                    </td>
                                   </tr>
                                 </tbody>
                               </table>

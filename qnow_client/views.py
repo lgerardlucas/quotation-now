@@ -337,43 +337,59 @@ def quotation_client_delete(request, quotation_id=0, action='filter'):
 #Envia o comentário e demais dados após o cliente receber o produto
 def quotation_client_comment(request,quotation_id=0):
     template_name = "../templates/client_email_comment.html"
-    print('===============================================')
+
     if request.POST.get('comment_client_quotation'):
-        # Get da gotação para incluir no campos "Comment" os comentários do cliente sobre a cotação e a entrega 
-        quotation = Quotation.objects.get(pk=quotation_id,removed=False).update(comment=request.POST.get('comment_client_quotation'))
-        subject = 'MGA-Cotações - Cotação Nº: '+str(quotation_id)+' - '+str(quotation.client)
+        # Set o texto do comentário dado na cotação do cliente já aprovada
+        Quotation.objects.filter(pk=quotation_id,removed=False).update(comment=request.POST.get('comment_client_quotation'))
+
+        subject = 'MGA-Cotações - Cotação Nº: '+str(quotation_id)+' - '+str(request.user)
         message = 'Obrigado pelo seu comentário!'
 
-        quotation_price = QuotationPrice.objects.get(quotation_number=request.id,approved=True)  
+        # Get do lance aprovado para envio de email ao provider ganhador
+        quotation_price = QuotationPrice.objects.get(quotation_number=quotation_id,approved=True)  
 
-        print('-----------------------------terminar isto aqui')
-        print(quotation.provider__email)
-        pass
+        # Dados da cotação, pois o request aqui é da tabela de orçamentos
+        quotation = Quotation.objects.get(pk=quotation_id,removed=False)
+
+        # Link atribuido ao botão enviado no corpo do email com acesso a lista do cliente
+        if settings.DEBUG == True:
+            adress_link = "http://127.0.0.1:8000/client/quotation_client_list/"+str(quotation.client.id)
+        else:
+            adress_link = "http://www.mgacotacoes.com.br/client/quotation_client_list/"+str(quotation.client.id)
 
         from_email = settings.EMAIL_HOST_USER
         context = {
-            "request":          quotation,                          # Quotação do cliente
-            "message":          message,                            # Messagem de alerta
-            "comment":          request.POST.get('comment_client_quotation')# Dúvida do provider
+            "request":          quotation,                                    # Quotação do cliente
+            "request_provider": quotation_price,                              # Orçamento do provider
+            "message":          message,                                      # Messagem de alerta
+            "comment":          request.POST.get('comment_client_quotation'), # Dúvida do provider
+            "adress_link":      adress_link
             }
         content = render_to_string(template_name, context)
-        if subject and message and from_email:
+        if subject and message and from_email and quotation:
             try:
                 email = EmailMessage(
                     subject,
                     content,
                     from_email, 
-                    [quotation.client__email],
+                    [quotation_price.quotation_provider.email],
                     [from_email]
                 )
                 email.content_subtype = "html"
                 email.send(fail_silently=False)
             except BadHeaderError:
-                return HttpResponse('Problema no envio do e-mail. Tente mais tarde!')
-            return redirect("qnow_client:quotation_client_list", quotation_id)
+                # Alerta de que ocorreu um erro no envio do e-mail
+                messages.add_message(request, messages.INFO, 'Problema no envio do comentário referente a Cotação Nº: '+str(quotation.id)+'! Tente mais tarde!')
+                return redirect("qnow_client:quotation_client_list", quotation.client.id)
+
+            # Após o envio, deixar uma msg na tela 
+            messages.add_message(request, messages.INFO, 'Comentário da Cotação Nº: '+str(quotation.id)+' enviado com sucesso!')
+            return redirect("qnow_client:quotation_client_list", quotation.client.id)
         else:
-            return redirect("qnow_client:quotation_client_list", quotation_id)
+            # Alerta de que faltou dados para o envio do comentário
+            messages.add_message(request, messages.INFO, 'Falta de informações para envio do seu comentário referente a Cotação Nº: '+str(quotation.id)+'! Tente mais tarde!')
+            return redirect("qnow_client:quotation_client_list", quotation.client.id)
     else:
-        return redirect("qnow_client:quotation_client_list", quotation_id)        
+        return redirect("qnow_client:quotation_client_list", quotation.client.id)        
 
 

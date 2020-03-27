@@ -21,7 +21,7 @@ def get_price_client_provider(quotation_id,stage_number):
 @register.simple_tag(name='get_price')
 def get_price(instance,user_id):
     '''
-    Função que retora o lance dado por um provider a uma dita cotação
+    Função que retorna o lance dado por um provider a uma dita cotação
     Também análisa se a cotação esta aprovada, para somente trazer o valor a frente do provider correto
     '''
     try:
