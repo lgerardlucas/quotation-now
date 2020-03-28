@@ -215,8 +215,9 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
            
         elif acao == 'à espera':        # E-mail enviado aos providers
             # Lista os emails dos providers para envio em lote 
-            # Serão enviados somentes e-mail para os providers do mesmo estado do client
-            providers = User.objects.filter(role='provider',state=request.client.state)
+            # Serão enviados somentes e-mail para os providers do mesmo estado do client e que tenha aprovaçao da plataforma para receber
+            # O campo "approved=False" indica que não foi trancado o processo de orçar cotaões por parte do provider. Se for True, ele não receberá e-mail
+            providers = User.objects.filter(role='provider',state=request.client.state,approved=False)
             if providers:            
                 for provider in providers:
                     emails_providers.append(provider.email)

@@ -26,7 +26,7 @@ class RegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['email','username','phone', 'cep','street','district','city','state','password1','password1','contract_accepted']
+        fields = ['email','username','phone', 'cep','street','district','city','state','password1','password1','birth_date','delivery_time','form_payment','contract_accepted']
 
         widgets = {
             'email': forms.TextInput(
@@ -52,7 +52,21 @@ class RegisterForm(forms.ModelForm):
                 ),
             'state': forms.TextInput(
                 attrs={'placeholder': 'Estado de sua cidade. Ex: RS'}
-                )
+                ),
+            'birth_date': forms.DateInput(
+                attrs={'type': 'text', 'class': 'datepicker-here date_format', 'data-language': 'pt-BR', 'data-position': 'bottom left', 'data-auto-close': 'true', 'autocomplete':'off',
+                    'data-toggle':'tooltip', 'data-placement':'top'
+                    }
+                ),
+            'delivery_time': forms.TextInput(
+                attrs={'placeholder': 'Ex: 60 dias úteis'}
+                ),
+            'form_payment': forms.TextInput(
+                attrs={'placeholder': 'Ex: 50% entrada + 50% na entrega'}
+                ),
+                
+
+
         }
 
 

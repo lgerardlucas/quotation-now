@@ -10,7 +10,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField('E-mail', unique=True)
     username = models.CharField('Nome', unique=True, max_length=100, blank=False)
-    is_active = models.BooleanField('Está ativo?', blank=True, default=True)
+    is_active = models.BooleanField('Acessar o Sistema(S/N)', blank=True, default=True)
     is_staff = models.BooleanField('É da equipe?', blank=True, default=False)
     date_joined = models.DateTimeField('Data de Cadastro', auto_now_add=True)
     role = models.CharField('Classificação', max_length=10, blank=True, default='Indefinido')
@@ -21,11 +21,20 @@ class User(AbstractBaseUser, PermissionsMixin):
     city = models.CharField('Cidade', max_length=50, blank=False, default='Indefinido')
     state = models.CharField('Estado', max_length=50, blank=False, default='Indefinido')
 
-    # Quando definido True, o usuário poderá interagir com o sistema todo(cotações e lances)
-    approved = models.BooleanField('Mov/Autorizada', blank=True, default=False)
+    # Quando definido True, o usuário NÃO PODERÁ interagir/receber emails com o sistema todo(cotações e lances)
+    approved = models.BooleanField('Desativar Movimentação', blank=True, default=False)
 
     contract_accepted = models.BooleanField('Li e concordo(S/N)', blank=True, default=False)
     contract_date_accepted = models.DateTimeField('Li e concordei em:',default=datetime.now)
+
+    # Data de nascimento para client e para a empresa do provider
+    birth_date      = models.DateField('Data de Inicio das Atividades',blank=True, null=True)
+
+    # Prazo de entrega para provider
+    delivery_time       = models.CharField('Prazo de Entrega Padrão',max_length=30,null=True,blank=True)
+
+    # Forma de pagamento para provider 
+    form_payment        = models.CharField('Forma de Pagamento Padrão',max_length=50,null=True,blank=True)
 
     objects = UserManager()
 

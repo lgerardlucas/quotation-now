@@ -233,6 +233,47 @@
 												{{ form.password2.errors }}
 											</div>
 										</div>
+
+										{% if origin  == "provider" %}
+											<!-- Data Inicio da atividades do provider -->
+											<div class="form-group" id="form-row-text1">
+												<label for="text1" class="control-label required_label">
+													{{ form.birth_date.label_tag }}
+													<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+												</label>
+												<div class="gcore-display-table">
+													{{ form.birth_date }}
+													{{ form.birth_date.errors }}
+												</div>
+											</div>
+											<!-- Prazo de entrega padrão -->
+											<div class="form-group" id="form-row-text1">
+												<label for="text1" class="control-label required_label">
+													{{ form.delivery_time.label_tag }}
+													<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+												</label>
+												<div class="gcore-display-table">
+													{{ form.delivery_time }}
+													{{ form.delivery_time.errors }}
+												</div>
+											</div>
+											<!-- Forma de pagamento padrão -->
+											<div class="form-group" id="form-row-text1">
+												<label for="text1" class="control-label required_label">
+													{{ form.form_payment.label_tag }}
+													<i class="fa fa-asterisk" style="color:#ff0000; font-size:9px; vertical-align:top;"></i>
+												</label>
+												<div class="gcore-display-table">
+													{{ form.form_payment }}
+													{{ form.form_payment.errors }}
+												</div>
+											</div>
+
+
+										{% endif %}	
+
+
+
 										
 										<!-- Contrato -->
 										<div class="form-group" id="form-row-text1">

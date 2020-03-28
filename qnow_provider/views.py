@@ -154,7 +154,8 @@ def quotation_provider_price(request,quotation_id=0):
                                                                                                                                 
     # GET - Retorna dados cotação como um todo
     quotation = Quotation.objects.filter(pk=quotation_id,removed=False)
-    form = QuotationPriceForm(request.POST or None, initial={'quotation_number':quotation_id,'quotation_provider':request.user,'date_create':convert_date_to_br(quotation[0].date_create)})
+  teminar isto aqui e depois  
+    form = QuotationPriceForm(request.POST or None, initial={'quotation_number':quotation_id,'quotation_provider':request.user,'date_create':convert_date_to_br(quotation[0].date_create),'delivery_time':request.delivery_time})
 
     # GET - Verifica se a cotação tem orçamento
     quotationprice = QuotationPrice.objects.filter(quotation_number_id=quotation_id,quotation_provider=request.user)        
