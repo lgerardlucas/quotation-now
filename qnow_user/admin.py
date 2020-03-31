@@ -32,7 +32,7 @@ class UserAdmin(admin.ModelAdmin):
     )
 
     # Campos que unidos são usados no processo de filtragem por seleção
-    list_filter = ('id','role','state','city','district')   
+    list_filter = ('role','state','city','district')   
 
     # Campos que unidos são usados no processo de filtragem por digitação
     search_fields = ('pk','username','city','email','phone','cep','street','district','state','role')
