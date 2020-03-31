@@ -26,7 +26,7 @@ class RegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['email','username','phone', 'cep','street','district','city','state','password1','password1','birth_date','delivery_time','form_payment','contract_accepted']
+        fields = ['email','username','phone', 'cep','street','district','city','state','password1','password1','birth_date','delivery_time','form_payment','information','contract_accepted']
 
         widgets = {
             'email': forms.TextInput(
@@ -64,7 +64,11 @@ class RegisterForm(forms.ModelForm):
             'form_payment': forms.TextInput(
                 attrs={'placeholder': 'Ex: 50% entrada + 50% na entrega'}
                 ),
-                
+            'information': forms.Textarea(
+                attrs={'cols': 40,'style':'width: 100%; height: 100%; resize: none; !important;','title':'',
+                    'placeholder': '*** Informe algo assim ***\nEstamos a mais de X anos no mercado de móveis planejados. Trabalhamos com materiais de primeira linha, respeitamos sempre o prazo de entrega e ofertando as melhores condições de pagamento.\n\n*** Proibido colocar o nome da marcenaria ou qualquer outro contato neste campo! ***'
+                    }
+                )
 
 
         }

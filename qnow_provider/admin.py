@@ -5,7 +5,7 @@ from qnow_client.models import Quotation
 # Register your models here.
 class QuotationPriceAdmin(admin.ModelAdmin):
     # Campos que aparecerão ao entrar na model
-    list_display = ('id','number_quotation','quotation_client','quotation_provider','value_quotation','approved','approved_date','get_value_percent_site','commission_paid','commission_paid_date','get_dif_date_commission_paid','date_create','date_validate','get_dif_date_validate','delivery_time','form_payment')
+    list_display = ('id','number_quotation','quotation_client','quotation_provider_id','value_quotation','approved','approved_date','get_value_percent_site','commission_paid','commission_paid_date','get_dif_date_commission_paid','date_create','date_validate','get_dif_date_validate','delivery_time','form_payment')
 
     # 2º Tipo 2 de pesquisa para tabelas relacionadas - Apresenta no modo lista e detalhado
     autocomplete_fields = ("quotation_number",)
@@ -29,6 +29,12 @@ class QuotationPriceAdmin(admin.ModelAdmin):
     def value_quotation(self, QuotationPrice):
         return QuotationPrice.quotation_value
     value_quotation.short_description = 'Valor Orçado'        
+
+    def quotation_provider_id(self, QuotationPrice):
+        id_provider = str(QuotationPrice.quotation_provider)+'('+str(QuotationPrice.quotation_provider.id)+')'
+        return id_provider
+    quotation_provider_id.short_description = 'Marcenariaaaa'        
+
 
     # Campos que unidos são usados no processo de filtragem por digitação
     search_fields = ('quotation_number__id','date_create','date_validate','quotation_value','approved','delivery_time','form_payment')

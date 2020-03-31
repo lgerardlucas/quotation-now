@@ -28,13 +28,16 @@ class User(AbstractBaseUser, PermissionsMixin):
     contract_date_accepted = models.DateTimeField('Li e concordei em:',default=datetime.now)
 
     # Data de nascimento para client e para a empresa do provider
-    birth_date      = models.DateField('Data de Inicio das Atividades',blank=True, null=True)
+    birth_date = models.DateField('Data de Inicio das Atividades',blank=True, null=True)
 
     # Prazo de entrega para provider
-    delivery_time       = models.CharField('Prazo de Entrega Padrão',max_length=30,null=True,blank=True)
+    delivery_time = models.CharField('Prazo de Entrega - Padrão',max_length=30,null=True,blank=True)
 
     # Forma de pagamento para provider 
-    form_payment        = models.CharField('Forma de Pagamento Padrão',max_length=50,null=True,blank=True)
+    form_payment = models.CharField('Forma de Pagamento - Padrão',max_length=50,null=True,blank=True)
+
+    # Informações adicionais para conquistar o cliente
+    information = models.TextField('Conquistando o Cliente',blank=True)
 
     objects = UserManager()
 

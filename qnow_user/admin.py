@@ -28,9 +28,8 @@ class UserAdmin(admin.ModelAdmin):
         ('Cadastro',     {'fields': ('username','email','role',)}),
         ('Liberações',   {'fields': ('is_active','approved', )}),
         ('Endereçamento',{'fields': ('phone','cep','street','district','city','state',)}),
+        ('Valores Padrões',{'fields': ('delivery_time','form_payment',)}),
     )
-
-
 
     # Campos que unidos são usados no processo de filtragem por seleção
     list_filter = ('role','state','city','district')   
