@@ -37,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     form_payment = models.CharField('Forma de Pagamento - Padrão',max_length=50,null=True,blank=True)
 
     # Informações adicionais para conquistar o cliente
-    information = models.TextField('Conquistando o Cliente',blank=True)
+    information = models.TextField('Conquistando o Cliente',max_length=200,blank=True)
 
     objects = UserManager()
 
@@ -105,6 +105,22 @@ class User(AbstractBaseUser, PermissionsMixin):
         else:    
             return '--'
     get_number_launch_client_aprovado.short_description = "A"     
+
+    # Sub-campo: Indica o tempo em dias ou anos do inicio das atividades do provider
+    def get_birth_date_provider(self):
+        if self.birth_date:
+            date1 = datetime.now().toordinal()
+            date2 = self.birth_date.toordinal()
+            idade = date1 - date2 
+            if idade > 365:
+                idade = "+ de % 3.0f ano(s)" % float(idade / 365)
+            else:     
+                idade =  "% 0.0f mese(s)" % int(float(idade / 365)*10) 
+            return idade
+        else:     
+            return ''
+    get_birth_date_provider.short_description = 'Idade da Empresa'  
+
     
     class Meta:
         app_label = 'qnow_user'

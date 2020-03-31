@@ -396,6 +396,32 @@
 															{{ price.comments }}
 														</div>
 													</div>
+
+													{% if 'Aprovado'|lower not in field.stage|lower %}
+													<!-- Informações da marcenaria -->
+														{% if price.quotation_provider.information != '' or price.quotation_provider.get_birth_date_provider != ''  %}
+															<div style="padding: 10px 10px 10px 10px;">
+																<div
+																	style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
+																	<label style="font-weight: bold; line-height: 0.9em; color:#FFB400; padding: 4px 4px 4px 2px;">
+																		Conheça um pouco deste fonecedor!
+																		<br><br>
+																		{% if price.quotation_provider.get_birth_date_provider != '' %}
+																		   Este fornecedor, possui {{ price.quotation_provider.get_birth_date_provider }} de atividade no ramo de móveis planejados!
+																		{% else %}
+																		   Este fornecedor não contém ainda a data do início das atividades de sua empresa!
+																		{% endif %} 
+																		
+																		<br><br>
+																		{% if price.quotation_provider.information != '' %}
+																		   {{ price.quotation_provider.information }}
+																		{% endif %}   
+																	</label>
+																</div>
+															</div>
+														{% endif %}
+													{% endif %}
+
 												</div>
 											</div>
 										</div>
