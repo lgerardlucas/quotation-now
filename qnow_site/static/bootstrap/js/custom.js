@@ -193,7 +193,7 @@ window.onload = function() {
     if (stateList) {
         stateList.addEventListener('change', function () {
             if (stateList.value != 'Estado') {
-               cityList.getElementsByTagName('option')[stateList.length+2].selected = 'selected';
+                cityList.getElementsByTagName('option')[cityList.length-1].selected = 'selected';
             }
         });
     }    
