@@ -9,7 +9,6 @@ window.onload = function() {
     const mobileType = document.getElementById('id_mobile_type');
     const mobileDescription = document.getElementById('id_mobile_description');
     const particulars = document.getElementById('id_particulars');
-
     const cityList = document.getElementById('id_city_list');
     const stateList = document.getElementById('id_state_list');
     
@@ -18,10 +17,8 @@ window.onload = function() {
     $('#id_phone').mask('(00) 00000-0000');
     $('#id_cpf').mask('000.000.000-00', { reverse: true });
     $('#id_cnpj').mask('00.000.000/0000-00', { reverse: true });
-
     $('.dinheiro').mask('#####0.00', { reverse: true } ); 
     $('.date_format').mask('00/00/0000');
-
     $('form').on('submit', (event) => {
         const submit = $(event.target).find('input[type="submit"]');
         submit.attr('disabled', 'disabled').val('Processando e enviando um email, aguarde...');
@@ -196,7 +193,7 @@ window.onload = function() {
     if (stateList) {
         stateList.addEventListener('change', function () {
             if (stateList.value != 'Estado') {
-               cityList.getElementsByTagName('option')[stateList.length-1].selected = 'selected';
+               cityList.getElementsByTagName('option')[stateList.length+2].selected = 'selected';
             }
         });
     }    
