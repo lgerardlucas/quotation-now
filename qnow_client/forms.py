@@ -1,5 +1,5 @@
 from django import forms
-from .models import Quotation, MobilieType, QuotationStage
+from .models import Quotation, MobilieType, QuotationStage  
 
 class MobileTypeForm(forms.ModelForm):
     class Meta:
@@ -60,4 +60,3 @@ class QuotationForm(forms.ModelForm):
                     }
                 )
         }
-

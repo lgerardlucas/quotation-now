@@ -1,11 +1,11 @@
 from django.contrib import admin
 from .models import QuotationPrice
-from qnow_client.models import Quotation
+#from qnow_client.models import Quotation
 
 # Register your models here.
 class QuotationPriceAdmin(admin.ModelAdmin):
     # Campos que aparecerão ao entrar na model
-    list_display = ('id','number_quotation','quotation_client','quotation_provider_id','value_quotation','approved','approved_date','get_value_percent_site','commission_paid','commission_paid_date','get_dif_date_commission_paid','date_create','date_validate','get_dif_date_validate','delivery_time','form_payment')
+    list_display = ('id','number_quotation','quotation_client','quotation_provider_name','quotation_mobile_type','value_quotation','approved','approved_date','get_value_percent_site','commission_paid','commission_paid_date','get_dif_date_commission_paid','date_create','date_validate','get_dif_date_validate','delivery_time','form_payment')
 
     # 2º Tipo 2 de pesquisa para tabelas relacionadas - Apresenta no modo lista e detalhado
     autocomplete_fields = ("quotation_number",)
@@ -30,10 +30,20 @@ class QuotationPriceAdmin(admin.ModelAdmin):
         return QuotationPrice.quotation_value
     value_quotation.short_description = 'Valor Orçado'        
 
-    def quotation_provider_id(self, QuotationPrice):
+    def quotation_provider_name(self, QuotationPrice):
         id_provider = str(QuotationPrice.quotation_provider)+'('+str(QuotationPrice.quotation_provider.id)+')'
         return id_provider
-    quotation_provider_id.short_description = 'Marcenariaaaa'        
+    quotation_provider_name.short_description = 'Marcenaria'        
+
+    def quotation_mobile_type(self, QuotationPrice):
+        if QuotationPrice.quotation_number.mobile_description != '':
+            if str(QuotationPrice.quotation_number.mobile_type) != '_Outro':
+                return str(QuotationPrice.quotation_number.mobile_type)+' '+QuotationPrice.quotation_number.mobile_description
+            else:
+                return QuotationPrice.quotation_number.mobile_description
+        else:
+            return QuotationPrice.quotation_number.mobile_type
+    quotation_mobile_type.short_description = 'Móvel Orçado'        
 
 
     # Campos que unidos são usados no processo de filtragem por digitação

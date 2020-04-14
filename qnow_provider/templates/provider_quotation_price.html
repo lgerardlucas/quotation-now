@@ -75,6 +75,16 @@
 							<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
 					</div>
 					{% endif %}
+
+					<!-- Texto informativo quando o provider tem orçamentos aprovados e não pagou a tempo a comissão a plataforma -->
+					{% if field.stage_id != 29 and qpayment_count > 0 %}
+					<div
+						style="display: inline-block; width: 100%; text-align: center; background-color:#292c2f; height: 12.6em; border: 3px #ffb400 dashed;">
+						<h2><strong style="font-size: 24px;">Orçamento Bloqueado!<br>Favor entrar em contato com a MGA!</strong></h2>
+						<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
+					</div>
+					{% endif %}
+
 				    <!-- Data da cotação -->
 					<div class="quotation_provider_field" style="display: inline-block; text-align: left; width: 49%; line-height: 1em;">
 						{{ quotationprice.date_create.label_tag }}
@@ -85,7 +95,7 @@
 					<!-- Data de validade da cotação -->
 					<div class="quotation_provider_field" style="display: inline-block; text-align: left; width: 49%; line-height: 1em; padding-bottom: 5px">
 						{{ quotationprice.date_validate.label_tag }} 
-							{% if 'R$' in state_quotation or field.stage_id == 29 %}
+							{% if 'R$' in state_quotation or field.stage_id == 29 or qpayment_count > 0 %}
 								<fieldset disabled="disabled">
 							{% else %}
 								<fieldset>
@@ -98,7 +108,7 @@
 					<!-- Valor da cotação -->
 					<div style="display: inline-block; text-align: center; width: 100%; line-height: 1em;">
 						{{ quotationprice.quotation_value.label_tag }}
-							{% if 'R$' in state_quotation or field.stage_id == 29 %}
+							{% if 'R$' in state_quotation or field.stage_id == 29 or qpayment_count > 0 %}
 								<fieldset disabled="disabled">
 							{% else %}
 								<fieldset>
@@ -111,7 +121,7 @@
 					<!-- Prazo de entrega -->
 					<div style="display: block; text-align: left; width: 100%; padding-top: 10px; line-height: 0.5em;">
 						{{ quotationprice.delivery_time.label_tag }}
-							{% if 'R$' in state_quotation or field.stage_id == 29 %}
+							{% if 'R$' in state_quotation or field.stage_id == 29 or qpayment_count > 0 %}
  								<fieldset disabled="disabled">
 							{% else %}
 								<fieldset>
@@ -124,7 +134,7 @@
 					<!-- Forma de pagamento -->
 					<div style="display: block; text-align: left; width: 100%; padding-top: 10px; line-height: 0.5em;">
 						{{ quotationprice.form_payment.label_tag }}
-							{% if 'R$' in state_quotation or field.stage_id == 29 %}
+							{% if 'R$' in state_quotation or field.stage_id == 29 or qpayment_count > 0 %}
   								<fieldset disabled="disabled">
 							{% else %}
 								<fieldset>
@@ -141,7 +151,7 @@
 						b) Detalhe sobre o pagamento e o prazo de entrega</br>
 						c) Detalhes sobre sua empresa
 						
-							{% if 'R$' in state_quotation or field.stage_id == 29 %}
+							{% if 'R$' in state_quotation or field.stage_id == 29 or qpayment_count > 0 %}
 								<fieldset disabled="disabled">
 							{% else %}		
 								<fieldset>
@@ -152,7 +162,7 @@
 
 						<div style="display: inline-block; text-align: left; width: 100%; padding-top: 10px;">
 							 <div style="display: inline-block; text-align: left; width: 100%; padding-top: 10px; line-height: 0.5em;">
-								{% if 'R$' in state_quotation or field.stage_id == 29 %}
+								{% if 'R$' in state_quotation or field.stage_id == 29 or qpayment_count > 0 %}
 									<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
 								{% else %}
 									{% if quotationprice.quotation_value %}

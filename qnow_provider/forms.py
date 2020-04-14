@@ -1,5 +1,7 @@
 from django import forms
 from .models import QuotationPrice
+from qnow_client.models import Quotation
+from django.forms.models import inlineformset_factory
 
 class QuotationPriceForm(forms.ModelForm):
     class Meta:
@@ -87,3 +89,8 @@ class QuotationPriceForm(forms.ModelForm):
                         raise forms.ValidationError('E-Mail não confere! Digite o mesmo e-mail nos campos E-mail e Confirma E-mail')
         return cleaned_data        
     '''
+    '''
+    QuotationPriceFormSet = inlineformset_factory(Quotation, QuotationPrice,
+                                            form=QuotationPriceForm, extra=1)
+    '''
+    

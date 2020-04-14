@@ -9,7 +9,7 @@ from django.conf import settings
 from django.core.mail import EmailMessage, BadHeaderError, EmailMultiAlternatives
 from django.template.loader import render_to_string, get_template
 import threading
-import datetime
+from datetime import datetime,date,timedelta
 from django.contrib import messages
 from qnow_client.models import Quotation, QuotationStage
 from .forms import QuotationPriceForm
@@ -152,22 +152,39 @@ def quotation_provider_detail(request,quotation_id=0):
 def quotation_provider_price(request,quotation_id=0):
     template_name = "../templates/provider_quotation_price.html"
                                                                                                                                 
+    # GET - Verifica se a cotação tem orçamento
+    try:
+        quotationprice = QuotationPrice.objects.filter(quotation_number_id=quotation_id,quotation_provider=request.user).count()
+    except QuotationPrice.DoesNotExist:
+        quotationprice = 0
+
+    # GET - Retorna se o provider tem cotações aprovadas mas não pagou a tempo determinado a comissão a plataforma
+    try:
+        quotationprice_payment_validate = QuotationPrice.objects.filter(quotation_provider=request.user,approved=True,commission_paid=False,commission_paid_date__lt=datetime.now()).count()   
+    except QuotationPrice.DoesNotExist:
+        quotationprice_payment_validate = 0
+
     # GET - Retorna dados cotação como um todo
     quotation = Quotation.objects.filter(pk=quotation_id,removed=False)
   
-    form = QuotationPriceForm(request.POST or None, initial={'quotation_number':quotation_id,'quotation_provider':request.user,'date_create':convert_date_to_br(quotation[0].date_create),'delivery_time':request.user.delivery_time,'form_payment':request.user.form_payment})
+    # Teste = Se não tiver cotação por parte do provider mas ele estiver devendo, não enviar os dados de preenchimento padrão pra tela de orçamento
+    if quotationprice == 0 and quotationprice_payment_validate != 0:
+        form = QuotationPriceForm(request.POST or None, initial={'quotation_number':quotation_id,'quotation_provider':request.user})
+    else:    
+        form = QuotationPriceForm(request.POST or None, initial={'quotation_number':quotation_id,'quotation_provider':request.user,'date_create':convert_date_to_br(quotation[0].date_create),'delivery_time':request.user.delivery_time,'form_payment':request.user.form_payment})
 
-    # GET - Verifica se a cotação tem orçamento
-    quotationprice = QuotationPrice.objects.filter(quotation_number_id=quotation_id,quotation_provider=request.user)        
     # Se tiver orçamento, retorna queryset com os dados e monta o form
-    if quotationprice:
-        quotationprice = QuotationPrice.objects.get(quotation_number_id=quotation_id,quotation_provider=request.user)        
-        form = QuotationPriceForm(instance=quotationprice)
-
+    if quotationprice_payment_validate != 0 or quotationprice != 0:
+        # Monta os dados a ser mostrado quando já orçado
+        if quotationprice != 0:
+            quotationprice = QuotationPrice.objects.get(quotation_number_id=quotation_id,quotation_provider=request.user)        
+            form = QuotationPriceForm(instance=quotationprice)
+        
     # Enviando o context para o template
     context = { "active_page_client_provider": "active", 
                 "quotation": quotation,
-                "quotationprice":form
+                "quotationprice":form,
+                "qpayment_count":quotationprice_payment_validate
             }
     return render(request, template_name, context)
 
@@ -209,8 +226,6 @@ def quotation_provider_price_post(request,quotation_id=0):
                     )
                 )
                 t1.start()
-
-
                 if settings.SEND_EMAIL_SIS == True:
                     messages.add_message(request, messages.SUCCESS, 'Um e-mail de confirmação foi enviado pra você e ao cliente.')
 

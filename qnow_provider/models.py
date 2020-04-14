@@ -20,7 +20,7 @@ class QuotationPrice(models.Model):
     quotation_provider  = models.ForeignKey("qnow_user.User", on_delete=models.CASCADE, null=True,related_name="quotation_provider",verbose_name='Marcenaria') 
 
     # Data do lançamento do preço
-    date_create         = models.DateField('Data do Orçamento',default=date.today)
+    date_create         = models.DateField('Data do Lançamento',default=date.today)
 
     # Data de validade do preço
     date_validate       = models.DateField('Validade da Cotação',blank=False,null=False,default=datetime.now()+timedelta(days=10))
@@ -46,7 +46,7 @@ class QuotationPrice(models.Model):
     # Cotação paga
     commission_paid     = models.BooleanField('Comissão(Paga S/N)',default=False)
 
-    # Data do pagamento da comissão
+    # Data de previsão e pagamento da comissão
     commission_paid_date = models.DateField('Comissão(Previsão p/Pagto)',blank=True, null=True)
 
     # Sub-campo: Indica a diferença entre a data de criação x data atual

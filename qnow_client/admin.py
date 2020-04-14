@@ -6,6 +6,15 @@ from django.urls import path, reverse
 from django.db.models import Value
 from django.db.models.functions import Concat
 import unidecode
+from qnow_provider.models import QuotationPrice
+
+# Classe que gera os campos mestre detalhe 
+class QuotationPriceInline(admin.TabularInline):
+    model = QuotationPrice
+    extra = 0
+    readonly_fields = ('quotation_number','quotation_provider','date_create','date_validate','quotation_value','delivery_time','form_payment','approved','approved_date','comments','commission_paid','commission_paid_date',)
+    fields = ('quotation_number','quotation_provider','date_create','quotation_value','delivery_time','form_payment','approved','approved_date','comments',)
+    ordering = ('quotation_value',)
 
 # fields
 # list_display
@@ -149,6 +158,9 @@ class QuotationAdmin(admin.ModelAdmin):
 
     # Força a informa o total de registros na tabela se false, mostra o texto "Mostrar Tudo"
     show_full_result_count = True
+
+    # Mostra o conteudo da tabela relacionada
+    inlines = (QuotationPriceInline,)
 
 admin.site.register(MobilieType,MobileTypeAdmin)
 admin.site.register(QuotationStage,QuotationStageAdmin)
