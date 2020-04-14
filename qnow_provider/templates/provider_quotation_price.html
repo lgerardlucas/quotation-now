@@ -72,15 +72,15 @@
 					{% if field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 %}
 					<div style="display: inline-block; width: 100%; text-align: center; background-color:#292c2f; height: 10.6em; border: 3px #ffb400 dashed;">
 							{% if field.stage_id == 29  %}
-								<h2><strong style="font-size: 24px;">Esta cotação já foi aprovada<br> pelo cliente!</strong></h2>
+								<h2><strong style="font-size: 24px;">Esta cotação foi aprovada<br> pelo cliente!</strong></h2>
 							{% endif %}
 
 							{% if field.stage_id == 30 %}
-								<h2><strong style="font-size: 24px;">Esta cotação esta cancelada<br> pelo cliente!</strong></h2>
+								<h2><strong style="font-size: 24px;">Esta cotação foi cancelada<br> pelo cliente!</strong></h2>
 							{% endif %}
 
 							{% if field.stage_id == 31 %}
-								<h2><strong style="font-size: 24px;">Esta cotação esta desativada<br> pela plataformacliente!</strong></h2>
+								<h2><strong style="font-size: 24px;">Esta cotação foi desativada<br> pela plataformacliente!</strong></h2>
 							{% endif %}
 							<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
 					</div>
