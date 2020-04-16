@@ -4,7 +4,7 @@ from django.core import validators
 from django.contrib.auth.models import (AbstractBaseUser, PermissionsMixin,
     UserManager)
 from datetime import datetime
-
+from django.utils import timezone
 
 class User(AbstractBaseUser, PermissionsMixin):
 
@@ -25,7 +25,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     approved = models.BooleanField('Desativar Movimentação', blank=True, default=False)
 
     contract_accepted = models.BooleanField('Li e concordo(S/N)', blank=True, default=False)
-    contract_date_accepted = models.DateTimeField('Li e concordei em:',default=datetime.now)
+    contract_date_accepted = models.DateTimeField('Li e concordei em:',default=timezone.now)
 
     # Data de nascimento para client e para a empresa do provider
     birth_date = models.DateField('Data de Inicio das Atividades',blank=True, null=True)

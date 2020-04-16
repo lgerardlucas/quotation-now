@@ -12,8 +12,11 @@ from qnow_provider.models import QuotationPrice
 class QuotationPriceInline(admin.TabularInline):
     model = QuotationPrice
     extra = 0
+    # Campos visíveis mas somente para leitura
     readonly_fields = ('quotation_number','quotation_provider','date_create','date_validate','quotation_value','delivery_time','form_payment','approved','approved_date','comments','commission_paid','commission_paid_date',)
-    fields = ('quotation_number','quotation_provider','date_create','quotation_value','delivery_time','form_payment','approved','approved_date','comments',)
+    # Campos que serão visualizado no inline
+    fields = ('quotation_number','quotation_provider','date_create','quotation_value','delivery_time','form_payment','approved','approved_date','commission_paid','commission_paid_date',)
+    # Ordenação para visualização
     ordering = ('quotation_value',)
 
 # fields
@@ -51,8 +54,8 @@ class QuotationAdmin(admin.ModelAdmin):
 
     # Campos que aparecerão ao entrar na model
     list_display = ('id_quotation','client_client','get_number_launch','stage','date_create','date_update','date_validate','get_dif_date_now',
-        'house_type','mobile_type_description','get_removed','phone_client','email_client','cep_client',
-        'street_client','district_client','city_client','state_client','get_photo')
+        'house_type','mobile_type_description','get_removed','city_client','phone_client','email_client','cep_client',
+        'street_client','district_client','state_client','get_photo')
 
     # Campos que podem ser alterados na list_display diretamente
     list_editable  = ('stage',)
@@ -119,15 +122,15 @@ class QuotationAdmin(admin.ModelAdmin):
             return 'Sim'
         else:
             return 'Não'
-    removed.short_description = 'Removida'
+    removed.short_description = 'Removida(s/n)'
 
     # Campos que aparecerão ao entrar nos detalhes do model
     # Modo agrupado - Denomina um grupo de informações separada por um título
     fieldsets = (
-        ('Dados do Cliente',{'fields': (('id','client','date_create','date_validate') )}),
-        ('Dados da Cotação',{'fields': (('house_type','mobile_type'),'mobile_description','stage' )}),
+        ('Dados do Cliente',{'fields': ((('id','removed'),('client','date_create','date_validate')) )}),
+        ('Dados da Cotação',{'fields': (('house_type','mobile_type'),('mobile_description','stage') )}),
         ('Fotos da Cotação',{'fields': ('image_environment','image_project')}),
-        ('Detalhamento',    {'fields': ('particulars','removed')}),
+        ('Detalhamento',    {'fields': ('particulars',)}),
     )
 
     # Apresenta em forma de radio campos de um relacionamento(foreignkey ou Choice)
@@ -141,7 +144,7 @@ class QuotationAdmin(admin.ModelAdmin):
     #fields = (('client','date_create'),('house_type','mobile_type'),('mobile_description','stage','removed'),'image_environment','image_project','particulars')    
 
     # Campos que unidos são usados no processo de filtragem por seleção
-    list_filter = ('date_create','date_update','client__city','stage__description')
+    list_filter = ('stage__description','date_create','client__city')
 
 
     # Campos que unidos são usados no processo de filtragem por digitação
@@ -154,7 +157,7 @@ class QuotationAdmin(admin.ModelAdmin):
     save_as_continue = True
 
     # Duplica os botões de salvar, apagar e editar em cima 
-    save_on_top = True
+    save_on_top = False
 
     # Força a informa o total de registros na tabela se false, mostra o texto "Mostrar Tudo"
     show_full_result_count = True
