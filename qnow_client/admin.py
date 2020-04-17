@@ -13,11 +13,17 @@ class QuotationPriceInline(admin.TabularInline):
     model = QuotationPrice
     extra = 0
     # Campos visíveis mas somente para leitura
-    readonly_fields = ('quotation_number','quotation_provider','date_create','date_validate','quotation_value','delivery_time','form_payment','approved','approved_date','comments','commission_paid','commission_paid_date',)
+    readonly_fields = ('quotation_number','quotation_provider_ident','date_create','date_validate','quotation_value','delivery_time','form_payment','approved','approved_date','comments','commission_paid','commission_paid_date',)
     # Campos que serão visualizado no inline
-    fields = ('quotation_number','quotation_provider','date_create','quotation_value','delivery_time','form_payment','approved','approved_date','commission_paid','commission_paid_date',)
+    fields = ('quotation_number','quotation_provider_ident','date_create','quotation_value','delivery_time','form_payment','approved','approved_date','commission_paid','commission_paid_date',)
     # Ordenação para visualização
     ordering = ('quotation_value',)
+
+    def quotation_provider_ident(self, QuotationPrice):
+        id_provider = str(QuotationPrice.quotation_provider)+'('+str(QuotationPrice.quotation_provider.id)+')'
+        return id_provider
+    quotation_provider_ident.short_description = 'Marcenaria'        
+
 
 # fields
 # list_display
