@@ -117,12 +117,22 @@ class Quotation(models.Model):
     # Comentário do cliente feito depois da entrega
     comment  = models.TextField('Detalhes', blank=True)
 
-
     # Sub-campo: Indica o número de lances para uma dita cotação
     def get_number_launch(self):
         qvalue = QuotationPrice.objects.filter(quotation_number_id=self.id)
         return qvalue.count()
-    get_number_launch.short_description = 'Orçamentos'     
+    get_number_launch.short_description = 'Orçtos'  
+
+
+    # Sub-campo: Retorna a marcenaria vencedora quando o status for aprovado
+    def get_provider_approved(self):
+        quotation_price = QuotationPrice.objects.get(quotation_number=self.id,approved=True)  
+        if not quotation_price:
+            return "-"
+        else:    
+            return ' R$: '+str(quotation_price.quotation_value)+' '+str(quotation_price.quotation_provider)
+    get_provider_approved.short_description = 'Dados da Aprovação'  
+
 
     # Sub-campo: Indica a existencia de foto em um dos campos
     def get_photo(self):

@@ -2,7 +2,7 @@ cloudinary.uploader.upload("sample.jpg",crop="limit",tags="samples",width=3000,h
 CloudinaryImage("sample").image(transformation={"crop": "fill","gravity": "faces","width": 300,"height": 200}, format="jpg")
 
 https://cloudinary.com/console/welcome
-Senha: !@#LbaM1971
+Senha: LbAm1971@mga
 
 Cloud name:
 quotation-now

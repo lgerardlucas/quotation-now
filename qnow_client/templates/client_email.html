@@ -161,37 +161,38 @@
 
 
                         {% if value_quotation != 0.00 %}
-                        <b>E-mail:</b> {{ request.client.email }}<br>
-                        <b>Fone:</b> {{ request.client.phone }}<br>
+                          <!-- Se for True, indica que este pedaço de código não precisar fazer parte do e-mail enviado aos providers reprovados -->
+                          {% if not not_approved == True %}
+                            <b>E-mail:</b> {{ request.client.email }}<br>
+                            <b>Fone:</b> {{ request.client.phone }}<br>
 
-                        <br>
+                            <br>
+                            <b>Fornecedor:</b> {{ provider_quotation }}<br>
+                            <b>Valor:</b> {{ value_quotation }}<br>
+                            <b>E-mail:</b> {{ email_provider }}<br>
+                            <b>Fone:</b> {{ phone_provider }}<br>
 
-                        <b>Fornecedor:</b> {{ provider_quotation }}<br>
-                        <b>Valor:</b> {{ value_quotation }}<br>
-                        <b>E-mail:</b> {{ email_provider }}<br>
-                        <b>Fone:</b> {{ phone_provider }}<br>
-
-                        <dl class="uk-description-list-line">
-                          <dt>
-                            <strong>Importante</strong>
-                          </dt>
-                          <dd style="text-align: left">
-                            A MGA a partir deste ponto se retira!<br>
-                            Acreditamos que nesta etapa o nosso trabalha foi concluído com êxito, ou seja,
-                            unimos você a vários fornecedores e você escolheu um.
-                          </dd>
-                          <br>
-                          <dt>
-                            <strong>Agradecimento</strong>
-                          </dt>
-                          <dd style="text-align: left">
-                            A MGA agradece a sua partição em nossa plataforma e fica a espera de seu retorno onde
-                            desejamos
-                            saber o final desta história. Nos envie um e-mail e nos mostre como ficou seu projeto
-                            planejado.
-                          </dd>
-                        </dl>
-
+                            <dl class="uk-description-list-line">
+                              <dt>
+                                <strong>Importante</strong>
+                              </dt>
+                              <dd style="text-align: left">
+                                A MGA a partir deste ponto se retira!<br>
+                                Acreditamos que nesta etapa o nosso trabalha foi concluído com êxito, ou seja,
+                                unimos você a vários fornecedores e você escolheu um.
+                              </dd>
+                              <br>
+                              <dt>
+                                <strong>Agradecimento</strong>
+                              </dt>
+                              <dd style="text-align: left">
+                                A MGA agradece a sua partição em nossa plataforma e fica a espera de seu retorno onde
+                                desejamos
+                                saber o final desta história. Nos envie um e-mail e nos mostre como ficou seu projeto
+                                planejado.
+                              </dd>
+                            </dl>
+                          {% endif  %}
                         {% endif  %}
 
                       </p>

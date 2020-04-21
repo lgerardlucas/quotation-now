@@ -59,7 +59,7 @@ class QuotationAdmin(admin.ModelAdmin):
     
 
     # Campos que aparecerão ao entrar na model
-    list_display = ('id_quotation','client_client','get_number_launch','stage','date_create','date_update','date_validate','get_dif_date_now',
+    list_display = ('id_quotation','client_client','get_number_launch','get_provider_approved','stage','date_create','date_update','date_validate','get_dif_date_now',
         'house_type','mobile_type_description','get_removed','city_client','phone_client','email_client','cep_client',
         'street_client','district_client','state_client','get_photo')
 

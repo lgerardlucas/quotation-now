@@ -44,12 +44,13 @@ def register(request, origin, *args, **kwargs):
             user.role = origin
             user.email = user.email.lower()
             user.username = capitalize_text(user.username)
+            '''
             # Por padrão, o provider estará inativo quando no primeiro cadastro
             if origin != 'client':
                user.approved = False
             else:
                user.approved = True
-
+            '''
             user.save()
             user = authenticate(
                 email=user.email, password=form.cleaned_data['password1'],backend='django.contrib.auth.backends.ModelBackend'

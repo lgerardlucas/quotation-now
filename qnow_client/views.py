@@ -208,7 +208,17 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
         if acao == 'removida':          # E-mail enviado ao client
             message = 'Sua cotação foi '+acao+' com sucesso!.'
         elif acao == 'aprovada':        # E-mail enviado ao client    
+            # Email do provider aprovado - Enviar email avisando
             provider = QuotationPrice.objects.get(quotation_number=request.id,approved=True)  
+
+            # Emails dos providers reprovados - Enviar email avisando
+            qprovider_not_approved = QuotationPrice.objects.filter(quotation_number=request.id,approved=False)
+            if qprovider_not_approved:            
+                emails_providers_not_approved = []
+                emails_providers_not_approved.append(settings.EMAIL_HOST_USER)
+                for provider_not_approved in qprovider_not_approved:
+                    emails_providers_not_approved.append(provider_not_approved.quotation_provider.email)
+    
             message = 'Parabéns, a '+str(provider.quotation_provider)+' foi a empresa aprovada por você! A partir de agora, este fornecedor entrará em contato, finalizando os demais detalhes e dando segmento a produção de seu planejado.'
         elif acao == 'liberada':        # E-mail enviado ao client    
             message = 'Parabéns, sua cotação foi '+acao+' com sucesso! A partir de agora é aguardar os lances de cada fornecedor e depois escolher e aprovar um deles. Em seguida da aprovação o fornecedor entrará em contato com você e juntos finalizarão o processo todo.'
@@ -244,7 +254,6 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
                 adress_link = "http://www.mgacotacoes.com.br/provider/quotation_provider_price/"+str(request.id)
 
 
-
         # Retorna o email do provider aprovado e adiciona os e-mails: da plataforma e do cliente
         emails = []
         #emails.append(settings.EMAIL_HOST_USER)     # E-mail da plataforma
@@ -277,12 +286,13 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
             "provider_quotation": qprovider,
             "email_provider": qemail,
             "phone_provider": qphone,
-            "adress_link": adress_link
-            }
+            "adress_link": adress_link,
+            "not_approved": False
+        }
         content = render_to_string(template_name, context)
 
-
         if subject and message and from_email:
+            # E-mail enviados a client e providers para todos os status 
             try:
                 email = EmailMessage(
                     subject,
@@ -294,7 +304,37 @@ def quotation_client_email(request,acao='ERROR',send_email_sis='False'):
                 email.content_subtype = "html"
                 email.send(fail_silently=False)
             except BadHeaderError:
-                return HttpResponse('Problema no envio do e-mail. Tente mais tarde!')
+                return HttpResponse('Problema no envio do e-mail. Tente mais tarde! - Situação Geral')
+
+            # E-mail enviado para os providers reprovados
+            if acao == 'aprovada':
+                message = 'Aviso!!! Esta cotação foi aprovada para outra MARCENARIA. Nós da MGA Cotações agradecemos sua participação nesta cotação e esperamos que você possa sempre contribuir dando seu orçamento a novas cotações.'
+
+                context = {
+                    "request": request,
+                    "message": message,
+                    "value_quotation": qvalue,
+                    "provider_quotation": qprovider,
+                    "email_provider": qemail,
+                    "phone_provider": qphone,
+                    "adress_link": adress_link,
+                    "not_approved": True
+                    }
+                content = render_to_string(template_name, context)
+
+                try:
+                    email = EmailMessage(
+                        subject,
+                        content,
+                        from_email, 
+                        emails_providers_not_approved
+                    )
+                    email.content_subtype = "html"
+                    email.send(fail_silently=False)
+                except BadHeaderError:
+                    return HttpResponse('Problema no envio do e-mail. Tente mais tarde! - Situação Específica')
+
+
             return redirect("qnow_client:quotation_client_list", request.client_id)
         else:
             return redirect("qnow_client:quotation_client_list", request.client_id)
