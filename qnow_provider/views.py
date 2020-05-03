@@ -158,9 +158,9 @@ def quotation_provider_price(request,quotation_id=0):
     except QuotationPrice.DoesNotExist:
         quotationprice = 0
 
-    # GET - Retorna se o provider tem cotações aprovadas mas não pagou a tempo determinado a comissão a plataforma
-    try:
-        quotationprice_payment_validate = QuotationPrice.objects.filter(quotation_provider=request.user,approved=True,commission_paid=False,commission_paid_date__lt=datetime.now()).count()   
+    # GET - Retorna se o provider tem cotações aprovadas mas não pagou a tempo determinado a comissão a plataforma - Somente é testada cotações cuja o status = "Aprovado". Outras não valerão
+    try:                        
+        quotationprice_payment_validate = QuotationPrice.objects.filter(quotation_number__stage=29, quotation_provider=request.user,approved=True,commission_paid=False,commission_paid_date__lt=datetime.now()).count()   
     except QuotationPrice.DoesNotExist:
         quotationprice_payment_validate = 0
 

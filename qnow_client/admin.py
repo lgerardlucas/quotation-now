@@ -20,7 +20,7 @@ class QuotationPriceInline(admin.TabularInline):
     ordering = ('quotation_value',)
 
     def quotation_provider_ident(self, QuotationPrice):
-        id_provider = str(QuotationPrice.quotation_provider)+'('+str(QuotationPrice.quotation_provider.id)+')'
+        id_provider = str(QuotationPrice.quotation_provider)+'('+str(QuotationPrice.quotation_provider.id)+')'+'('+str(QuotationPrice.quotation_provider.city)+')'
         return id_provider
     quotation_provider_ident.short_description = 'Marcenaria'        
 
