@@ -98,7 +98,7 @@ def user_email(request,acao='ERROR',send_email_sis='False'):
                     content,
                     from_email, 
                     [request.email],
-                    ['lgerardlucas@gmail.com']
+                    ['lgerardlucas@gmail.com','mgacotacoes@gmail.com']
                 )
                 email.content_subtype = "html"
                 email.send(fail_silently=False)
