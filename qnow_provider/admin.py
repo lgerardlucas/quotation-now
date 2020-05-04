@@ -5,7 +5,7 @@ from .models import QuotationPrice
 # Register your models here.
 class QuotationPriceAdmin(admin.ModelAdmin):
     # Campos que aparecerão ao entrar na model
-    list_display = ('id','number_quotation','quotation_client','quotation_provider_name','quotation_mobile_type','value_quotation','approved','approved_date','get_value_percent_site','commission_paid','commission_paid_date','get_dif_date_commission_paid','date_create','date_validate','get_dif_date_validate','delivery_time','form_payment')
+    list_display = ('id','number_quotation','quotation_client','quotation_provider_name','quotation_mobile_type','value_quotation','approved','approved_date','get_value_percent_site','commission_paid','commission_paid_date','get_dif_date_commission_paid','date_create','date_validate','get_dif_date_validate','delivery_time','form_payment','cancel_quotation','cancel_comments')
 
     # 2º Tipo 2 de pesquisa para tabelas relacionadas - Apresenta no modo lista e detalhado
     autocomplete_fields = ("quotation_number",)

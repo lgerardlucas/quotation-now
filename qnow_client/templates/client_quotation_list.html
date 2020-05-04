@@ -335,90 +335,111 @@
 																</label>
 															{% endif %}	
 														</div>
-														<div
-															style="display: inline-block; width: 25%; text-align: center; line-height: 1.7em;">
-															Aprovar<br>
-															{% if price.approved %}
-															<input style="vertical-align: middle;" type="radio"
-																name="price_id" value="{{ price.id }}" checked>
-															{% else %}
-															<input style="vertical-align: middle;" type="radio"
-																name="price_id" value="{{ price.id }}">
-															{% endif %}
-														</div>
-													</div>
+														<!-- Cancelamento por parte da MGA para que um dito valor seja mostrado ao cliente mas informado que ele não pode usar, por difersos motivos, seja ele por que o provider não pode ou não quer este projeto -->		
+														{% if not price.cancel_quotation %}
+															<div style="display: inline-block; width: 25%; text-align: center; line-height: 1.7em;">Aprovar<br>
+																{% if price.approved %}
+																<input style="vertical-align: middle;" type="radio" name="price_id" value="{{ price.id }}" checked>
+																{% else %}
+																<input style="vertical-align: middle;" type="radio" name="price_id" value="{{ price.id }}">
+																{% endif %}
+															</div>
 
-													<!-- Prazo de entrega -->
-													<div style="display: inline-block; width: 100%">
-														<label
-															style="font-weight: bold; line-height: 1.4em;">Entrega</label><br>
-														<label
-															style="font-weight: normal;">{{ price.delivery_time }}</label>
-													</div>
-
-													<!-- Prazo vencido alerta -->
-													{% if 'Aprovado'|lower not in field.stage|lower %}
-													{% if price.get_dif_date_validate > 0 %}
-													<div style="padding: 10px 10px 10px 10px;">
-														<div
-															style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
-															<label
-																style="font-weight: bold; line-height: 0.9em; color:#FFB400; padding: 4px 4px 4px 2px;">
-																Este orçamento consta<br>VENCIDO!<br>Mesmo assim, você
-																poderá
-																aprová-lo. Quando a marcenaria entrar em contato lhe
-																informará se o valor ainda esta válido. Você descide se
-																aceita ou não o recalculo.
-
-															</label>
-														</div>
-													</div>
-													{% endif %}
-													{% endif %}
-
-													<!-- Forma de pagamento -->
-													<div style="display: inline-block;  width: 100%;">
-														<label style="font-weight: bold; line-height: 1.4em;">
-															Forma de Pagamento
-														</label><br>
-														<label style="font-weight: normal; line-height: 0.9em;">
-															{{ price.form_payment }}
-														</label>
-													</div>
-
-													<!-- Detalhes -->
-													<div style="display: inline-block;  width: 100%;">
-														<label style="font-weight: bold; line-height: 1.4em;">
-															Detalhes
-														</label><br>
-														<div
-															style="font-weight: normal; line-height: 0.9em; word-wrap: break-word;">
-															{{ price.comments }}
-														</div>
-													</div>
-
-													{% if 'Aprovado'|lower not in field.stage|lower %}
-													<!-- Informações da marcenaria -->
-														{% if price.quotation_provider.information != '' or price.quotation_provider.get_birth_date_provider != ''  %}
+														{% else %}
+															<div style="display: inline-block; width: 25%; text-align: center; line-height: 1.7em; color:#FFB400;">
+																Cancelado<br>
+															</div>
 															<div style="padding: 10px 10px 10px 10px;">
 																<div
 																	style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
 																	<label style="font-weight: bold; line-height: 0.9em; color:#FFB400; padding: 4px 4px 4px 2px;">
-																		Conheça um pouco deste fonecedor!
+																		O lance dado neste orçamento por este fornecedor consta<br>CANCELADO!<br><br>
+																		{{ price.cancel_comments }}.
 																		<br><br>
-																		{% if price.quotation_provider.get_birth_date_provider != '' %}
-																		   Este fornecedor, possui {{ price.quotation_provider.get_birth_date_provider }} de atividade no ramo de móveis planejados!
-																		{% else %}
-																		   Este fornecedor não contém ainda a data do início das atividades de sua empresa!
-																		{% endif %} 
-																		
-																		<br><br>
-																		{% if price.quotation_provider.information != '' %}
-																		   {{ price.quotation_provider.information }}
-																		{% endif %}   
+																		Se desejar saber mais sobre este cancelamento, entre em contato conosco via whatsapp (53) 98121-5585.		
 																	</label>
 																</div>
 															</div>
+
+														{% endif %}
+
+													</div>
+													
+													<!-- Cancelamento por parte da MGA para que um dito valor seja mostrado ao cliente mas informado que ele não pode usar, por difersos motivos, seja ele por que o provider não pode ou não quer este projeto -->
+													{% if not price.cancel_quotation %}
+
+														<!-- Prazo de entrega -->
+														<div style="display: inline-block; width: 100%">
+															<label
+																style="font-weight: bold; line-height: 1.4em;">Entrega</label><br>
+															<label
+																style="font-weight: normal;">{{ price.delivery_time }}</label>
+														</div>
+
+														<!-- Prazo vencido alerta -->
+														{% if 'Aprovado'|lower not in field.stage|lower %}
+															{% if price.get_dif_date_validate > 0 %}
+															<div style="padding: 10px 10px 10px 10px;">
+																<div
+																	style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
+																	<label
+																		style="font-weight: bold; line-height: 0.9em; color:#FFB400; padding: 4px 4px 4px 2px;">
+																		Este orçamento consta<br>VENCIDO!<br><br>Mesmo assim, você
+																		poderá
+																		aprová-lo. Quando a marcenaria entrar em contato lhe
+																		informará se o valor ainda esta válido. Você descide se
+																		aceita ou não o recalculo.
+
+																	</label>
+																</div>
+															</div>
+															{% endif %}
+														{% endif %}
+
+														<!-- Forma de pagamento -->
+														<div style="display: inline-block;  width: 100%;">
+															<label style="font-weight: bold; line-height: 1.4em;">
+																Forma de Pagamento
+															</label><br>
+															<label style="font-weight: normal; line-height: 0.9em;">
+																{{ price.form_payment }}
+															</label>
+														</div>
+
+														<!-- Detalhes -->
+														<div style="display: inline-block;  width: 100%;">
+															<label style="font-weight: bold; line-height: 1.4em;">
+																Detalhes
+															</label><br>
+															<div
+																style="font-weight: normal; line-height: 0.9em; word-wrap: break-word;">
+																{{ price.comments }}
+															</div>
+														</div>
+
+														{% if 'Aprovado'|lower not in field.stage|lower %}
+														<!-- Informações da marcenaria -->
+															{% if price.quotation_provider.information != '' or price.quotation_provider.get_birth_date_provider != ''  %}
+																<div style="padding: 10px 10px 10px 10px;">
+																	<div
+																		style="display: inline-block; padding: 5px 5px 5px 5px; width: 100%; border-radius:0px 20px 0px 20px; border: solid 1px #FFB400; text-align: center; ">
+																		<label style="font-weight: bold; line-height: 0.9em; color:#FFB400; padding: 4px 4px 4px 2px;">
+																			Conheça um pouco deste fonecedor!
+																			<br><br>
+																			{% if price.quotation_provider.get_birth_date_provider != '' %}
+																			Este fornecedor, possui {{ price.quotation_provider.get_birth_date_provider }} de atividade no ramo de móveis planejados!
+																			{% else %}
+																			Este fornecedor não contém ainda a data do início das atividades de sua empresa!
+																			{% endif %} 
+																			
+																			<br><br>
+																			{% if price.quotation_provider.information != '' %}
+																			{{ price.quotation_provider.information }}
+																			{% endif %}   
+																		</label>
+																	</div>
+																</div>
+															{% endif %}
 														{% endif %}
 													{% endif %}
 

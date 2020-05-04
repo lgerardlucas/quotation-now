@@ -49,6 +49,12 @@ class QuotationPrice(models.Model):
     # Data de previsão e pagamento da comissão
     commission_paid_date = models.DateField('Comissão(Previsão p/Pagto)',blank=True, null=True)
 
+    # QuotationPrice cancelada - Cancela a possibilidade do cliente aprovar mas não tira da lista o valor, somente avisa ao cliente de que este provider não poderá lhe atender 
+    cancel_quotation     = models.BooleanField('Cancelar Preço(S/N)',default=False)
+
+    # Informações referente ao cancelamento que aparecer para o cliente
+    cancel_comments      = models.TextField('Comentário Sobre o Cancelamento do Preço',blank=True)
+
     # Sub-campo: Indica a diferença entre a data de criação x data atual
     def get_dif_date_validate(self):
         date1 = datetime.now().toordinal()

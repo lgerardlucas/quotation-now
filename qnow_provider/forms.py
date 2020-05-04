@@ -14,7 +14,9 @@ class QuotationPriceForm(forms.ModelForm):
             'quotation_value',
             'delivery_time',
             'form_payment',
-            'comments'
+            'comments',
+            'cancel_quotation',
+            'cancel_comments'
         )
 
         labels = {
