@@ -161,9 +161,7 @@
                         <b>Prazo de Entrega:</b> {{ deliver_time }}<br>
                         <b>Forma de Pagamento:</b> {{ form_payment }}<br>
                         <b>Informações:</b> 
-                          <pre style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 5px; text-align: left;">
-                            {{ commets }}
-                          </pre> <br>
+                          <pre style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 5px; text-align: left;">{{ commets }}<br><br>Fim</pre> <br>
 
                         <br>
                         <strong>IMPORTANTE:</strong><br>
@@ -188,9 +186,7 @@
                         {% endif %}<br>
                         <b>Situação:</b> {{ request.stage }}<br>
                         <b>Caracteristicas:</b> 
-                          <pre style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 5px; text-align: left;">
-                              {{ request.particulars }}
-                          </pre>
+                          <pre style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 5px; text-align: left;">{{ request.particulars }}<br><br>Fim</pre>
                         <br>
                       </p>
 

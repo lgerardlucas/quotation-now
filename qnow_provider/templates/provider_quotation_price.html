@@ -11,7 +11,8 @@
 				<ol class="breadcrumb">
 					<li>Você esta aqui: &nbsp;</li>
 					<li><a class="pathway" href="{% url 'qnow_site:site' %}">Home</a></li>
-					<li><a class="pathway" href="{% url 'qnow_provider:quotation_provider' %}">Lista de Cotações</a></li>
+					<li><a class="pathway" href="{% url 'qnow_provider:quotation_provider' %}">Lista de Cotações</a>
+					</li>
 					<li class="active">Detalhes da Cotação</li>
 				</ol>
 			</div>
@@ -35,169 +36,204 @@
 			<h2><strong style="font-size: 24px;">Cotação Nº: {{ field.id }}</strong></h2>
 		</div>
 
-			<!-- Móvel e Nº da cotação -->
+		<!-- Móvel e Nº da cotação -->
 		<div style="display: inline-block; width: 100%; text-align: center;  height: 2.8em;">
-				<h2 style="font-size: 1.6em;">Móvel: 
-					<!-- Móvel -->
-					{% if field.mobile_type|lower == '_Outro'|lower %}
-					{{ field.mobile_description|truncatechars:15 }}
-					{% else %}
-					{{ field.mobile_type|truncatechars:15 }}
-					{% endif %} -
-					<strong>{{ field.stage|truncatechars:10 }}</strong>
-				</h2>
-			</div>
+			<h2 style="font-size: 1.6em;">Móvel:
+				<!-- Móvel -->
+				{% if field.mobile_type|lower == '_Outro'|lower %}
+				{{ field.mobile_description|truncatechars:15 }}
+				{% else %}
+				{{ field.mobile_type|truncatechars:15 }}
+				{% endif %} -
+				<strong>{{ field.stage|truncatechars:10 }}</strong>
+			</h2>
+		</div>
 
 
 		<!-- Móvel e Nº da cotação -->
 		<div style="display: inline-block; text-align: left; width: 28em; padding: 0px 15px 0px;">
-			<form enctype="multipart/form-data" method="POST" action="{% url 'qnow_provider:quotation_provider_price_post' field.id %}">
-					{% csrf_token %}
-					<!-- Retorna informações de estatus para dar um disable aos campos editaveis-->
-					{% get_status field user.id field.stage.status field.get_number_launch field.get_dif_date_now as state_quotation %}
+			<form enctype="multipart/form-data" method="POST"
+				action="{% url 'qnow_provider:quotation_provider_price_post' field.id %}">
+				{% csrf_token %}
+				<!-- Retorna informações de estatus para dar um disable aos campos editaveis-->
+				{% get_status field user.id field.stage.status field.get_number_launch field.get_dif_date_now as state_quotation %}
 
-					{{ quotationprice.mon_field_erros }}
-					<!-- Campos para ser gravados via POST  -->
-					<!-- Nº da Cotação -->
-						<!-- {{ quotationprice.quotation_number.label_tag }} -->
-						{{ quotationprice.quotation_number }}
-						<!-- {{ quotationprice.quotation_number.errors }} -->
+				{{ quotationprice.mon_field_erros }}
+				<!-- Campos para ser gravados via POST  -->
+				<!-- Nº da Cotação -->
+				<!-- {{ quotationprice.quotation_number.label_tag }} -->
+				{{ quotationprice.quotation_number }}
+				<!-- {{ quotationprice.quotation_number.errors }} -->
 
-					<!-- Fornecedor da cotação -->
-						<!-- {{ quotationprice.quotation_provider.label_tag }} -->
-						{{ quotationprice.quotation_provider }}
-						<!-- {{ quotationprice.quotation_provider.errors }} -->
+				<!-- Fornecedor da cotação -->
+				<!-- {{ quotationprice.quotation_provider.label_tag }} -->
+				{{ quotationprice.quotation_provider }}
+				<!-- {{ quotationprice.quotation_provider.errors }} -->
 
-					<!-- Texto informativo quando o cliente via email acessa a cotação depois de ser aprovada -->	
-					{% if field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 %}
-					<div style="display: inline-block; width: 100%; text-align: center; background-color:#292c2f; height: 10.6em; border: 3px #ffb400 dashed;">
-							{% if field.stage_id == 29  %}
-								<h2><strong style="font-size: 24px;">Esta cotação foi aprovada<br> pelo cliente!</strong></h2>
-							{% endif %}
-
-							{% if field.stage_id == 30 %}
-								<h2><strong style="font-size: 24px;">Esta cotação foi cancelada<br> pelo cliente!</strong></h2>
-							{% endif %}
-
-							{% if field.stage_id == 31 %}
-								<h2><strong style="font-size: 24px;">Esta cotação foi desativada<br> pela plataformacliente!</strong></h2>
-							{% endif %}
-							<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
-					</div>
+				<!-- Texto informativo quando o cliente via email acessa a cotação depois de ser aprovada -->
+				{% if field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 %}
+				<div
+					style="display: inline-block; width: 100%; text-align: center; background-color:#292c2f; height: 10.6em; border: 3px #ffb400 dashed;">
+					{% if field.stage_id == 29  %}
+					<h2><strong style="font-size: 24px;">Esta cotação foi aprovada<br> pelo cliente!</strong></h2>
 					{% endif %}
 
-					<!-- Texto informativo quando o provider tem orçamentos aprovados e não pagou a tempo a comissão a plataforma -->
-					{% if field.stage_id != 29 and qpayment_count > 0 %}
-					<div
-						style="display: inline-block; width: 100%; text-align: center; background-color:#292c2f; height: 12.6em; border: 3px #ffb400 dashed;">
-						<h2><strong style="font-size: 24px;">Orçamento Bloqueado!<br>Favor entrar em contato com a MGA!</strong></h2>
-						<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
-					</div>
+					{% if field.stage_id == 30 %}
+					<h2><strong style="font-size: 24px;">Esta cotação foi cancelada<br> pelo cliente!</strong></h2>
 					{% endif %}
 
-				    <!-- Data da cotação -->
-					<div class="quotation_provider_field" style="display: inline-block; text-align: left; width: 49%; line-height: 1em;">
-						{{ quotationprice.date_create.label_tag }}
-						{{ quotationprice.date_create }}
-						{{ quotationprice.date_create.errors }}
-					</div>
+					{% if field.stage_id == 31 %}
+					<h2><strong style="font-size: 24px;">Esta cotação foi desativada<br> pela
+							plataformacliente!</strong></h2>
+					{% endif %}
+					<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de
+						Cotações</a>
+				</div>
+				{% endif %}
 
-					<!-- Data de validade da cotação -->
-					<div class="quotation_provider_field" style="display: inline-block; text-align: left; width: 49%; line-height: 1em; padding-bottom: 5px">
-						{{ quotationprice.date_validate.label_tag }} 
-							{% if 'R$' in state_quotation or field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 or qpayment_count > 0 %}
-								<fieldset disabled="disabled">
-							{% else %}
-								<fieldset>
+				<!-- Texto informativo quando o provider tem orçamentos aprovados e não pagou a tempo a comissão a plataforma -->
+				{% if field.stage_id != 29 and qpayment_count > 0 %}
+				<div
+					style="display: inline-block; width: 100%; text-align: center; background-color:#292c2f; height: 12.6em; border: 3px #ffb400 dashed;">
+					<h2><strong style="font-size: 24px;">Orçamento Bloqueado!<br>Favor entrar em contato com a
+							MGA!</strong></h2>
+					<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de
+						Cotações</a>
+				</div>
+				{% endif %}
+
+				<!-- Data da cotação -->
+				<div class="quotation_provider_field"
+					style="display: inline-block; text-align: left; width: 49%; line-height: 1em;">
+					{{ quotationprice.date_create.label_tag }}
+					{{ quotationprice.date_create }}
+					{{ quotationprice.date_create.errors }}
+				</div>
+
+				<!-- Data de validade da cotação -->
+				<div class="quotation_provider_field"
+					style="display: inline-block; text-align: left; width: 49%; line-height: 1em; padding-bottom: 5px">
+					{{ quotationprice.date_validate.label_tag }}
+					{% if 'R$' in state_quotation or field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 or qpayment_count > 0 %}
+					<fieldset disabled="disabled">
+						{% else %}
+						<fieldset>
 							{% endif %}
-								{{ quotationprice.date_validate }}
-								</fieldset>
+							{{ quotationprice.date_validate }}
+						</fieldset>
 						{{ quotationprice.date_validate.errors }}
-					</div>
+				</div>
 
-					<!-- Valor da cotação -->
-					<div style="display: inline-block; text-align: center; width: 100%; line-height: 1em;">
-						{{ quotationprice.quotation_value.label_tag }}
-							{% if 'R$' in state_quotation or field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 or qpayment_count > 0 %}
-								<fieldset disabled="disabled">
-							{% else %}
-								<fieldset>
+				<!-- Valor da cotação -->
+				<div style="display: inline-block; text-align: center; width: 100%; line-height: 1em;">
+					{{ quotationprice.quotation_value.label_tag }}
+					{% if 'R$' in state_quotation or field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 or qpayment_count > 0 %}
+					<fieldset disabled="disabled">
+						{% else %}
+						<fieldset>
 							{% endif %}
-								{{ quotationprice.quotation_value }}
-								</fieldset>
+							{{ quotationprice.quotation_value }}
+						</fieldset>
 						{{ quotationprice.quotation_value.errors }}
-					</div>
+				</div>
 
-					<!-- Prazo de entrega -->
-					<div style="display: block; text-align: left; width: 100%; padding-top: 10px; line-height: 0.5em;">
-						{{ quotationprice.delivery_time.label_tag }}
-							{% if 'R$' in state_quotation or field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 or qpayment_count > 0 %}
- 								<fieldset disabled="disabled">
-							{% else %}
-								<fieldset>
+				<!-- Prazo de entrega -->
+				<div style="display: block; text-align: left; width: 100%; padding-top: 10px; line-height: 0.5em;">
+					{{ quotationprice.delivery_time.label_tag }}
+					{% if 'R$' in state_quotation or field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 or qpayment_count > 0 %}
+					<fieldset disabled="disabled">
+						{% else %}
+						<fieldset>
 							{% endif %}
-								{{ quotationprice.delivery_time }}
-								</fieldset>
+							{{ quotationprice.delivery_time }}
+						</fieldset>
 						{{ quotationprice.delivery_time.errors }}
-					</div>
-				
-					<!-- Forma de pagamento -->
-					<div style="display: block; text-align: left; width: 100%; padding-top: 10px; line-height: 0.5em;">
-						{{ quotationprice.form_payment.label_tag }}
-							{% if 'R$' in state_quotation or field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 or qpayment_count > 0 %}
-  								<fieldset disabled="disabled">
-							{% else %}
-								<fieldset>
+				</div>
+
+				<!-- Forma de pagamento -->
+				<div style="display: block; text-align: left; width: 100%; padding-top: 10px; line-height: 0.5em;">
+					{{ quotationprice.form_payment.label_tag }}
+					{% if 'R$' in state_quotation or field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 or qpayment_count > 0 %}
+					<fieldset disabled="disabled">
+						{% else %}
+						<fieldset>
 							{% endif %}
-								{{ quotationprice.form_payment }}
-								</fieldset>
+							{{ quotationprice.form_payment }}
+						</fieldset>
 						{{ quotationprice.form_payment.errors }}
-					</div>
-					<!-- Comentários do provider -->
-					<div style="display: block; text-align: left; width: 100%; padding-top: 10px; line-height: 1.3em;">
-						<!-- {{ quotationprice.comments.label_tag }} -->
-						Informe aqui detalhes como:<br>
-						a) O que compõe o valor orçado<br>
-						b) Detalhe sobre o pagamento e o prazo de entrega</br>
-						c) Detalhes sobre sua empresa
-						
-							{% if 'R$' in state_quotation or field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 or qpayment_count > 0 %}
-								<fieldset disabled="disabled">
-							{% else %}		
-								<fieldset>
+				</div>
+				<!-- Comentários do provider -->
+				<div style="display: block; text-align: left; width: 100%; padding-top: 10px; line-height: 1.3em;">
+					<!-- {{ quotationprice.comments.label_tag }} -->
+					Informe aqui detalhes como:<br>
+					a) O que compõe o valor orçado(Granito?)<br>
+					b) Detalhe sobre o pagamento e o prazo de entrega</br>
+					c) Detalhes sobre sua empresa
+
+					{% if 'R$' in state_quotation or field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 or qpayment_count > 0 %}
+					<fieldset disabled="disabled">
+						{% else %}
+						<fieldset>
 							{% endif %}
-								{{ quotationprice.comments }}
-								</fieldset>
+							{{ quotationprice.comments }}
+						</fieldset>
 						{{ quotationprice.comments.errors }}
 
 						<div style="display: inline-block; text-align: left; width: 100%; padding-top: 10px;">
-							 <div style="display: inline-block; text-align: left; width: 100%; padding-top: 10px; line-height: 0.5em;">
+							<div
+								style="display: inline-block; text-align: left; width: 100%; padding-top: 10px; line-height: 0.5em;">
 								{% if 'R$' in state_quotation or field.stage_id == 29 or field.stage_id == 30 or field.stage_id == 31 or qpayment_count > 0 %}
-									<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
+								<a class="uk-button raleway16"
+									href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
 								{% else %}
-									{% if quotationprice.quotation_value %}
-										<!-- Enviar o orçamento ao cliente-->
-										<input  name="button9" value="Enviar Orçamento" class="btn btn-default uk-button" 
-											type="submit">
+								{% if quotationprice.quotation_value %}
+								<!-- Enviar o orçamento ao cliente-->
+								<input name="button9" value="Enviar Orçamento" class="btn btn-default uk-button"
+									type="submit">
 
-										<!-- Enviar uma pergunta ao cliente-->
-										<input  name="button9" value="Dúvidas? Pergunte" class="btn btn-default uk-button" 
-										type="button" data-toggle="modal" data-target="#emailModal_Provider">
-									{% endif %}
+								<!-- Enviar uma pergunta ao cliente-->
+								<input name="button9" value="Dúvidas? Pergunte" class="btn btn-default uk-button"
+									type="button" data-toggle="modal" data-target="#emailModal_Provider">
 								{% endif %}
-							</div>	
+								{% endif %}
+							</div>
 
 							<div style="display: inline-block; text-align: right; padding-top: 10px; ">
 								{% if not user.is_authenticated %}
-									<a href="{% url 'qnow_user:login_client_start' %}" class="uk-button" style="padding: 3px 3px;">
-										Logar no sistema!</a>
+								<a href="{% url 'qnow_user:login_client_start' %}" class="uk-button"
+									style="padding: 3px 3px;">
+									Logar no sistema!</a>
 								{% endif %}
-							</div>				
+							</div>
 						</div>
-
-					</div>
-
+				</div>
 			</form>
+		</div>
+
+		<!-- Detalhes da cotação -->
+		<div style="display: inline-block; text-align: left; width: 100%; padding-top: 10px; padding: 15px;">
+			<div class="module title3">
+				<h3 class="module-title">Informações do Projeto</h3>
+				<strong>Importante: Se estiver lendo via telefone, use o DEDO para rolar para esquerda as informações</strong>
+				<div class="module-content">
+					<!--Detalhes-->
+					<pre
+						style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 5px; text-align: left;">{{ field.particulars }}<br><br>Fim
+					</pre>
+				</div>
+			</div>
+			<div style="text-align: center">
+				<p class="readmore"><br>
+					{% if user.is_authenticated %}
+					<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à
+						Lista de
+						Cotações</a>
+					{% else %}
+					<a href="{% url 'qnow_user:login_client_start' %}" class="uk-button" style="padding: 3px 3px;">
+						Logar no sistema!</a>
+					{% endif %}
+				</p>
+			</div>
 		</div>
 
 		<!-- Imagem do ambiente -->
@@ -241,72 +277,59 @@
 
 		<!-- Detalhes da cotação -->
 		<div id="provider_detalhe" style="display: inline-block; text-align: left; padding: 15px; font-size: 1.2em;">
-			<div class="module title3">
-				<h3 class="module-title">Detalhes</h3>
-				<div class="module-content">
-					<!--Detalhes-->
-					{{ field.particulars }}
-				</div>
-			</div>	
-			<div style="text-align: center">
-				<p class="readmore">
-					{% if user.is_authenticated %}
-					<a class="uk-button raleway16" href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de
-						Cotações</a>
-					{% else %}
-					<a href="{% url 'qnow_user:login_client_start' %}" class="uk-button" style="padding: 3px 3px;">
-						Logar no sistema!</a>
-					{% endif %}
-				</p>
-			</div>
-
 
 			<!-- Tela para envio de pergunta ao cliente -->
-			<div class="modal fade" id="emailModal_Provider" tabindex="-1" role="dialog" aria-labelledby="emailModal_ProviderLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-				<div class="modal-content">
-				  <div class="modal-header">
-					<h3 class="modal-title" id="emailModal_ProviderLabel">Dados da Cotação</h3>
-						Cotação Nº: {{ field.id }}<br>
-						Móvel: 
-						{% if field.mobile_type|lower == '_Outro'|lower %}
+			<div class="modal fade" id="emailModal_Provider" tabindex="-1" role="dialog"
+				aria-labelledby="emailModal_ProviderLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3 class="modal-title" id="emailModal_ProviderLabel">Dados da Cotação</h3>
+							Cotação Nº: {{ field.id }}<br>
+							Móvel:
+							{% if field.mobile_type|lower == '_Outro'|lower %}
 							{{ field.mobile_description|truncatechars:15 }}
-						{% else %}
+							{% else %}
 							{{ field.mobile_type|truncatechars:15 }}
-						{% endif %} -
-						<strong>{{ field.stage|truncatechars:10 }}</strong>
-						<br>
-						Cliente: {{ field.client|truncatechars:10 }}
-						<br>
-				  </div>
-
-				  <!-- Formulário de envio de email -->
-				  <div class="modal-body">
-					<form enctype="multipart/form-data" method="POST" action="{% url 'qnow_provider:quotation_provider_email_inquire' field.id %}">
-						{% csrf_token %}
-						<!-- Email do cliente -->
-						<div class="form-group" hidden>
-							<label for="recipient-name" class="col-form-label">E-mail do cliente:</label>
-							<input type="text" class="form-control" name="email_client" id="recipient-name" value="{{ field.client.email }}" readonly=true> 
+							{% endif %} -
+							<strong>{{ field.stage|truncatechars:10 }}</strong>
+							<br>
+							Cliente: {{ field.client|truncatechars:10 }}
+							<br>
 						</div>
 
-						<!-- Pergunta do marceneiro -->	
-						<div class="form-group">
-							<label for="message-text" class="col-form-label">Digite aqui suas dúvidas:</label>
-							<textarea class="form-control" id="message-text" name="inquire_provider" style="height: 15em;"></textarea>
+						<!-- Formulário de envio de email -->
+						<div class="modal-body">
+							<form enctype="multipart/form-data" method="POST"
+								action="{% url 'qnow_provider:quotation_provider_email_inquire' field.id %}">
+								{% csrf_token %}
+								<!-- Email do cliente -->
+								<div class="form-group" hidden>
+									<label for="recipient-name" class="col-form-label">E-mail do cliente:</label>
+									<input type="text" class="form-control" name="email_client" id="recipient-name"
+										value="{{ field.client.email }}" readonly=true>
+								</div>
+
+								<!-- Pergunta do marceneiro -->
+								<div class="form-group">
+									<label for="message-text" class="col-form-label">Digite aqui suas dúvidas:</label>
+									<textarea class="form-control" id="message-text" name="inquire_provider"
+										style="height: 15em;"></textarea>
+								</div>
+
+								<!-- botões de ações -->
+								<div class="modal-footer">
+									<input name="button9" value="Fecha" class="btn btn-default uk-button" type="button"
+										data-dismiss="modal">
+									<input name="button9" value="Enviar E-mail" class="btn btn-default uk-button"
+										type="submit">
+
+								</div>
+							</form>
 						</div>
 
-						<!-- botões de ações -->	
-						<div class="modal-footer">
-	 						<input name="button9" value="Fecha" class="btn btn-default uk-button" type="button" data-dismiss="modal">
-							<input name="button9" value="Enviar E-mail" class="btn btn-default uk-button" type="submit">
-
-						</div>
-					</form>
-				  </div>
-
+					</div>
 				</div>
-			  </div>
 			</div>
 
 		</div>
@@ -337,7 +360,8 @@
 								<div class="uk-width-medium-1-4 uk-text-right inverted">
 									{% if user.is_authenticated %}
 									<a class="uk-button raleway16"
-										href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de Cotações</a>
+										href="{% url 'qnow_provider:quotation_provider' %}">Voltar à Lista de
+										Cotações</a>
 									{% endif %}
 								</div>
 							</div>
