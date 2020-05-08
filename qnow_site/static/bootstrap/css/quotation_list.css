@@ -1,25 +1,24 @@
 .jquery-waiting-base-container {
-position: absolute;
-left: 0px;
-top: 0px;
-margin:0px;
-width: 100%;
-height: 100%;
-display:block;
-z-index: 9999997;
-opacity: 0.85;
--moz-opacity: 0.65;
-filter: alpha(opacity = 65);
-background: black;
-background-image: url("../../images/ajax-loader.gif");
-
-background-repeat: no-repeat;
-background-position: 50% 60%; 
-text-align: center;
-overflow: hidden;
-font-weight: bold;
-color: white;
-padding-top: 25%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 9999997;
+    opacity: 0.85;
+    -moz-opacity: 0.65;
+    filter: alpha(opacity=65);
+    background: black;
+    background-image: url("../../images/ajax-loader.gif");
+    background-repeat: no-repeat;
+    background-position: 50% 60%;
+    text-align: center;
+    overflow: hidden;
+    font-weight: bold;
+    color: white;
+    padding-top: 25%;
 }
 
 .uk-lightbox-content img {
@@ -29,257 +28,293 @@ padding-top: 25%;
 }
 
 @import "compass/css3";
-
 $table-breakpoint: 480px;
 $table-background-color: #FFF;
 $table-text-color: #024457;
 $table-outer-border: 2px solid #167F92;
 $table-cell-border: 1px solid #D9E4E6;
-
 $table-border-radius: 10px;
 $table-highlight-color: #EAF3F3;
 $table-header-background-color: #167F92;
 $table-header-text-color: #FFF;
 $table-header-border: 2px solid #FFF;
-
-
-@mixin responstable(
-  $breakpoint: $table-breakpoint,
-  $background-color: $table-background-color,
-  $text-color: $table-text-color,
-  $outer-border: $table-outer-border,
-  $cell-border: $table-cell-border,
-  $border-radius: none,
-  $highlight-color: none,
-  $header-background-color: $table-background-color,
-  $header-text-color: $table-text-color,
-  $header-border: $table-cell-border) {
-  
-  .responstable {
-    width: 100%;
-    overflow: hidden;  
-    background: $background-color;
-    color: $text-color;
-    border-radius: $border-radius;
-    border: $outer-border;
-  
-    tr {
-      border: $cell-border; 
-      &:nth-child(odd) { 
-        background-color: $highlight-color;
-      }  
-    }
-  
-    th {
-      display: none; 
-      border: $header-border;
-      background-color: $header-background-color;
-      color: $header-text-color;
-      &:first-child { 
-        display: table-cell;
-        text-align: center;
-      }
-      &:nth-child(2) { 
-        display: table-cell;
-        span {display:none;}
-        &:after {content:attr(data-th);}
-      }
-      
-      @media (min-width: $breakpoint) {
-        &:nth-child(2) { 
-          span {display: block;}
-          &:after {display: none;}
+@mixin responstable( $breakpoint: $table-breakpoint,
+$background-color: $table-background-color,
+$text-color: $table-text-color,
+$outer-border: $table-outer-border,
+$cell-border: $table-cell-border,
+$border-radius: none,
+$highlight-color: none,
+$header-background-color: $table-background-color,
+$header-text-color: $table-text-color,
+$header-border: $table-cell-border) {
+    .responstable {
+        width: 100%;
+        overflow: hidden;
+        background: $background-color;
+        color: $text-color;
+        border-radius: $border-radius;
+        border: $outer-border;
+        tr {
+            border: $cell-border;
+            &:nth-child(odd) {
+                background-color: $highlight-color;
+            }
         }
-      }
+        th {
+            display: none;
+            border: $header-border;
+            background-color: $header-background-color;
+            color: $header-text-color;
+            &:first-child {
+                display: table-cell;
+                text-align: center;
+            }
+            &:nth-child(2) {
+                display: table-cell;
+                span {
+                    display: none;
+                }
+                &:after {
+                    content: attr(data-th);
+                }
+            }
+            @media (min-width: $breakpoint) {
+                &:nth-child(2) {
+                    span {
+                        display: block;
+                    }
+                    &:after {
+                        display: none;
+                    }
+                }
+            }
+        }
+        td {
+            display: block;
+            word-wrap: break-word;
+            &:first-child {
+                display: table-cell;
+                text-align: center;
+            }
+            @media (min-width: $breakpoint) {
+                border: 0;
+                width: 70%
+            }
+        }
+        th,
+        td {
+            text-align: left;
+            margin: 0;
+            width: 70%
+        }
     }
-  
-    td {
-      display: block;
-      word-wrap: break-word;
-      &:first-child { 
-        display: table-cell; 
-        text-align: center;
-        
-      }
-      @media (min-width: $breakpoint) {
-        border: 0;
-        width: 70%
-      }
-    }
-  
-    th, td {
-      text-align: left;
-      margin: 0;
-      width: 70%
-    }  
-  }    
 }
 
-
-@include responstable(
-  $border-radius: $table-border-radius,
-  $highlight-color: $table-highlight-color,
-  $header-background-color: $table-header-background-color,
-  $header-text-color: $table-header-text-color,
-  $header-border: $table-header-border);
-
-
+@include responstable( $border-radius: $table-border-radius,
+$highlight-color: $table-highlight-color,
+$header-background-color: $table-header-background-color,
+$header-text-color: $table-header-text-color,
+$header-border: $table-header-border);
 body {
-  font-family: Arial, sans-serif;
-  /* color: #024457;*/
+    font-family: Arial, sans-serif;
+    /* color: #024457;*/
 }
 
 h1 {
-  font-family: Verdana;
-  font-weight: normal;
-  /*color: #024457;*/
-  span {color: #167F92;}
+    font-family: Verdana;
+    font-weight: normal;
+    /*color: #024457;*/
+    span {
+        color: #167F92;
+    }
 }
+
 
 /*
 CSS - Lista de cotações do PROVIDER
 */
+
 .img_provider {
-  height: 6em;
-  width: 6em;
-  max-width: 100%;
-  border: 1px solid  #292c2f; 
+    height: 6em;
+    width: 6em;
+    max-width: 100%;
+    border: 1px solid #292c2f;
 }
 
 .mestre {
-  display: flex; 
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
+
 
 /*Acima de 690px*/
+
 .detalhe {
-  width: 33.33%
+    width: 33.33%
 }
 
-#provider_detalhe{
-  width: 65%;
+#provider_detalhe {
+    width: 65%;
 }
+
 
 /*Até 690*/
+
 @media screen and (max-width: 1080px) {
-  #provider_detalhe{
-    width: 50%;
-  }
+    #provider_detalhe {
+        width: 50%;
+    }
 }
 
 
 /*Até 690*/
-@media screen and (max-width: 768px) {
-  .detalhe {
-    width: 40%
-  }
 
-  #provider_detalhe{
-    width: 100%;
-  }
+@media screen and (max-width: 768px) {
+    .detalhe {
+        width: 40%
+    }
+    #provider_detalhe {
+        width: 100%;
+    }
 }
+
 
 /*Até 480*/
-@media screen and (max-width: 415px) {
-  .detalhe {
-      width: 100%
-  }
 
+@media screen and (max-width: 415px) {
+    .detalhe {
+        width: 100%
+    }
 }
 
 .provider_list_msg {
-  line-height: 1.2em; 
-  border: 1px solid #292c2f; 
-  border-radius: 8px; 
-  width: 24.5em; 
-  height: 4.2em; 
-  min-height: 100%; 
-  display: -webkit-flex; 
-  display: flex; 
-  -webkit-align-items: center; 
-  align-items: center; 
-  -webkit-justify-content: center; 
-  justify-content: center; 
-  background-color:#292c2f;
+    line-height: 1.2em;
+    border: 1px solid #292c2f;
+    border-radius: 8px;
+    width: 24.5em;
+    height: 4.2em;
+    min-height: 100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    background-color: #292c2f;
 }
 
 .provider_list_number {
-  font-weight: bold;
-  padding: 13px 3px 3px 3px;
-  font-size: 1.6em;
-  border: 1px solid #FFB400; 
-  border-radius: 100%; 
-  width: 1.6em; 
-  height: 1.6em; 
-  background-color: #FFB400;
-  color: white;
+    font-weight: bold;
+    padding: 13px 3px 3px 3px;
+    font-size: 1.6em;
+    border: 1px solid #FFB400;
+    border-radius: 100%;
+    width: 1.6em;
+    height: 1.6em;
+    background-color: #FFB400;
+    color: white;
 }
 
-#id_quotation_value{
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.6em;
-  background-color:#292c2f;
-  color: #FFB400;
+#id_quotation_value {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.6em;
+    background-color: #292c2f;
+    color: #FFB400;
 }
 
-#id_date_validate, #id_date_create{
-  text-align: center;
-  font-size: 1.1em;
-} 
-
-
-.quotation_provider_field{
-  font-weight: bold;
-  font-size: 1.0em;
+#id_date_validate,
+#id_date_create {
+    text-align: center;
+    font-size: 1.1em;
 }
 
+.quotation_provider_field {
+    font-weight: bold;
+    font-size: 1.0em;
+}
 
 .client_price_number {
-  padding-top: 0.26em;
-  text-align: center;
-  font-size: 1.8em;
-  border: 1px solid #FFB400; 
-  border-radius: 100%; 
-  width: 1.6em; 
-  height: 1.6em; 
-  background-color: #FFB400;
-  color: white;
+    padding-top: 0.26em;
+    text-align: center;
+    font-size: 1.8em;
+    border: 1px solid #FFB400;
+    border-radius: 100%;
+    width: 1.6em;
+    height: 1.6em;
+    background-color: #FFB400;
+    color: white;
 }
+
 
 /*
 ----------------------------------------------------------
 */
 
-/* Float four columns side by side */
-.column {
-  float: left;
-  width: 100%;
-  padding: 10px 10px;
 
+/* Float four columns side by side */
+
+.column {
+    float: left;
+    width: 100%;
+    padding: 10px 10px;
 }
+
 
 /* Remove extra left and right margins, due to padding */
-/* .row {margin: 0 -5px;} */
- */
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
+
+/* .row {margin: 0 -5px;} */
+
+*/
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
 
 
 /* Style the counter cards */
-.card_provider {
-  box-shadow: 0 4px 8px 0 #292c2f;
-  padding: 8px;
-  text-align: center;
-  background-color: #292c2f;
-  font-size: 0.8em;
-  text-align: left;
-  line-height: 0.68em;
-  color: beige;
 
+.card_provider {
+    box-shadow: 0 4px 8px 0 #292c2f;
+    padding: 8px;
+    text-align: center;
+    background-color: #292c2f;
+    font-size: 0.8em;
+    text-align: left;
+    line-height: 0.68em;
+    color: beige;
+}
+
+
+/* slider pagina principal */
+
+.swiper-projects .swiper-slide {
+    width: auto;
+}
+
+.swiper-projects .swiper-button-prev:after,
+.swiper-projects .swiper-button-next:after {
+    color: #FFB400;
+}
+
+@media screen and (max-width: 768px) {
+    .swiper-projects .swiper-button-prev,
+    .swiper-projects .swiper-button-next {
+        display: none;
+    }
+}
+
+.swiper-projects img {
+    display: block;
+    width: auto;
+    max-height: 300px;
+}
+
+.swiper-projects .swiper-pagination .swiper-pagination-bullet-active {
+    background-color: #FFB400;
 }

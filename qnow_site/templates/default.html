@@ -2,239 +2,222 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta http-equiv="content-language" content="pt-br, en-US">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-language" content="pt-br, en-US">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<meta property="og:url" content="https://www.mgacotacoes.com.br/">
-		<meta property="og:type" content="website"/>
-		<meta property="og:title" content="MGA Cotações - Marcenarias é uma plataforma inovadora para orçar móveis planejados.">
-		<meta property="og:description"	content="Agora ficou mais fácil orçar móveis planejados pela internet! Cadastre-se, monte sua cotação e aguarde os orçamentos chegarem.">
-		<meta property="og:image" content="https://res.cloudinary.com/quotation-now/image/upload/v1587085498/Quotation-NOW/MGA-Cart%C3%A3o-Visita-Frente-2-facebook_aq6j9f.png">
-		<meta property="og:image:alt" content="MGA Cotações - Marcenarias é uma plataforma inovadora para orçar móveis planejados.">
+    <meta property="og:url" content="https://www.mgacotacoes.com.br/">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MGA Cotações - Marcenarias é uma plataforma inovadora para orçar móveis planejados.">
+    <meta property="og:description" content="Agora ficou mais fácil orçar móveis planejados pela internet! Cadastre-se, monte sua cotação e aguarde os orçamentos chegarem.">
+    <meta property="og:image" content="https://res.cloudinary.com/quotation-now/image/upload/v1587085498/Quotation-NOW/MGA-Cart%C3%A3o-Visita-Frente-2-facebook_aq6j9f.png">
+    <meta property="og:image:alt" content="MGA Cotações - Marcenarias é uma plataforma inovadora para orçar móveis planejados.">
 
-		<!-- Meta -->
-		<meta name="description" content="MGA Cotações - Marcenarias" />
-		<meta name="keywords" content="plataforma cotações móveis planejados, marcenaria, móveis, sobmedida, platform, quotation, woodwork, site" />
-		<meta name="author" content="Marcos André Gerard Alves">
-		<meta name="robots" content="index, follow" />
-		<meta name="revisit-after" content="3 days" />
-		<meta name="copyright" content="© 2019 MGA-Cotações" />
+    <!-- Meta -->
+    <meta name="description" content="MGA Cotações - Marcenarias" />
+    <meta name="keywords" content="plataforma cotações móveis planejados, marcenaria, móveis, sobmedida, platform, quotation, woodwork, site" />
+    <meta name="author" content="Marcos André Gerard Alves">
+    <meta name="robots" content="index, follow" />
+    <meta name="revisit-after" content="3 days" />
+    <meta name="copyright" content="© 2019 MGA-Cotações" />
 
-		<link rel="apple-touch-icon" sizes="57x57" href="{% static '/images/favico/apple-icon-57x57.png' %}">
-		<link rel="apple-touch-icon" sizes="60x60" href="{% static '/images/favico/apple-icon-60x60.png' %}">
-		<link rel="apple-touch-icon" sizes="72x72" href="{% static '/images/favico/apple-icon-72x72.png' %}">
-		<link rel="apple-touch-icon" sizes="76x76" href="{% static '/images/favico/apple-icon-76x76.png' %}">
-		<link rel="apple-touch-icon" sizes="114x114" href="{% static '/images/favico/apple-icon-114x114.png' %}">
-		<link rel="apple-touch-icon" sizes="120x120" href="{% static '/images/favico/apple-icon-120x120.png' %}">
-		<link rel="apple-touch-icon" sizes="144x144" href="{% static '/images/favico/apple-icon-144x144.png' %}">
-		<link rel="apple-touch-icon" sizes="152x152" href="{% static '/images/favico/apple-icon-152x152.png' %}">
-		<link rel="apple-touch-icon" sizes="180x180" href="{% static '/images/favico/apple-icon-180x180.png' %}">
-		<link rel="icon" type="image/png" sizes="192x192" href="{% static '/images/favico/android-icon-192x192.png' %}">
-		<link rel="icon" type="image/png" sizes="32x32" href="{% static '/images/favico/favicon-32x32.png' %}">
-		<link rel="icon" type="image/png" sizes="96x96" href="{% static '/images/favico/favicon-96x96.png' %}">
-		<link rel="icon" type="image/png" sizes="16x16" href="{% static '/images/favico/favicon-16x16.png' %}">
-		<link rel="manifest" href="{% static '/images/favico/manifest.json' %}">
-		<meta name="msapplication-TileColor" content="#ffffff">
-		<meta name="msapplication-TileImage" content="{% static '/images/favico/ms-icon-144x144.png' %}">
-		<meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static '/images/favico/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static '/images/favico/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static '/images/favico/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static '/images/favico/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static '/images/favico/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static '/images/favico/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static '/images/favico/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static '/images/favico/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static '/images/favico/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static '/images/favico/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static '/images/favico/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static '/images/favico/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static '/images/favico/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static '/images/favico/manifest.json' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static '/images/favico/ms-icon-144x144.png' %}">
+    <meta name="theme-color" content="#ffffff">
 
-		<title>MGA-Cotações</title>
+    <title>MGA-Cotações</title>
 
-		<link href="{% static '/bootstrap/assets/css/uikit.min.css' %}" rel="stylesheet">
-		<link href="{% static '/bootstrap/assets/css/slidenav.almost-flat.css' %}" rel="stylesheet">
-		<link href="{% static '/bootstrap/assets/css/slideshow.almost-flat.css' %}" rel="stylesheet">
-		<link href="{% static '/bootstrap/assets/css/sticky.almost-flat.css' %}" rel="stylesheet">
-		<link href="{% static '/bootstrap/assets/css/tooltip.almost-flat.css' %}" rel="stylesheet">
-		<link href="{% static '/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
-		<link href="{% static '/bootstrap/assets/css/animate.css' %}" rel="stylesheet" />
-		<link href="{% static '/bootstrap/assets/css/product.css' %}" rel="stylesheet" />
-		<link href="{% static '/bootstrap/assets/css/strips.css' %}" rel="stylesheet" />
-		<link href="{% static '/bootstrap/assets/css/quotes.css' %}" rel="stylesheet" />
+    <link href="{% static '/bootstrap/assets/css/uikit.min.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/css/slidenav.almost-flat.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/css/slideshow.almost-flat.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/css/sticky.almost-flat.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/css/tooltip.almost-flat.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/css/animate.css' %}" rel="stylesheet" />
+    <link href="{% static '/bootstrap/assets/css/product.css' %}" rel="stylesheet" />
+    <link href="{% static '/bootstrap/assets/css/strips.css' %}" rel="stylesheet" />
+    <link href="{% static '/bootstrap/assets/css/quotes.css' %}" rel="stylesheet" />
 
-		<link href="{% static '/bootstrap/assets/css/font-awesome.min.css' %}" rel="stylesheet">
-		<link href="{% static '/bootstrap/assets/css/helper.css' %}" rel="stylesheet">
-		<link href="{% static '/bootstrap/assets/css/pe-icon-7-stroke.css' %}" rel="stylesheet">
-		<link href="{% static '/bootstrap/assets/css/template.css' %}" rel="stylesheet">
-		<link href="{% static '/bootstrap/assets/color/color1.css' %}" rel="stylesheet" type="text/css" title="color1">
-		<link href="{% static '/bootstrap/css/quotation_list.css' %}" rel="stylesheet" type="text/css" title="color1">
-		
-		<link href="{% static 'bootstrap/css/datepicker.min.css' %}" rel="stylesheet" type="text/css">
-	</head>
+    <link href="{% static '/bootstrap/assets/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/css/helper.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/css/pe-icon-7-stroke.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/css/template.css' %}" rel="stylesheet">
+    <link href="{% static '/bootstrap/assets/color/color1.css' %}" rel="stylesheet" type="text/css" title="color1">
+    <link href="{% static '/bootstrap/css/quotation_list.css' %}" rel="stylesheet" type="text/css" title="color1">
+    <link href="{% static 'bootstrap/css/datepicker.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'bootstrap/css/swiper.min.css' %}" rel="stylesheet" type="text/css">
 
-	<body>
+</head>
 
-		<!-- Wrap all page content -->
-		<div class="body-innerwrapper" id="page-top">
-			<!-- Top Bar -->
-			<section class="hidden-xs top-bar custom" id="top-bar">
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-6 col-md-6" id="top2">
-							<ul class="contact-info">
-								<li>
-									<i class="uk-icon-phone"></i>(53) 98121-5585
-								</li>
-								<li>
-									<i class="uk-icon-phone"></i>(53) 3271-4826
-								</li>
-								<li>
-									<i class="uk-icon-envelope"></i> <a
-										href="mailto:mgacotacoes@gmail.com">mgacotacoes@gmail.com</a>
-								</li>
-							</ul>
-						</div>
-						<div class="col-sm-6 col-md-6 top1">
-							<ul class="social-icons">
-								<li>
-									<a href="https://www.facebook.com/mgacotacoes/" target="_blank"><i
+<body>
+
+    <!-- Wrap all page content -->
+    <div class="body-innerwrapper" id="page-top">
+        <!-- Top Bar -->
+        <section class="hidden-xs top-bar custom" id="top-bar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6" id="top2">
+                        <ul class="contact-info">
+                            <li>
+                                <i class="uk-icon-phone"></i>(53) 98121-5585
+                            </li>
+                            <li>
+                                <i class="uk-icon-phone"></i>(53) 3271-4826
+                            </li>
+                            <li>
+                                <i class="uk-icon-envelope"></i> <a href="mailto:mgacotacoes@gmail.com">mgacotacoes@gmail.com</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-6 top1">
+                        <ul class="social-icons">
+                            <li>
+                                <a href="https://www.facebook.com/mgacotacoes/" target="_blank"><i
 											class="uk-icon-facebook"></i></a>
-								</li>
-								<li>
-									<a href="https://twitter.com/mgacotacoes" target="_blank"><i class="uk-icon-twitter"></i></a>
-								</li>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/mgacotacoes" target="_blank"><i class="uk-icon-twitter"></i></a>
+                            </li>
 
-								<li>
-									<a href="https://www.linkedin.com/in/marcos-andre-gerard-alves-b071211b/" target="_blank" class="uk-icon-linkedin"></a>
-								</li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/marcos-andre-gerard-alves-b071211b/" target="_blank" class="uk-icon-linkedin"></a>
+                            </li>
 
-								<li>
-									<a href="https://www.instagram.com/mgacotacoes/" target="_blank" class="uk-icon-instagram"></a>
-								</li>
+                            <li>
+                                <a href="https://www.instagram.com/mgacotacoes/" target="_blank" class="uk-icon-instagram"></a>
+                            </li>
 
 
-<!-- 								<li>
+                            <!-- 								<li>
 									<a href="https://plus.google.com/" target="_blank"><i
 											class="uk-icon-google-plus"></i></a>
 								</li>
- -->	
-<!--    								<li>
+ -->
+                            <!--    								<li>
 									<a href="https://www.pinterest.com/" target="_blank"><i
 											class="uk-icon-pinterest"></i></a>
 								</li>
- --><!-- 								<li>
+ -->
+                            <!-- 								<li>
 									<a href="https://www.youtube.com/" target="_blank"><i
 											class="uk-icon-youtube"></i></a>
 								</li>
- -->							</ul>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- /Top Bar -->
+ -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Top Bar -->
 
-			<!-- Sticky Menu -->
-			<div id="header-sticky-wrapper" class="sticky-wrapper" style="height: 86px;">
-				<header data-uk-sticky id="header" class="header">
-					<div class="container">
-						<div class="row" style="position: relative;">
-							<div class="col-xs-8 col-sm-2 col-md-2" id="logo">
-								<a href="{% url 'qnow_site:site' %}" class="logo">
-									<h1>
-										<img alt="" src="{% static '/images/logo-mga.png' %}">
-									</h1>
-								</a>
-							</div>
-							<div class="col-xs-4 col-sm-10 col-md-10" id="menu" style="height: 82px;">
-								<div><a href="#" id="offcanvas-toggler"><i class="uk-icon-bars"></i></a></div>
-								<div>
-									<ul class="megamenu-parent menu-zoom hidden-xs">
-										<li class="menu-item {{ active_page_site }}"><a
-												href="{% url 'qnow_site:site' %}">Home</a></li>
-										<li class="menu-item {{ active_page_blog }}"><a
-												href="{% url 'qnow_site:blog' %}">Blog</a></li>
-										<li class="menu-item {{ active_page_contact }}"><a
-												href="{% url 'qnow_site:contact' %}">Contato</a>
-										<li class="menu-item {{ active_page_about }}"><a
-												href="{% url 'qnow_site:about' %}">Sobre</a></li>
-										</li>
-										{% if user.is_authenticated %}
-										<li
-											class="menu-item has-child menu-justify {{ active_page_client_provider }} hide">
-											{% else %}
-										<li class="menu-item has-child menu-justify {{ active_page_client_provider }} ">
-											{% endif %}
-											<a href="#">Acesso à Plataforma</a>
+        <!-- Sticky Menu -->
+        <div id="header-sticky-wrapper" class="sticky-wrapper" style="height: 86px;">
+            <header data-uk-sticky id="header" class="header">
+                <div class="container">
+                    <div class="row" style="position: relative;">
+                        <div class="col-xs-8 col-sm-2 col-md-2" id="logo">
+                            <a href="{% url 'qnow_site:site' %}" class="logo">
+                                <h1>
+                                    <img alt="" src="{% static '/images/logo-mga.png' %}">
+                                </h1>
+                            </a>
+                        </div>
+                        <div class="col-xs-4 col-sm-10 col-md-10" id="menu" style="height: 82px;">
+                            <div><a href="#" id="offcanvas-toggler"><i class="uk-icon-bars"></i></a></div>
+                            <div>
+                                <ul class="megamenu-parent menu-zoom hidden-xs">
+                                    <li class="menu-item {{ active_page_site }}"><a href="{% url 'qnow_site:site' %}">Home</a></li>
+                                    <li class="menu-item {{ active_page_blog }}"><a href="{% url 'qnow_site:blog' %}">Blog</a></li>
+                                    <li class="menu-item {{ active_page_contact }}"><a href="{% url 'qnow_site:contact' %}">Contato</a>
+                                        <li class="menu-item {{ active_page_about }}"><a href="{% url 'qnow_site:about' %}">Sobre</a></li>
+                                    </li>
+                                    {% if user.is_authenticated %}
+                                    <li class="menu-item has-child menu-justify {{ active_page_client_provider }} hide">
+                                        {% else %}
+                                        <li class="menu-item has-child menu-justify {{ active_page_client_provider }} ">
+                                            {% endif %}
+                                            <a href="#">Acesso à Plataforma</a>
 
-											<div class="dropdown dropdown-mega menu-full container200">
-												<div class="dropdown-inner">
-													<div class="row">
-														<div class="col-sm-3.5">
-															<ul class="mega-group">
-																<li class="menu-item has-child">
-																	<ul class="mega-group-child dropdown-items">
-																		<li class="menu-item"><a
-																				href="{% url 'qnow_user:login_client_start' %}">Clientes</a>
-																		</li>
-																		<li class="menu-item"><a
-																				href="{% url 'qnow_user:login_provider_start' %}">Marcenarias</a>
-																		</li>
-																	</ul>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-											{% if user.is_authenticated %}
-											{% if user.role == 'client' %}
-											{% if acao == 'Enviar' %}
-										<li class="menu-item"><a
-												href="{% url 'qnow_client:quotation_client_list' user.id %}">Minhas
-												Cotações(C)</a>
-											{% else %}
-										<li class="menu-item"><a href="{% url 'qnow_client:quotation_client' %}">Nova
-												Cotação(C)</a>
-											{% endif %}
-											{% else %}
-										<li class="menu-item"><a
-												href="{% url 'qnow_provider:quotation_provider' %}">Lista de Cotações(M)</a>
-											{% endif %}
-										<li class="menu-item"><a href="{% url 'qnow_user:logout' %}">Sair</a>
-											{% endif %}
-										</li>
+                                            <div class="dropdown dropdown-mega menu-full container200">
+                                                <div class="dropdown-inner">
+                                                    <div class="row">
+                                                        <div class="col-sm-3.5">
+                                                            <ul class="mega-group">
+                                                                <li class="menu-item has-child">
+                                                                    <ul class="mega-group-child dropdown-items">
+                                                                        <li class="menu-item"><a href="{% url 'qnow_user:login_client_start' %}">Clientes</a>
+                                                                        </li>
+                                                                        <li class="menu-item"><a href="{% url 'qnow_user:login_provider_start' %}">Marcenarias</a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% if user.is_authenticated %} {% if user.role == 'client' %} {% if acao == 'Enviar' %}
+                                            <li class="menu-item"><a href="{% url 'qnow_client:quotation_client_list' user.id %}">Minhas
+												Cotações(C)</a> {% else %}
+                                                <li class="menu-item"><a href="{% url 'qnow_client:quotation_client' %}">Nova
+												Cotação(C)</a> {% endif %} {% else %}
+                                                    <li class="menu-item"><a href="{% url 'qnow_provider:quotation_provider' %}">Lista de Cotações(M)</a> {% endif %}
+                                                        <li class="menu-item"><a href="{% url 'qnow_user:logout' %}">Sair</a> {% endif %}
+                                                        </li>
 
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</header>
-			</div>
-			{% block content %}
-			{% endblock%}
-		</div>
-	</body>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        {% block content %} {% endblock%}
+    </div>
+</body>
 
-	<!-- Bottom B -->
-	<section class="bottom-b">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-3 col-md-3">
-					<div class="module title3">
-						<h3 class="module-title">Sobre-nós</h3>
-						<div class="module-content">
-							<p><strong>MGA-Cotações</strong>
-								É uma plataforma online de cotação de móveis planejados,
-								ligando clientes as melhores empresa de móveis(Marcenarias).</p>
-							</p>Utilize nossas redes sociais.</p>
-							<p>
-								<a href="https://www.facebook.com/mgacotacoes/" target="_blank" class="uk-icon-button uk-icon-facebook"></a>
-								<a href="https://twitter.com/mgacotacoes" target="_blank" class="uk-icon-button uk-icon-twitter"></a>
-								<a href="https://www.linkedin.com/in/marcos-andre-gerard-alves-b071211b/" target="_blank" class="uk-icon-button uk-icon-linkedin"></a>
-								<a href="https://www.instagram.com/mgacotacoes/" target="_blank" class="uk-icon-button uk-icon-instagram"></a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-6">
-					<div class="module title3">
-						<h3 class="module-title">Entenda nosso trabalho</h3>
-						<div class="module-content">
-							<dl class="uk-description-list-line">
-								<dt>
+<!-- Bottom B -->
+<section class="bottom-b">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-md-3">
+                <div class="module title3">
+                    <h3 class="module-title">Sobre-nós</h3>
+                    <div class="module-content">
+                        <p><strong>MGA-Cotações</strong> É uma plataforma online de cotação de móveis planejados, ligando clientes as melhores empresa de móveis(Marcenarias).</p>
+                        </p>Utilize nossas redes sociais.</p>
+                        <p>
+                            <a href="https://www.facebook.com/mgacotacoes/" target="_blank" class="uk-icon-button uk-icon-facebook"></a>
+                            <a href="https://twitter.com/mgacotacoes" target="_blank" class="uk-icon-button uk-icon-twitter"></a>
+                            <a href="https://www.linkedin.com/in/marcos-andre-gerard-alves-b071211b/" target="_blank" class="uk-icon-button uk-icon-linkedin"></a>
+                            <a href="https://www.instagram.com/mgacotacoes/" target="_blank" class="uk-icon-button uk-icon-instagram"></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-6">
+                <div class="module title3">
+                    <h3 class="module-title">Entenda nosso trabalho</h3>
+                    <div class="module-content">
+                        <dl class="uk-description-list-line">
+                            <dt>
 									{% if user.is_authenticated %}
 									<a href="{% url 'qnow_client:quotation_client' %}">
 										{% else %}
@@ -247,11 +230,10 @@
 											class="uk-badge uk-badge-percent uk-float-right">Aqui</span>
 										{% endcomment %}
 								</dt>
-								<dd>
-									MGA-Cotações é uma plataforma que dá aos clientes um ambiente único 
-									para cotar seus móveis planejados com facilidade e rapidez.
-								</dd>
-								<dt>
+                            <dd>
+                                MGA-Cotações é uma plataforma que dá aos clientes um ambiente único para cotar seus móveis planejados com facilidade e rapidez.
+                            </dd>
+                            <dt>
 									{% if user.is_authenticated %}
 									<a href="{% url 'qnow_provider:quotation_provider' %}">
 										{% else %}
@@ -265,11 +247,10 @@
 											class="uk-badge uk-badge-percent uk-float-right">9</span>
 										{% endcomment %}
 								</dt>
-								<dd>
-									MGA-Cotações, é uma plataforma que dá as marcenarias, um ambiente único,
-									para gerenciar cotações de clientes com rapidez e facilidade.
-								</dd>
-								<dt>
+                            <dd>
+                                MGA-Cotações, é uma plataforma que dá as marcenarias, um ambiente único, para gerenciar cotações de clientes com rapidez e facilidade.
+                            </dd>
+                            <dt>
 									{% if user.is_authenticated %}
 									<a href="{% url 'qnow_client:quotation_client' %}">
 										{% else %}
@@ -286,163 +267,157 @@
 											{% comment %} <span title="Hurry! Only 2 left!" data-uk-tooltip=""
 												class="uk-badge uk-badge-percent uk-float-right">2</span>
 											{% endcomment %} </dt>
-								<dd>
-									MGA-Cotações, é uma plataforma que une clientes e marcenarias,
-									a fim de gerar, o maior número de cotações para clientes
-									e um maior número de clientes para as marcenarias.
-								</dd>
-							</dl>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3 col-md-3">
-					<div class="module title3">
-						<h3 class="module-title">Contatos</h3>
-						<div class="module-content">
-							<p><i class="uk-icon-envelope"></i>&nbsp;&nbsp;Email: mgacotacoes@gmail.com</p>
-							<p><i class="uk-icon-phone"></i>&nbsp;&nbsp;<strong style="font-size: 20px;">(53) 98121-5585</strong></p>
-							<p><i class="uk-icon-phone"></i>&nbsp;&nbsp;<strong style="font-size: 20px;">(53)3271-4826</strong></p>
-							<p><i class="uk-icon-building-o"></i>&nbsp;&nbsp; Pelotas - RS - Brasil</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /Bottom B -->
+                            <dd>
+                                MGA-Cotações, é uma plataforma que une clientes e marcenarias, a fim de gerar, o maior número de cotações para clientes e um maior número de clientes para as marcenarias.
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <div class="module title3">
+                    <h3 class="module-title">Contatos</h3>
+                    <div class="module-content">
+                        <p><i class="uk-icon-envelope"></i>&nbsp;&nbsp;Email: mgacotacoes@gmail.com</p>
+                        <p><i class="uk-icon-phone"></i>&nbsp;&nbsp;<strong style="font-size: 20px;">(53) 98121-5585</strong></p>
+                        <p><i class="uk-icon-phone"></i>&nbsp;&nbsp;<strong style="font-size: 20px;">(53)3271-4826</strong></p>
+                        <p><i class="uk-icon-building-o"></i>&nbsp;&nbsp; Pelotas - RS - Brasil</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Bottom B -->
 
-	<!-- Footer Top -->
-	<section class="footer-top">
-	</section>
-	<!-- /Footer Top -->
+<!-- Footer Top -->
+<section class="footer-top">
+</section>
+<!-- /Footer Top -->
 
-	<!-- Footer -->
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-md-6" id="footer1">
-					<span class="copyright"> &copy; 2019 MGA-Cotações - Todos os Direitos Reservados.</span>
-				</div>
-				<div class="col-sm-6 col-md-6 footer2" id="footer2">
-					<div class="module ">
-						<div class="module-content">
-							<a href="#" class="uk-icon-button uk-icon-chevron-up" data-uk-smooth-scroll=""></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-6" id="footer1">
+                <span class="copyright"> &copy; 2019 MGA-Cotações - Todos os Direitos Reservados.</span>
+            </div>
+            <div class="col-sm-6 col-md-6 footer2" id="footer2">
+                <div class="module ">
+                    <div class="module-content">
+                        <a href="#" class="uk-icon-button uk-icon-chevron-up" data-uk-smooth-scroll=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-		<!-- Scripts placed at the end of the document so the pages load faster -->
+    <!-- Scripts placed at the end of the document so the pages load faster -->
 
-		<!-- Jquery scripts -->
-		<script src="{% static '/bootstrap/assets/js/jquery.min.js' %}"></script>
+    <!-- Jquery scripts -->
+    <script src="{% static '/bootstrap/assets/js/jquery.min.js' %}"></script>
 
-		<!-- Uikit scripts -->
-		<script src="{% static '/bootstrap/assets/js/uikit.min.js' %}"></script>
-		<script src="{% static '/bootstrap/assets/js/slideshow.min.js' %}"></script>
-		<script src="{% static '/bootstrap/assets/js/slideset.min.js' %}"></script>
-		<script src="{% static '/bootstrap/assets/js/sticky.min.js' %}"></script>
-		<script src="{% static '/bootstrap/assets/js/tooltip.min.js' %}"></script>
-		<script src="{% static '/bootstrap/assets/js/parallax.min.js' %}"></script>
-		<script src="{% static '/bootstrap/assets/js/lightbox.min.js' %}"></script>
-		<script src="{% static '/bootstrap/assets/js/grid.min.js' %}"></script>
+    <!-- Uikit scripts -->
+    <script src="{% static '/bootstrap/assets/js/uikit.min.js' %}"></script>
+    <script src="{% static '/bootstrap/assets/js/slideshow.min.js' %}"></script>
+    <script src="{% static '/bootstrap/assets/js/slideset.min.js' %}"></script>
+    <script src="{% static '/bootstrap/assets/js/sticky.min.js' %}"></script>
+    <script src="{% static '/bootstrap/assets/js/tooltip.min.js' %}"></script>
+    <script src="{% static '/bootstrap/assets/js/parallax.min.js' %}"></script>
+    <script src="{% static '/bootstrap/assets/js/lightbox.min.js' %}"></script>
+    <script src="{% static '/bootstrap/assets/js/grid.min.js' %}"></script>
 
-		<!-- WOW scripts -->
-		<script src="{% static '/bootstrap/assets/js/wow.min.js' %}"></script>
-		<script> new WOW().init(); </script>
+    <!-- WOW scripts -->
+    <script src="{% static '/bootstrap/assets/js/wow.min.js' %}"></script>
+    <script>
+        new WOW().init();
+    </script>
 
-		<!-- Оffcanvas Мenu scripts -->
-		<script src="{% static '/bootstrap/assets/js/offcanvas-menu.js' %}"></script>
+    <!-- Оffcanvas Мenu scripts -->
+    <script src="{% static '/bootstrap/assets/js/offcanvas-menu.js' %}"></script>
 
-		<!-- Template scripts -->
-		<script src="{% static '/bootstrap/assets/js/template.js' %}"></script>
+    <!-- Template scripts -->
+    <script src="{% static '/bootstrap/assets/js/template.js' %}"></script>
 
-		<!-- Bootstrap core JavaScript -->
-		<script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static '/bootstrap/js/bootstrap.min.js' %}"></script>
 
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-		<script src="{% static '/bootstrap/assets/js/ie10-viewport-bug-workaround.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static '/bootstrap/assets/js/ie10-viewport-bug-workaround.js' %}"></script>
 
-		<script src="{% static '/bootstrap/js/jquery.mask.min.js' %}"></script>
+    <script src="{% static '/bootstrap/js/jquery.mask.min.js' %}"></script>
 
-		<script src="{% static '/bootstrap/js/datepicker/datepicker.min.js' %}"></script>
-        <script src="{% static '/bootstrap/js/datepicker/datepicker.pt-BR.js' %}"></script>
+    <script src="{% static '/bootstrap/js/datepicker/datepicker.min.js' %}"></script>
+    <script src="{% static '/bootstrap/js/datepicker/datepicker.pt-BR.js' %}"></script>
 
-		<script src="{% static '/bootstrap/js/custom.js' %}"></script>
-	</footer>
-
-
-	{% block footer %}
-	{% endblock %}
-
-	<!-- Off Canvas Menu Acesso via smartphone e tablets -->
-	<div class="offcanvas-menu">
-		<a class="close-offcanvas" href="#"><i class="uk-icon-remove" style="font-size: 20px"></i></a>
-		<div class="offcanvas-inner">
-			<div class="module">
-				<h3 class="module-title"><strong>Menu</strong></h3>
-				<div class="module-content">
-					<ul class="nav menu" style="font-size: 1.5em;">
-						<li><a href="{% url 'qnow_site:site' %}">Home</a></li>
-						<li><a href="{% url 'qnow_site:blog' %}">Blog</a></li>
-						<li><a href="{% url 'qnow_site:contact' %}">Contato</a></li>
-						<li><a href="{% url 'qnow_site:about' %}">Sobre</a></li>
-
-						<!--Quando não estiver autendicado-->
-						{% if not user.is_authenticated %}
-						<li class="deeper parent"><a href="#"><strong>Acesso à Plataforma</strong></a>
-							<ul style="display: none;" class="nav-child unstyled small">
-								<li style="font-size: 1.2em;"><a href="{% url 'qnow_user:login_client_start' %}">Clientes</a></li>
-								<li style="font-size: 1.2em;"><a href="{% url 'qnow_user:login_provider_start' %}">Marcenarias</a></li>
-							</ul>
-							{% else %}
-							{% if 'client'|lower in user.role|lower %}
-							{% if acao == 'Enviar' %}
-						<li class="menu-item"><a href="{% url 'qnow_client:quotation_client_list' user.id %}">Minhas
-								Cotações(C)</a>
-							{% else %}
-						<li class="menu-item"><a href="{% url 'qnow_client:quotation_client' %}">Nova Cotação(C)</a>
-							{% endif %}
-							{% else %}
-						<li class="menu-item"><a href="{% url 'qnow_provider:quotation_provider' %}">Cotação(M)</a></li>
-						{% endif %}
-						{% endif %}
-
-						{% if user.is_authenticated %}
-						<li class="menu-item"><a href="{% url 'qnow_user:logout' %}">Sair</a>
-							<span class="toggle-icon fa fa-angle-down"></span>
-						</li>
-						{% endif %}
-
-					</ul>
-				</div>
-			</div>
-			<br>
-			<div class="uk-grid uk-margin-bottom">
-				<div class="uk-width-medium-1-1">
-					<h3 class="module-title">Nossa plataforma</h3>
-					<p><img width="100%" alt="Sobre nós" src="{% static '/images/logo-mga.png' %}"></p>
-				</div>
-			</div>
-		</div>
+    <script src="{% static '/bootstrap/js/custom.js' %}"></script>
 
 
-	</div>
-	</div>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+</footer>
 
-	{% block menu %}
-	{% endblock %}
+
+{% block footer %} {% endblock %}
+
+<!-- Off Canvas Menu Acesso via smartphone e tablets -->
+<div class="offcanvas-menu">
+    <a class="close-offcanvas" href="#"><i class="uk-icon-remove" style="font-size: 20px"></i></a>
+    <div class="offcanvas-inner">
+        <div class="module">
+            <h3 class="module-title"><strong>Menu</strong></h3>
+            <div class="module-content">
+                <ul class="nav menu" style="font-size: 1.5em;">
+                    <li><a href="{% url 'qnow_site:site' %}">Home</a></li>
+                    <li><a href="{% url 'qnow_site:blog' %}">Blog</a></li>
+                    <li><a href="{% url 'qnow_site:contact' %}">Contato</a></li>
+                    <li><a href="{% url 'qnow_site:about' %}">Sobre</a></li>
+
+                    <!--Quando não estiver autendicado-->
+                    {% if not user.is_authenticated %}
+                    <li class="deeper parent"><a href="#"><strong>Acesso à Plataforma</strong></a>
+                        <ul style="display: none;" class="nav-child unstyled small">
+                            <li style="font-size: 1.2em;"><a href="{% url 'qnow_user:login_client_start' %}">Clientes</a></li>
+                            <li style="font-size: 1.2em;"><a href="{% url 'qnow_user:login_provider_start' %}">Marcenarias</a></li>
+                        </ul>
+                        {% else %} {% if 'client'|lower in user.role|lower %} {% if acao == 'Enviar' %}
+                        <li class="menu-item"><a href="{% url 'qnow_client:quotation_client_list' user.id %}">Minhas
+								Cotações(C)</a> {% else %}
+                            <li class="menu-item"><a href="{% url 'qnow_client:quotation_client' %}">Nova Cotação(C)</a> {% endif %} {% else %}
+                                <li class="menu-item"><a href="{% url 'qnow_provider:quotation_provider' %}">Cotação(M)</a></li>
+                                {% endif %} {% endif %} {% if user.is_authenticated %}
+                                <li class="menu-item"><a href="{% url 'qnow_user:logout' %}">Sair</a>
+                                    <span class="toggle-icon fa fa-angle-down"></span>
+                                </li>
+                                {% endif %}
+
+                </ul>
+            </div>
+        </div>
+        <br>
+        <div class="uk-grid uk-margin-bottom">
+            <div class="uk-width-medium-1-1">
+                <h3 class="module-title">Nossa plataforma</h3>
+                <p><img width="100%" alt="Sobre nós" src="{% static '/images/logo-mga.png' %}"></p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+{% block menu %} {% endblock %}
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-158699944-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-158699944-1');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-158699944-1');
 </script>
-
-

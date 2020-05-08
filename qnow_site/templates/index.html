@@ -1,446 +1,354 @@
-{% extends "default.html" %}
-{% load static %}
-{% block content %}
+{% extends "default.html" %} {% load static %} {% block content %}
 <!-- Slider -->
 
 <section id="ukSlider" class="uk-slider-section">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12 padding-0">
-				<div class="uk-slidenav-position" data-uk-slideshow="{animation: 'swipe', autoplay:true}">
-					<ul class="uk-slideshow uk-overlay-active">
-						<li aria-hidden="false" class="uk-active"
-							style="animation-duration: 500ms; width: 100%; height: auto;">
-							<img width="1920" height="700" alt=""
-								src="{% static '/images/elements/slider_provider1.jpg' %}">
-							<div class="uk-overlay-panel uk-overlay-fade">
-								<div
-									class="uk-container uk-container-center uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle">
-									<div class="uk-width-4-10 uk-text-right">
-										<div class="wow fadeInLeft slider-text slider-text-2" data-wow-delay="0.7s">
-											<h1 class="raleway80 uk-text-white">Plataforma de Cotações</h1>
-										</div>
-										<div class="wow fadeInLeft slider-text slider-text-2" data-wow-delay="1.2s">
-											<h2 class="raleway80 uk-slider-text-white">MÓVEIS PLANEJADOS</h2>
-										</div>
-										<br class="uk-hidden-small">
-										<div class="wow rollIn slider-text  slider-text-2" data-wow-delay="1.7s">
-											{% if user.is_authenticated %}
-											<a href="{% url 'qnow_client:quotation_client' %}"
-												class="uk-button uk-child-width-expand raleway16"
-												style="font-size: 16px">{{ user|capfirst }}<br>Vamor iniciar sua
-												cotação?<br>Clique aqui</a>
-											{% else %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 padding-0">
+                <div class="uk-slidenav-position" data-uk-slideshow="{animation: 'swipe', autoplay:true}">
+                    <ul class="uk-slideshow uk-overlay-active">
+                        <li aria-hidden="false" class="uk-active" style="animation-duration: 500ms; width: 100%; height: auto;">
+                            <img width="1920" height="700" alt="" src="{% static '/images/elements/slider_provider1.jpg' %}">
+                            <div class="uk-overlay-panel uk-overlay-fade">
+                                <div class="uk-container uk-container-center uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle">
+                                    <div class="uk-width-4-10 uk-text-right">
+                                        <div class="wow fadeInLeft slider-text slider-text-2" data-wow-delay="0.7s">
+                                            <h1 class="raleway80 uk-text-white">Plataforma de Cotações</h1>
+                                        </div>
+                                        <div class="wow fadeInLeft slider-text slider-text-2" data-wow-delay="1.2s">
+                                            <h2 class="raleway80 uk-slider-text-white">MÓVEIS PLANEJADOS</h2>
+                                        </div>
+                                        <br class="uk-hidden-small">
+                                        <div class="wow rollIn slider-text  slider-text-2" data-wow-delay="1.7s">
+                                            {% if user.is_authenticated %}
+                                            <a href="{% url 'qnow_client:quotation_client' %}" class="uk-button uk-child-width-expand raleway16" style="font-size: 16px">{{ user|capfirst }}<br>Vamor iniciar sua
+												cotação?<br>Clique aqui</a> {% else %}
 
-											<a href="{% url 'qnow_user:login_client_start' %}"
-												class="uk-button uk-child-width-expand raleway16"
-												style="font-size: 16px">Inicie sua cotação aqui!</a>
-											{% endif %}
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li aria-hidden="true" class="" style="animation-duration: 500ms; width: 100%; height: auto;">
-							<img width="1920" height="700" alt=""
-								src="{% static '/images/elements/slider_provider2.jpg' %}">
-							<div class="uk-overlay-panel uk-overlay-fade">
-								<div
-									class="uk-container uk-container-center uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle uk-text-center">
-									<div class="uk-width-1-1 uk-text-center">
-										<div class="wow fadeInLeftBig slider-text" data-wow-delay="3.7s">
-											<h1 class="raleway80 uk-text-white">Plataforma de Cotações</h1>
-										</div>
-										<br class="uk-hidden-small">
-										<div class="wow fadeInLeftBig slider-text" data-wow-delay="4.7s">
-											<h2 class="raleway80 uk-text-white">MÓVEIS PLANEJADOS</h2>
-										</div>
-										<br class="uk-hidden-small">
-										<div class="wow fadeInUpBig slider-text" data-wow-delay="5.7s">
-											{% if user.is_authenticated %}
-											<a href="{% url 'qnow_client:quotation_client' %}"
-												class="uk-button uk-child-width-expand raleway16"
-												style="font-size: 16px">{{ user|capfirst }}<br>Vamor iniciar sua
-												cotação?<br>Clique aqui</a>
-											{% else %}
-											<a href="{% url 'qnow_user:login_client_start' %}"
-												class="uk-button uk-child-width-expand raleway16"
-												style="font-size: 16px">Inicie sua cotação aqui!</a>
-											{% endif %}
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
+                                            <a href="{% url 'qnow_user:login_client_start' %}" class="uk-button uk-child-width-expand raleway16" style="font-size: 16px">Inicie sua cotação aqui!</a> {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li aria-hidden="true" class="" style="animation-duration: 500ms; width: 100%; height: auto;">
+                            <img width="1920" height="700" alt="" src="{% static '/images/elements/slider_provider2.jpg' %}">
+                            <div class="uk-overlay-panel uk-overlay-fade">
+                                <div class="uk-container uk-container-center uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle uk-text-center">
+                                    <div class="uk-width-1-1 uk-text-center">
+                                        <div class="wow fadeInLeftBig slider-text" data-wow-delay="3.7s">
+                                            <h1 class="raleway80 uk-text-white">Plataforma de Cotações</h1>
+                                        </div>
+                                        <br class="uk-hidden-small">
+                                        <div class="wow fadeInLeftBig slider-text" data-wow-delay="4.7s">
+                                            <h2 class="raleway80 uk-text-white">MÓVEIS PLANEJADOS</h2>
+                                        </div>
+                                        <br class="uk-hidden-small">
+                                        <div class="wow fadeInUpBig slider-text" data-wow-delay="5.7s">
+                                            {% if user.is_authenticated %}
+                                            <a href="{% url 'qnow_client:quotation_client' %}" class="uk-button uk-child-width-expand raleway16" style="font-size: 16px">{{ user|capfirst }}<br>Vamor iniciar sua
+												cotação?<br>Clique aqui</a> {% else %}
+                                            <a href="{% url 'qnow_user:login_client_start' %}" class="uk-button uk-child-width-expand raleway16" style="font-size: 16px">Inicie sua cotação aqui!</a> {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
 
-						<li aria-hidden="true" class="" style="animation-duration: 500ms; width: 100%; height: auto;">
-							<img width="1920" height="700" alt=""
-								src="{% static '/images/elements/slider_provider3.jpg' %}">
-							<div class="uk-overlay-panel uk-overlay-fade">
-								<div
-									class="uk-container uk-container-center uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle">
-									<div class="uk-width-4-10 uk-text-right">
-										<div class="wow fadeInDown slider-text slider-text-2" data-wow-delay="11.7s">
-											<h1 class="raleway80 uk-text-white">&nbsp;&nbsp;Plataforma de Cotações</h1>
-										</div>
-										<div class="wow fadeInUp slider-text slider-text-2" data-wow-delay="12.2s">
-											<h2 class="raleway80 uk-slider-text-white">&nbsp;&nbsp;MÓVEIS PLANEJADOS
-											</h2>
-										</div>
+                        <li aria-hidden="true" class="" style="animation-duration: 500ms; width: 100%; height: auto;">
+                            <img width="1920" height="700" alt="" src="{% static '/images/elements/slider_provider3.jpg' %}">
+                            <div class="uk-overlay-panel uk-overlay-fade">
+                                <div class="uk-container uk-container-center uk-height-1-1 uk-width-1-1 uk-flex uk-flex-middle">
+                                    <div class="uk-width-4-10 uk-text-right">
+                                        <div class="wow fadeInDown slider-text slider-text-2" data-wow-delay="11.7s">
+                                            <h1 class="raleway80 uk-text-white">&nbsp;&nbsp;Plataforma de Cotações</h1>
+                                        </div>
+                                        <div class="wow fadeInUp slider-text slider-text-2" data-wow-delay="12.2s">
+                                            <h2 class="raleway80 uk-slider-text-white">&nbsp;&nbsp;MÓVEIS PLANEJADOS
+                                            </h2>
+                                        </div>
 
-										<br class="uk-hidden-small">
-										<div class="wow fadeInUpBig slider-text" data-wow-delay="13.7s">
-											{% if user.is_authenticated %}
-											<a href="{% url 'qnow_client:quotation_client' %}"
-												class="uk-button uk-child-width-expand raleway16"
-												style="font-size: 16px">{{ user|capfirst }}<br>Vamor iniciar sua
-												cotação?<br>Clique aqui</a>
-											{% else %}
-											<a href="{% url 'qnow_user:login_client_start' %}"
-												class="uk-button uk-child-width-expand raleway16"
-												style="font-size: 16px">Inicie sua cotação aqui!</a>
-											{% endif %}
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-					<a data-uk-slideshow-item="previous" class="uk-slidenav  uk-slidenav-previous uk-hidden-touch"
-						href="#"></a>
-					<a data-uk-slideshow-item="next" class="uk-slidenav  uk-slidenav-next uk-hidden-touch" href="#"></a>
-				</div>
-			</div>
-		</div>
-	</div>
+                                        <br class="uk-hidden-small">
+                                        <div class="wow fadeInUpBig slider-text" data-wow-delay="13.7s">
+                                            {% if user.is_authenticated %}
+                                            <a href="{% url 'qnow_client:quotation_client' %}" class="uk-button uk-child-width-expand raleway16" style="font-size: 16px">{{ user|capfirst }}<br>Vamor iniciar sua
+												cotação?<br>Clique aqui</a> {% else %}
+                                            <a href="{% url 'qnow_user:login_client_start' %}" class="uk-button uk-child-width-expand raleway16" style="font-size: 16px">Inicie sua cotação aqui!</a> {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <a data-uk-slideshow-item="previous" class="uk-slidenav  uk-slidenav-previous uk-hidden-touch" href="#"></a>
+                    <a data-uk-slideshow-item="next" class="uk-slidenav  uk-slidenav-next uk-hidden-touch" href="#"></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <!-- /Slider -->
 
-<!-- Missão, visão e valores -->
-<section class="top-a">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 col-md-12">
-				<div class="module title1">
-					<h3 class="module-title">Missão, Visão e Valores</h3>
-					<div class="module-content">
-						<div class="sprocket-strips">
-							<ul data-strips-items="" class="sprocket-strips-container cols-3">
-								<li>
-									<div style="background-image: url( {% static '/images/elements/service1.jpg' %})"
-										class="sprocket-strips-item">
-										<div class="sprocket-strips-content">
-											<h4 class="sprocket-strips-title">
-												<a href="#">Missão</a>
-											</h4>
-											<span class="sprocket-strips-text">
-												Proporcionar uma ferramenta que gere boas negociações entre cliente e
-												fornecedor num ambiente seguro e imparcial.
-											</span>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div style="background-image: url({% static '/images/elements/service2.jpg' %})"
-										class="sprocket-strips-item">
-										<div class="sprocket-strips-content">
-											<h4 class="sprocket-strips-title">
-												<a href="#">Visão</a>
-											</h4>
-											<span class="sprocket-strips-text">
-												Buscar ser importante no mercado de móveis oferecendo a ambas as
-												partes um mecanismo sempre atualizado e inovador.
-											</span>
-										</div>
-									</div>
-								</li>
-								<li>
-									<div style="background-image: url({% static '/images/elements/service3.jpg' %})"
-										class="sprocket-strips-item">
-										<div class="sprocket-strips-content">
-											<h4 class="sprocket-strips-title">
-												<a href="#">Valores</a>
-											</h4>
-											<span class="sprocket-strips-text">
-												Fornecer preços mais justos aos clientes e rentabilidade aos
-												fornecedores
-												dentro um processo direto que une preço e qualidade.
-											</span>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- /Visão, missao e valores -->
+<!-- Projetos em andamento -->
+<section class="main-body">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <article itemtype="#" itemscope="" class="item item-page">
+                    <meta content="en-GB" itemprop="inLanguage">
+                    <div itemprop="articleBody">
+                        <div class="module title1">
+                            <h3 class="module-title">Últimas Cotações</h3>
+                        </div>
+                        <hr>
+                        <!-- Slider main container -->
+                        <div class="swiper-container swiper-projects">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
 
-<!-- Construction Process -->
-<section class="top-b">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 col-md-12">
-				<div class="module title1">
-					<h3 class="module-title">Processo de Cotação</h3>
-					<div class="module-content">
-						<div class="uk-grid uk-grid-divider-2">
-							<div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:300}"
-								class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
-								<div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
-									<span class="hi-icon pe-7s-exapnd2"></span>
-									<h4>Iniciando Cotação</h4>
-									<p>Acesse o sistema e envie os dados necessários para iniciar a cotação..</p>
-								</div>
-							</div>
-							<div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:500}"
-								class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
-								<div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
-									<span class="hi-icon pe-7s-vector"></span>
-									<h4>Projeto/Fotos</h4>
-									<p>Anexe seu projeto ou fotos com as medidas do ambiente. Entraremos em contato se
-										precisar.</p>
-								</div>
-							</div>
-							<div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:700}"
-								class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
-								<div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
-									<span class="hi-icon pe-7s-note2"></span>
-									<h4>Verificando</h4>
-									<p>Após o envio dos dados, os mesmos são disponibilizados a todas as
-										marcenarias da plataforma.</p>
-								</div>
-							</div>
-							<div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:900}"
-								class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
-								<div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
-									<span class="hi-icon pe-7s-calculator"></span>
-									<h4>Gerando Valor</h4>
-									<p>Nesta etapa todas as marcenarias que optaram por entrar no processo de cotação
-										do seu projeto, incluirão seus valores.</p>
-								</div>
-							</div>
-							<div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:1100}"
-								class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
-								<div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
-									<span class="hi-icon pe-7s-home"></span>
-									<h4>Produção e Entrega</h4>
-									<p>Pronto, orçamento escolhido por você e marcenaria preparada para produzir e
-										entregar.</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1588557021/ijm6rwkvtcdmcr105p5t.jpg" alt="Cotação em andamento...">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1588557021/qad793zunubl7cncirky.jpg" alt="Cotação em andamento...">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1588556546/tyhtpf3tnrnwibz7uryb.jpg" alt="Cotação em andamento...">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1588899139/untitleqd_lhw0m6.png" alt="Cotação em andamento...">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1588556211/vcnj1bgphgbrgkpd9hoz.jpg" alt="Cotação em andamento...">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1587837942/mo4964wwzxsui0f2qlun.png" alt="Cotação em andamento...">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1586783610/in17fzriulhfwfvwnzkk.jpg" alt="Cotação em andamento...">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1586218785/u9yl0ne3jhdu1zeekhlt.jpg" alt="Cotação em andamento...">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1585875793/yokfhopqxzel4f72eaza.jpg" alt="Cotação em andamento...">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1582808063/etmsehbafv864fp179zt.jpg" alt="Cotação em andamento...">
+                                </div>
+
+                            </div>
+
+
+                            <!-- If we need pagination -->
+                            <div class="swiper-pagination"></div>
+
+                            <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>
+
+                            <!-- If we need scrollbar -->
+                            <div class="swiper-scrollbar"></div>
+                        </div>
+
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
 </section>
+<!-- /Fim Projetos em Andamento -->
 
 
 <!-- Portfolio: Recent Projects -->
 <section class="main-body">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12 col-md-12">
-				<article itemtype="#" itemscope="" class="item item-page">
-					<meta content="en-GB" itemprop="inLanguage">
-					<div itemprop="articleBody">
-						<div class="module title1">
-							<h3 class="module-title">Projetos Inspiradores</h3>
-						</div>
-						<hr>
-						<ul class="uk-subnav uk-subnav-pill uk-flex-center subnav-project" id="project">
-							<li data-uk-filter="" class="project-filter">Todos</li>
-							<li data-uk-filter="homeoffice" class="project-filter uk-active">Home Office</li>
-							<li data-uk-filter="banheiros" class="project-filter">Banheiros</li>
-							<li data-uk-filter="cozinhas" class="project-filter">Cozinhas</li>
-							<li data-uk-filter="roupeiros" class="project-filter">Roupeiros</li>
-							<li data-uk-filter="paineis" class="project-filter">Paineis</li>
-						</ul>
-						<div data-uk-grid="{gutter: ' 20',controls: '#project'}"
-							class="uk-grid-width-1-1 uk-grid-width-small-1-2 uk-grid-width-medium-1-3 uk-grid-width-large-1-3 uk-grid-width-xlarge-1-3"
-							style="margin-left: -10px; margin-right: -10px; margin-bottom: 25px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <article itemtype="#" itemscope="" class="item item-page">
+                    <meta content="en-GB" itemprop="inLanguage">
+                    <div itemprop="articleBody">
+                        <div class="module title1">
+                            <h3 class="module-title">Projetos Inspiradores</h3>
+                        </div>
+                        <hr>
+                        <ul class="uk-subnav uk-subnav-pill uk-flex-center subnav-project" id="project">
+                            <li data-uk-filter="" class="project-filter">Todos</li>
+                            <li data-uk-filter="homeoffice" class="project-filter uk-active">Home Office</li>
+                            <li data-uk-filter="banheiros" class="project-filter">Banheiros</li>
+                            <li data-uk-filter="cozinhas" class="project-filter">Cozinhas</li>
+                            <li data-uk-filter="roupeiros" class="project-filter">Roupeiros</li>
+                            <li data-uk-filter="paineis" class="project-filter">Paineis</li>
+                        </ul>
+                        <div data-uk-grid="{gutter: ' 20',controls: '#project'}" class="uk-grid-width-1-1 uk-grid-width-small-1-2 uk-grid-width-medium-1-3 uk-grid-width-large-1-3 uk-grid-width-xlarge-1-3" style="margin-left: -10px; margin-right: -10px; margin-bottom: 25px;">
 
-							<!-- Home office -->
-							<!-- 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 0px; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/c1472dc03c548ce8207acd91ee17bf28_pj4ctq.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- Home office -->
+                            <!-- 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box" style="top: 0px; left: 0px; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Home Office</strong>
-												</h4>
-											</div>
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/c1472dc03c548ce8207acd91ee17bf28_pj4ctq.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <a href="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/c1472dc03c548ce8207acd91ee17bf28_pj4ctq.jpg" data-uk-lightbox title="dfdfa">
+                                                <div class="project-member-head">
+                                                    <h4 class="project-member-title uk-text-left">
+                                                        <strong>Home Office</strong>
+                                                    </h4>
+                                                </div>
+                                            </a>
+
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
+                                            </div>
 
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                        </figcaption>
+                                    </figure>
 
-							<!-- 2 -->
-							<div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 376.983px; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/e414d0aae766637aac099f3b53f141de_dal0ty.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Home Office</strong>
-												</h4>
-											</div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                </div>
+                            </div>
+
+                            <!-- 2 -->
+                            <div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box" style="top: 0px; left: 376.983px; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/e414d0aae766637aac099f3b53f141de_dal0ty.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Home Office</strong>
+                                                </h4>
+                                            </div>
+
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 3 -->
-							<div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 753.966px; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/07d84b19f4ba8b4969d0a679dc6dc4b0_vj7g0v.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Home Office</strong>
-												</h4>
-											</div>
+                            <!-- 3 -->
+                            <div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box" style="top: 0px; left: 753.966px; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/07d84b19f4ba8b4969d0a679dc6dc4b0_vj7g0v.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Home Office</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 4 -->
-							<div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box"
-								style="top: 264.2px; left: 0px; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/f937669306f5fa55f456123ea2839dee_nstfut.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Home Office</strong>
-												</h4>
-											</div>
+                            <!-- 4 -->
+                            <div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box" style="top: 264.2px; left: 0px; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/f937669306f5fa55f456123ea2839dee_nstfut.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Home Office</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 5 -->
-							<div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box"
-								style="top: 264.2px; left: 376.983px; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/bb6dcdb249ce498a00b511ce93feb824_v2clqr.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Home Office</strong>
-												</h4>
-											</div>
+                            <!-- 5 -->
+                            <div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box" style="top: 264.2px; left: 376.983px; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/bb6dcdb249ce498a00b511ce93feb824_v2clqr.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Home Office</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 6 -->
-							<div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box"
-								style="top: 264.2px; left: 753.966px; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588164544/Quotation-Now-Promocao/ab34d813edcf81797c1aa34e907b4247_ubmug2.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Home Office</strong>
-												</h4>
-											</div>
+                            <!-- 6 -->
+                            <div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box" style="top: 264.2px; left: 753.966px; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588164544/Quotation-Now-Promocao/ab34d813edcf81797c1aa34e907b4247_ubmug2.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Home Office</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- Cozinhas -->
-							<!-- 1 -->
-							<div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 0px; display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588168820/Quotation-Now-Promocao/Cozinhas/kitchen-1224845_640_j2jxpg.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- Cozinhas -->
+                            <!-- 1 -->
+                            <div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box" style="top: 0px; left: 0px; display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588168820/Quotation-Now-Promocao/Cozinhas/kitchen-1224845_640_j2jxpg.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Cozinha</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Cozinha</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
 
-												<!-- 												
+                                                <!-- 												
 												<div style="font-size: 0.6em;">
 												Imagem de <a
 												href="https://pixabay.com/pt/users/sferrario1968-214554/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1640439">Stefano
@@ -448,660 +356,729 @@
 												href="https://pixabay.com/pt/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1640439">Pixabay</a>
 												</div>
 												-->
-											</div>
+                                            </div>
 
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
 
-							<!-- 2 -->
-							<div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 376.983px; display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588168459/Quotation-Now-Promocao/Cozinhas/kitchen-1640439_640_x9map6.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Cozinha</strong>
-												</h4>
-											</div>
+                            <!-- 2 -->
+                            <div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box" style="top: 0px; left: 376.983px; display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588168459/Quotation-Now-Promocao/Cozinhas/kitchen-1640439_640_x9map6.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Cozinha</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-												<!-- 												
+                                                <!-- 												
 												Imagem de <a
 												href="https://pixabay.com/pt/users/sferrario1968-214554/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1640439">Stefano
 												Ferrario</a> por <a
 												href="https://pixabay.com/pt/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1640439">Pixabay</a>
 												-->
-											</div>
+                                            </div>
 
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 3 -->
-							<div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 753.966px; display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588172094/Quotation-Now-Promocao/Cozinhas/kitchen-2909421_640_yw5wea.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Cozinha</strong>
-												</h4>
-											</div>
+                            <!-- 3 -->
+                            <div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box" style="top: 0px; left: 753.966px; display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588172094/Quotation-Now-Promocao/Cozinhas/kitchen-2909421_640_yw5wea.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Cozinha</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
 
-												<!-- 											
+                                                <!-- 											
 												Imagem de <a
 												href="https://pixabay.com/pt/users/sferrario1968-214554/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1799712">Stefano
 												Ferrario</a> por <a
 												href="https://pixabay.com/pt/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1799712">Pixabay</a>
  												-->
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 4 -->
-							<div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box"
-								style="top: 264.2px; left: 0px; display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588171240/Quotation-Now-Promocao/Cozinhas/kitchen-1799712_640_ch1975.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Cozinha</strong>
-												</h4>
-											</div>
+                            <!-- 4 -->
+                            <div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box" style="top: 264.2px; left: 0px; display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588171240/Quotation-Now-Promocao/Cozinhas/kitchen-1799712_640_ch1975.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Cozinha</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
 
-												<!-- 											
+                                                <!-- 											
 												Imagem de <a
 												href="https://pixabay.com/pt/users/sferrario1968-214554/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2909421">Stefano
 												Ferrario</a> por <a
 												href="https://pixabay.com/pt/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2909421">Pixabay</a>
  												-->
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
 
-							<!-- 5 -->
-							<div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box"
-								style="top: 264.2px; left: 376.983px; display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588173298/Quotation-Now-Promocao/Cozinhas/kitchen-1681202_640_xmtsrz.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Cozinha</strong>
-												</h4>
-											</div>
+                            <!-- 5 -->
+                            <div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box" style="top: 264.2px; left: 376.983px; display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588173298/Quotation-Now-Promocao/Cozinhas/kitchen-1681202_640_xmtsrz.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Cozinha</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
 
-												<!-- 											
+                                                <!-- 											
 												Imagem de <a
 												href="https://pixabay.com/pt/users/sferrario1968-214554/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1681202">Stefano
 												Ferrario</a> por <a
 												href="https://pixabay.com/pt/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1681202">Pixabay</a>
  												-->
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 6 -->
-							<div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box"
-								style="top: 264.2px; left: 753.966px; display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Home Office"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588190361/Quotation-Now-Promocao/Cozinhas/hob-2141024_640_klbip0.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Cozinha</strong>
-												</h4>
-											</div>
+                            <!-- 6 -->
+                            <div data-uk-filter="cozinhas" data-grid-prepared="true" class="project-box" style="top: 264.2px; left: 753.966px; display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588190361/Quotation-Now-Promocao/Cozinhas/hob-2141024_640_klbip0.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Cozinha</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
 
-												<!-- 
+                                                <!-- 
 												Imagem de <a
 												href="https://pixabay.com/pt/users/sferrario1968-214554/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2141024">Stefano
 												Ferrario</a> por <a
 												href="https://pixabay.com/pt/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2141024">Pixabay</a>
 												-->
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
 
-							<!-- Banheiro -->
-							<!-- 1 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 0px;  display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Banheiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588461691/Quotation-Now-Promocao/Banheiros/modern-minimalist-bathroom-3115450_640_rt8lm1.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- Banheiro -->
+                            <!-- 1 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 0px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Banheiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588461691/Quotation-Now-Promocao/Banheiros/modern-minimalist-bathroom-3115450_640_rt8lm1.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Banheiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Banheiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 2 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 376.983px;  display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Banheiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588462680/Quotation-Now-Promocao/Banheiros/bathroom-1622403_640_aisakb.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- 2 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 376.983px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Banheiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588462680/Quotation-Now-Promocao/Banheiros/bathroom-1622403_640_aisakb.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Banheiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Banheiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 3 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 753.966px;  display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Banheiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588463777/Quotation-Now-Promocao/Banheiros/956b99f87a3a934773705ec112747a65_wt21ey.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- 3 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 753.966px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Banheiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588463777/Quotation-Now-Promocao/Banheiros/956b99f87a3a934773705ec112747a65_wt21ey.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Banheiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Banheiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 4 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 0px; display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Banheiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588463778/Quotation-Now-Promocao/Banheiros/336c9bdf4b6c9a8dd0737b347e2d530e_yluiqg.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- 4 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 0px; display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Banheiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588463778/Quotation-Now-Promocao/Banheiros/336c9bdf4b6c9a8dd0737b347e2d530e_yluiqg.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Banheiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Banheiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 5 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 376.983px;  display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Banheiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588464358/Quotation-Now-Promocao/Banheiros/3cb60b4cd47ea1f13a532300908c77fa_hyh9zy.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- 5 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 376.983px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Banheiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588464358/Quotation-Now-Promocao/Banheiros/3cb60b4cd47ea1f13a532300908c77fa_hyh9zy.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Banheiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Banheiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 6 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 753.966px;  display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Banheiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588464358/Quotation-Now-Promocao/Banheiros/daebaadb4775c55550c3f003353cc952_cbv6f7.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- 6 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="banheiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 753.966px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Banheiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588464358/Quotation-Now-Promocao/Banheiros/daebaadb4775c55550c3f003353cc952_cbv6f7.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Banheiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Banheiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
 
-							<!-- Roupeiro -->
-							<!-- 1 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 0px;  display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Roupeiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588467890/Quotation-Now-Promocao/Roupeiros/c54f74911e7710a517b511ba5cc82c8a_kmy1nu.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- Roupeiro -->
+                            <!-- 1 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 0px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Roupeiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588467890/Quotation-Now-Promocao/Roupeiros/c54f74911e7710a517b511ba5cc82c8a_kmy1nu.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Roupeiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Roupeiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
 
-							<!-- 2 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 376.983px;  display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Roupeiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588467863/Quotation-Now-Promocao/Roupeiros/512831da2eeede963107fbcd7016c973_bmwvz4.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- 2 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 376.983px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Roupeiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588467863/Quotation-Now-Promocao/Roupeiros/512831da2eeede963107fbcd7016c973_bmwvz4.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Roupeiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Roupeiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 3 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 753.966px; display: none;  padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Roupeiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588467862/Quotation-Now-Promocao/Roupeiros/c8f1eb7fac5234b5119acccaa8f09fb9_gqnokx.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- 3 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 753.966px; display: none;  padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Roupeiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588467862/Quotation-Now-Promocao/Roupeiros/c8f1eb7fac5234b5119acccaa8f09fb9_gqnokx.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Roupeiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Roupeiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 4 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 0px; display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Roupeiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588467862/Quotation-Now-Promocao/Roupeiros/ba6532bab0116dc1f9b0bce6213457b8_lvoffs.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- 4 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 0px; display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Roupeiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588467862/Quotation-Now-Promocao/Roupeiros/ba6532bab0116dc1f9b0bce6213457b8_lvoffs.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Roupeiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Roupeiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 5 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 376.983px;  display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Roupeiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588467862/Quotation-Now-Promocao/Roupeiros/203c51dbe0dfc6b2b3de031cf27f76a4_xabrw9.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- 5 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 376.983px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Roupeiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588467862/Quotation-Now-Promocao/Roupeiros/203c51dbe0dfc6b2b3de031cf27f76a4_xabrw9.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Roupeiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Roupeiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 6 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 753.966px; display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Roupeiro"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588467862/Quotation-Now-Promocao/Roupeiros/5ef9be6464b84211c00d5e9f4707ead7_e7igsj.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- 6 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="roupeiros" data-grid-prepared="true" class="project-box" style="top: 0px; left: 753.966px; display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Roupeiro" src="https://res.cloudinary.com/quotation-now/image/upload/v1588467862/Quotation-Now-Promocao/Roupeiros/5ef9be6464b84211c00d5e9f4707ead7_e7igsj.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Roupeiro</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Roupeiro</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- Paineis -->
-							<!-- 1 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="paineis" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 0px;  display: none; padding: 3px 3px 3px 3px; background: black;"
-								aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Painel"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588468491/Quotation-Now-Promocao/Paineis/a2f879cff335d09029ff06e669a842a5_u1eyzk.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
+                            <!-- Paineis -->
+                            <!-- 1 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="paineis" data-grid-prepared="true" class="project-box" style="top: 0px; left: 0px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Painel" src="https://res.cloudinary.com/quotation-now/image/upload/v1588468491/Quotation-Now-Promocao/Paineis/a2f879cff335d09029ff06e669a842a5_u1eyzk.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
 
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Painel</strong>
-												</h4>
-											</div>
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Painel</strong>
+                                                </h4>
+                                            </div>
 
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 2 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="paineis" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 376.983px; display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Painel"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588468472/Quotation-Now-Promocao/Paineis/4b0a18f647ce8b3e9acda591d5b79d50_qenryu.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-							
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Painel</strong>
-												</h4>
-											</div>
-							
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                            <!-- 2 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="paineis" data-grid-prepared="true" class="project-box" style="top: 0px; left: 376.983px; display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Painel" src="https://res.cloudinary.com/quotation-now/image/upload/v1588468472/Quotation-Now-Promocao/Paineis/4b0a18f647ce8b3e9acda591d5b79d50_qenryu.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Painel</strong>
+                                                </h4>
+                                            </div>
+
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 3 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="paineis" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 753.966px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Painel"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588468491/Quotation-Now-Promocao/Paineis/3a45ff4ddae6f727c12c4f6bf706a384_aekgx0.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-							
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Painel</strong>
-												</h4>
-											</div>
-							
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                            <!-- 3 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="paineis" data-grid-prepared="true" class="project-box" style="top: 0px; left: 753.966px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Painel" src="https://res.cloudinary.com/quotation-now/image/upload/v1588468491/Quotation-Now-Promocao/Paineis/3a45ff4ddae6f727c12c4f6bf706a384_aekgx0.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Painel</strong>
+                                                </h4>
+                                            </div>
+
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 4 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="paineis" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 0px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Painel"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588468472/Quotation-Now-Promocao/Paineis/0b176dc99b036eb75cee712895a404db_poqzl9.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-							
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Painel</strong>
-												</h4>
-											</div>
-							
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                            <!-- 4 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="paineis" data-grid-prepared="true" class="project-box" style="top: 0px; left: 0px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Painel" src="https://res.cloudinary.com/quotation-now/image/upload/v1588468472/Quotation-Now-Promocao/Paineis/0b176dc99b036eb75cee712895a404db_poqzl9.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Painel</strong>
+                                                </h4>
+                                            </div>
+
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 5 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="paineis" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 376.983px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Painel"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588468508/Quotation-Now-Promocao/Paineis/435b674fa4d36a47255f2eabce6e5077_zmifza.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-							
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Painel</strong>
-												</h4>
-											</div>
-							
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                            <!-- 5 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="paineis" data-grid-prepared="true" class="project-box" style="top: 0px; left: 376.983px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Painel" src="https://res.cloudinary.com/quotation-now/image/upload/v1588468508/Quotation-Now-Promocao/Paineis/435b674fa4d36a47255f2eabce6e5077_zmifza.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Painel</strong>
+                                                </h4>
+                                            </div>
+
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-							<!-- 6 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
-							<div data-uk-filter="paineis" data-grid-prepared="true" class="project-box"
-								style="top: 0px; left: 753.966px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
-								<div class="uk-panel project-member">
-									<figure class="uk-overlay uk-overlay-hover project-member-padding ">
-										<img alt="Painel"
-											src="https://res.cloudinary.com/quotation-now/image/upload/v1588468472/Quotation-Now-Promocao/Paineis/2815777b89ec951450b0e2b1708cc012_fmyjqd.jpg">
-										<figcaption class="uk-overlay-panel uk-overlay-background">
-							
-											<div class="project-member-head">
-												<h4 class="project-member-title uk-text-left">
-													<strong>Painel</strong>
-												</h4>
-											</div>
-							
-											<div class="uk-text-left">
-												<span class="project-member-tag">
-													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para orçar</a>
+                            <!-- 6 *** 1 = 0px; 2 = 376.983px;  3 = 753.966px; -->
+                            <div data-uk-filter="paineis" data-grid-prepared="true" class="project-box" style="top: 0px; left: 753.966px;  display: none; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
+                                <div class="uk-panel project-member">
+                                    <figure class="uk-overlay uk-overlay-hover project-member-padding ">
+                                        <img alt="Painel" src="https://res.cloudinary.com/quotation-now/image/upload/v1588468472/Quotation-Now-Promocao/Paineis/2815777b89ec951450b0e2b1708cc012_fmyjqd.jpg">
+                                        <figcaption class="uk-overlay-panel uk-overlay-background">
+
+                                            <div class="project-member-head">
+                                                <h4 class="project-member-title uk-text-left">
+                                                    <strong>Painel</strong>
+                                                </h4>
+                                            </div>
+
+                                            <div class="uk-text-left">
+                                                <span class="project-member-tag">
+													<a href="{% url 'qnow_user:login_client_start' %}"> Clique para
+														orçar</a>
 												</span>
-											</div>
-										</figcaption>
-									</figure>
-								</div>
-							</div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
 
-						</div>
-					</div>
-				</article>
-			</div>
-		</div>
-	</div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
 </section>
 <!-- /Portfolio: Recent Projects -->
 
 
-{% endblock %}
+<!-- Missão, visão e valores -->
+<section class="top-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="module title1">
+                    <h3 class="module-title">Missão, Visão e Valores</h3>
+                    <div class="module-content">
+                        <div class="sprocket-strips">
+                            <ul data-strips-items="" class="sprocket-strips-container cols-3">
+                                <li>
+                                    <div style="background-image: url( {% static '/images/elements/service1.jpg' %})" class="sprocket-strips-item">
+                                        <div class="sprocket-strips-content">
+                                            <h4 class="sprocket-strips-title">
+                                                <a href="#">Missão</a>
+                                            </h4>
+                                            <span class="sprocket-strips-text">
+												Proporcionar uma ferramenta que gere boas negociações entre cliente e
+												fornecedor num ambiente seguro e imparcial.
+											</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="background-image: url({% static '/images/elements/service2.jpg' %})" class="sprocket-strips-item">
+                                        <div class="sprocket-strips-content">
+                                            <h4 class="sprocket-strips-title">
+                                                <a href="#">Visão</a>
+                                            </h4>
+                                            <span class="sprocket-strips-text">
+												Buscar ser importante no mercado de móveis oferecendo a ambas as
+												partes um mecanismo sempre atualizado e inovador.
+											</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div style="background-image: url({% static '/images/elements/service3.jpg' %})" class="sprocket-strips-item">
+                                        <div class="sprocket-strips-content">
+                                            <h4 class="sprocket-strips-title">
+                                                <a href="#">Valores</a>
+                                            </h4>
+                                            <span class="sprocket-strips-text">
+												Fornecer preços mais justos aos clientes e rentabilidade aos
+												fornecedores
+												dentro um processo direto que une preço e qualidade.
+											</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /Visão, missao e valores -->
 
-{% block menu %}
-{% endblock %}
+<!-- Construction Process -->
+<section class="top-b">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="module title1">
+                    <h3 class="module-title">Processo de Cotação</h3>
+                    <div class="module-content">
+                        <div class="uk-grid uk-grid-divider-2">
+                            <div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:300}" class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
+                                <div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
+                                    <span class="hi-icon pe-7s-exapnd2"></span>
+                                    <h4>Iniciando Cotação</h4>
+                                    <p>Acesse o sistema e envie os dados necessários para iniciar a cotação..</p>
+                                </div>
+                            </div>
+                            <div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:500}" class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
+                                <div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
+                                    <span class="hi-icon pe-7s-vector"></span>
+                                    <h4>Projeto/Fotos</h4>
+                                    <p>Anexe seu projeto ou fotos com as medidas do ambiente. Entraremos em contato se precisar.
+                                    </p>
+                                </div>
+                            </div>
+                            <div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:700}" class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
+                                <div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
+                                    <span class="hi-icon pe-7s-note2"></span>
+                                    <h4>Verificando</h4>
+                                    <p>Após o envio dos dados, os mesmos são disponibilizados a todas as marcenarias da plataforma.</p>
+                                </div>
+                            </div>
+                            <div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:900}" class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
+                                <div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
+                                    <span class="hi-icon pe-7s-calculator"></span>
+                                    <h4>Gerando Valor</h4>
+                                    <p>Nesta etapa todas as marcenarias que optaram por entrar no processo de cotação do seu projeto, incluirão seus valores.</p>
+                                </div>
+                            </div>
+                            <div data-uk-scrollspy="{cls:'uk-animation-slide-bottom', delay:1100}" class="uk-width-medium-1-5 uk-scrollspy-init-inview uk-scrollspy-inview">
+                                <div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1b">
+                                    <span class="hi-icon pe-7s-home"></span>
+                                    <h4>Produção e Entrega</h4>
+                                    <p>Pronto, orçamento escolhido por você e marcenaria preparada para produzir e entregar.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<iframe
-	src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3392.243029243499!2d-52.37031008440045!3d-31.763856820323944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9511ca873c5f93af%3A0x64614c6503e28e57!2sR.%20Jos%C3%A9%20Lins%20do%20R%C3%AAgo%2C%20489%20-%20Fragata%2C%20Pelotas%20-%20RS%2C%2096050-500!5e0!3m2!1spt-PT!2sbr!4v1567434256351!5m2!1spt-PT!2sbr"
-	width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="">
+{% endblock %} {% block menu %} {% endblock %}
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3392.243029243499!2d-52.37031008440045!3d-31.763856820323944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9511ca873c5f93af%3A0x64614c6503e28e57!2sR.%20Jos%C3%A9%20Lins%20do%20R%C3%AAgo%2C%20489%20-%20Fragata%2C%20Pelotas%20-%20RS%2C%2096050-500!5e0!3m2!1spt-PT!2sbr!4v1567434256351!5m2!1spt-PT!2sbr"
+    width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="">
 </iframe>
