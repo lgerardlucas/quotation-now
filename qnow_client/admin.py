@@ -13,9 +13,9 @@ class QuotationPriceInline(admin.TabularInline):
     model = QuotationPrice
     extra = 0
     # Campos visíveis mas somente para leitura
-    readonly_fields = ('quotation_number','quotation_provider_ident','date_create','date_validate','quotation_value','delivery_time','form_payment','approved','approved_date','comments','commission_paid','commission_paid_date',)
+    readonly_fields = ('quotation_number','quotation_provider_ident','quotationprice_date_insert','date_validate','quotation_value','delivery_time','form_payment','approved','approved_date','comments','commission_paid','commission_paid_date',)
     # Campos que serão visualizado no inline
-    fields = ('quotation_number','quotation_provider_ident','date_create','quotation_value','delivery_time','form_payment','approved','approved_date','commission_paid','commission_paid_date',)
+    fields = ('quotation_number','quotation_provider_ident','quotationprice_date_insert','quotation_value','delivery_time','form_payment','approved','approved_date','commission_paid','commission_paid_date',)
     # Ordenação para visualização
     ordering = ('quotation_value',)
 
@@ -23,6 +23,27 @@ class QuotationPriceInline(admin.TabularInline):
         id_provider = str(QuotationPrice.quotation_provider)+'('+str(QuotationPrice.quotation_provider.id)+')'+'('+str(QuotationPrice.quotation_provider.city)+')'
         return id_provider
     quotation_provider_ident.short_description = 'Marcenaria'        
+
+    def quotationprice_date_insert(self, QuotationPrice):
+        return QuotationPrice.date_create
+    quotationprice_date_insert.short_description = 'Datado Orçamento'        
+
+# Classe que gera os campos mestre detalhe mas com alguns campo somente.
+class QuotationPriceInlineDetailProvider(admin.TabularInline):
+    model = QuotationPrice
+    extra = 0
+    # Campos visíveis mas somente para leitura
+    readonly_fields = ('quotation_number','quotation_provider_ident','comments')
+    # Campos que serão visualizado no inline
+    fields = ('quotation_number','quotation_provider_ident','comments')
+    # Ordenação para visualização
+    ordering = ('quotation_value',)
+    
+    def quotation_provider_ident(self, QuotationPrice):
+        id_provider = str(QuotationPrice.quotation_provider)+'('+str(QuotationPrice.quotation_provider.id)+')'+'('+str(QuotationPrice.quotation_provider.city)+')'
+        return id_provider
+    quotation_provider_ident.short_description = 'Marcenaria'        
+
 
 
 # fields
@@ -135,7 +156,7 @@ class QuotationAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Dados do Cliente',{'fields': ((('id','removed'),('client','date_create','date_validate')) )}),
         ('Dados da Cotação',{'fields': (('house_type','mobile_type'),('mobile_description','stage') )}),
-        ('Fotos da Cotação',{'fields': ('image_environment','image_project')}),
+        ('Fotos da Cotação',{'fields': ('image_environment','view_environment_quotation_home','image_project','view_project_quotation_home')}),
         ('Detalhamento',    {'fields': ('particulars',)}),
     )
 
@@ -169,7 +190,7 @@ class QuotationAdmin(admin.ModelAdmin):
     show_full_result_count = True
 
     # Mostra o conteudo da tabela relacionada
-    inlines = (QuotationPriceInline,)
+    inlines = (QuotationPriceInline,QuotationPriceInlineDetailProvider)
 
 admin.site.register(MobilieType,MobileTypeAdmin)
 admin.site.register(QuotationStage,QuotationStageAdmin)

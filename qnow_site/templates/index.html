@@ -102,44 +102,40 @@
                         <hr>
                         <!-- Slider main container -->
                         <div class="swiper-container swiper-projects">
-                            <!-- Additional required wrapper -->
+                            <!-- Additional required wrappenr -->
                             <div class="swiper-wrapper">
-
                                 <!-- Slides -->
-                                <div class="swiper-slide">
-                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1588557021/ijm6rwkvtcdmcr105p5t.jpg" alt="Cotação em andamento...">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1588557021/qad793zunubl7cncirky.jpg" alt="Cotação em andamento...">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1588556546/tyhtpf3tnrnwibz7uryb.jpg" alt="Cotação em andamento...">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1588899139/untitleqd_lhw0m6.png" alt="Cotação em andamento...">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1588556211/vcnj1bgphgbrgkpd9hoz.jpg" alt="Cotação em andamento...">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1587837942/mo4964wwzxsui0f2qlun.png" alt="Cotação em andamento...">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1586783610/in17fzriulhfwfvwnzkk.jpg" alt="Cotação em andamento...">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1586218785/u9yl0ne3jhdu1zeekhlt.jpg" alt="Cotação em andamento...">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1585875793/yokfhopqxzel4f72eaza.jpg" alt="Cotação em andamento...">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img src="https://res.cloudinary.com/quotation-now/image/upload/v1582808063/etmsehbafv864fp179zt.jpg" alt="Cotação em andamento...">
-                                </div>
+                                {% for field in quotation_list %}
+                                    <div class="swiper-slide">
+                                        {% if field.view_environment_quotation_home == True %}
+                                            {% if field.image_environment|lower == 'None'|lower %}
+                                                <img src="{% static '/images/no-image.png' %}" alt="MGA-Cotações<br>Sem foto!"> 
+                                            {% else %}
+                                                <img src="{{field.image_environment.url}}" alt="Última Cotações - Nº: {{ field.id }}"> 
+                                            {% endif %}
+                                            <div style="padding-top: 2px; width: 100%; text-align: center; background-color:#ffb400; height: 2.4em; line-height: 1em; ">
+                                                <strong style="color:white; font-size: 12px;">Cotação Nº: {{ field.id }} <br> {{ field.client.city|truncatechars:10 }} - {{ field.date_create|date:"d/m/yy" }}</strong>
+                                            </div>
+                                        {% endif %}
+                                    </div>
 
+                                    <div class="swiper-slide">
+                                        {% if field.view_project_quotation_home == True %} 
+                                            {% if field.image_project|lower == 'None'|lower %}
+                                                <img src="{% static '/images/no-image.png' %}" alt="MGA-Cotações<br>Sem foto!"> 
+                                            {% else %}
+                                                <img src="{{field.image_project.url}}" alt="Última Cotações - Nº: {{ field.id }}"> 
+                                            {% endif %} 
+                                            <div style="padding-top: 2px; width: 100%; text-align: center; background-color:#ffb400; height: 2.4em; line-height: 1em; ">
+                                                <strong style="color:white; font-size: 12px;">Cotação Nº: {{ field.id }} <br> {{ field.client.city|truncatechars:10 }} - {{ field.date_create|date:"d/m/yy" }}</strong>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+                                {% endfor %}
                             </div>
 
-
+                            <br><br>
                             <!-- If we need pagination -->
                             <div class="swiper-pagination"></div>
 

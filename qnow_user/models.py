@@ -37,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     form_payment = models.CharField('Forma de Pagamento - Padrão',max_length=50,null=True,blank=True)
 
     # Informações adicionais para conquistar o cliente
-    information = models.TextField('Conquistando o Cliente',max_length=200,blank=True)
+    information = models.TextField('Conquistando o Cliente',max_length=500,blank=True)
 
     objects = UserManager()
 

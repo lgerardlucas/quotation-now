@@ -106,9 +106,16 @@ class Quotation(models.Model):
     # Imagem do ambiente do móvel 
     image_environment = CloudinaryField('Imagem-1',null=True, blank=True)
 
+    # Mostra a imagem do ambiente na tela principal 
+    view_environment_quotation_home = models.BooleanField('Mostrar Foto Imagem-1 na Home',default=False)
+
     # Imagem do projeto
     image_project = CloudinaryField('Imagem-2',null=True, blank=True)
-        
+
+    # Mostra a imagem do projeto na tela principal 
+    view_project_quotation_home = models.BooleanField('Mostrar Foto Imagem-2 na Home',default=False)
+
+
     slug = models.SlugField(max_length=150,unique=True)
 
     # Determina se a cotação foi removida

@@ -9,6 +9,8 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.conf import settings
 from qnow_user.models import User
+from qnow_client.models import Quotation
+from django.db.models import Q
 import datetime
 
 # Transforma a letra de cada palavra em maiusculo
@@ -28,7 +30,12 @@ def site(request):
     # Executa logout quanto fora da área de cotação
     logout(request)
 
-    context = {'active_page_site': 'active'}
+    # Pesquisa as cotações com status = 2 a 6 
+    quotations = Quotation.objects.filter(stage_id__status__range=[2, 6], removed=False).filter((Q(view_environment_quotation_home=True, image_environment__isnull=False) | Q(view_project_quotation_home=True, image_project__isnull=False))).order_by('-date_create', '-id')[:20]
+
+    context = {'active_page_site': 'active',
+                'quotation_list': quotations
+        }
     return render(request, '../templates/index.html',context)
 
 # Acesso a tela de sobre do site  

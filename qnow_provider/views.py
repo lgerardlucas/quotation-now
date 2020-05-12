@@ -197,6 +197,7 @@ def quotation_provider_price_post(request,quotation_id=0):
         form = QuotationPriceForm(request.POST or None)
         if form.is_valid():     
             post = form.save(commit=False)
+            post.date_create = datetime.now()
             try:
                 # Retorna o stage(estágio)-Quando houver um lance mudamos o stage para 3 orçado
                 quotationstage  = QuotationStage.objects.get(status=3)
