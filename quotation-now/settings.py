@@ -34,11 +34,17 @@ INSTALLED_APPS = [
 ]
 
 # Cloud to static e media files
+#CLOUDINARY = {
+#    'cloud_name' : 'quotation-now',
+#    'api_key' : '813491479334954',
+#    'api_secret': 'VhUuEMxGeunGhpO2Qo2oudVgFQo'
+#}
 CLOUDINARY = {
-    'cloud_name' : 'quotation-now',
-    'api_key' : '813491479334954',
-    'api_secret': 'VhUuEMxGeunGhpO2Qo2oudVgFQo'
+    'cloud_name' : config('cloud_name'),
+    'api_key' : config('api_key'),
+    'api_secret': config('api_secret')
 }
+
 
 # AUTH_USER_MODEL = Configuração que indica o uso da models customizada referente a User default do django
 AUTH_USER_MODEL = "qnow_user.User"
