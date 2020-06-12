@@ -7,7 +7,6 @@ from dj_database_url import parse as dburl
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 #SECRET_KEY = config('SECRET_KEY',default='m7!b(n)4$&jia=#@71=u24o4)xy79qaz$*2%+n#fk*dwdf0&j^')
-#SECRET_KEY = config('SECRET_KEY')
 SECRET_KEY = config('SECRET_KEY')
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -90,13 +89,24 @@ WSGI_APPLICATION = 'quotation-now.wsgi.application'
 #}
 
 # Conectando ao banco PostgreSQL - Local e Remoto. Foi utilizado o arquivo .env
+#DATABASES = {
+#    'default': {
+#        'ENGINE': config('ENGINE', default='django.db.backends.postgresql'),
+#        'NAME': config('NAME', default='d5hoklb761lftk'),
+#        'USER': config('ROLE', default='rcvyijjkpymkue'),
+#        'PASSWORD': config('PASSWORD', default='fad29688a28db66d902856fba2688758cec82f563e6c03292de22be94f270e43'),
+#        'HOST': config('HOST', default='ec2-54-235-246-201.compute-1.amazonaws.com'),
+#        'PORT': '5432',
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': config('ENGINE', default='django.db.backends.postgresql'),
-        'NAME': config('NAME', default='d5hoklb761lftk'),
-        'USER': config('ROLE', default='rcvyijjkpymkue'),
-        'PASSWORD': config('PASSWORD', default='fad29688a28db66d902856fba2688758cec82f563e6c03292de22be94f270e43'),
-        'HOST': config('HOST', default='ec2-54-235-246-201.compute-1.amazonaws.com'),
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_ROLE'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
         'PORT': '5432',
     }
 }
