@@ -6,7 +6,9 @@ from dj_database_url import parse as dburl
 # BASE_DIR = Define o caminho de partida do projeto para as demais configurações 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = config('SECRET_KEY',default='m7!b(n)4$&jia=#@71=u24o4)xy79qaz$*2%+n#fk*dwdf0&j^')
+#SECRET_KEY = config('SECRET_KEY',default='m7!b(n)4$&jia=#@71=u24o4)xy79qaz$*2%+n#fk*dwdf0&j^')
+#SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
