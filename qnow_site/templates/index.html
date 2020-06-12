@@ -106,31 +106,25 @@
                             <div class="swiper-wrapper">
                                 <!-- Slides -->
                                 {% for field in quotation_list %}
-                                    <div class="swiper-slide">
-                                        {% if field.view_environment_quotation_home == True %}
-                                            {% if field.image_environment|lower == 'None'|lower %}
-                                                <img src="{% static '/images/no-image.png' %}" alt="MGA-Cotações<br>Sem foto!"> 
-                                            {% else %}
-                                                <img src="{{field.image_environment.url}}" alt="Última Cotações - Nº: {{ field.id }}"> 
-                                            {% endif %}
-                                            <div style="padding-top: 2px; width: 100%; text-align: center; background-color:#ffb400; height: 2.4em; line-height: 1em; ">
-                                                <strong style="color:white; font-size: 12px;">Cotação Nº: {{ field.id }} <br> {{ field.client.city|truncatechars:10 }} - {{ field.date_create|date:"d/m/yy" }}</strong>
-                                            </div>
-                                        {% endif %}
+                                <div class="swiper-slide">
+                                    {% if field.view_environment_quotation_home == True %} {% if field.image_environment|lower == 'None'|lower %}
+                                    <img src="{% static '/images/no-image.png' %}" alt="MGA-Cotações<br>Sem foto!"> {% else %}
+                                    <img src="{{field.image_environment.url}}" alt="Última Cotações - Nº: {{ field.id }}"> {% endif %}
+                                    <div style="padding-top: 2px; width: 100%; text-align: center; background-color:#ffb400; height: 2.4em; line-height: 1em; ">
+                                        <strong style="color:white; font-size: 12px;">Cotação Nº: {{ field.id }} <br> {{ field.client.city|truncatechars:10 }} - {{ field.date_create|date:"d/m/yy" }}</strong>
                                     </div>
+                                    {% endif %}
+                                </div>
 
-                                    <div class="swiper-slide">
-                                        {% if field.view_project_quotation_home == True %} 
-                                            {% if field.image_project|lower == 'None'|lower %}
-                                                <img src="{% static '/images/no-image.png' %}" alt="MGA-Cotações<br>Sem foto!"> 
-                                            {% else %}
-                                                <img src="{{field.image_project.url}}" alt="Última Cotações - Nº: {{ field.id }}"> 
-                                            {% endif %} 
-                                            <div style="padding-top: 2px; width: 100%; text-align: center; background-color:#ffb400; height: 2.4em; line-height: 1em; ">
-                                                <strong style="color:white; font-size: 12px;">Cotação Nº: {{ field.id }} <br> {{ field.client.city|truncatechars:10 }} - {{ field.date_create|date:"d/m/yy" }}</strong>
-                                            </div>
-                                        {% endif %}
+                                <div class="swiper-slide">
+                                    {% if field.view_project_quotation_home == True %} {% if field.image_project|lower == 'None'|lower %}
+                                    <img src="{% static '/images/no-image.png' %}" alt="MGA-Cotações<br>Sem foto!"> {% else %}
+                                    <img src="{{field.image_project.url}}" alt="Última Cotações - Nº: {{ field.id }}"> {% endif %}
+                                    <div style="padding-top: 2px; width: 100%; text-align: center; background-color:#ffb400; height: 2.4em; line-height: 1em; ">
+                                        <strong style="color:white; font-size: 12px;">Cotação Nº: {{ field.id }} <br> {{ field.client.city|truncatechars:10 }} - {{ field.date_create|date:"d/m/yy" }}</strong>
                                     </div>
+                                    {% endif %}
+                                </div>
 
                                 {% endfor %}
                             </div>
@@ -184,10 +178,10 @@
                                 <div class="uk-panel project-member">
 
                                     <figure class="uk-overlay uk-overlay-hover project-member-padding">
-                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/c1472dc03c548ce8207acd91ee17bf28_pj4ctq.jpg">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588164544/Quotation-Now-Promocao/HomeOffice/ab34d813edcf81797c1aa34e907b4247_ubmug2.jpg">
                                         <figcaption class="uk-overlay-panel uk-overlay-background">
 
-                                            <a href="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/c1472dc03c548ce8207acd91ee17bf28_pj4ctq.jpg" data-uk-lightbox title="dfdfa">
+                                            <a href="https://res.cloudinary.com/quotation-now/image/upload/v1588164544/Quotation-Now-Promocao/HomeOffice/ab34d813edcf81797c1aa34e907b4247_ubmug2.jpg" data-uk-lightbox title="dfdfa">
                                                 <div class="project-member-head">
                                                     <h4 class="project-member-title uk-text-left">
                                                         <strong>Home Office</strong>
@@ -213,7 +207,7 @@
                             <div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box" style="top: 0px; left: 376.983px; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
                                 <div class="uk-panel project-member">
                                     <figure class="uk-overlay uk-overlay-hover project-member-padding ">
-                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/e414d0aae766637aac099f3b53f141de_dal0ty.jpg">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/HomeOffice/c1472dc03c548ce8207acd91ee17bf28_pj4ctq.jpg">
                                         <figcaption class="uk-overlay-panel uk-overlay-background">
                                             <div class="project-member-head">
                                                 <h4 class="project-member-title uk-text-left">
@@ -236,7 +230,7 @@
                             <div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box" style="top: 0px; left: 753.966px; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
                                 <div class="uk-panel project-member">
                                     <figure class="uk-overlay uk-overlay-hover project-member-padding ">
-                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/07d84b19f4ba8b4969d0a679dc6dc4b0_vj7g0v.jpg">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/HomeOffice/f937669306f5fa55f456123ea2839dee_nstfut.jpg">
                                         <figcaption class="uk-overlay-panel uk-overlay-background">
                                             <div class="project-member-head">
                                                 <h4 class="project-member-title uk-text-left">
@@ -259,7 +253,7 @@
                             <div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box" style="top: 264.2px; left: 0px; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
                                 <div class="uk-panel project-member">
                                     <figure class="uk-overlay uk-overlay-hover project-member-padding ">
-                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/f937669306f5fa55f456123ea2839dee_nstfut.jpg">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/HomeOffice/bb6dcdb249ce498a00b511ce93feb824_v2clqr.jpg">
                                         <figcaption class="uk-overlay-panel uk-overlay-background">
                                             <div class="project-member-head">
                                                 <h4 class="project-member-title uk-text-left">
@@ -282,7 +276,7 @@
                             <div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box" style="top: 264.2px; left: 376.983px; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
                                 <div class="uk-panel project-member">
                                     <figure class="uk-overlay uk-overlay-hover project-member-padding ">
-                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/bb6dcdb249ce498a00b511ce93feb824_v2clqr.jpg">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/HomeOffice/07d84b19f4ba8b4969d0a679dc6dc4b0_vj7g0v.jpg">
                                         <figcaption class="uk-overlay-panel uk-overlay-background">
                                             <div class="project-member-head">
                                                 <h4 class="project-member-title uk-text-left">
@@ -305,7 +299,7 @@
                             <div data-uk-filter="homeoffice" data-grid-prepared="true" class="project-box" style="top: 264.2px; left: 753.966px; padding: 3px 3px 3px 3px; background: black;" aria-hidden="false">
                                 <div class="uk-panel project-member">
                                     <figure class="uk-overlay uk-overlay-hover project-member-padding ">
-                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588164544/Quotation-Now-Promocao/ab34d813edcf81797c1aa34e907b4247_ubmug2.jpg">
+                                        <img alt="Home Office" src="https://res.cloudinary.com/quotation-now/image/upload/v1588119335/Quotation-Now-Promocao/HomeOffice/e414d0aae766637aac099f3b53f141de_dal0ty.jpg">
                                         <figcaption class="uk-overlay-panel uk-overlay-background">
                                             <div class="project-member-head">
                                                 <h4 class="project-member-title uk-text-left">
