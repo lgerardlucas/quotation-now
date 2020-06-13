@@ -33,12 +33,6 @@ INSTALLED_APPS = [
     'debug_toolbar',
 ]
 
-# Cloud to static e media files
-#CLOUDINARY = {
-#    'cloud_name' : 'quotation-now',
-#    'api_key' : '813491479334954',
-#    'api_secret': 'VhUuEMxGeunGhpO2Qo2oudVgFQo'
-#}
 CLOUDINARY = {
     'cloud_name' : config('cloud_name'),
     'api_key' : config('api_key'),
@@ -58,7 +52,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
@@ -88,24 +81,6 @@ WSGI_APPLICATION = 'quotation-now.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-#default_dburl = 'sqlite:///' + os.path.abspath(os.path.join(BASE_DIR, 'db.sqlite3'))
-#DATABASES = { 
-#    'default': config('DATABASE_URL', default=default_dburl, cast=dburl), 
-#}
-
-# Conectando ao banco PostgreSQL - Local e Remoto. Foi utilizado o arquivo .env
-#DATABASES = {
-#    'default': {
-#        'ENGINE': config('ENGINE', default='django.db.backends.postgresql'),
-#        'NAME': config('NAME', default='d5hoklb761lftk'),
-#        'USER': config('ROLE', default='rcvyijjkpymkue'),
-#        'PASSWORD': config('PASSWORD', default='fad29688a28db66d902856fba2688758cec82f563e6c03292de22be94f270e43'),
-#        'HOST': config('HOST', default='ec2-54-235-246-201.compute-1.amazonaws.com'),
-#        'PORT': '5432',
-#    }
-#}
-
 DATABASES = {
     'default': {
         'ENGINE': config('ENGINE'),
