@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'qnow_user',
     'qnow_provider',
     'qnow_site',
-
+    'rangefilter',
     'debug_toolbar',
 ]
 

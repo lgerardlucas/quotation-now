@@ -7,6 +7,7 @@ from django.db.models import Value
 from django.db.models.functions import Concat
 import unidecode
 from qnow_provider.models import QuotationPrice
+from rangefilter.filter import DateRangeFilter, DateTimeRangeFilter
 
 # Classe que gera os campos mestre detalhe 
 class QuotationPriceInline(admin.TabularInline):
@@ -171,7 +172,7 @@ class QuotationAdmin(admin.ModelAdmin):
     #fields = (('client','date_create'),('house_type','mobile_type'),('mobile_description','stage','removed'),'image_environment','image_project','particulars')    
 
     # Campos que unidos são usados no processo de filtragem por seleção
-    list_filter = ('stage__description','date_create','client__city')
+    list_filter = (('date_create', DateRangeFilter),'stage__description','date_create','client__city',)
 
 
     # Campos que unidos são usados no processo de filtragem por digitação
