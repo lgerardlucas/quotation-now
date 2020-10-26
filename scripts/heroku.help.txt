@@ -12,3 +12,7 @@ heroku local -e .env -p 8000
 #Acessando PostgreSQL no Heroku
 #PassWord: fad29688a28db66d902856fba2688758cec82f563e6c03292de22be94f270e43
 heroku run psql -p 5432 -h ec2-54-235-246-201.compute-1.amazonaws.com -U rcvyijjkpymkue d5hoklb761lftk --app quotation-now
+
+
+# Comando para liberar captcha do email para envio onlne
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjqxbrXzbbsAhX6EbkGHU-xBIwQFjANegQIIBAC&url=https%3A%2F%2Faccounts.google.com%2Fdisplayunlockcaptcha&usg=AOvVaw2e8zXzJPwEDdenf3Ftolle

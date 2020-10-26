@@ -11,3 +11,4 @@ venv/*
 __pycache__/
 staticfiles
 my_bkp_postgresql
+scripts
